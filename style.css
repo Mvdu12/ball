@@ -233,3 +233,50 @@ a.ref-name-link {
   text-underline-offset: 4px;
 }
 a.ref-name-link:hover { transform: none; box-shadow: none; color: var(--gold); }
+
+/* ======= بنك النقط ======= */
+.pill-green { background: var(--green); color: var(--parchment); }
+.pill-bank { background: var(--gold-bright); color: var(--navy-deep); }
+.pill-outline { background: rgba(255,255,255,0.08); color: var(--parchment); border: 1.5px solid var(--line); }
+.pill-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.match-tracker {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--r-inner);
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.match-tracker .mt-score { font-weight: 800; }
+
+.score-bar {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.score-box {
+  border-radius: var(--r-inner);
+  border: 1px solid var(--line);
+  padding: 0.8rem;
+  text-align: center;
+}
+.score-box.risk { background: linear-gradient(135deg, rgba(163,55,44,0.28), rgba(163,55,44,0.04) 70%); }
+.score-box.banked { background: linear-gradient(135deg, rgba(76,153,90,0.28), rgba(76,153,90,0.04) 70%); }
+.score-label { font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.2rem; }
+.score-val { font-size: 1.6rem; font-weight: 800; }
+
+.bank-actions {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem;
+  margin: 1.1rem 0 0.5rem;
+}
+.bank-actions .pill-btn { padding: 0.75rem 0.5rem; font-size: 0.95rem; }
+@media (max-width: 480px) {
+  .bank-actions { grid-template-columns: 1fr; }
+}

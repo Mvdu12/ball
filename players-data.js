@@ -1,10 +1,7 @@
 // players-data.js
-// مصفوفة لاعبين موثّقة بدقة عالية (بدون صور — الـschema الجديد بدون photoUrl).
-// كل رابط ويكيبيديا (ar/en) تم التأكد منه أو تُرك فاضي لو مفيش يقين كافي فيه.
-// الدفعة دي: 25 لاعب (3 من الدفعة السابقة + 22 جديد).
+// مصفوفة بيانات اللاعبين (الأسماء، الأندية، الإنجازات، روابط ويكيبيديا)
 
 const players = [
-  // ================= الدفعة السابقة (بدون تغيير في البيانات، فقط حذف photoUrl) =================
   {
     id: "mohamed-salah",
     nameAr: "محمد صلاح",
@@ -96,7 +93,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Lionel_Messi"
   },
 
-  // ================= لاعبون جدد =================
   {
     id: "zinedine-zidane",
     nameAr: "زين الدين زيدان",
@@ -4029,7 +4025,6 @@ const players = [
   }
 ,
 
-  // ================= دفعة إضافية (playersBatch2 مدموجة) =================
 {
     id: "rabah-madjer",
     nameAr: "رابح ماجر",
@@ -4541,7 +4536,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Hakan_Şükür"
   },
 
-  // ================= دفعة جديدة (batch3) =================
 {
     id: "zlatan-ibrahimovic",
     nameAr: "زلاتان إبراهيموفيتش",
@@ -5174,7 +5168,6 @@ const players = [
   }
 ,
 
-  // ================= أساطير إضافية (legendsBatch) =================
 {
     id: "eusebio",
     nameAr: "يوسيبيو",
@@ -6046,7 +6039,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Rafael_Márquez"
   }
   ,
-  // ================= دفعة جديدة: أساطير من الدوريات الخمسة الكبار (wikiUrlAr فاضي مؤقتًا) =================
   {
     id: "patrick-vieira",
     nameAr: "باتريك فييرا",
@@ -6198,7 +6190,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Marcel_Desailly"
   }
   ,
-  // ================= دفعة جديدة: لاعبون حاليون في الدوري الإسباني والإنجليزي (wikiUrlAr فاضي) =================
   {
     id: "julian-alvarez",
     nameAr: "خوليان ألفاريز",
@@ -6350,7 +6341,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Alexander_Isak"
   }
   ,
-  // ================= دفعة ثالثة: لاعبون حاليون في الدوري الإسباني والإنجليزي (wikiUrlAr فاضي) =================
   {
     id: "william-saliba",
     nameAr: "ويليامساليبا",
@@ -6472,7 +6462,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Dean_Huijsen"
   }
   ,
-  // ================= دفعة رابعة: نجوم مشهورون حاليون (wikiUrlAr فاضي) =================
   {
     id: "antoine-griezmann",
     nameAr: "أنطوان غريزمان",
@@ -6564,7 +6553,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Marcus_Rashford"
   }
   ,
-  // ================= دفعة خامسة: أساطير أتلتيكو مدريد وبشكتاش (wikiUrlAr فاضي) =================
   {
     id: "diego-godin",
     nameAr: "دييغو غودين",
@@ -6686,7 +6674,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Ricardo_Quaresma"
   }
   ,
-  // ================= دفعة سادسة: نجوم مشهورون إضافيون (wikiUrlAr فاضي) =================
   {
     id: "harry-kane",
     nameAr: "هاري كين",
@@ -6778,7 +6765,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Eden_Hazard"
   }
   ,
-  // ================= دفعة سابعة: نجوم مشهورون إضافيون (wikiUrlAr فاضي) =================
   {
     id: "paul-pogba",
     nameAr: "بول بوغبا",
@@ -6960,7 +6946,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Victor_Osimhen"
   }
   ,
-  // ================= دفعة ثامنة: باريس سان جيرمان - حاليون وأساطير (wikiUrlAr فاضي) =================
   {
     id: "marquinhos",
     nameAr: "ماركينيوس",
@@ -7022,7 +7007,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Thiago_Silva"
   }
   ,
-  // ================= دفعة تاسعة: باريس سان جيرمان - إضافات (wikiUrlAr فاضي) =================
   {
     id: "vitinha",
     nameAr: "فيتينيا",
@@ -7084,7 +7068,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Ángel_Di_María"
   }
   ,
-  // ================= دفعة عاشرة: نجوم مشهورون إضافيون (wikiUrlAr فاضي) =================
   {
     id: "lautaro-martinez",
     nameAr: "لاوتارو مارتينيز",
@@ -7176,7 +7159,6 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Rúben_Dias"
   }
   ,
-  // ================= دفعة حادية عشر: نجوم مشهورون إضافيون (wikiUrlAr فاضي) =================
   {
     id: "bernardo-silva",
     nameAr: "برناردو سيلفا",
@@ -7268,7 +7250,969 @@ const players = [
     wikiUrlEn: "https://en.wikipedia.org/wiki/Nicolò_Barella"
   }
   ,
-  // ================= دفعة ثانية عشر: نجوم مشهورون إضافيون (wikiUrlAr فاضي) =================
+  {
+    id: "joshua-kimmich",
+    nameAr: "جوشوا كيميش",
+    nameEn: "Joshua Kimmich",
+    nationalityAr: "ألماني",
+    nationalityEn: "German",
+    clubAr: "بايرن ميونخ",
+    clubEn: "Bayern Munich",
+    position: { ar: "وسط / ظهير أيمن", en: "Midfielder / Right-back" },
+    era: "2013-الآن",
+    active: true,
+    bioAr: "لاعب وسط ألماني متعدد المراكز وقائد المنتخب الألماني، يلعب لبايرن ميونخ منذ عام 2015 وجدد عقده معه حتى 2029. فاز مع بايرن بالثلاثية القارية موسم 2019-2020 (الدوري والكأس ودوري الأبطال)، ويُعد أحد أهم لاعبي خط الوسط في العالم بفضل رؤيته وتمريراته.",
+    bioEn: "Versatile German midfielder and captain of the Germany national team, playing for Bayern Munich since 2015 and having extended his contract there until 2029. He won the continental treble with Bayern in the 2019-20 season (Bundesliga, DFB-Pokal, Champions League) and is regarded as one of the world's finest midfielders for his vision and passing.",
+    achievementsAr: [
+      "الثلاثية القارية 2019-2020 مع بايرن ميونخ (الدوري والكأس ودوري الأبطال)",
+      "عدة ألقاب دوري ألماني (بوندسليغا) مع بايرن ميونخ",
+      "قائد المنتخب الألماني",
+      "عضو تشكيلة الموسم في يورو 2016"
+    ],
+    achievementsEn: [
+      "2019-20 continental treble with Bayern Munich (Bundesliga, DFB-Pokal, Champions League)",
+      "Multiple Bundesliga titles with Bayern Munich",
+      "Captain of the Germany national team",
+      "UEFA Euro 2016 Team of the Tournament"
+    ],
+    clubsHistoryAr: ["شتوتغارت", "لايبزيغ (إعارة)", "بايرن ميونخ"],
+    clubsHistoryEn: ["VfB Stuttgart", "RB Leipzig (loan)", "Bayern Munich"],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Joshua_Kimmich"
+  },
+  {
+    id: "mesut-ozil",
+    nameAr: "مسعود أوزيل",
+    nameEn: "Mesut Özil",
+    nationalityAr: "ألماني",
+    nationalityEn: "German",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "صانع ألعاب", en: "Attacking Midfielder" },
+    era: "2006-2023",
+    active: false,
+    bioAr: "صانع ألعاب ألماني من أصول تركية، يُعد من أبرز صناع الألعاب في جيله بفضل رؤيته ودقة تمريراته. توّج مسيرته الدولية بلقب كأس العالم 2014 مع ألمانيا، ولعب لريال مدريد وآرسنال قبل أن يعتزل مع فنربخشة التركي عام 2023.",
+    bioEn: "German playmaker of Turkish descent, regarded as one of the finest creative midfielders of his generation for his vision and passing. He capped his international career by winning the 2014 FIFA World Cup with Germany, and played for Real Madrid and Arsenal before retiring at Turkish club Fenerbahçe in 2023.",
+    achievementsAr: [
+      "بطولة كأس العالم 2014 مع ألمانيا",
+      "لقب الدوري الإسباني 2011-2012 مع ريال مدريد",
+      "لقب كأس إنجلترا (عدة مرات) مع آرسنال",
+      "أكبر رقم قياسي لصانع أهداف في الدوري الإنجليزي خلال فترة من مسيرته"
+    ],
+    achievementsEn: [
+      "2014 FIFA World Cup title with Germany",
+      "2011-12 La Liga title with Real Madrid",
+      "FA Cup titles (multiple times) with Arsenal",
+      "Held the Premier League assists record for a single season for a period of his career"
+    ],
+    clubsHistoryAr: ["شالكه 04", "فيردر بريمن", "ريال مدريد", "آرسنال", "فنربخشة", "إسطنبول باشاك شهير"],
+    clubsHistoryEn: ["Schalke 04", "Werder Bremen", "Real Madrid", "Arsenal", "Fenerbahçe", "Istanbul Başakşehir"],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Mesut_Özil"
+  },
+  {
+    id: "romelu-lukaku",
+    nameAr: "روميلو لوكاكو",
+    nameEn: "Romelu Lukaku",
+    nationalityAr: "بلجيكي",
+    nationalityEn: "Belgian",
+    clubAr: "نابولي",
+    clubEn: "Napoli",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "2009-الآن",
+    active: true,
+    bioAr: "مهاجم بلجيكي وهداف منتخب بلجيكا التاريخي، لعب لتشيلسي وإيفرتون ومانشستر يونايتد وإنتر ميلان قبل أن يستقر في نابولي الإيطالي. حقق لقب الدوري الإيطالي مع إنتر ميلان موسم 2020-2021، وأصبح أكبر هداف لبلجيكا في تاريخ نهائيات كأس العالم.",
+    bioEn: "Belgian striker and his country's all-time leading goalscorer, he has played for Chelsea, Everton, Manchester United and Inter Milan before settling at Napoli. He won the Serie A title with Inter Milan in the 2020-21 season and became Belgium's all-time top scorer at the FIFA World Cup finals.",
+    achievementsAr: [
+      "لقب الدوري الإيطالي (سيري A) 2020-2021 مع إنتر ميلان",
+      "هداف منتخب بلجيكا التاريخي",
+      "أكبر هداف لبلجيكا في تاريخ نهائيات كأس العالم",
+      "وصافة دوري أبطال أوروبا مع إنتر ميلان (2023)"
+    ],
+    achievementsEn: [
+      "2020-21 Serie A title with Inter Milan",
+      "Belgium's all-time top goalscorer",
+      "Belgium's all-time leading scorer at the FIFA World Cup finals",
+      "UEFA Champions League runner-up with Inter Milan (2023)"
+    ],
+    clubsHistoryAr: ["أندرلخت", "تشيلسي", "ويست بروميتش (إعارة)", "إيفرتون", "مانشستر يونايتد", "إنتر ميلان (إعارة ثم انتقال دائم)", "تشيلسي", "روما (إعارة)", "نابولي"],
+    clubsHistoryEn: ["Anderlecht", "Chelsea", "West Bromwich Albion (loan)", "Everton", "Manchester United", "Inter Milan (loan then permanent)", "Chelsea", "Roma (loan)", "Napoli"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "emiliano-martinez",
+    nameAr: "إميليانو مارتينيز",
+    nameEn: "Emiliano Martínez",
+    nationalityAr: "أرجنتيني",
+    nationalityEn: "Argentine",
+    clubAr: "أستون فيلا",
+    clubEn: "Aston Villa",
+    position: { ar: "حارس مرمى", en: "Goalkeeper" },
+    era: "2012-الآن",
+    active: true,
+    bioAr: "حارس مرمى أرجنتيني، خرّيج أكاديمية آرسنال قبل أن يستقر مع أستون فيلا الإنجليزي ويجدد عقده معه حتى 2029. كان بطلاً لنهائي كأس العالم 2022 مع الأرجنتين وحصل على جائزة القفاز الذهبي كأفضل حارس في البطولة، كما توّج بكوبا أمريكا مرتين مع منتخب بلاده.",
+    bioEn: "Argentine goalkeeper, an Arsenal academy graduate who settled at Aston Villa and extended his contract there until 2029. He was Argentina's hero in the 2022 World Cup final and won the Golden Glove as the tournament's best goalkeeper, and has also won the Copa América twice with his national team.",
+    achievementsAr: [
+      "بطولة كأس العالم 2022 مع الأرجنتين",
+      "جائزة القفاز الذهبي لأفضل حارس في كأس العالم 2022",
+      "بطولة كوبا أمريكا مرتين (2021 و2024) مع الأرجنتين",
+      "بطولة فينالِسيما 2022 مع الأرجنتين"
+    ],
+    achievementsEn: [
+      "2022 FIFA World Cup title with Argentina",
+      "Golden Glove as best goalkeeper of the 2022 World Cup",
+      "Copa América title twice (2021 and 2024) with Argentina",
+      "2022 CONMEBOL–UEFA Finalissima title with Argentina"
+    ],
+    clubsHistoryAr: ["آرسنال", "عدة أندية بالإعارة (أكسفورد يونايتد، شيفيلد وينزداي، روذرهام، جيرونا، ريدينغ)", "أستون فيلا"],
+    clubsHistoryEn: ["Arsenal", "Multiple loan spells (Oxford United, Sheffield Wednesday, Rotherham, Getafe, Reading)", "Aston Villa"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "trent-alexander-arnold",
+    nameAr: "ترينت ألكسندر-أرنولد",
+    nameEn: "Trent Alexander-Arnold",
+    nationalityAr: "إنجليزي",
+    nationalityEn: "English",
+    clubAr: "ريال مدريد",
+    clubEn: "Real Madrid",
+    position: { ar: "ظهير أيمن", en: "Right-back" },
+    era: "2016-الآن",
+    active: true,
+    bioAr: "ظهير أيمن إنجليزي، خرّيج أكاديمية ليفربول الذي دافع عن ألوانه لأكثر من عقد وفاز معه بدوري أبطال أوروبا والدوري الإنجليزي الممتاز مرتين، قبل أن ينتقل إلى ريال مدريد الإسباني في يونيو 2025 بعقد يمتد حتى 2031.",
+    bioEn: "English right-back and Liverpool academy graduate who represented the club for over a decade, winning the UEFA Champions League and the Premier League twice with them, before moving to Real Madrid in June 2025 on a deal until 2031.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2018-2019 مع ليفربول",
+      "لقبا الدوري الإنجليزي الممتاز (2019-2020 و2024-2025) مع ليفربول",
+      "لقب كأس الاتحاد الإنجليزي 2021-2022 مع ليفربول",
+      "لقبا كأس الرابطة الإنجليزية مع ليفربول"
+    ],
+    achievementsEn: [
+      "2018-19 UEFA Champions League title with Liverpool",
+      "Two Premier League titles (2019-20 and 2024-25) with Liverpool",
+      "2021-22 FA Cup title with Liverpool",
+      "Two EFL Cup titles with Liverpool"
+    ],
+    clubsHistoryAr: ["ليفربول", "ريال مدريد"],
+    clubsHistoryEn: ["Liverpool", "Real Madrid"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "cesc-fabregas",
+    nameAr: "سيسك فابريغاس",
+    nameEn: "Cesc Fàbregas",
+    nationalityAr: "إسباني",
+    nationalityEn: "Spanish",
+    clubAr: "كومو (معتزل)",
+    clubEn: "Como (retired)",
+    position: { ar: "صانع ألعاب", en: "Midfielder / Playmaker" },
+    era: "2003-2022",
+    active: false,
+    bioAr: "صانع ألعاب إسباني وقائد سابق لآرسنال، فاز بكأس العالم 2010 ولقبي أمم أوروبا 2008 و2012 مع إسبانيا. لعب لبرشلونة وتشيلسي بعد آرسنال، واعتزل مع نادي كومو الإيطالي عام 2022 قبل أن يصبح مدربًا له.",
+    bioEn: "Spanish playmaker and former Arsenal captain who won the 2010 World Cup and the 2008 and 2012 European Championships with Spain. He played for Barcelona and Chelsea after Arsenal, and retired at Italian club Como in 2022 before becoming its head coach.",
+    achievementsAr: [
+      "بطولة كأس العالم 2010 مع إسبانيا",
+      "بطولتا أمم أوروبا 2008 و2012 مع إسبانيا",
+      "لقبا الدوري الإنجليزي الممتاز مع تشيلسي (2014-2015 و2016-2017)",
+      "لقب الدوري الإسباني 2014-2015 مع برشلونة"
+    ],
+    achievementsEn: [
+      "2010 FIFA World Cup title with Spain",
+      "UEFA European Championship titles in 2008 and 2012 with Spain",
+      "Two Premier League titles with Chelsea (2014-15 and 2016-17)",
+      "2014-15 La Liga title with Barcelona"
+    ],
+    clubsHistoryAr: ["آرسنال", "برشلونة", "تشيلسي", "مونزا (إعارة)", "كومو"],
+    clubsHistoryEn: ["Arsenal", "Barcelona", "Chelsea", "Monza (loan)", "Como"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "david-silva",
+    nameAr: "ديفيد سيلفا",
+    nameEn: "David Silva",
+    nationalityAr: "إسباني",
+    nationalityEn: "Spanish",
+    clubAr: "ريال سوسيداد (معتزل)",
+    clubEn: "Real Sociedad (retired)",
+    position: { ar: "صانع ألعاب", en: "Attacking Midfielder" },
+    era: "2004-2023",
+    active: false,
+    bioAr: "صانع ألعاب إسباني وأحد أهم نجوم مانشستر سيتي في تاريخه، فاز معه بعدة ألقاب دوري إنجليزي ممتاز. توّج مع إسبانيا بكأس العالم 2010 ولقبي أمم أوروبا 2008 و2012، واعتزل مع ريال سوسيداد عام 2023.",
+    bioEn: "Spanish playmaker and one of Manchester City's greatest ever players, winning multiple Premier League titles with the club. He won the 2010 World Cup and the 2008 and 2012 European Championships with Spain, and retired at Real Sociedad in 2023.",
+    achievementsAr: [
+      "بطولة كأس العالم 2010 مع إسبانيا",
+      "بطولتا أمم أوروبا 2008 و2012 مع إسبانيا",
+      "عدة ألقاب دوري إنجليزي ممتاز مع مانشستر سيتي",
+      "لقب الدوري الإسباني 2007-2008 مع فالنسيا"
+    ],
+    achievementsEn: [
+      "2010 FIFA World Cup title with Spain",
+      "UEFA European Championship titles in 2008 and 2012 with Spain",
+      "Multiple Premier League titles with Manchester City",
+      "2007-08 La Liga title with Valencia"
+    ],
+    clubsHistoryAr: ["فالنسيا", "إيبار (إعارة)", "سيلتا فيغو (إعارة)", "مانشستر سيتي", "ريال سوسيداد"],
+    clubsHistoryEn: ["Valencia", "Eibar (loan)", "Celta Vigo (loan)", "Manchester City", "Real Sociedad"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "christian-vieri",
+    nameAr: "كريستيان فييري",
+    nameEn: "Christian Vieri",
+    nationalityAr: "إيطالي",
+    nationalityEn: "Italian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "1991-2009",
+    active: false,
+    bioAr: "مهاجم إيطالي قوي البنية وأحد أخطر الهدافين في جيله، انتقاله إلى إنتر ميلان عام 1999 مثّل رقمًا قياسيًا عالميًا لقيمة الصفقات في حينها. لعب أيضًا ليوفنتوس وأتلتيكو مدريد ولاتسيو وميلان، وسجل عدة مرات في نهائيات كأس العالم مع منتخب إيطاليا.",
+    bioEn: "Powerfully built Italian striker and one of the most lethal goalscorers of his generation, whose 1999 transfer to Inter Milan set a world record transfer fee at the time. He also played for Juventus, Atlético Madrid, Lazio and Milan, and scored regularly at FIFA World Cup finals for Italy.",
+    achievementsAr: [
+      "هداف الدوري الإيطالي (سيري A) أكثر من مرة",
+      "لقب كأس إيطاليا مع لاتسيو",
+      "من أبرز هدافي منتخب إيطاليا في نهائيات كأس العالم",
+      "صفقة قياسية عالميًا عند انتقاله إلى إنتر ميلان 1999"
+    ],
+    achievementsEn: [
+      "Serie A top scorer (Capocannoniere) on multiple occasions",
+      "Coppa Italia title with Lazio",
+      "One of Italy's leading scorers at FIFA World Cup finals",
+      "World record transfer fee when he joined Inter Milan in 1999"
+    ],
+    clubsHistoryAr: ["تورينو", "بيزا", "رافينا", "فينتسيا", "يوفنتوس", "أتلتيكو مدريد", "لاتسيو", "إنتر ميلان", "ميلان", "مونتيري (المكسيك)"],
+    clubsHistoryEn: ["Torino", "Pisa", "Ravenna", "Venezia", "Juventus", "Atlético Madrid", "Lazio", "Inter Milan", "Milan", "Monterrey (Mexico)"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "gianfranco-zola",
+    nameAr: "جانفرانكو زولا",
+    nameEn: "Gianfranco Zola",
+    nationalityAr: "إيطالي",
+    nationalityEn: "Italian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "صانع ألعاب / مهاجم", en: "Playmaker / Forward" },
+    era: "1984-2005",
+    active: false,
+    bioAr: "صانع ألعاب إيطالي موهوب، لعب تحت قيادة مارادونا في نابولي قبل أن يصبح أحد أعظم لاعبي تشيلسي في تاريخه، حيث انتُخب لاحقًا 'لاعب القرن' للنادي. فاز مع بارما بكأس الاتحاد الأوروبي وكأس الكؤوس الأوروبية.",
+    bioEn: "Gifted Italian playmaker who played alongside Maradona at Napoli before becoming one of Chelsea's greatest ever players, later voted the club's 'Player of the Century'. He won the UEFA Cup and the Cup Winners' Cup with Parma.",
+    achievementsAr: [
+      "لقب الدوري الإيطالي 1989-1990 مع نابولي",
+      "كأس الكؤوس الأوروبية وكأس الاتحاد الأوروبي مع بارما",
+      "لقب كأس إنجلترا مرتين مع تشيلسي",
+      "انتُخب 'لاعب القرن' لنادي تشيلسي"
+    ],
+    achievementsEn: [
+      "1989-90 Serie A title with Napoli",
+      "UEFA Cup Winners' Cup and UEFA Cup with Parma",
+      "FA Cup title twice with Chelsea",
+      "Voted Chelsea's 'Player of the Century'"
+    ],
+    clubsHistoryAr: ["نابولي", "بارما", "تشيلسي", "كالياري"],
+    clubsHistoryEn: ["Napoli", "Parma", "Chelsea", "Cagliari"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "mario-kempes",
+    nameAr: "ماريو كيمبيس",
+    nameEn: "Mario Kempes",
+    nationalityAr: "أرجنتيني",
+    nationalityEn: "Argentine",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "1973-1996",
+    active: false,
+    bioAr: "مهاجم أرجنتيني وبطل كأس العالم 1978 على أرضه، حيث كان هداف البطولة وأفضل لاعب فيها. قضى معظم مسيرته الأوروبية مع فالنسيا الإسباني الذي فاز معه بكأس الكؤوس الأوروبية وكأس السوبر الأوروبي.",
+    bioEn: "Argentine striker and hero of the 1978 World Cup on home soil, where he was the tournament's top scorer and best player. He spent most of his European career at Valencia, with whom he won the UEFA Cup Winners' Cup and the UEFA Super Cup.",
+    achievementsAr: [
+      "بطولة كأس العالم 1978 مع الأرجنتين",
+      "هداف وأفضل لاعب في كأس العالم 1978",
+      "كأس الكؤوس الأوروبية 1979-1980 مع فالنسيا",
+      "كأس السوبر الأوروبي 1980 مع فالنسيا"
+    ],
+    achievementsEn: [
+      "1978 FIFA World Cup title with Argentina",
+      "Top scorer and best player of the 1978 World Cup",
+      "1979-80 UEFA Cup Winners' Cup with Valencia",
+      "1980 UEFA Super Cup with Valencia"
+    ],
+    clubsHistoryAr: ["إنستيتوتو", "روزاريو سنترال", "فالنسيا", "ريفر بليت", "هركوليس", "فيرست فيينا (النمسا)"],
+    clubsHistoryEn: ["Instituto", "Rosario Central", "Valencia", "River Plate", "Hércules", "First Vienna (Austria)"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "rui-costa",
+    nameAr: "روي كوستا",
+    nameEn: "Rui Costa",
+    nationalityAr: "برتغالي",
+    nationalityEn: "Portuguese",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "صانع ألعاب", en: "Attacking Midfielder / Playmaker" },
+    era: "1990-2006",
+    active: false,
+    bioAr: "صانع ألعاب برتغالي يُعد من أفضل لاعبي جيله، تألق مع فيورنتينا الإيطالي قبل أن ينتقل إلى ميلان ويفوز معه بلقبي الدوري الإيطالي ودوري أبطال أوروبا. شغل لاحقًا منصب الرئيس التنفيذي لبنفيكا، ناديه الأول.",
+    bioEn: "Portuguese playmaker regarded as one of the finest of his generation, who shone at Fiorentina before moving to Milan, winning the Serie A title and the UEFA Champions League with them. He later served as CEO of Benfica, the club where he started his career.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2002-2003 مع ميلان",
+      "لقب الدوري الإيطالي 2003-2004 مع ميلان",
+      "كأس السوبر الأوروبي 2003 مع ميلان",
+      "وصافة بطولة أمم أوروبا 2004 مع البرتغال"
+    ],
+    achievementsEn: [
+      "2002-03 UEFA Champions League title with Milan",
+      "2003-04 Serie A title with Milan",
+      "2003 UEFA Super Cup with Milan",
+      "UEFA Euro 2004 runner-up with Portugal"
+    ],
+    clubsHistoryAr: ["بنفيكا", "فيورنتينا", "ميلان"],
+    clubsHistoryEn: ["Benfica", "Fiorentina", "Milan"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+
+  {
+    id: "federico-chiesa",
+    nameAr: "فيديريكو كييزا",
+    nameEn: "Federico Chiesa",
+    nationalityAr: "إيطالي",
+    nationalityEn: "Italian",
+    clubAr: "ليفربول",
+    clubEn: "Liverpool",
+    position: { ar: "جناح", en: "Winger" },
+    era: "2016-الآن",
+    active: true,
+    bioAr: "جناح إيطالي انتقل من يوفنتوس إلى ليفربول الإنجليزي صيف 2024. كان أحد أبطال إيطاليا في الفوز بلقب يورو 2020، ولعب جميع مباريات إيطاليا في تلك البطولة، كما فاز بكأس إيطاليا مرتين مع يوفنتوس.",
+    bioEn: "Italian winger who moved from Juventus to Liverpool in the summer of 2024. He was a key part of Italy's Euro 2020 title-winning squad, playing in all of Italy's matches in that tournament, and won the Coppa Italia twice with Juventus.",
+    achievementsAr: [
+      "بطولة أمم أوروبا 2020 مع إيطاليا",
+      "لقب الدوري الإنجليزي الممتاز 2024-2025 مع ليفربول",
+      "لقب كأس إيطاليا مرتين مع يوفنتوس",
+      "كأس السوبر الإيطالي مع يوفنتوس"
+    ],
+    achievementsEn: [
+      "UEFA Euro 2020 title with Italy",
+      "2024-25 Premier League title with Liverpool",
+      "Coppa Italia title twice with Juventus",
+      "Italian Super Cup with Juventus"
+    ],
+    clubsHistoryAr: ["فيورنتينا", "يوفنتوس (إعارة ثم انتقال دائم)", "ليفربول"],
+    clubsHistoryEn: ["Fiorentina", "Juventus (loan then permanent)", "Liverpool"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "ilkay-gundogan",
+    nameAr: "إلكاي غوندوغان",
+    nameEn: "İlkay Gündoğan",
+    nationalityAr: "ألماني",
+    nationalityEn: "German",
+    clubAr: "غالطة سراي",
+    clubEn: "Galatasaray",
+    position: { ar: "وسط", en: "Midfielder" },
+    era: "2011-الآن",
+    active: true,
+    bioAr: "لاعب وسط ألماني من أصول تركية وأحد أعظم لاعبي مانشستر سيتي في تاريخه، حيث قاد الفريق كقائد للفوز بالثلاثية التاريخية (الدوري والكأس ودوري الأبطال) موسم 2022-2023. غادر السيتي بشكل نهائي صيف 2025 لينضم إلى غالطة سراي التركي.",
+    bioEn: "German midfielder of Turkish descent and one of Manchester City's greatest ever players, captaining the club to the historic treble (Premier League, FA Cup, Champions League) in the 2022-23 season. He left City for good in the summer of 2025 to join Turkish club Galatasaray.",
+    achievementsAr: [
+      "الثلاثية التاريخية 2022-2023 مع مانشستر سيتي (بصفته قائدًا)",
+      "عدة ألقاب دوري إنجليزي ممتاز مع مانشستر سيتي",
+      "لقب الدوري الألماني 2011-2012 مع بوروسيا دورتموند",
+      "نائب قائد منتخب ألمانيا سابقًا"
+    ],
+    achievementsEn: [
+      "2022-23 historic treble with Manchester City (as club captain)",
+      "Multiple Premier League titles with Manchester City",
+      "2011-12 Bundesliga title with Borussia Dortmund",
+      "Former vice-captain of the Germany national team"
+    ],
+    clubsHistoryAr: ["نورمبرغ", "بوروسيا دورتموند", "مانشستر سيتي", "برشلونة", "مانشستر سيتي", "غالطة سراي"],
+    clubsHistoryEn: ["1. FC Nürnberg", "Borussia Dortmund", "Manchester City", "Barcelona", "Manchester City", "Galatasaray"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "paulo-dybala",
+    nameAr: "باولو ديبالا",
+    nameEn: "Paulo Dybala",
+    nationalityAr: "أرجنتيني",
+    nationalityEn: "Argentine",
+    clubAr: "روما",
+    clubEn: "Roma",
+    position: { ar: "صانع ألعاب / مهاجم", en: "Attacking Midfielder / Forward" },
+    era: "2012-الآن",
+    active: true,
+    bioAr: "صانع ألعاب أرجنتيني موهوب، أمضى سنوات مؤثرة مع يوفنتوس فاز خلالها بعدة ألقاب دوري إيطالي، قبل أن ينتقل حرًا إلى روما عام 2022 ويقودها لنهائي الدوري الأوروبي في موسمه الأول معها.",
+    bioEn: "Gifted Argentine playmaker who spent influential years at Juventus, winning multiple Serie A titles, before joining Roma as a free agent in 2022 and helping them reach the UEFA Europa League final in his first season there.",
+    achievementsAr: [
+      "عدة ألقاب دوري إيطالي (سيري A) مع يوفنتوس",
+      "وصافة الدوري الأوروبي 2022-2023 مع روما",
+      "لقب كأس إيطاليا مع يوفنتوس",
+      "بطولة كوبا أمريكا 2021 مع الأرجنتين (ضمن القائمة)"
+    ],
+    achievementsEn: [
+      "Multiple Serie A titles with Juventus",
+      "2022-23 UEFA Europa League runner-up with Roma",
+      "Coppa Italia title with Juventus",
+      "2021 Copa América title with Argentina (squad member)"
+    ],
+    clubsHistoryAr: ["إنستيتوتو", "بالرمو", "يوفنتوس", "روما"],
+    clubsHistoryEn: ["Instituto", "Palermo", "Juventus", "Roma"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "dani-carvajal",
+    nameAr: "داني كارباخال",
+    nameEn: "Dani Carvajal",
+    nationalityAr: "إسباني",
+    nationalityEn: "Spanish",
+    clubAr: "ريال مدريد",
+    clubEn: "Real Madrid",
+    position: { ar: "ظهير أيمن", en: "Right-back" },
+    era: "2010-الآن",
+    active: true,
+    bioAr: "ظهير أيمن إسباني وأحد أهم لاعبي ريال مدريد في العصر الحديث، فاز معه بعدة ألقاب دوري أبطال أوروبا، ويُعد من أكثر اللاعبين تتويجًا بالبطولة في تاريخها.",
+    bioEn: "Spanish right-back and one of Real Madrid's most important players of the modern era, winning multiple UEFA Champions League titles with the club and ranking among the competition's most decorated players ever.",
+    achievementsAr: [
+      "عدة ألقاب دوري أبطال أوروبا مع ريال مدريد",
+      "عدة ألقاب دوري إسباني مع ريال مدريد",
+      "بطولة أمم أوروبا 2024 مع إسبانيا",
+      "لقب كأس العالم للأندية مع ريال مدريد"
+    ],
+    achievementsEn: [
+      "Multiple UEFA Champions League titles with Real Madrid",
+      "Multiple La Liga titles with Real Madrid",
+      "UEFA Euro 2024 title with Spain",
+      "FIFA Club World Cup title with Real Madrid"
+    ],
+    clubsHistoryAr: ["ريال مدريد", "باير ليفركوزن (إعارة)", "ريال مدريد"],
+    clubsHistoryEn: ["Real Madrid", "Bayer Leverkusen (loan)", "Real Madrid"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "antonio-rudiger",
+    nameAr: "أنطونيو روديغر",
+    nameEn: "Antonio Rüdiger",
+    nationalityAr: "ألماني",
+    nationalityEn: "German",
+    clubAr: "ريال مدريد",
+    clubEn: "Real Madrid",
+    position: { ar: "مدافع", en: "Centre-back" },
+    era: "2011-الآن",
+    active: true,
+    bioAr: "مدافع ألماني قوي، فاز بدوري أبطال أوروبا مع تشيلسي موسم 2020-2021، قبل أن ينتقل حرًا إلى ريال مدريد عام 2022 ويحقق معه عدة ألقاب دوري إسباني ودوري أبطال أوروبا إضافية.",
+    bioEn: "Powerful German defender who won the UEFA Champions League with Chelsea in the 2020-21 season, before joining Real Madrid as a free agent in 2022 and winning further La Liga and Champions League titles with them.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2020-2021 مع تشيلسي",
+      "لقب دوري أبطال أوروبا 2023-2024 مع ريال مدريد",
+      "عدة ألقاب دوري إسباني مع ريال مدريد",
+      "لقب كأس السوبر الأوروبي مع تشيلسي وريال مدريد"
+    ],
+    achievementsEn: [
+      "2020-21 UEFA Champions League title with Chelsea",
+      "2023-24 UEFA Champions League title with Real Madrid",
+      "Multiple La Liga titles with Real Madrid",
+      "UEFA Super Cup title with both Chelsea and Real Madrid"
+    ],
+    clubsHistoryAr: ["شتوتغارت", "روما", "تشيلسي", "ريال مدريد"],
+    clubsHistoryEn: ["VfB Stuttgart", "Roma", "Chelsea", "Real Madrid"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "marco-materazzi",
+    nameAr: "ماركو ماتيرازي",
+    nameEn: "Marco Materazzi",
+    nationalityAr: "إيطالي",
+    nationalityEn: "Italian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مدافع", en: "Centre-back" },
+    era: "1990-2011",
+    active: false,
+    bioAr: "مدافع إيطالي وبطل كأس العالم 2006 مع إيطاليا، حيث سجل هدف التعادل في المباراة النهائية أمام فرنسا. قضى معظم مسيرته مع إنتر ميلان وفاز معه بالثلاثية التاريخية موسم 2009-2010.",
+    bioEn: "Italian defender and 2006 World Cup winner with Italy, having scored the equalizing goal in the final against France. He spent most of his career at Inter Milan, winning the historic treble with them in the 2009-10 season.",
+    achievementsAr: [
+      "بطولة كأس العالم 2006 مع إيطاليا (سجل هدفًا في النهائي أمام فرنسا)",
+      "الثلاثية التاريخية 2009-2010 مع إنتر ميلان (الدوري والكأس ودوري الأبطال)",
+      "عدة ألقاب دوري إيطالي مع إنتر ميلان",
+      "لقب كأس إيطاليا عدة مرات مع إنتر ميلان"
+    ],
+    achievementsEn: [
+      "2006 FIFA World Cup title with Italy (scored in the final against France)",
+      "2009-10 historic treble with Inter Milan (Serie A, Coppa Italia, Champions League)",
+      "Multiple Serie A titles with Inter Milan",
+      "Coppa Italia title multiple times with Inter Milan"
+    ],
+    clubsHistoryAr: ["ميسينا", "بيروجيا", "فيرونا", "بيروجيا", "إيفرتون", "بيروجيا", "إنتر ميلان"],
+    clubsHistoryEn: ["Messina", "Perugia", "Verona", "Perugia", "Everton", "Perugia", "Inter Milan"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "deco",
+    nameAr: "ديكو",
+    nameEn: "Deco",
+    nationalityAr: "برتغالي (من مواليد البرازيل)",
+    nationalityEn: "Portuguese (Brazilian-born)",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "صانع ألعاب", en: "Attacking Midfielder / Playmaker" },
+    era: "1994-2010",
+    active: false,
+    bioAr: "صانع ألعاب برازيلي المولد اختار تمثيل البرتغال دوليًا، تألق مع بورتو تحت قيادة جوزيه مورينيو وفاز معه بدوري أبطال أوروبا موسم 2003-2004، قبل أن ينتقل إلى برشلونة ويحقق معه لقب دوري الأبطال مجددًا موسم 2005-2006. شغل لاحقًا منصب مدير كرة القدم في برشلونة.",
+    bioEn: "Brazilian-born playmaker who chose to represent Portugal internationally, shining at Porto under José Mourinho and winning the UEFA Champions League with them in the 2003-04 season, before moving to Barcelona and winning the Champions League again in 2005-06. He later served as Barcelona's football director.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2003-2004 مع بورتو",
+      "لقب دوري أبطال أوروبا 2005-2006 مع برشلونة",
+      "الكرة الذهبية الأوروبية 2004",
+      "لقب الدوري الإسباني مرتين مع برشلونة"
+    ],
+    achievementsEn: [
+      "2003-04 UEFA Champions League title with Porto",
+      "2005-06 UEFA Champions League title with Barcelona",
+      "2004 Ballon d'Or runner-up honours / UEFA Club Footballer of the Year",
+      "Two La Liga titles with Barcelona"
+    ],
+    clubsHistoryAr: ["كورينثيانز (البرازيل)", "بينفيكا", "أليانسا (البرتغال)", "سالغيروش (إعارة)", "بورتو", "برشلونة", "تشيلسي", "فلومينينسي"],
+    clubsHistoryEn: ["Corinthians (Brazil)", "Benfica", "Alverca (loan)", "Salgueiros (loan)", "Porto", "Barcelona", "Chelsea", "Fluminense"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "rivelino",
+    nameAr: "ريفيلينو",
+    nameEn: "Rivelino",
+    nationalityAr: "برازيلي",
+    nationalityEn: "Brazilian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "جناح أيسر / صانع ألعاب", en: "Left Winger / Playmaker" },
+    era: "1965-1981",
+    active: false,
+    bioAr: "أسطورة برازيلية اشتهر بركلاته الحرة القوية وحركته الخداعية المعروفة بـ'إلاستيكو'، كان جزءًا أساسيًا من منتخب البرازيل الذي فاز بكأس العالم 1970، ولعب لاحقًا في السعودية مع نادي الاتحاد.",
+    bioEn: "Brazilian legend renowned for his powerful free kicks and the deceptive move known as the 'elástico', he was a key member of the Brazil side that won the 1970 World Cup, and later played in Saudi Arabia for Al-Ittihad.",
+    achievementsAr: [
+      "بطولة كأس العالم 1970 مع البرازيل",
+      "لقب الدوري البرازيلي عدة مرات مع كورينثيانز وفلومينينسي",
+      "يُعتبر مبتكر حركة 'إلاستيكو' الشهيرة",
+      "شارك في 3 نهائيات كأس عالم مع البرازيل (1970، 1974، 1978)"
+    ],
+    achievementsEn: [
+      "1970 FIFA World Cup title with Brazil",
+      "Brazilian league title multiple times with Corinthians and Fluminense",
+      "Widely credited as the originator of the 'elástico' move",
+      "Played in three World Cup finals tournaments with Brazil (1970, 1974, 1978)"
+    ],
+    clubsHistoryAr: ["كورينثيانز", "فلومينينسي", "الاتحاد (السعودية)"],
+    clubsHistoryEn: ["Corinthians", "Fluminense", "Al-Ittihad (Saudi Arabia)"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+
+  {
+    id: "mike-maignan",
+    nameAr: "مايك مينيان",
+    nameEn: "Mike Maignan",
+    nationalityAr: "فرنسي",
+    nationalityEn: "French",
+    clubAr: "ميلان",
+    clubEn: "AC Milan",
+    position: { ar: "حارس مرمى", en: "Goalkeeper" },
+    era: "2015-الآن",
+    active: true,
+    bioAr: "حارس مرمى فرنسي وقائد نادي ميلان، خلف جانلويجي دوناروما في حراسة مرمى الروسونيري عام 2021 وساهم في فوز الفريق بلقب الدوري الإيطالي موسم 2021-2022. جدد عقده مع ميلان حتى عام 2031، وهو الحارس الأساسي لمنتخب فرنسا.",
+    bioEn: "French goalkeeper and captain of AC Milan, who succeeded Gianluigi Donnarumma between the posts for the Rossoneri in 2021 and helped the club win the Serie A title in the 2021-22 season. He extended his contract with Milan until 2031 and is the first-choice goalkeeper for the France national team.",
+    achievementsAr: [
+      "لقب الدوري الإيطالي 2021-2022 مع ميلان",
+      "أفضل حارس مرمى في الدوري الإيطالي موسم 2021-2022",
+      "كأس السوبر الإيطالي 2024 مع ميلان",
+      "لقب دوري الأمم الأوروبية 2021 مع فرنسا"
+    ],
+    achievementsEn: [
+      "2021-22 Serie A title with AC Milan",
+      "Serie A Goalkeeper of the Season 2021-22",
+      "2024 Italian Super Cup with AC Milan",
+      "2021 UEFA Nations League title with France"
+    ],
+    clubsHistoryAr: ["باريس سان جيرمان", "ليل", "ميلان"],
+    clubsHistoryEn: ["Paris Saint-Germain", "Lille", "AC Milan"],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Mike_Maignan"
+  },
+  {
+    id: "theo-hernandez",
+    nameAr: "ثيو هيرنانديز",
+    nameEn: "Theo Hernández",
+    nationalityAr: "فرنسي",
+    nationalityEn: "French",
+    clubAr: "الهلال (السعودية)",
+    clubEn: "Al-Hilal (Saudi Arabia)",
+    position: { ar: "ظهير أيسر", en: "Left-back" },
+    era: "2017-الآن",
+    active: true,
+    bioAr: "ظهير أيسر فرنسي أمضى ست مواسم مؤثرة مع ميلان الإيطالي وتفوّق على رقم الأسطورة باولو مالديني للأهداف كمدافع، فاز خلالها بلقب الدوري الإيطالي وكأس السوبر، قبل أن ينتقل صيف 2025 إلى الهلال السعودي.",
+    bioEn: "French left-back who spent six influential seasons at AC Milan, surpassing club legend Paolo Maldini's goalscoring tally as a defender, winning the Serie A title and the Italian Super Cup, before moving to Saudi club Al-Hilal in the summer of 2025.",
+    achievementsAr: [
+      "لقب الدوري الإيطالي 2021-2022 مع ميلان",
+      "كأس السوبر الإيطالي مع ميلان",
+      "تجاوز الرقم القياسي التاريخي لباولو مالديني كأكثر مدافع تسجيلاً لأهداف مع ميلان",
+      "لقب دوري الأمم الأوروبية 2021 مع فرنسا"
+    ],
+    achievementsEn: [
+      "2021-22 Serie A title with AC Milan",
+      "Italian Super Cup with AC Milan",
+      "Surpassed Paolo Maldini's historic tally as Milan's top-scoring defender",
+      "2021 UEFA Nations League title with France"
+    ],
+    clubsHistoryAr: ["أتلتيكو مدريد", "ديبورتيفو ألافيس (إعارة)", "ريال مدريد", "ريال سوسيداد (إعارة)", "ميلان", "الهلال"],
+    clubsHistoryEn: ["Atlético Madrid", "Deportivo Alavés (loan)", "Real Madrid", "Real Sociedad (loan)", "AC Milan", "Al-Hilal"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "gary-neville",
+    nameAr: "غاري نيفيل",
+    nameEn: "Gary Neville",
+    nationalityAr: "إنجليزي",
+    nationalityEn: "English",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "ظهير أيمن", en: "Right-back" },
+    era: "1992-2011",
+    active: false,
+    bioAr: "ظهير أيمن إنجليزي وأحد أبطال 'جيل 92' في مانشستر يونايتد، قضى مسيرته بأكملها مع النادي وقاده كقائد لسنوات، فاز معه بالثلاثية التاريخية 1998-1999 وعدة ألقاب دوري إنجليزي ممتاز. أصبح لاحقًا من أبرز المحللين الرياضيين في إنجلترا.",
+    bioEn: "English right-back and one of Manchester United's famous 'Class of '92', he spent his entire career at the club and captained it for years, winning the historic 1998-99 treble and multiple Premier League titles. He later became one of England's most prominent football pundits.",
+    achievementsAr: [
+      "الثلاثية التاريخية 1998-1999 مع مانشستر يونايتد (الدوري والكأس ودوري الأبطال)",
+      "لقب دوري أبطال أوروبا 2007-2008 مع مانشستر يونايتد",
+      "عدة ألقاب دوري إنجليزي ممتاز مع مانشستر يونايتد",
+      "أكثر من 400 مباراة في الدوري الإنجليزي الممتاز مع مانشستر يونايتد"
+    ],
+    achievementsEn: [
+      "1998-99 historic treble with Manchester United (Premier League, FA Cup, Champions League)",
+      "2007-08 UEFA Champions League title with Manchester United",
+      "Multiple Premier League titles with Manchester United",
+      "Over 400 Premier League appearances for Manchester United"
+    ],
+    clubsHistoryAr: ["مانشستر يونايتد"],
+    clubsHistoryEn: ["Manchester United"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "ashley-cole",
+    nameAr: "أشلي كول",
+    nameEn: "Ashley Cole",
+    nationalityAr: "إنجليزي",
+    nationalityEn: "English",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "ظهير أيسر", en: "Left-back" },
+    era: "1998-2019",
+    active: false,
+    bioAr: "ظهير أيسر إنجليزي يُعد أحد أفضل من لعب في مركزه في تاريخ الدوري الإنجليزي، فاز بألقاب عديدة مع آرسنال ثم تشيلسي، من بينها لقب دوري أبطال أوروبا 2011-2012 مع تشيلسي.",
+    bioEn: "English left-back regarded as one of the finest to ever play in his position in Premier League history, winning numerous titles with Arsenal and then Chelsea, including the 2011-12 UEFA Champions League with Chelsea.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2011-2012 مع تشيلسي",
+      "لقب الدوري الإنجليزي الممتاز 'الإنفينسيبلز' 2003-2004 مع آرسنال دون خسارة",
+      "لقب كأس إنجلترا عدة مرات (رقم قياسي مشترك) مع آرسنال وتشيلسي",
+      "أكثر من 100 مباراة دولية مع منتخب إنجلترا"
+    ],
+    achievementsEn: [
+      "2011-12 UEFA Champions League title with Chelsea",
+      "2003-04 'Invincibles' Premier League title with Arsenal, unbeaten all season",
+      "FA Cup title multiple times (joint record) with Arsenal and Chelsea",
+      "Over 100 caps for the England national team"
+    ],
+    clubsHistoryAr: ["آرسنال", "كريستال بالاس (إعارة)", "تشيلسي", "روما", "لوس أنجلوس غالاكسي", "ديربي كاونتي"],
+    clubsHistoryEn: ["Arsenal", "Crystal Palace (loan)", "Chelsea", "Roma", "LA Galaxy", "Derby County"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "fernando-hierro",
+    nameAr: "فرناندو هييرو",
+    nameEn: "Fernando Hierro",
+    nationalityAr: "إسباني",
+    nationalityEn: "Spanish",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مدافع", en: "Centre-back" },
+    era: "1985-2003",
+    active: false,
+    bioAr: "مدافع إسباني وقائد سابق لريال مدريد، يُعد أحد أعظم من لعب لصالح النادي بفضل قوته الدفاعية وقدرته على تسجيل الأهداف من الكرات الثابتة. فاز مع ريال مدريد بعدة ألقاب دوري أبطال أوروبا ودوري إسباني.",
+    bioEn: "Spanish defender and former Real Madrid captain, regarded as one of the greatest players in the club's history for his defensive strength and ability to score from set-pieces. He won multiple UEFA Champions League and La Liga titles with Real Madrid.",
+    achievementsAr: [
+      "ثلاثة ألقاب دوري أبطال أوروبا مع ريال مدريد (1997-1998، 1999-2000، 2001-2002)",
+      "عدة ألقاب دوري إسباني مع ريال مدريد",
+      "هداف ريال مدريد التاريخي بين المدافعين",
+      "قائد سابق لمنتخب إسبانيا"
+    ],
+    achievementsEn: [
+      "Three UEFA Champions League titles with Real Madrid (1997-98, 1999-2000, 2001-02)",
+      "Multiple La Liga titles with Real Madrid",
+      "Real Madrid's all-time top-scoring defender",
+      "Former captain of the Spain national team"
+    ],
+    clubsHistoryAr: ["ريال بايادوليد", "ريال مدريد", "القادسية (قطر)", "بولتون واندررز"],
+    clubsHistoryEn: ["Real Valladolid", "Real Madrid", "Al-Qadisiyah (Qatar)", "Bolton Wanderers"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "gigi-riva",
+    nameAr: "جيجي ريفا",
+    nameEn: "Gigi Riva",
+    nationalityAr: "إيطالي",
+    nationalityEn: "Italian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مهاجم", en: "Forward" },
+    era: "1963-1976",
+    active: false,
+    bioAr: "مهاجم إيطالي وهداف منتخب إيطاليا التاريخي، قضى مسيرته بأكملها مع نادي كالياري الذي قاده للقب الدوري الإيطالي الوحيد في تاريخه موسم 1969-1970، وفاز مع إيطاليا ببطولة أمم أوروبا 1968.",
+    bioEn: "Italian forward and his country's all-time leading goalscorer, who spent his entire career at Cagliari, leading them to their only Serie A title in the 1969-70 season, and won the UEFA European Championship with Italy in 1968.",
+    achievementsAr: [
+      "لقب الدوري الإيطالي 1969-1970 مع كالياري (اللقب الوحيد لتاريخ النادي)",
+      "بطولة أمم أوروبا 1968 مع إيطاليا",
+      "وصافة كأس العالم 1970 مع إيطاليا",
+      "هداف منتخب إيطاليا التاريخي لعقود طويلة"
+    ],
+    achievementsEn: [
+      "1969-70 Serie A title with Cagliari (the club's only ever league title)",
+      "UEFA European Championship 1968 with Italy",
+      "1970 FIFA World Cup runner-up with Italy",
+      "Italy's all-time top goalscorer for decades"
+    ],
+    clubsHistoryAr: ["ليجناغو", "كالياري"],
+    clubsHistoryEn: ["Legnago", "Cagliari"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+
+  {
+    id: "nuno-mendes",
+    nameAr: "نونو مينديز",
+    nameEn: "Nuno Mendes",
+    nationalityAr: "برتغالي",
+    nationalityEn: "Portuguese",
+    clubAr: "باريس سان جيرمان",
+    clubEn: "Paris Saint-Germain",
+    position: { ar: "ظهير أيسر", en: "Left-back" },
+    era: "2020-الآن",
+    active: true,
+    bioAr: "ظهير أيسر برتغالي انضم إلى باريس سان جيرمان قادمًا من سبورتينغ لشبونة عام 2021، وأصبح أحد ركائز الفريق الذي فاز بلقب دوري أبطال أوروبا موسم 2024-2025 لأول مرة في تاريخ النادي.",
+    bioEn: "Portuguese left-back who joined Paris Saint-Germain from Sporting Lisbon in 2021, becoming a key pillar of the side that won the club's first-ever UEFA Champions League title in the 2024-25 season.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2024-2025 مع باريس سان جيرمان (أول لقب في تاريخ النادي)",
+      "عدة ألقاب دوري فرنسي مع باريس سان جيرمان",
+      "لقب كأس فرنسا عدة مرات مع باريس سان جيرمان",
+      "لقب الدوري البرتغالي 2020-2021 مع سبورتينغ لشبونة"
+    ],
+    achievementsEn: [
+      "2024-25 UEFA Champions League title with Paris Saint-Germain (the club's first ever)",
+      "Multiple Ligue 1 titles with Paris Saint-Germain",
+      "Coupe de France title multiple times with Paris Saint-Germain",
+      "2020-21 Primeira Liga title with Sporting Lisbon"
+    ],
+    clubsHistoryAr: ["سبورتينغ لشبونة", "باريس سان جيرمان (إعارة ثم انتقال دائم)"],
+    clubsHistoryEn: ["Sporting Lisbon", "Paris Saint-Germain (loan then permanent)"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "marcus-thuram",
+    nameAr: "ماركوس تورام",
+    nameEn: "Marcus Thuram",
+    nationalityAr: "فرنسي",
+    nationalityEn: "French",
+    clubAr: "إنتر ميلان",
+    clubEn: "Inter Milan",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "2015-الآن",
+    active: true,
+    bioAr: "مهاجم فرنسي ونجل بطل كأس العالم 1998 ليليان تورام، انضم إلى إنتر ميلان حرًا عام 2023 وشكّل مع لاوتارو مارتينيز ثنائيًا هجوميًا فعّالاً، وصل معه إلى نهائي دوري أبطال أوروبا 2023 ونهائي كأس العالم 2022 مع منتخب فرنسا.",
+    bioEn: "French striker and son of 1998 World Cup winner Lilian Thuram, he joined Inter Milan as a free agent in 2023, forming an effective attacking duo with Lautaro Martínez, reaching the 2023 UEFA Champions League final with them and the 2022 FIFA World Cup final with France.",
+    achievementsAr: [
+      "وصافة كأس العالم 2022 مع فرنسا",
+      "وصافة دوري أبطال أوروبا 2022-2023 مع إنتر ميلان",
+      "لقب الدوري الإيطالي 2023-2024 مع إنتر ميلان",
+      "بطولة أمم أوروبا تحت 19 عامًا 2016 مع فرنسا"
+    ],
+    achievementsEn: [
+      "2022 FIFA World Cup runner-up with France",
+      "2022-23 UEFA Champions League runner-up with Inter Milan",
+      "2023-24 Serie A title with Inter Milan",
+      "UEFA European Under-19 Championship 2016 with France"
+    ],
+    clubsHistoryAr: ["سوشو", "غانغان", "بوروسيا مونشنغلادباخ", "إنتر ميلان"],
+    clubsHistoryEn: ["Sochaux", "Guingamp", "Borussia Mönchengladbach", "Inter Milan"],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Marcus_Thuram"
+  },
+  {
+    id: "christian-pulisic",
+    nameAr: "كريستيان بوليسيتش",
+    nameEn: "Christian Pulisic",
+    nationalityAr: "أمريكي",
+    nationalityEn: "American",
+    clubAr: "ميلان",
+    clubEn: "AC Milan",
+    position: { ar: "جناح / صانع ألعاب", en: "Winger / Attacking Midfielder" },
+    era: "2016-الآن",
+    active: true,
+    bioAr: "لاعب أمريكي يُلقب بـ'كابتن أمريكا' ويُعد أحد أفضل لاعبي كرة القدم في تاريخ الولايات المتحدة. فاز بدوري أبطال أوروبا مع تشيلسي موسم 2020-2021، وانتقل إلى ميلان الإيطالي عام 2023 حيث أصبح لاعبًا أساسيًا ومحوريًا في هجوم الفريق.",
+    bioEn: "American player nicknamed 'Captain America' and regarded as one of the greatest players in United States football history. He won the UEFA Champions League with Chelsea in the 2020-21 season, before moving to AC Milan in 2023, where he has become a key and central attacking player.",
+    achievementsAr: [
+      "لقب دوري أبطال أوروبا 2020-2021 مع تشيلسي",
+      "لقب كأس العالم للأندية 2021 مع تشيلسي",
+      "ثلاثة ألقاب دوري الأمم الأمريكية الشمالية (كونكاكاف) مع منتخب الولايات المتحدة (2021، 2023، 2024)",
+      "هداف تاريخي لمنتخب الولايات المتحدة"
+    ],
+    achievementsEn: [
+      "2020-21 UEFA Champions League title with Chelsea",
+      "2021 FIFA Club World Cup title with Chelsea",
+      "Three CONCACAF Nations League titles with the United States (2021, 2023, 2024)",
+      "One of the United States national team's all-time leading scorers"
+    ],
+    clubsHistoryAr: ["بوروسيا دورتموند", "تشيلسي", "ميلان"],
+    clubsHistoryEn: ["Borussia Dortmund", "Chelsea", "AC Milan"],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Christian_Pulisic"
+  },
+  {
+    id: "viktor-gyokeres",
+    nameAr: "فيكتور غيوكيريش",
+    nameEn: "Viktor Gyökeres",
+    nationalityAr: "سويدي",
+    nationalityEn: "Swedish",
+    clubAr: "آرسنال",
+    clubEn: "Arsenal",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "2015-الآن",
+    active: true,
+    bioAr: "مهاجم سويدي فرض نفسه هدافًا غزير التسجيل مع سبورتينغ لشبونة البرتغالي، حيث فاز بلقبي الدوري البرتغالي معه، قبل أن ينتقل إلى آرسنال الإنجليزي صيف 2025 بعقد طويل الأمد.",
+    bioEn: "Swedish striker who established himself as a prolific goalscorer at Sporting Lisbon, winning two Primeira Liga titles with them, before moving to Arsenal in the summer of 2025 on a long-term contract.",
+    achievementsAr: [
+      "لقبا الدوري البرتغالي (2023-2024 و2024-2025) مع سبورتينغ لشبونة",
+      "هداف الدوري البرتغالي عدة مرات",
+      "لقب كأس السوبر البرتغالي مع سبورتينغ لشبونة",
+      "أحد أعلى اللاعبين تسجيلاً للأهداف في أوروبا خلال موسم 2024-2025"
+    ],
+    achievementsEn: [
+      "Two Primeira Liga titles (2023-24 and 2024-25) with Sporting Lisbon",
+      "Portuguese league top scorer multiple times",
+      "Portuguese Super Cup title with Sporting Lisbon",
+      "Among Europe's top goalscorers during the 2024-25 season"
+    ],
+    clubsHistoryAr: ["برومابويكارنا", "برايتون", "سانت باولي (إعارة)", "سوانزي سيتي (إعارة)", "كوفنتري سيتي", "سبورتينغ لشبونة", "آرسنال"],
+    clubsHistoryEn: ["Brommapojkarna", "Brighton & Hove Albion", "St. Pauli (loan)", "Swansea City (loan)", "Coventry City", "Sporting Lisbon", "Arsenal"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "sami-khedira",
+    nameAr: "سامي خضيرة",
+    nameEn: "Sami Khedira",
+    nationalityAr: "ألماني",
+    nationalityEn: "German",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "وسط", en: "Midfielder" },
+    era: "2006-2021",
+    active: false,
+    bioAr: "لاعب وسط ألماني من أصول تونسية، بطل كأس العالم 2014 مع ألمانيا، لعب لسنوات مؤثرة مع ريال مدريد وفاز معه بدوري أبطال أوروبا، ثم انتقل إلى يوفنتوس الإيطالي وحقق معه عدة ألقاب دوري إيطالي.",
+    bioEn: "German midfielder of Tunisian descent, a 2014 World Cup winner with Germany, who spent influential years at Real Madrid winning the UEFA Champions League with them, before moving to Juventus and winning multiple Serie A titles.",
+    achievementsAr: [
+      "بطولة كأس العالم 2014 مع ألمانيا",
+      "لقب دوري أبطال أوروبا 2013-2014 مع ريال مدريد",
+      "عدة ألقاب دوري إيطالي مع يوفنتوس",
+      "لقب الدوري الإسباني مع ريال مدريد"
+    ],
+    achievementsEn: [
+      "2014 FIFA World Cup title with Germany",
+      "2013-14 UEFA Champions League title with Real Madrid",
+      "Multiple Serie A titles with Juventus",
+      "La Liga title with Real Madrid"
+    ],
+    clubsHistoryAr: ["شتوتغارت", "ريال مدريد", "يوفنتوس", "هيرتا برلين"],
+    clubsHistoryEn: ["VfB Stuttgart", "Real Madrid", "Juventus", "Hertha Berlin"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "bebeto",
+    nameAr: "بيبيتو",
+    nameEn: "Bebeto",
+    nationalityAr: "برازيلي",
+    nationalityEn: "Brazilian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "مهاجم", en: "Striker" },
+    era: "1983-2000",
+    active: false,
+    bioAr: "مهاجم برازيلي وبطل كأس العالم 1994، اشتهر باحتفاله المميز بتهديج طفل بعد تسجيله في تلك البطولة تكريمًا لابنه المولود حديثًا. شكّل مع روماريو ثنائيًا هجوميًا فتاكًا قاد البرازيل للتتويج بكأس العالم في الولايات المتحدة.",
+    bioEn: "Brazilian striker and 1994 World Cup winner, famed for his distinctive 'rocking the baby' goal celebration during that tournament in honor of his newborn son. He formed a lethal attacking partnership with Romário that led Brazil to the World Cup title in the United States.",
+    achievementsAr: [
+      "بطولة كأس العالم 1994 مع البرازيل",
+      "لقب كوبا أمريكا 1989 مع البرازيل",
+      "لقب الدوري البرازيلي مع فلامنغو",
+      "هداف الدوري الإسباني مع ديبورتيفو لاكورونيا"
+    ],
+    achievementsEn: [
+      "1994 FIFA World Cup title with Brazil",
+      "1989 Copa América title with Brazil",
+      "Brazilian league title with Flamengo",
+      "La Liga top scorer with Deportivo La Coruña"
+    ],
+    clubsHistoryAr: ["فلومينينسي", "فلامنغو", "ديبورتيفو لاكورونيا", "سيفيا", "فيتوريا (البرازيل)"],
+    clubsHistoryEn: ["Fluminense", "Flamengo", "Deportivo La Coruña", "Sevilla", "Vitória (Brazil)"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
+  {
+    id: "taffarel",
+    nameAr: "تافاريل",
+    nameEn: "Taffarel",
+    nationalityAr: "برازيلي",
+    nationalityEn: "Brazilian",
+    clubAr: "معتزل",
+    clubEn: "Retired",
+    position: { ar: "حارس مرمى", en: "Goalkeeper" },
+    era: "1984-2003",
+    active: false,
+    bioAr: "حارس مرمى برازيلي يُعد أحد أعظم حراس المرمى في تاريخ البرازيل، كان حارسًا أساسيًا في الفوز بكأس العالم 1994 وشارك في نهائي كأس العالم 1998، ولعب لسنوات مع الإنتر الإيطالي.",
+    bioEn: "Brazilian goalkeeper regarded as one of the greatest in his country's history, he was the first-choice goalkeeper in Brazil's 1994 World Cup triumph and played in the 1998 World Cup final, and spent years playing for Inter Milan in Italy.",
+    achievementsAr: [
+      "بطولة كأس العالم 1994 مع البرازيل",
+      "وصافة كأس العالم 1998 مع البرازيل",
+      "لقب كوبا أمريكا مرتين مع البرازيل (1989 و1997)",
+      "شارك في أربع نهائيات كأس عالم متتالية مع البرازيل (1990-2002)"
+    ],
+    achievementsEn: [
+      "1994 FIFA World Cup title with Brazil",
+      "1998 FIFA World Cup runner-up with Brazil",
+      "Copa América title twice with Brazil (1989 and 1997)",
+      "Part of Brazil's squad at four consecutive World Cups (1990-2002)"
+    ],
+    clubsHistoryAr: ["إنترناسيونال", "غريميو", "إنتر ميلان", "أتلتيكو مينيرو", "غالاتاسراي"],
+    clubsHistoryEn: ["Internacional", "Grêmio", "Inter Milan", "Atlético Mineiro", "Galatasaray"],
+    wikiUrlAr: "",
+    wikiUrlEn: ""
+  },
   {
     id: "hakan-calhanoglu",
     nameAr: "هاكان تشالهان أوغلو",

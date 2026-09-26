@@ -7277,7 +7277,7 @@ const players = [
     ],
     clubsHistoryAr: ["شتوتغارت", "لايبزيغ (إعارة)", "بايرن ميونخ"],
     clubsHistoryEn: ["VfB Stuttgart", "RB Leipzig (loan)", "Bayern Munich"],
-    wikiUrlAr: "",
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/جوشوا_كيميش",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Joshua_Kimmich"
   },
   {
@@ -7307,7 +7307,7 @@ const players = [
     ],
     clubsHistoryAr: ["شالكه 04", "فيردر بريمن", "ريال مدريد", "آرسنال", "فنربخشة", "إسطنبول باشاك شهير"],
     clubsHistoryEn: ["Schalke 04", "Werder Bremen", "Real Madrid", "Arsenal", "Fenerbahçe", "Istanbul Başakşehir"],
-    wikiUrlAr: "",
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/مسعود_أوزيل",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Mesut_Özil"
   },
   {
@@ -7337,8 +7337,8 @@ const players = [
     ],
     clubsHistoryAr: ["أندرلخت", "تشيلسي", "ويست بروميتش (إعارة)", "إيفرتون", "مانشستر يونايتد", "إنتر ميلان (إعارة ثم انتقال دائم)", "تشيلسي", "روما (إعارة)", "نابولي"],
     clubsHistoryEn: ["Anderlecht", "Chelsea", "West Bromwich Albion (loan)", "Everton", "Manchester United", "Inter Milan (loan then permanent)", "Chelsea", "Roma (loan)", "Napoli"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/روميلو_لوكاكو",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Romelu_Lukaku"
   },
   {
     id: "emiliano-martinez",
@@ -7367,8 +7367,8 @@ const players = [
     ],
     clubsHistoryAr: ["آرسنال", "عدة أندية بالإعارة (أكسفورد يونايتد، شيفيلد وينزداي، روذرهام، جيرونا، ريدينغ)", "أستون فيلا"],
     clubsHistoryEn: ["Arsenal", "Multiple loan spells (Oxford United, Sheffield Wednesday, Rotherham, Getafe, Reading)", "Aston Villa"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/إميليانو_مارتينيز",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Emiliano_Martínez"
   },
   {
     id: "trent-alexander-arnold",
@@ -7397,8 +7397,8 @@ const players = [
     ],
     clubsHistoryAr: ["ليفربول", "ريال مدريد"],
     clubsHistoryEn: ["Liverpool", "Real Madrid"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ترنت_ألكسندر-أرنولد",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Trent_Alexander-Arnold"
   },
   {
     id: "cesc-fabregas",
@@ -7427,8 +7427,8 @@ const players = [
     ],
     clubsHistoryAr: ["آرسنال", "برشلونة", "تشيلسي", "مونزا (إعارة)", "كومو"],
     clubsHistoryEn: ["Arsenal", "Barcelona", "Chelsea", "Monza (loan)", "Como"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/سيسك_فابريغاس",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Cesc_Fàbregas"
   },
   {
     id: "david-silva",
@@ -7457,8 +7457,8 @@ const players = [
     ],
     clubsHistoryAr: ["فالنسيا", "إيبار (إعارة)", "سيلتا فيغو (إعارة)", "مانشستر سيتي", "ريال سوسيداد"],
     clubsHistoryEn: ["Valencia", "Eibar (loan)", "Celta Vigo (loan)", "Manchester City", "Real Sociedad"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ديفيد_سيلفا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/David_Silva"
   },
   {
     id: "christian-vieri",
@@ -7487,8 +7487,8 @@ const players = [
     ],
     clubsHistoryAr: ["تورينو", "بيزا", "رافينا", "فينتسيا", "يوفنتوس", "أتلتيكو مدريد", "لاتسيو", "إنتر ميلان", "ميلان", "مونتيري (المكسيك)"],
     clubsHistoryEn: ["Torino", "Pisa", "Ravenna", "Venezia", "Juventus", "Atlético Madrid", "Lazio", "Inter Milan", "Milan", "Monterrey (Mexico)"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/كريستيان_فييري",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Christian_Vieri"
   },
   {
     id: "gianfranco-zola",
@@ -7517,8 +7517,8 @@ const players = [
     ],
     clubsHistoryAr: ["نابولي", "بارما", "تشيلسي", "كالياري"],
     clubsHistoryEn: ["Napoli", "Parma", "Chelsea", "Cagliari"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/جيانفرانكو_زولا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Gianfranco_Zola"
   },
   {
     id: "mario-kempes",
@@ -7547,8 +7547,8 @@ const players = [
     ],
     clubsHistoryAr: ["إنستيتوتو", "روزاريو سنترال", "فالنسيا", "ريفر بليت", "هركوليس", "فيرست فيينا (النمسا)"],
     clubsHistoryEn: ["Instituto", "Rosario Central", "Valencia", "River Plate", "Hércules", "First Vienna (Austria)"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ماريو_كيمبس",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Mario_Kempes"
   },
   {
     id: "rui-costa",
@@ -7577,8 +7577,8 @@ const players = [
     ],
     clubsHistoryAr: ["بنفيكا", "فيورنتينا", "ميلان"],
     clubsHistoryEn: ["Benfica", "Fiorentina", "Milan"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/روي_كوستا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Rui_Costa"
   },
 
   {
@@ -7608,8 +7608,8 @@ const players = [
     ],
     clubsHistoryAr: ["فيورنتينا", "يوفنتوس (إعارة ثم انتقال دائم)", "ليفربول"],
     clubsHistoryEn: ["Fiorentina", "Juventus (loan then permanent)", "Liverpool"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/فيديريكو_كييزا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Federico_Chiesa"
   },
   {
     id: "ilkay-gundogan",
@@ -7638,8 +7638,8 @@ const players = [
     ],
     clubsHistoryAr: ["نورمبرغ", "بوروسيا دورتموند", "مانشستر سيتي", "برشلونة", "مانشستر سيتي", "غالطة سراي"],
     clubsHistoryEn: ["1. FC Nürnberg", "Borussia Dortmund", "Manchester City", "Barcelona", "Manchester City", "Galatasaray"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/إلكاي_غوندوغان",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Ilkay_Gündoğan"
   },
   {
     id: "paulo-dybala",
@@ -7668,8 +7668,8 @@ const players = [
     ],
     clubsHistoryAr: ["إنستيتوتو", "بالرمو", "يوفنتوس", "روما"],
     clubsHistoryEn: ["Instituto", "Palermo", "Juventus", "Roma"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/باولو_ديبالا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Paulo_Dybala"
   },
   {
     id: "dani-carvajal",
@@ -7698,8 +7698,8 @@ const players = [
     ],
     clubsHistoryAr: ["ريال مدريد", "باير ليفركوزن (إعارة)", "ريال مدريد"],
     clubsHistoryEn: ["Real Madrid", "Bayer Leverkusen (loan)", "Real Madrid"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/داني_كارفاخال",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Dani_Carvajal"
   },
   {
     id: "antonio-rudiger",
@@ -7728,8 +7728,8 @@ const players = [
     ],
     clubsHistoryAr: ["شتوتغارت", "روما", "تشيلسي", "ريال مدريد"],
     clubsHistoryEn: ["VfB Stuttgart", "Roma", "Chelsea", "Real Madrid"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/أنطونيو_روديغر",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Antonio_Rüdiger"
   },
   {
     id: "marco-materazzi",
@@ -7758,8 +7758,8 @@ const players = [
     ],
     clubsHistoryAr: ["ميسينا", "بيروجيا", "فيرونا", "بيروجيا", "إيفرتون", "بيروجيا", "إنتر ميلان"],
     clubsHistoryEn: ["Messina", "Perugia", "Verona", "Perugia", "Everton", "Perugia", "Inter Milan"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ماركو_ماتيرازي",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Marco_Materazzi"
   },
   {
     id: "deco",
@@ -7788,8 +7788,8 @@ const players = [
     ],
     clubsHistoryAr: ["كورينثيانز (البرازيل)", "بينفيكا", "أليانسا (البرتغال)", "سالغيروش (إعارة)", "بورتو", "برشلونة", "تشيلسي", "فلومينينسي"],
     clubsHistoryEn: ["Corinthians (Brazil)", "Benfica", "Alverca (loan)", "Salgueiros (loan)", "Porto", "Barcelona", "Chelsea", "Fluminense"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ديكو",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Deco"
   },
   {
     id: "rivelino",
@@ -7818,8 +7818,8 @@ const players = [
     ],
     clubsHistoryAr: ["كورينثيانز", "فلومينينسي", "الاتحاد (السعودية)"],
     clubsHistoryEn: ["Corinthians", "Fluminense", "Al-Ittihad (Saudi Arabia)"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ريفيلينو",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Rivelino"
   },
 
   {
@@ -7849,7 +7849,7 @@ const players = [
     ],
     clubsHistoryAr: ["باريس سان جيرمان", "ليل", "ميلان"],
     clubsHistoryEn: ["Paris Saint-Germain", "Lille", "AC Milan"],
-    wikiUrlAr: "",
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/مايك_مينيان",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Mike_Maignan"
   },
   {
@@ -7879,8 +7879,8 @@ const players = [
     ],
     clubsHistoryAr: ["أتلتيكو مدريد", "ديبورتيفو ألافيس (إعارة)", "ريال مدريد", "ريال سوسيداد (إعارة)", "ميلان", "الهلال"],
     clubsHistoryEn: ["Atlético Madrid", "Deportivo Alavés (loan)", "Real Madrid", "Real Sociedad (loan)", "AC Milan", "Al-Hilal"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ثيو_هيرنانديز",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Theo_Hernández"
   },
   {
     id: "gary-neville",
@@ -7909,8 +7909,8 @@ const players = [
     ],
     clubsHistoryAr: ["مانشستر يونايتد"],
     clubsHistoryEn: ["Manchester United"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/غاري_نيفيل",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Gary_Neville"
   },
   {
     id: "ashley-cole",
@@ -7939,8 +7939,8 @@ const players = [
     ],
     clubsHistoryAr: ["آرسنال", "كريستال بالاس (إعارة)", "تشيلسي", "روما", "لوس أنجلوس غالاكسي", "ديربي كاونتي"],
     clubsHistoryEn: ["Arsenal", "Crystal Palace (loan)", "Chelsea", "Roma", "LA Galaxy", "Derby County"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/أشلي_كول",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Ashley_Cole"
   },
   {
     id: "fernando-hierro",
@@ -7969,8 +7969,8 @@ const players = [
     ],
     clubsHistoryAr: ["ريال بايادوليد", "ريال مدريد", "القادسية (قطر)", "بولتون واندررز"],
     clubsHistoryEn: ["Real Valladolid", "Real Madrid", "Al-Qadisiyah (Qatar)", "Bolton Wanderers"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/فرناندو_هييرو",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Fernando_Hierro"
   },
   {
     id: "gigi-riva",
@@ -7999,8 +7999,8 @@ const players = [
     ],
     clubsHistoryAr: ["ليجناغو", "كالياري"],
     clubsHistoryEn: ["Legnago", "Cagliari"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/لويجي_ريفا",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Gigi_Riva"
   },
 
   {
@@ -8030,8 +8030,8 @@ const players = [
     ],
     clubsHistoryAr: ["سبورتينغ لشبونة", "باريس سان جيرمان (إعارة ثم انتقال دائم)"],
     clubsHistoryEn: ["Sporting Lisbon", "Paris Saint-Germain (loan then permanent)"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/نونو_مينديش_(لاعب_كرة_قدم_مواليد_2002)",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Nuno_Mendes_(footballer,_born_2002)"
   },
   {
     id: "marcus-thuram",
@@ -8060,7 +8060,7 @@ const players = [
     ],
     clubsHistoryAr: ["سوشو", "غانغان", "بوروسيا مونشنغلادباخ", "إنتر ميلان"],
     clubsHistoryEn: ["Sochaux", "Guingamp", "Borussia Mönchengladbach", "Inter Milan"],
-    wikiUrlAr: "",
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/ماركوس_تورام",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Marcus_Thuram"
   },
   {
@@ -8090,7 +8090,7 @@ const players = [
     ],
     clubsHistoryAr: ["بوروسيا دورتموند", "تشيلسي", "ميلان"],
     clubsHistoryEn: ["Borussia Dortmund", "Chelsea", "AC Milan"],
-    wikiUrlAr: "",
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/كريستيان_بوليسيتش",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Christian_Pulisic"
   },
   {
@@ -8120,8 +8120,8 @@ const players = [
     ],
     clubsHistoryAr: ["برومابويكارنا", "برايتون", "سانت باولي (إعارة)", "سوانزي سيتي (إعارة)", "كوفنتري سيتي", "سبورتينغ لشبونة", "آرسنال"],
     clubsHistoryEn: ["Brommapojkarna", "Brighton & Hove Albion", "St. Pauli (loan)", "Swansea City (loan)", "Coventry City", "Sporting Lisbon", "Arsenal"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/فكتور_غيوكيريس",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Viktor_Gyökeres"
   },
   {
     id: "sami-khedira",
@@ -8150,8 +8150,8 @@ const players = [
     ],
     clubsHistoryAr: ["شتوتغارت", "ريال مدريد", "يوفنتوس", "هيرتا برلين"],
     clubsHistoryEn: ["VfB Stuttgart", "Real Madrid", "Juventus", "Hertha Berlin"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/سامي_خضيرة",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Sami_Khedira"
   },
   {
     id: "bebeto",
@@ -8180,8 +8180,8 @@ const players = [
     ],
     clubsHistoryAr: ["فلومينينسي", "فلامنغو", "ديبورتيفو لاكورونيا", "سيفيا", "فيتوريا (البرازيل)"],
     clubsHistoryEn: ["Fluminense", "Flamengo", "Deportivo La Coruña", "Sevilla", "Vitória (Brazil)"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/بيبيتو",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Bebeto"
   },
   {
     id: "taffarel",
@@ -8210,8 +8210,8 @@ const players = [
     ],
     clubsHistoryAr: ["إنترناسيونال", "غريميو", "إنتر ميلان", "أتلتيكو مينيرو", "غالاتاسراي"],
     clubsHistoryEn: ["Internacional", "Grêmio", "Inter Milan", "Atlético Mineiro", "Galatasaray"],
-    wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlAr: "https://ar.wikipedia.org/wiki/كلاوديو_تافاريل",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Taffarel"
   },
   {
     id: "hakan-calhanoglu",

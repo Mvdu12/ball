@@ -1,24 +1,114 @@
 let matchState = null;
 let turnState = null;
+let leagueState = null;
 let bankView = "setup";
 let bankSetupError = false;
 let bankMode = "individual";
+let bankTournamentMode = "single"; // "single" (ماتش عادي) أو "league" (دوري بين ٣-٤ فرق)
+let bankLeagueTeamCount = 4;
+let bankTimerHandle = null;
+let bankAudioCtx = null;
+let bankMuted = false;
 
-const QUESTIONS_PER_TURN = 12;
+const DEFAULT_QUESTIONS_PER_TURN = 12;
 const BASE_ROUNDS = 4;
+const DEFAULT_TURN_TIME_LIMIT_SECONDS = 90;
+const MIN_TIME_LIMIT_SECONDS = 20;
+const MAX_TIME_LIMIT_SECONDS = 600;
+const MIN_QUESTIONS_PER_TURN = 3;
+const MAX_QUESTIONS_PER_TURN = 30;
+
+// دول قيم فعلية بتتحدد من شاشة الإعداد (أو بترجع للدیفولت لو الحكم سابهم فاضيين/غلط)
+let bankTimeLimitSetting = DEFAULT_TURN_TIME_LIMIT_SECONDS;
+let bankQuestionsPerTurnSetting = DEFAULT_QUESTIONS_PER_TURN;
+
+function bankClearTimer() {
+  if (bankTimerHandle) {
+    clearInterval(bankTimerHandle);
+    bankTimerHandle = null;
+  }
+}
+
+function bankToggleMute() {
+  bankMuted = !bankMuted;
+  render();
+}
+
+// بنولّد الصوت بالـ Web Audio API نفسه من غير أي ملفات خارجية (تِك خفيف آخر ١٠ ثواني، بازر لما الوقت يخلص،
+// ونغمة مختلفة لما الحكم يدوس صح أو غلط). كل الأصوات بتتلغي فورًا لو زرار الكتم شغال.
+function bankGetAudioCtx() {
+  if (!bankAudioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    bankAudioCtx = new AC();
+  }
+  if (bankAudioCtx.state === "suspended") bankAudioCtx.resume();
+  return bankAudioCtx;
+}
+
+function bankPlayTone(freq, durationMs, type, volume) {
+  if (bankMuted) return;
+  const ctx = bankGetAudioCtx();
+  if (!ctx) return;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || "sine";
+  osc.frequency.value = freq;
+  gain.gain.value = volume != null ? volume : 0.2;
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + durationMs / 1000);
+  osc.stop(ctx.currentTime + durationMs / 1000 + 0.02);
+}
+
+function bankPlayTick() {
+  bankPlayTone(880, 120, "square", 0.15);
+}
+
+function bankPlayBuzzer() {
+  bankPlayTone(220, 500, "sawtooth", 0.25);
+  setTimeout(() => bankPlayTone(180, 500, "sawtooth", 0.25), 250);
+}
+
+function bankPlayCorrect() {
+  bankPlayTone(523, 120, "sine", 0.2);
+  setTimeout(() => bankPlayTone(784, 180, "sine", 0.2), 110);
+}
+
+function bankPlayWrong() {
+  bankPlayTone(180, 220, "square", 0.2);
+}
 
 function goBank() {
   screen = "bank";
   bankView = "setup";
+  bankClearTimer();
   matchState = null;
   turnState = null;
+  leagueState = null;
   bankSetupError = false;
   bankMode = "individual";
+  bankTournamentMode = "single";
+  bankLeagueTeamCount = 4;
+  bankTimeLimitSetting = DEFAULT_TURN_TIME_LIMIT_SECONDS;
+  bankQuestionsPerTurnSetting = DEFAULT_QUESTIONS_PER_TURN;
   render();
 }
 
 function setBankMode(mode) {
   bankMode = mode;
+  render();
+}
+
+function setBankTournamentMode(mode) {
+  bankTournamentMode = mode;
+  bankSetupError = false;
+  render();
+}
+
+function setBankLeagueTeamCount(n) {
+  bankLeagueTeamCount = n;
   render();
 }
 
@@ -854,7 +944,24 @@ function buildRecordsAreaQuestion(item) {
   return null;
 }
 
-function generateTurnQuestions() {
+// بنبني مفتاح فريد لكل عنصر في المجمّع (حسب "الموضوع" مش السؤال نفسه، لأن كل عنصر بيولّد سؤال
+// عشوائي من كذا variant)، عشان نقدر نمنع نفس اللاعب/النادي/البطولة/الريكورد إنه يتسأل عنه تاني
+// في نفس الماتش (المفروض يبقى عبر كل الأدوار والراوندات لحد ما الماتش يخلص أو الداتا تخلص).
+function poolEntryKey(entry) {
+  if (entry.type === "player") return "player:" + entry.data.id;
+  if (entry.type === "competition") return "competition:" + entry.data.id;
+  if (entry.type === "club") return "club:" + entry.data.id;
+  if (entry.type === "records") {
+    const r = entry.data;
+    if (r.type === "topscorer") return "topscorer:" + r.data.id;
+    if (r.type === "clubtopscorer") return "clubtopscorer:" + (r.data.clubId || r.data.clubAr);
+    if (r.type === "goldenboot") return "goldenboot:" + r.tournament.nameEn + ":" + r.data.year;
+    if (r.type === "record") return "record:" + r.data.id;
+  }
+  return null;
+}
+
+function generateTurnQuestions(usedKeys) {
   const hasCompetitions = typeof competitions !== "undefined" && competitions.length > 0;
   const hasClubs = typeof clubs !== "undefined" && clubs.length > 0;
   const recordsPool = buildRecordsPool();
@@ -867,24 +974,62 @@ function generateTurnQuestions() {
   if (hasClubs) pool = pool.concat(clubs.map(c => ({ type: "club", data: c })));
   if (hasRecords) pool = pool.concat(recordsPool.map(r => ({ type: "records", data: r })));
 
-  pool = shuffle(pool);
+  // الأول بنجرب اللي لسه ما اتسألش عنه في الماتش ده؛ ولو خلصت الداتا المتاحة وعددها أقل من
+  // عدد أسئلة الدور، بس ساعتها بنكمل من اللي اتسأل قبل كده (بدل ما نوقّف اللعبة أو نبعت دور ناقص).
+  const fresh = shuffle(pool.filter(e => !usedKeys.has(poolEntryKey(e))));
+  const fallback = shuffle(pool);
+  const combined = fresh.concat(fallback);
 
   const items = [];
+  const usedThisTurn = new Set();
   let idx = 0;
-  while (items.length < QUESTIONS_PER_TURN && idx < pool.length) {
-    const entry = pool[idx++];
+  while (items.length < bankQuestionsPerTurnSetting && idx < combined.length) {
+    const entry = combined[idx++];
+    const key = poolEntryKey(entry);
+    if (key && usedThisTurn.has(key)) continue; // منع تكرار نفس الموضوع مرتين في نفس الدور
     let q = null;
     if (entry.type === "player") q = buildBankQuestion(entry.data);
     else if (entry.type === "competition") q = buildCompetitionQuestion(entry.data);
     else if (entry.type === "club") q = buildClubQuestion(entry.data);
     else if (entry.type === "records") q = buildRecordsAreaQuestion(entry.data);
-    if (q) items.push(q);
+    if (q) {
+      items.push(q);
+      if (key) {
+        usedKeys.add(key);
+        usedThisTurn.add(key);
+      }
+    }
     // لو رجّع null (زي سؤال records اتصفّى) بنكمل على العنصر اللي بعده من غير ما نعتبره سؤال ضايع
   }
   return items;
 }
 
+function bankReadSettingsFromInputs() {
+  // إعدادات الوقت وعدد الأسئلة قابلة للتعديل من شاشة البداية؛ لو الحكم سابهم فاضيين أو دخل رقم
+  // برّه النطاق المعقول، بنرجع للدیفولت بهدوء من غير ما نوقّف بدء الماتش.
+  const timeInput = parseInt(((document.getElementById("bankTimeLimitInput") || {}).value || ""), 10);
+  bankTimeLimitSetting = (!isNaN(timeInput) && timeInput >= MIN_TIME_LIMIT_SECONDS && timeInput <= MAX_TIME_LIMIT_SECONDS)
+    ? timeInput : DEFAULT_TURN_TIME_LIMIT_SECONDS;
+
+  const qCountInput = parseInt(((document.getElementById("bankQCountInput") || {}).value || ""), 10);
+  bankQuestionsPerTurnSetting = (!isNaN(qCountInput) && qCountInput >= MIN_QUESTIONS_PER_TURN && qCountInput <= MAX_QUESTIONS_PER_TURN)
+    ? qCountInput : DEFAULT_QUESTIONS_PER_TURN;
+}
+
+function buildRoundRobinFixtures(n) {
+  const fixtures = [];
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) fixtures.push([i, j]);
+  }
+  return shuffle(fixtures);
+}
+
 function startMatch() {
+  if (bankTournamentMode === "league") {
+    startLeague();
+    return;
+  }
+
   let p1n, p2n;
   if (bankMode === "team") {
     const t1a = ((document.getElementById("bankT1M1Input") || {}).value || "").trim();
@@ -908,8 +1053,49 @@ function startMatch() {
     }
   }
   bankSetupError = false;
+  bankReadSettingsFromInputs();
+
   matchState = {
     p1Name: p1n, p2Name: p2n,
+    p1Wins: 0, p2Wins: 0,
+    round: 1,
+    roundHistory: [],
+    usedQuestionKeys: new Set() // بيتراكم عليه كل موضوع اتسأل عنه في الماتش ده، عشان الأسئلة متتكررش
+  };
+  startTurn("p1");
+}
+
+// وضع الدوري: ٣ أو ٤ فرق، كل فريق بيلاقي التاني مرة واحدة (round-robin)، وكل مباراة بتشتغل
+// بنفس محرك الماتش العادي (أدوار، بانك، تايمر...) لحد ما تتحسم، وبعدين ننتقل تلقائي للمباراة الجاية.
+function startLeague() {
+  const n = bankLeagueTeamCount;
+  const names = [];
+  for (let i = 0; i < n; i++) {
+    names.push(((document.getElementById("bankLeagueTeamInput" + i) || {}).value || "").trim());
+  }
+  if (names.some(nm => !nm)) {
+    bankSetupError = true;
+    render();
+    return;
+  }
+  bankSetupError = false;
+  bankReadSettingsFromInputs();
+
+  leagueState = {
+    teams: names,
+    fixtures: buildRoundRobinFixtures(n),
+    fixtureIndex: 0,
+    standings: names.map(nm => ({ name: nm, wins: 0, losses: 0 })),
+    usedQuestionKeys: new Set() // مشترك بين كل مباريات الدوري، عشان الأسئلة متتكررش عبر الدوري كله
+  };
+  bankStartLeagueFixture();
+}
+
+function bankStartLeagueFixture() {
+  const [i, j] = leagueState.fixtures[leagueState.fixtureIndex];
+  matchState = {
+    p1Name: leagueState.teams[i],
+    p2Name: leagueState.teams[j],
     p1Wins: 0, p2Wins: 0,
     round: 1,
     roundHistory: []
@@ -917,15 +1103,42 @@ function startMatch() {
   startTurn("p1");
 }
 
+function bankLeagueAdvance() {
+  if (!leagueState || !matchState) return;
+  const winnerName = matchState.p1Wins > matchState.p2Wins ? matchState.p1Name : matchState.p2Name;
+  const loserName = winnerName === matchState.p1Name ? matchState.p2Name : matchState.p1Name;
+  const winnerEntry = leagueState.standings.find(s => s.name === winnerName);
+  const loserEntry = leagueState.standings.find(s => s.name === loserName);
+  if (winnerEntry) winnerEntry.wins += 1;
+  if (loserEntry) loserEntry.losses += 1;
+
+  leagueState.fixtureIndex += 1;
+  if (leagueState.fixtureIndex >= leagueState.fixtures.length) {
+    matchState = null;
+    turnState = null;
+    bankView = "leagueend";
+    render();
+    return;
+  }
+  bankStartLeagueFixture();
+}
+
 function startTurn(contestantKey) {
+  bankClearTimer();
+  const usedKeys = (bankTournamentMode === "league" && leagueState)
+    ? leagueState.usedQuestionKeys
+    : matchState.usedQuestionKeys;
   turnState = {
     contestant: contestantKey,
-    questions: generateTurnQuestions(),
+    questions: generateTurnQuestions(usedKeys),
     qIndex: 0,
     answered: false,
     atRisk: 0,
     banked: 0,
-    answerRevealed: false
+    answerRevealed: false,
+    timeLeft: bankTimeLimitSetting,
+    timerRunning: false,
+    timeUp: false
   };
   bankView = "turn";
   render();
@@ -937,6 +1150,7 @@ function bankMarkCorrect() {
   if (turnState.atRisk === 0) turnState.atRisk = 1;
   else if (turnState.atRisk === 1) turnState.atRisk = 4;
   else turnState.atRisk = turnState.atRisk * 2;
+  bankPlayCorrect();
   render();
 }
 
@@ -944,6 +1158,7 @@ function bankMarkWrong() {
   if (!turnState || turnState.answered) return;
   turnState.answered = true;
   turnState.atRisk = 0;
+  bankPlayWrong();
   render();
 }
 
@@ -964,7 +1179,7 @@ function bankNextQuestion() {
   if (!turnState || !turnState.answered) return;
   const isLast = turnState.qIndex + 1 >= turnState.questions.length;
   if (isLast) {
-
+    bankClearTimer();
     const finalScore = turnState.banked;
     if (turnState.contestant === "p1") {
       matchState.p1Score = finalScore;
@@ -979,6 +1194,43 @@ function bankNextQuestion() {
     turnState.answered = false;
     turnState.answerRevealed = false;
     render();
+  }
+}
+
+// الحكم هو اللي بيدوس يبدأ العد التنازلي لما يحس إن الدور بدأ فعليًا (مش أوتوماتيك مع startTurn).
+function bankStartTimer() {
+  if (!turnState || turnState.timerRunning || turnState.timeUp) return;
+  turnState.timerRunning = true;
+  render();
+  bankTimerHandle = setInterval(() => {
+    if (!turnState) { bankClearTimer(); return; }
+    turnState.timeLeft -= 1;
+    if (turnState.timeLeft <= 0) {
+      turnState.timeLeft = 0;
+      turnState.timerRunning = false;
+      turnState.timeUp = true;
+      bankClearTimer();
+      bankPlayBuzzer();
+    } else if (turnState.timeLeft <= 10) {
+      bankPlayTick();
+    }
+    render();
+  }, 1000);
+}
+
+// الزرار ده بيظهر بس بعد ما الوقت يخلص، والحكم هو اللي يقرر يدوس عليه يقفل الدور وينقل للفريق التاني،
+// أو يسيب الدور مستمر لو حابب (الأسئلة والبانك بيفضلوا شغالين عادي حتى لو الوقت خلص).
+function bankForceEndTurn() {
+  if (!turnState || !turnState.timeUp) return;
+  bankClearTimer();
+  const finalScore = turnState.banked;
+  if (turnState.contestant === "p1") {
+    matchState.p1Score = finalScore;
+    bankView = "turnend";
+    render();
+  } else {
+    matchState.p2Score = finalScore;
+    finishRound();
   }
 }
 
@@ -1011,20 +1263,28 @@ function bankTopbar() {
   return `
     <div class="topbar">
       <button class="backbtn" onclick="goCategory()">${lang === "ar" ? "→" : "←"} ${esc(t().back)}</button>
+      <button class="langbtn" onclick="bankToggleMute()">${bankMuted ? "🔇" : "🔊"}</button>
       <button class="langbtn" onclick="toggleLang()">🌐 ${esc(t().langBtn)}</button>
     </div>`;
 }
 
 function bankMatchTracker() {
   if (!matchState) return "";
+  const leagueNote = (bankTournamentMode === "league" && leagueState)
+    ? `<div class="small-note" style="text-align:center; margin-top:0.3rem;">${lang === "ar"
+        ? `مباراة ${leagueState.fixtureIndex + 1} من ${leagueState.fixtures.length} (الدوري)`
+        : `Match ${leagueState.fixtureIndex + 1} of ${leagueState.fixtures.length} (league)`}</div>`
+    : "";
   return `
     <div class="match-tracker">
       <span>${esc(t().bankRoundLabel)} ${matchState.round}</span>
       <span class="mt-score">${esc(matchState.p1Name)} <b>${matchState.p1Wins}</b> : <b>${matchState.p2Wins}</b> ${esc(matchState.p2Name)}</span>
-    </div>`;
+    </div>
+    ${leagueNote}`;
 }
 
 function renderBankSetup() {
+  const isLeague = bankTournamentMode === "league";
   const isTeam = bankMode === "team";
   const namesFieldsHtml = isTeam ? `
       <div class="type-row" style="flex-direction:column;">
@@ -1046,21 +1306,77 @@ function renderBankSetup() {
         <input type="text" id="bankP2Input" placeholder="${esc(t().bankNamePh2)}">
       </div>`;
 
-  return `
-    ${bankTopbar()}
-    <h2>${esc(t().bankSetupTitle)}</h2>
-    <p>${esc(t().bankSetupDesc)}</p>
-    <div class="quiz-card">
+  const singleModeFieldsHtml = `
       <label class="small-note">${esc(t().bankModeLabel)}</label>
       <div class="bank-actions" style="grid-template-columns:1fr 1fr; margin-top:0.4rem;">
         <button class="pill-btn ${isTeam ? "pill-outline" : "pill-gold"}" onclick="setBankMode('individual')">${esc(t().bankModeIndividual)}</button>
         <button class="pill-btn ${isTeam ? "pill-gold" : "pill-outline"}" onclick="setBankMode('team')">${esc(t().bankModeTeam)}</button>
       </div>
-      <div style="margin-top:1.1rem;">${namesFieldsHtml}</div>
+      <div style="margin-top:1.1rem;">${namesFieldsHtml}</div>`;
+
+  const leagueTeamInputsHtml = Array.from({ length: bankLeagueTeamCount }, (_, i) => `
+      <div class="type-row" style="flex-direction:column; margin-top:${i === 0 ? "1.1rem" : "0.7rem"};">
+        <label class="small-note">${lang === "ar" ? `اسم الفريق ${i + 1}` : `Team ${i + 1} name`}</label>
+        <input type="text" id="bankLeagueTeamInput${i}" placeholder="${lang === "ar" ? `الفريق ${i + 1}` : `Team ${i + 1}`}">
+      </div>`).join("");
+
+  const leagueModeFieldsHtml = `
+      <label class="small-note">${lang === "ar" ? "عدد الفرق" : "Number of teams"}</label>
+      <div class="bank-actions" style="grid-template-columns:1fr 1fr; margin-top:0.4rem;">
+        <button class="pill-btn ${bankLeagueTeamCount === 3 ? "pill-gold" : "pill-outline"}" onclick="setBankLeagueTeamCount(3)">${lang === "ar" ? "3 فرق" : "3 teams"}</button>
+        <button class="pill-btn ${bankLeagueTeamCount === 4 ? "pill-gold" : "pill-outline"}" onclick="setBankLeagueTeamCount(4)">${lang === "ar" ? "4 فرق" : "4 teams"}</button>
+      </div>
+      ${leagueTeamInputsHtml}`;
+
+  return `
+    ${bankTopbar()}
+    <h2>${esc(t().bankSetupTitle)}</h2>
+    <p>${esc(t().bankSetupDesc)}</p>
+    <div class="quiz-card">
+      <label class="small-note">${lang === "ar" ? "نوع اللعب" : "Play type"}</label>
+      <div class="bank-actions" style="grid-template-columns:1fr 1fr; margin-top:0.4rem;">
+        <button class="pill-btn ${isLeague ? "pill-outline" : "pill-gold"}" onclick="setBankTournamentMode('single')">${lang === "ar" ? "ماتش فردي" : "Single match"}</button>
+        <button class="pill-btn ${isLeague ? "pill-gold" : "pill-outline"}" onclick="setBankTournamentMode('league')">${lang === "ar" ? "دوري بين الفرق" : "Mini-league"}</button>
+      </div>
+      <div style="margin-top:1.1rem;">${isLeague ? leagueModeFieldsHtml : singleModeFieldsHtml}</div>
+
+      <div class="type-row" style="flex-direction:column; margin-top:1.1rem;">
+        <label class="small-note" for="bankTimeLimitInput">${lang === "ar" ? "مدة كل دور (بالثانية)" : "Time per turn (seconds)"}</label>
+        <input type="number" id="bankTimeLimitInput" min="${MIN_TIME_LIMIT_SECONDS}" max="${MAX_TIME_LIMIT_SECONDS}" value="${DEFAULT_TURN_TIME_LIMIT_SECONDS}">
+      </div>
+      <div class="type-row" style="flex-direction:column; margin-top:1rem;">
+        <label class="small-note" for="bankQCountInput">${lang === "ar" ? "عدد الأسئلة في كل دور" : "Questions per turn"}</label>
+        <input type="number" id="bankQCountInput" min="${MIN_QUESTIONS_PER_TURN}" max="${MAX_QUESTIONS_PER_TURN}" value="${DEFAULT_QUESTIONS_PER_TURN}">
+      </div>
+
       ${bankSetupError ? `<div class="feedback bad" style="margin-top:0.9rem;">${esc(t().bankNeedNames)}</div>` : ""}
       <div class="footer-actions">
-        <button class="pill-btn pill-gold" onclick="startMatch()">${esc(t().bankStartBtn)}</button>
+        <button class="pill-btn pill-gold" onclick="startMatch()">${isLeague ? (lang === "ar" ? "ابدأ الدوري" : "Start league") : esc(t().bankStartBtn)}</button>
       </div>
+    </div>`;
+}
+
+function bankTimerBox(s) {
+  const mins = Math.floor(s.timeLeft / 60);
+  const secs = s.timeLeft % 60;
+  const timeStr = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+
+  let colorStyle = "";
+  if (s.timeUp || s.timeLeft <= 10) colorStyle = "color:#e33;";
+  else if (s.timeLeft <= 30) colorStyle = "color:#e0a020;";
+
+  let controlHtml = "";
+  if (s.timeUp) {
+    controlHtml = `<button class="pill-btn pill-red" onclick="bankForceEndTurn()">${lang === "ar" ? "⏹ قفل الدور والانتقال للفريق التاني" : "⏹ End turn & switch team"}</button>`;
+  } else if (!s.timerRunning) {
+    controlHtml = `<button class="pill-btn pill-gold" onclick="bankStartTimer()">${lang === "ar" ? `▶ ابدأ الوقت (${bankTimeLimitSetting} ثانية)` : `▶ Start timer (${bankTimeLimitSetting}s)`}</button>`;
+  }
+
+  return `
+    <div class="quiz-card" style="text-align:center; margin-bottom:1rem;">
+      <div class="score-label">${lang === "ar" ? "الوقت المتبقي" : "Time left"}</div>
+      <div class="score-val" style="font-size:1.8rem; ${colorStyle}">${timeStr}</div>
+      ${controlHtml ? `<div class="footer-actions" style="margin-top:0.6rem;">${controlHtml}</div>` : ""}
     </div>`;
 }
 
@@ -1077,6 +1393,8 @@ function renderBankTurn() {
     <h2>${esc(t().bankTurnOf)} ${esc(contestantName)}</h2>
     <p class="small-note">${esc(t().bankQuestionLabel)} ${s.qIndex + 1} ${esc(t().bankOf)} ${s.questions.length}</p>
     <div class="progress-track"><div class="progress-fill" style="width:${progressPct}%"></div></div>
+
+    ${bankTimerBox(s)}
 
     <div class="score-bar">
       <div class="score-box risk">
@@ -1156,6 +1474,11 @@ function renderBankMatchEnd() {
     return `<div class="hint-line"><span class="hl-label">${esc(t().bankRoundLabel)} ${r.round}:</span><span class="hl-value">${r.p1Score} - ${r.p2Score} (${esc(w)})</span></div>`;
   }).join("");
 
+  const isLeague = bankTournamentMode === "league" && leagueState;
+  const footerBtnHtml = isLeague
+    ? `<button class="pill-btn pill-gold" onclick="bankLeagueAdvance()">${lang === "ar" ? "المباراة الجاية ⏭" : "Next match ⏭"}</button>`
+    : `<button class="pill-btn pill-gold" onclick="bankNewMatch()">${esc(t().bankNewMatchBtn)}</button>`;
+
   return `
     ${bankTopbar()}
     <div class="quiz-card" style="text-align:center;">
@@ -1163,7 +1486,27 @@ function renderBankMatchEnd() {
       <p class="reveal-name">${esc(matchState.p1Name)} ${matchState.p1Wins} - ${matchState.p2Wins} ${esc(matchState.p2Name)}</p>
       <div class="hints-list" style="margin-top:1.1rem;">${historyHtml}</div>
       <div class="footer-actions">
-        <button class="pill-btn pill-gold" onclick="bankNewMatch()">${esc(t().bankNewMatchBtn)}</button>
+        ${footerBtnHtml}
+      </div>
+    </div>`;
+}
+
+function renderBankLeagueEnd() {
+  const sorted = leagueState.standings.slice().sort((a, b) => b.wins - a.wins);
+  const championName = sorted[0].name;
+  const rowsHtml = sorted.map((s, i) => `
+    <div class="hint-line">
+      <span class="hl-label">${i + 1}. ${esc(s.name)}${i === 0 ? " 🏆" : ""}</span>
+      <span class="hl-value">${lang === "ar" ? `${s.wins} فوز - ${s.losses} خسارة` : `${s.wins}W - ${s.losses}L`}</span>
+    </div>`).join("");
+
+  return `
+    ${bankTopbar()}
+    <div class="quiz-card" style="text-align:center;">
+      <h2>${lang === "ar" ? "بطل الدوري" : "League champion"}: ${esc(championName)} 🏆</h2>
+      <div class="hints-list" style="margin-top:1.1rem;">${rowsHtml}</div>
+      <div class="footer-actions">
+        <button class="pill-btn pill-gold" onclick="bankNewMatch()">${lang === "ar" ? "دوري جديد" : "New league"}</button>
       </div>
     </div>`;
 }
@@ -1174,5 +1517,6 @@ function renderBank() {
   if (bankView === "turnend") return renderBankTurnEnd();
   if (bankView === "roundresult") return renderBankRoundResult();
   if (bankView === "matchend") return renderBankMatchEnd();
+  if (bankView === "leagueend") return renderBankLeagueEnd();
   return "";
 }

@@ -1,12 +1,12 @@
 /* Service Worker — بيخزّن اللعبة كلها عشان تشتغل أوفلاين.
    مهم: كل ما تعدّل أي ملف (لاعبين، أندية، كود) زوّد رقم النسخة تحت (v1 -> v2 ...)
    عشان أصحابك ياخدوا التحديث. */
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = "nogoom-kora-" + VERSION;
 
 /* ملفات أساسية: لازم كلها تتخزن */
 const CORE = [
-  "./", "./index.html", "./style.css", "./mobile.css", "./fonts.css", "./manifest.json",
+  "./", "./index.html", "./style.css", "./mobile.css", "./fonts.css", "./manifest.json", "./privacy.html",
   "./players-data.js", "./competitions-data.js", "./clubs-data.js", "./records-scorers-data.js",
   "./ladder.js", "./app.js", "./bank.js", "./intruder.js"
 ];

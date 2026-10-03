@@ -22,6 +22,82 @@ const MAX_QUESTIONS_PER_TURN = 30;
 let bankTimeLimitSetting = DEFAULT_TURN_TIME_LIMIT_SECONDS;
 let bankQuestionsPerTurnSetting = DEFAULT_QUESTIONS_PER_TURN;
 
+// ---- أنواع الأسئلة اللي الحكم يقدر يختارها في الإعداد (الديفولت: الكل = ٤٠٪ لاعيبة والباقي راندوم من الباقي) ----
+const BANK_SOURCE_TYPES = ["player", "club", "competition", "records"];
+let bankSources = BANK_SOURCE_TYPES.slice();
+
+// ---- مسودة الشاشة: الأسماء والقيم المكتوبة بتتحفظ هنا قبل أي re-render عشان ماتتمسحش لما الحكم يبدّل فردي/تيم ----
+function bankBlankDraft() {
+  return { p1: "", p2: "", t1m1: "", t1m2: "", t2m1: "", t2m2: "", league: ["", "", "", ""],
+           time: DEFAULT_TURN_TIME_LIMIT_SECONDS, q: DEFAULT_QUESTIONS_PER_TURN };
+}
+let bankDraft = bankBlankDraft();
+
+function bankSnapshotInputs() {
+  const val = id => { const el = document.getElementById(id); return el ? el.value : null; };
+  const set = (key, id) => { const v = val(id); if (v !== null) bankDraft[key] = v; };
+  set("p1", "bankP1Input"); set("p2", "bankP2Input");
+  set("t1m1", "bankT1M1Input"); set("t1m2", "bankT1M2Input");
+  set("t2m1", "bankT2M1Input"); set("t2m2", "bankT2M2Input");
+  for (let i = 0; i < 4; i++) { const v = val("bankLeagueTeamInput" + i); if (v !== null) bankDraft.league[i] = v; }
+  set("time", "bankTimeLimitInput"); set("q", "bankQCountInput");
+}
+
+function bankLoadSaved() {
+  bankDraft = bankBlankDraft();
+  const s = savedGet("bank.settings", null);
+  if (!s || typeof s !== "object") return;
+  const str = v => (typeof v === "string" ? v : "");
+  if (s.mode === "team" || s.mode === "individual") bankMode = s.mode;
+  if (s.tournament === "league" || s.tournament === "single") bankTournamentMode = s.tournament;
+  if (s.leagueTeams === 3 || s.leagueTeams === 4) bankLeagueTeamCount = s.leagueTeams;
+  const n = s.names || {};
+  ["p1", "p2", "t1m1", "t1m2", "t2m1", "t2m2"].forEach(k => { bankDraft[k] = str(n[k]); });
+  for (let i = 0; i < 4; i++) bankDraft.league[i] = str(Array.isArray(n.league) ? n.league[i] : "");
+  const tm = parseInt(s.time, 10);
+  if (!isNaN(tm) && tm >= MIN_TIME_LIMIT_SECONDS && tm <= MAX_TIME_LIMIT_SECONDS) bankDraft.time = tm;
+  const qc = parseInt(s.q, 10);
+  if (!isNaN(qc) && qc >= MIN_QUESTIONS_PER_TURN && qc <= MAX_QUESTIONS_PER_TURN) bankDraft.q = qc;
+  if (Array.isArray(s.sources)) {
+    const f = BANK_SOURCE_TYPES.filter(x => s.sources.includes(x));
+    if (f.length > 0) bankSources = f;
+  }
+}
+
+function bankSaveSettings() {
+  savedSet("bank.settings", {
+    mode: bankMode, tournament: bankTournamentMode, leagueTeams: bankLeagueTeamCount,
+    names: {
+      p1: bankDraft.p1.trim(), p2: bankDraft.p2.trim(),
+      t1m1: bankDraft.t1m1.trim(), t1m2: bankDraft.t1m2.trim(), t2m1: bankDraft.t2m1.trim(), t2m2: bankDraft.t2m2.trim(),
+      league: bankDraft.league.map(x => x.trim())
+    },
+    time: bankTimeLimitSetting, q: bankQuestionsPerTurnSetting, sources: bankSources
+  });
+}
+
+function bankHasSaved() { return !!savedGet("bank.settings", null); }
+
+function bankClearSaved() {
+  savedRemove("bank.settings");
+  bankMode = "individual"; bankTournamentMode = "single"; bankLeagueTeamCount = 4;
+  bankSources = BANK_SOURCE_TYPES.slice();
+  bankDraft = bankBlankDraft();
+  bankSetupError = false;
+  render();
+}
+
+function toggleBankSource(type) {
+  bankSnapshotInputs();
+  if (bankSources.includes(type)) {
+    if (bankSources.length === 1) return; // لازم نوع واحد على الأقل يفضل مختار
+    bankSources = bankSources.filter(x => x !== type);
+  } else {
+    bankSources = BANK_SOURCE_TYPES.filter(x => x === type || bankSources.includes(x));
+  }
+  render();
+}
+
 function bankClearTimer() {
   if (bankTimerHandle) {
     clearInterval(bankTimerHandle);
@@ -93,21 +169,26 @@ function goBank() {
   bankLeagueTeamCount = 4;
   bankTimeLimitSetting = DEFAULT_TURN_TIME_LIMIT_SECONDS;
   bankQuestionsPerTurnSetting = DEFAULT_QUESTIONS_PER_TURN;
+  bankSources = BANK_SOURCE_TYPES.slice();
+  bankLoadSaved(); // آخر أسماء وإعدادات اتلعبت بتتملّى تلقائي
   render();
 }
 
 function setBankMode(mode) {
+  bankSnapshotInputs();
   bankMode = mode;
   render();
 }
 
 function setBankTournamentMode(mode) {
+  bankSnapshotInputs();
   bankTournamentMode = mode;
   bankSetupError = false;
   render();
 }
 
 function setBankLeagueTeamCount(n) {
+  bankSnapshotInputs();
   bankLeagueTeamCount = n;
   render();
 }
@@ -115,7 +196,7 @@ function setBankLeagueTeamCount(n) {
 function buildFrequencyMaps() {
   const comboFreq = {};
   players.forEach(p => {
-    const achKey = achievementCombo(p.achievementsAr);
+    const achKey = p.achievementsAr.slice(0, achCount(p.achievementsAr)).join("، و");
     const k1 = achKey + "|" + p.position.en;
     const k2 = achKey + "|" + p.era;
     comboFreq[k1] = (comboFreq[k1] || 0) + 1;
@@ -149,6 +230,117 @@ function normalizeClubName(s) {
   return String(s).replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
 }
 
+// ================= أدوات مساعدة لتحسين جودة الأسئلة =================
+// (إضافة جديدة) كل الأدوات دي بتخدم هدف واحد: إن السؤال يبقى واضح، إجابته نضيفة، وماتتسربش فيه.
+
+function stripParens(s) {
+  return String(s || "").replace(/\s*\([^)]*\)/g, "").replace(/\s+/g, " ").trim();
+}
+
+// تطبيع عربي بسيط (بيشيل التشكيل ويوحّد الألف والياء والتاء المربوطة) عشان مقارنة النصوص تبقى دقيقة
+function normAr(s) {
+  return String(s || "").toLowerCase()
+    .replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+    .replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه");
+}
+
+const LEAK_STOP_WORDS = new Set(
+  ["نادي", "النادي", "سيتي", "يونايتد", "ريال", "اتحاد", "الدوري", "كأس", "بطولة", "استاد", "ستاديو", "ملعب", "أولمبيك", "سبورت"].map(normAr)
+);
+
+function sigTokens(s) {
+  return normAr(s).split(/[^\u0600-\u06FFa-z0-9]+/)
+    .filter(w => w.length >= 4 && !/^\d+$/.test(w) && !LEAK_STOP_WORDS.has(w));
+}
+
+// بيكشف لو الإجابة (أو اسم اللاعب) ظاهرة جوّه نص السؤال نفسه، زي "نادي فياريال موجود في أنهي مدينة؟ ← فياريال"
+function answerLeaks(v) {
+  const ans = v.leakAr || v.answerAr;
+  if (!ans) return false;
+  if (/\sولا\s/.test(v.ar)) return false; // أسئلة المقارنة (أ ولا ب): الإجابة جزء من السؤال بطبيعتها
+  const toks = sigTokens(ans);
+  if (toks.length === 0) return false;
+  const q = normAr(v.ar);
+  return v.person ? toks.some(t => q.includes(t)) : toks.every(t => q.includes(t));
+}
+
+// بيختار سؤال عشوائي من القايمة بعد استبعاد المتسرّب، وبيفضّل الأسئلة القصيرة (بتتقرا في وقت الدور)
+function pickVariant(variants) {
+  let pool = variants.filter(v => !answerLeaks(v));
+  if (pool.length === 0) return null;
+  const compact = pool.filter(v => v.ar.length <= 230);
+  if (compact.length > 0) pool = compact;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+// بنشيل الأقواس اللي مالهاش لازمة في أسماء الأندية (إعارة / شباب / معتزل / مدرب / MLS) وبنسيب الأقواس اللي بتوضّح الدولة
+const JUNK_PAREN = /^(?:إعارة|معار|شباب|فئات سنية|معتزل|متوفى|مدرب|مساعد|رئيس|الدوري الأمريكي|mls|loan|on loan|youth|retired|deceased|assistant|head coach|club president)/i;
+function cleanClubText(s) {
+  return String(s || "").replace(/\s*\(([^)]*)\)/g, (m, inner) => {
+    const x = inner.trim();
+    return (JUNK_PAREN.test(x) || /[،,]/.test(x)) ? "" : ` (${x})`;
+  }).replace(/\s+/g, " ").trim();
+}
+
+// أندية الشباب والفئات السنية وإعارات متعددة مش "نادي لعب له" بالمعنى الحقيقي، فمنستخدمهاش في الأسئلة
+function isNonClubEntry(s) {
+  return /\((?:شباب|فئات سنية|youth|academy)|إعارات متعددة|multiple loans/i.test(String(s || ""));
+}
+
+function playerHistoryClubs(p) {
+  const out = [];
+  (p.clubsHistoryAr || []).forEach((h, i) => {
+    const en = (p.clubsHistoryEn || [])[i] || h;
+    if (isNonClubEntry(h) || isNonClubEntry(en)) return;
+    const a = cleanClubText(h), e = cleanClubText(en);
+    if (a && e && !out.some(x => x.ar === a)) out.push({ ar: a, en: e });
+  });
+  return out;
+}
+
+// النادي الحالي (أو الأخير للمعتزل) بعد التنضيف. بيرجّع null لو القيمة مش نادي واضح (لاعب حر / مدرب / رئيس / متوفى / معار)
+function currentClubInfo(p) {
+  const ar = p.clubAr || "", en = p.clubEn || "";
+  if (!isRealClub(ar) || !isRealClub(en)) return null;
+  if (/مدرب|رئيس|متوفى|معار|إعارة|آخر أنديته/.test(ar)) return null;
+  if (/^\s*معتزل\s*\(/.test(ar) && /مدرب|رئيس/.test(ar)) return null;
+  const a = cleanClubText(ar), e = cleanClubText(en);
+  return (a && e && a !== "معتزل") ? { ar: a, en: e } : null;
+}
+
+// عدد الإنجازات اللي هنستخدمها كتلميح: لحد 3، بس لو النص بقى طويل قوي بننزل لـ 2 (عشان السؤال يتقرا بسرعة)
+function achCount(listAr) {
+  let n = Math.min(3, listAr.length);
+  while (n > 2 && listAr.slice(0, n).join("، و").length > 150) n--;
+  return n;
+}
+
+function playerAnswerFields(p) {
+  return {
+    answerAr: `${p.nameAr} — ${p.nationalityAr}، ${p.position.ar}`,
+    answerEn: `${p.nameEn} — ${p.nationalityEn}, ${p.position.en}`,
+    leakAr: p.nameAr,
+    person: true
+  };
+}
+
+function profileKey(p) {
+  const c = currentClubInfo(p);
+  return (c && p.era && String(p.era).trim()) ? [p.nationalityAr, p.position.ar, p.era, c.ar].join("|") : null;
+}
+const PLAYER_PROFILE_FREQ = (() => {
+  const f = {};
+  players.forEach(p => { const k = profileKey(p); if (k) f[k] = (f[k] || 0) + 1; });
+  return f;
+})();
+
+// بعض البطولات أسنتها بتتحسب بسنة نهاية الموسم (مثلاً موسم 2012-13 = 2013)، فبنوضّح ده في أسئلة السنين
+function competitionYearNote(c) {
+  return c.yearBasis === "seasonEnd"
+    ? { ar: " (بحساب سنة نهاية الموسم)", en: " (counting the season's ending year)" }
+    : { ar: "", en: "" };
+}
+
 function combinations(arr, k) {
   const result = [];
   function helper(start, combo) {
@@ -173,7 +365,7 @@ function buildPlayerClubCrossReference() {
   const playerClubIds = {};
   players.forEach(p => {
     const ids = [];
-    const names = [...(p.clubsHistoryAr || [])];
+    const names = (p.clubsHistoryAr || []).filter(h => !isNonClubEntry(h));
     if (p.clubAr) names.push(p.clubAr);
     names.forEach(h => {
       const c = clubByName[normalizeClubName(h)];
@@ -218,94 +410,97 @@ function joinClubNamesEn(clubObjs) {
 
 function buildBankQuestion(p) {
   const hasMultipleAch = p.achievementsAr.length >= 2;
-  const achAr = achievementCombo(p.achievementsAr, "، و");
-  const achEn = achievementCombo(p.achievementsEn, "; and ");
-  const hasClub = isRealClub(p.clubAr) && isRealClub(p.clubEn);
-
+  const n = achCount(p.achievementsAr);
+  const achAr = p.achievementsAr.slice(0, n).join("، و");
+  const achEn = p.achievementsEn.slice(0, n).join("; and ");
+  const cur = currentClubInfo(p);
+  const hist = playerHistoryClubs(p);
+  const ans = playerAnswerFields(p);
+  const hasEra = !!(p.era && String(p.era).trim()); // بعض اللاعيبة في الداتا فترة نشاطهم فاضية
+  const curVerbAr = p.active ? "بيلعب حاليًا لنادي" : "آخر ناديه كان";
+  const curVerbEn = p.active ? "currently plays for" : "last played for";
 
   const vague = !hasMultipleAch && isVagueAchievement(p.achievementsAr[0], p.achievementsEn[0]);
   const variants = [];
-
+  const add = (ar, en, extra) => variants.push(Object.assign({ ar, en }, extra || ans));
 
   if (!vague) {
+    add(
+      `مين اللاعب اللي جنسيته ${p.nationalityAr} ولعب في مركز ${p.position.ar}، ومن أهم إنجازاته: ${achAr}؟`,
+      `Which player is ${p.nationalityEn}, played as a ${p.position.en}, and whose achievements include: ${achEn}?`
+    );
 
-    variants.push({
-      ar: `مين اللاعب اللي جنسيته ${p.nationalityAr} ولعب في مركز ${p.position.ar}، ومن أهم إنجازاته: ${achAr}؟`,
-      en: `Which player is ${p.nationalityEn}, played as a ${p.position.en}, and whose achievements include: ${achEn}?`
-    });
-
-
-    if (!BANK_FREQ.comboFreq[achAr + "|" + p.era] || BANK_FREQ.comboFreq[achAr + "|" + p.era] === 1) {
-      variants.push({
-        ar: `مين اللاعب اللي فترة نشاطه ${p.era}، ومن أهم إنجازاته: ${achAr}؟`,
-        en: `Which player was active during ${p.era} and whose achievements include: ${achEn}?`
-      });
+    if (hasEra && (!BANK_FREQ.comboFreq[achAr + "|" + p.era] || BANK_FREQ.comboFreq[achAr + "|" + p.era] === 1)) {
+      add(
+        `مين اللاعب اللي فترة نشاطه ${p.era}، ومن أهم إنجازاته: ${achAr}؟`,
+        `Which player was active during ${p.era} and whose achievements include: ${achEn}?`
+      );
     }
 
-
-    if (hasClub) {
-      variants.push({
-        ar: `مين اللاعب اللي ${p.active ? "بيلعب حاليًا لنادي" : "آخر ناديه كان"} ${p.clubAr}، ومن أهم إنجازاته: ${achAr}؟`,
-        en: `Which player ${p.active ? "currently plays for" : "last played for"} ${p.clubEn}, and whose achievements include: ${achEn}?`
-      });
+    if (cur) {
+      add(
+        `مين اللاعب اللي ${curVerbAr} ${cur.ar}، ومن أهم إنجازاته: ${achAr}؟`,
+        `Which player ${curVerbEn} ${cur.en}, and whose achievements include: ${achEn}?`
+      );
     }
 
-
-    if (p.clubsHistoryAr.length > 0) {
-      const idx = Math.floor(Math.random() * p.clubsHistoryAr.length);
-      variants.push({
-        ar: `مين اللاعب اللي لعب لنادي ${p.clubsHistoryAr[idx]} في مسيرته، ومن أهم إنجازاته: ${achAr}؟`,
-        en: `Which player has ${p.clubsHistoryEn[idx]} in his club history, and whose achievements include: ${achEn}?`
-      });
+    if (hist.length > 0) {
+      const h = hist[Math.floor(Math.random() * hist.length)];
+      add(
+        `مين اللاعب اللي لعب لنادي ${h.ar} في مسيرته، ومن أهم إنجازاته: ${achAr}؟`,
+        `Which player has ${h.en} in his club history, and whose achievements include: ${achEn}?`
+      );
     }
   }
-
-
 
   if (p.bioAr && p.bioEn) {
-    variants.push({
-      ar: `مين اللاعب ده؟ «${p.bioAr}»`,
-      en: `Who is this player? "${p.bioEn}"`
-    });
+    add(`مين اللاعب ده؟ «${p.bioAr}»`, `Who is this player? "${p.bioEn}"`);
   }
-
-
 
   if (hasMultipleAch) {
-    variants.push({
-      ar: `مين اللاعب اللي من أهم إنجازاته: ${achAr}؟`,
-      en: `Which player's achievements include: ${achEn}?`
-    });
+    add(
+      `مين اللاعب اللي من أهم إنجازاته: ${achAr}؟`,
+      `Which player's achievements include: ${achEn}?`
+    );
   }
-
-
 
   const safeCombos = PLAYER_SAFE_CLUB_COMBOS[p.id];
   if (safeCombos && safeCombos.length > 0) {
     const comboIds = safeCombos[Math.floor(Math.random() * safeCombos.length)];
     const comboClubs = comboIds.map(id => clubs.find(c => c.id === id)).filter(Boolean);
     if (comboClubs.length === comboIds.length) {
-      variants.push({
-        ar: `مين اللاعب اللي لعب في مسيرته لـ${joinClubNamesAr(comboClubs)}؟`,
-        en: `Which player has played for ${joinClubNamesEn(comboClubs)} during his career?`
-      });
+      add(
+        `مين اللاعب اللي لعب في مسيرته ل${joinClubNamesAr(comboClubs)}؟`,
+        `Which player has played for ${joinClubNamesEn(comboClubs)} during his career?`
+      );
     }
   }
 
+  // (جديد) سؤال بروفايل من غير إنجازات: جنسية + مركز + نادي + فترة، ومتأكدين إن المزيج ده لاعب واحد بس في الداتا
+  if (cur && hasEra && PLAYER_PROFILE_FREQ[profileKey(p)] === 1) {
+    add(
+      `مين اللاعب اللي جنسيته ${p.nationalityAr}، ومركزه ${p.position.ar}، و${curVerbAr} ${cur.ar}، وفترة نشاطه ${p.era}؟`,
+      `Which player is ${p.nationalityEn}, plays as a ${p.position.en}, ${curVerbEn} ${cur.en}, and was active during ${p.era}?`
+    );
+  }
 
-
-
-
-
-  if (variants.length === 0) {
+  // (جديد) أسئلة بتسأل عن اللاعب نفسه والإجابة نادي (مستوى متوسط، مناسب للّاعبين المشهورين)
+  if (cur) {
     variants.push({
-      ar: `مين اللاعب (${p.nationalityAr} — ${p.position.ar}) اللي فترة نشاطه ${p.era}؟`,
-      en: `Which player (${p.nationalityEn} — ${p.position.en}) was active during ${p.era}?`
+      ar: p.active ? `${p.nameAr} بيلعب حاليًا لأنهي نادي؟` : `آخر نادي لعب له ${p.nameAr} كان إيه؟`,
+      en: p.active ? `Which club does ${p.nameEn} currently play for?` : `Which was the last club ${p.nameEn} played for?`,
+      answerAr: cur.ar, answerEn: cur.en
     });
   }
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return { ar: chosen.ar, en: chosen.en, answerAr: p.nameAr, answerEn: p.nameEn };
+  if (variants.length === 0 && hasEra) {
+    add(
+      `مين اللاعب (${p.nationalityAr} — ${p.position.ar}) اللي فترة نشاطه ${p.era}؟`,
+      `Which player (${p.nationalityEn} — ${p.position.en}) was active during ${p.era}?`
+    );
+  }
+
+  return pickVariant(variants);
 }
 
 const DISPUTED_YEAR_QUESTIONS = [{ id: "africa-cup-of-nations", year: 2025 }];
@@ -322,6 +517,7 @@ function teamWordFor(comp) {
 
 function buildCompetitionQuestion(c) {
   const tw = teamWordFor(c);
+  const yn = competitionYearNote(c);
   const variants = [];
 
 
@@ -331,8 +527,8 @@ function buildCompetitionQuestion(c) {
     const validYears = w.years.filter(y => !isDisputedYear(c.id, y));
     const year = validYears[Math.floor(Math.random() * validYears.length)];
     variants.push({
-      ar: `مين ${tw.ar} اللي كسب ${c.nameAr} سنة ${year}؟`,
-      en: `Which ${tw.en} won the ${c.nameEn} in ${year}?`,
+      ar: `مين ${tw.ar} اللي كسب ${c.nameAr} سنة ${year}${yn.ar}؟`,
+      en: `Which ${tw.en} won the ${c.nameEn} in ${year}${yn.en}?`,
       answerAr: w.nameAr, answerEn: w.nameEn
     });
   }
@@ -370,14 +566,65 @@ function buildCompetitionQuestion(c) {
     });
   }
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  // (جديد) مين الأكتر فوزًا بالبطولة — بس لو فيه فايز واحد بعدد ألقاب أعلى من اللي بعده (من غير تعادل)
+  const sorted = c.winners.slice().sort((a, b) => b.titles - a.titles);
+  if (sorted.length >= 2 && sorted[0].titles > sorted[1].titles) {
+    variants.push({
+      ar: `مين ${tw.ar} الأكتر فوزًا بـ${c.nameAr} من حيث عدد الألقاب؟`,
+      en: `Which ${tw.en} has won the ${c.nameEn} the most times?`,
+      answerAr: `${sorted[0].nameAr} (${sorted[0].titles} لقب)`,
+      answerEn: `${sorted[0].nameEn} (${sorted[0].titles} title${sorted[0].titles === 1 ? "" : "s"})`
+    });
+  }
+
+  // (جديد) مقارنة بين فايزين بعدد ألقاب مختلف
+  if (c.winners.length >= 2) {
+    const pair = shuffle(c.winners).slice(0, 2);
+    if (pair[0].titles !== pair[1].titles) {
+      const winner = pair[0].titles > pair[1].titles ? pair[0] : pair[1];
+      variants.push({
+        ar: `أنهي ${tw.ar.replace(/^ال/, "")} فاز بـ${c.nameAr} أكتر: ${pair[0].nameAr} ولا ${pair[1].nameAr}؟`,
+        en: `Which ${tw.en} has won the ${c.nameEn} more often: ${pair[0].nameEn} or ${pair[1].nameEn}?`,
+        answerAr: `${winner.nameAr} (${winner.titles} لقب)`, answerEn: `${winner.nameEn} (${winner.titles} title${winner.titles === 1 ? "" : "s"})`
+      });
+    }
+  }
+
+  // (جديد) مين كسب أول نسخة — بنلاقيه من سنين الفايزين نفسها، وبس لو فايز واحد متسجّل ليه السنة دي
+  {
+    const first = c.winners.filter(w => w.years.includes(c.firstEditionYear) && !isDisputedYear(c.id, c.firstEditionYear));
+    if (first.length === 1) {
+      variants.push({
+        ar: `مين ${tw.ar} اللي كسب أول نسخة من ${c.nameAr}؟`,
+        en: `Which ${tw.en} won the first edition of the ${c.nameEn}?`,
+        answerAr: first[0].nameAr, answerEn: first[0].nameEn
+      });
+    }
+  }
+
+  // (جديد) آخر سنة فاز فيها فايز بالبطولة — بس لو سنينه مكتملة (عدد السنين = عدد الألقاب) ومش متنازع عليها
+  {
+    const full = c.winners.filter(w => w.yearsComplete !== false && w.years.length > 0 && w.years.length === w.titles
+      && !isDisputedYear(c.id, Math.max(...w.years)));
+    if (full.length > 0) {
+      const w = full[Math.floor(Math.random() * full.length)];
+      const last = Math.max(...w.years);
+      variants.push({
+        ar: `آخر مرة فاز فيها ${w.nameAr} بـ${c.nameAr} كانت سنة كام${yn.ar}؟`,
+        en: `In which year did ${w.nameEn} last win the ${c.nameEn}${yn.en}?`,
+        answerAr: String(last), answerEn: String(last)
+      });
+    }
+  }
+
+  return pickVariant(variants);
 }
 
 function buildClubFrequencyMaps() {
-  const stadiumFreq = {}, nicknameFreq = {}, achComboFreq = {};
+  const stadiumFreq = {}, nicknameFreq = {}, achComboFreq = {}, colorCityFreq = {};
   clubs.forEach(c => {
     if (c.stadiumAr) stadiumFreq[c.stadiumAr] = (stadiumFreq[c.stadiumAr] || 0) + 1;
+    if (c.colorsAr && c.cityAr) { const k = c.colorsAr + "|" + c.cityAr; colorCityFreq[k] = (colorCityFreq[k] || 0) + 1; }
     (c.nicknamesAr || []).forEach(n => { nicknameFreq[n] = (nicknameFreq[n] || 0) + 1; });
 
 
@@ -386,7 +633,7 @@ function buildClubFrequencyMaps() {
       achComboFreq[combo] = (achComboFreq[combo] || 0) + 1;
     }
   });
-  return { stadiumFreq, nicknameFreq, achComboFreq };
+  return { stadiumFreq, nicknameFreq, achComboFreq, colorCityFreq };
 }
 
 const CLUB_FREQ = (typeof clubs !== "undefined") ? buildClubFrequencyMaps() : null;
@@ -400,7 +647,7 @@ function pickOtherClub(excludeId) {
 function competitionNameById(id) {
   if (typeof competitions === "undefined") return null;
   const c = competitions.find(x => x.id === id);
-  return c ? { ar: c.nameAr, en: c.nameEn } : null;
+  return c ? { ar: c.nameAr, en: c.nameEn, note: competitionYearNote(c) } : null;
 }
 
 function totalTitlesFor(c) {
@@ -444,7 +691,7 @@ function buildClubQuestion(club) {
       variants.push({
         ar: `نادي ${club.nameAr} بيلعب في أنهي دوري محلي؟`,
         en: `Which domestic league does ${club.nameEn} play in?`,
-        answerAr: leagueName.ar, answerEn: leagueName.en
+        answerAr: stripParens(leagueName.ar), answerEn: stripParens(leagueName.en)
       });
     }
   }
@@ -481,15 +728,6 @@ function buildClubQuestion(club) {
   }
 
 
-  if (club.honours && club.honours.length > 0) {
-    variants.push({
-      ar: `نادي ${club.nameAr} عنده كام لقب رسمي في المجموع (جمع كل البطولات المسجّلة له)؟`,
-      en: `How many total official titles does ${club.nameEn} have (summing every recorded competition)?`,
-      answerAr: String(totalTitlesFor(club)), answerEn: String(totalTitlesFor(club))
-    });
-  }
-
-
   variants.push({
     ar: `نادي ${club.nameAr} اتأسس سنة كام؟`,
     en: `In what year was ${club.nameEn} founded?`,
@@ -506,7 +744,11 @@ function buildClubQuestion(club) {
   }
 
 
-  if (club.nicknamesAr && club.nicknamesAr.length > 0) {
+  const nickGivesAway = (club.nicknamesAr || []).some(n => {
+    const a = normAr(n), b = normAr(club.nameAr);
+    return a.length >= 3 && (b.includes(a) || a.includes(b));
+  });
+  if (club.nicknamesAr && club.nicknamesAr.length > 0 && !nickGivesAway) {
     variants.push({
       ar: `نادي ${club.nameAr} بيتلقب بإيه؟`,
       en: `What is ${club.nameEn}'s nickname?`,
@@ -548,7 +790,7 @@ function buildClubQuestion(club) {
       variants.push({
         ar: `نادي ${club.nameAr} كسب ${compName.ar} كام مرة، وآخر مرة كانت سنة كام؟`,
         en: `How many times has ${club.nameEn} won the ${compName.en}, and in which year was the most recent one?`,
-        answerAr: `${h.titles} مرة — آخر مرة ${lastYear}`, answerEn: `${h.titles} time${h.titles === 1 ? "" : "s"} — most recently in ${lastYear}`
+        answerAr: `${h.titles} مرة — آخر مرة ${lastYear}${compName.note.ar}`, answerEn: `${h.titles} time${h.titles === 1 ? "" : "s"} — most recently in ${lastYear}${compName.note.en}`
       });
     }
   }
@@ -586,17 +828,6 @@ function buildClubQuestion(club) {
     }
 
 
-    const clubTotal = totalTitlesFor(club), rivalTotal = totalTitlesFor(rival);
-    if ((club.honours && club.honours.length > 0) && (rival.honours && rival.honours.length > 0) && clubTotal !== rivalTotal) {
-      const winner = clubTotal > rivalTotal ? club : rival;
-      variants.push({
-        ar: `أنهي نادي عنده ألقاب رسمية أكتر في المجموع: ${club.nameAr} ولا ${rival.nameAr}؟`,
-        en: `Which club has more total official titles: ${club.nameEn} or ${rival.nameEn}?`,
-        answerAr: winner.nameAr, answerEn: winner.nameEn
-      });
-    }
-
-
     if (club.honours && rival.honours) {
       const h1 = club.honours.find(x => {
         const h2 = rival.honours.find(y => y.competitionId === x.competitionId);
@@ -629,13 +860,22 @@ function buildClubQuestion(club) {
 
   if (club.nicknamesAr && club.nicknamesAr.length > 0) {
     const nick = club.nicknamesAr[0];
-    if (CLUB_FREQ.nicknameFreq[nick] === 1) {
+    if (CLUB_FREQ.nicknameFreq[nick] === 1 && !nickGivesAway) {
       variants.push({
         ar: `أنهي نادي بيتلقب بـ"${nick}"؟`,
         en: `Which club is nicknamed "${club.nicknamesEn[0]}"?`,
         answerAr: club.nameAr, answerEn: club.nameEn
       });
     }
+  }
+
+
+  if (club.colorsAr && club.cityAr && CLUB_FREQ.colorCityFreq[club.colorsAr + "|" + club.cityAr] === 1) {
+    variants.push({
+      ar: `مين النادي اللي ألوانه الأساسية ${club.colorsAr}، وبيلعب في مدينة ${club.cityAr}، واتأسس سنة ${club.founded}؟`,
+      en: `Which club has ${club.colorsEn} as its main colours, is based in ${club.cityEn}, and was founded in ${club.founded}?`,
+      answerAr: club.nameAr, answerEn: club.nameEn
+    });
   }
 
 
@@ -647,8 +887,7 @@ function buildClubQuestion(club) {
     });
   }
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  return pickVariant(variants);
 }
 
 // ================= أسئلة من ملف الريكوردز والهدافين التاريخيين (records-scorers-data.js) =================
@@ -720,11 +959,17 @@ function buildTopScorerQuestion(comp) {
     });
   }
 
-  variants.push({
-    ar: `كام لاعب مذكور في قائمة أكتر هدافي ${league.ar} تاريخياً (في المصدر ده)؟`,
-    en: `How many players are listed among ${league.en}'s all-time top scorers (in this source)?`,
-    answerAr: String(comp.scorers.length), answerEn: String(comp.scorers.length)
-  });
+  // (بدل سؤال "كام لاعب في القايمة" اللي كانت إجابته بتعتمد على طول قايمة المصدر) سؤال الفرق بين الأول والتاني
+  if (comp.scorers.length >= 2) {
+    const g1 = parseCleanGoalsNumber(top.goals), g2 = parseCleanGoalsNumber(comp.scorers[1].goals);
+    if (g1 !== null && g2 !== null && g1 > g2) {
+      variants.push({
+        ar: `كام هدف الفرق بين الهداف التاريخي لـ${league.ar} (${top.nameAr}) وتاني أكبر هداف (${comp.scorers[1].nameAr})؟`,
+        en: `How many goals separate ${league.en}'s all-time top scorer (${top.nameEn}) from the second-highest scorer (${comp.scorers[1].nameEn})?`,
+        answerAr: `${g1 - g2} هدف`, answerEn: `${g1 - g2} goals`
+      });
+    }
+  }
 
   const idx = Math.floor(Math.random() * comp.scorers.length);
   const s = comp.scorers[idx];
@@ -744,8 +989,7 @@ function buildTopScorerQuestion(comp) {
     });
   }
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  return pickVariant(variants);
 }
 
 // بنستخدم رقم الأهداف بتاع هداف كل نادي بس لو رقم نضيف وثابت (من غير "+")، عشان أرقام اللاعبين النشطين
@@ -763,6 +1007,13 @@ function buildClubTopScorerComparableList() {
 
 const CLUB_TOPSCORER_COMPARABLE = buildClubTopScorerComparableList();
 
+const CLUB_TOPSCORER_NAME_FREQ = (() => {
+  const f = {};
+  if (typeof clubTopScorers === "undefined") return f;
+  clubTopScorers.forEach(e => { if (e.nameAr) f[e.nameAr] = (f[e.nameAr] || 0) + 1; });
+  return f;
+})();
+
 function pickOtherClubTopScorer(excludeClubId) {
   const pool = CLUB_TOPSCORER_COMPARABLE.filter(e => e.clubId !== excludeClubId);
   if (pool.length === 0) return null;
@@ -779,6 +1030,14 @@ function buildClubTopScorerQuestion(entry) {
     answerAr: entry.nameAr, answerEn: entry.nameEn
   });
 
+  if (CLUB_TOPSCORER_NAME_FREQ[entry.nameAr] === 1) {
+    variants.push({
+      ar: `أنهي نادي ${entry.nameAr} هو هدافه التاريخي في كل المسابقات؟`,
+      en: `Which club's all-time top scorer (across all competitions) is ${entry.nameEn}?`,
+      answerAr: entry.clubAr, answerEn: entry.clubEn
+    });
+  }
+
   if (entry.goals) {
     variants.push({
       ar: `كام هدف سجل ${entry.nameAr} لنادي ${entry.clubAr} في مسيرته معاه؟`,
@@ -789,9 +1048,9 @@ function buildClubTopScorerQuestion(entry) {
 
   if (entry.years) {
     variants.push({
-      ar: `في أنهي فترة كان ${entry.nameAr} هداف ${entry.clubAr} التاريخي؟`,
-      en: `During which years was ${entry.nameEn} at ${entry.clubEn} while setting this scoring record?`,
-      answerAr: entry.years, answerEn: entry.years
+      ar: `في أنهي سنين لعب ${entry.nameAr} مع ${entry.clubAr}، اللي حقق فيها رقمه كهداف تاريخي للنادي؟`,
+      en: `During which years did ${entry.nameEn} play for ${entry.clubEn}, the spell in which he set his all-time club scoring record?`,
+      answerAr: entry.years, answerEn: stripParens(entry.years)
     });
   }
 
@@ -811,8 +1070,7 @@ function buildClubTopScorerQuestion(entry) {
     }
   }
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  return pickVariant(variants);
 }
 
 // بنحسب لكل بطولة كام مرة كل لاعب كان هدافها في نسخة لوحده (من غير الاشتراك)، عشان لو لاعب فاز بالجايزة
@@ -832,6 +1090,13 @@ const WORLD_CUP_TOURNAMENT = { nameAr: "كأس العالم", nameEn: "the FIFA 
 const EURO_TOURNAMENT = { nameAr: "بطولة أمم أوروبا (يورو)", nameEn: "the UEFA European Championship", nameFreq: EURO_GB_FREQ };
 const AFCON_TOURNAMENT = { nameAr: "كأس الأمم الأفريقية", nameEn: "the Africa Cup of Nations", nameFreq: AFCON_GB_FREQ };
 
+// اللاعب الوحيد اللي كان هداف البطولة منفردًا أكتر من مرة (لو فيه لاعب واحد بس بأعلى رقم)
+function outrightTopScorerMost(tournament) {
+  const entries = Object.entries(tournament.nameFreq || {}).sort((a, b) => b[1] - a[1]);
+  if (entries.length && entries[0][1] >= 2 && (entries.length === 1 || entries[1][1] < entries[0][1])) return entries[0][0];
+  return null;
+}
+
 function buildGoldenBootQuestion(entry, tournament) {
   const variants = [];
 
@@ -847,6 +1112,14 @@ function buildGoldenBootQuestion(entry, tournament) {
         ar: `هداف نسخة ${tournament.nameAr} سنة ${entry.year} كان بيمثل أنهي دولة؟`,
         en: `Which country did the top scorer of the ${entry.year} edition of ${tournament.nameEn} represent?`,
         answerAr: entry.countryAr, answerEn: entry.countryEn
+      });
+    }
+
+    if (outrightTopScorerMost(tournament) === entry.nameAr) {
+      variants.push({
+        ar: `مين اللاعب اللي كان هداف ${tournament.nameAr} منفردًا في أكتر عدد من النسخ؟`,
+        en: `Which player was the outright top scorer of ${tournament.nameEn} in the most editions?`,
+        answerAr: entry.nameAr, answerEn: entry.nameEn
       });
     }
 
@@ -873,14 +1146,13 @@ function buildGoldenBootQuestion(entry, tournament) {
     }
   }
 
-  variants.push({
+  if (!entry.tied) variants.push({
     ar: `كام هدف سجل هداف نسخة ${tournament.nameAr} سنة ${entry.year}؟${entry.tied ? " (الرقم ده مشترك بين أكتر من لاعب)" : ""}`,
     en: `How many goals did the top scorer of the ${entry.year} edition of ${tournament.nameEn} score?${entry.tied ? " (a tally shared by several players)" : ""}`,
     answerAr: `${entry.goals} هدف`, answerEn: `${entry.goals} goals`
   });
 
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  return pickVariant(variants);
 }
 
 function buildRecordFactQuestion(rec) {
@@ -896,8 +1168,7 @@ function buildRecordFactQuestion(rec) {
       answerAr: rec.valueAr, answerEn: rec.valueEn
     }
   ];
-  const chosen = variants[Math.floor(Math.random() * variants.length)];
-  return chosen;
+  return pickVariant(variants);
 }
 
 // بنبني مجموعة واحدة من عناصر متنوعة الشكل (topscorer / clubtopscorer / goldenboot / record)، بعد استبعاد
@@ -961,46 +1232,62 @@ function poolEntryKey(entry) {
   return null;
 }
 
+// نسبة أسئلة اللاعيبة في كل دور (٠.٤ = ٤٠٪). الباقي (٦٠٪) بيتسحب راندوم من الأندية والبطولات والريكوردز.
+// غيّر الرقم ده لو عايز نسبة تانية.
+const BANK_PLAYER_SHARE = 0.4;
+
 function generateTurnQuestions(usedKeys) {
   const hasCompetitions = typeof competitions !== "undefined" && competitions.length > 0;
   const hasClubs = typeof clubs !== "undefined" && clubs.length > 0;
   const recordsPool = buildRecordsPool();
-  const hasRecords = recordsPool.length > 0;
 
-  // بنعمل مجمّع واحد فيه كل الأسئلة الممكنة من كل المصادر مع بعض،
-  // وبنخلطه راندوم خالص — من غير أي تقسيمة أو حصص عادلة بين الأنواع.
-  let pool = players.map(p => ({ type: "player", data: p }));
-  if (hasCompetitions) pool = pool.concat(competitions.map(c => ({ type: "competition", data: c })));
-  if (hasClubs) pool = pool.concat(clubs.map(c => ({ type: "club", data: c })));
-  if (hasRecords) pool = pool.concat(recordsPool.map(r => ({ type: "records", data: r })));
+  // مجموعتين: اللاعيبة لوحدهم، وكل المصادر التانية (أندية + بطولات + ريكوردز) مع بعض راندوم
+  let playerPool = bankSources.includes("player") ? players.map(p => ({ type: "player", data: p })) : [];
+  let otherPool = [];
+  if (hasCompetitions && bankSources.includes("competition")) otherPool = otherPool.concat(competitions.map(c => ({ type: "competition", data: c })));
+  if (hasClubs && bankSources.includes("club")) otherPool = otherPool.concat(clubs.map(c => ({ type: "club", data: c })));
+  if (recordsPool.length > 0 && bankSources.includes("records")) otherPool = otherPool.concat(recordsPool.map(r => ({ type: "records", data: r })));
 
-  // الأول بنجرب اللي لسه ما اتسألش عنه في الماتش ده؛ ولو خلصت الداتا المتاحة وعددها أقل من
-  // عدد أسئلة الدور، بس ساعتها بنكمل من اللي اتسأل قبل كده (بدل ما نوقّف اللعبة أو نبعت دور ناقص).
-  const fresh = shuffle(pool.filter(e => !usedKeys.has(poolEntryKey(e))));
-  const fallback = shuffle(pool);
-  const combined = fresh.concat(fallback);
+  // أمان: لو الاختيار طلع فاضي لأي سبب (بيانات ناقصة مثلًا) بنرجع للاعيبة بدل ما الدور يطلع من غير أسئلة
+  if (playerPool.length === 0 && otherPool.length === 0) playerPool = players.map(p => ({ type: "player", data: p }));
+
+  // الأول اللي لسه ما اتسألش عنه في الماتش ده، ولو خلصوا بنكمل من اللي اتسأل قبل كده (بدل ما نوقّف اللعبة)
+  const makeQueue = group => shuffle(group.filter(e => !usedKeys.has(poolEntryKey(e)))).concat(shuffle(group));
+  const queues = { player: makeQueue(playerPool), other: makeQueue(otherPool) };
+  const cursor = { player: 0, other: 0 };
+
+  const n = bankQuestionsPerTurnSetting;
+  // لو مفيش مصادر تانية خالص، كل الأسئلة لاعيبة (والعكس)
+  const playerSlots = otherPool.length === 0 ? n : (playerPool.length === 0 ? 0 : Math.round(n * BANK_PLAYER_SHARE));
+  // ترتيب الخانات متخلّط، عشان اللاعيبة ماتجيش ورا بعض في أول الدور ولا آخره
+  const slots = shuffle(Array.from({ length: n }, (_, i) => (i < playerSlots ? "player" : "other")));
 
   const items = [];
   const usedThisTurn = new Set();
-  let idx = 0;
-  while (items.length < bankQuestionsPerTurnSetting && idx < combined.length) {
-    const entry = combined[idx++];
-    const key = poolEntryKey(entry);
-    if (key && usedThisTurn.has(key)) continue; // منع تكرار نفس الموضوع مرتين في نفس الدور
-    let q = null;
-    if (entry.type === "player") q = buildBankQuestion(entry.data);
-    else if (entry.type === "competition") q = buildCompetitionQuestion(entry.data);
-    else if (entry.type === "club") q = buildClubQuestion(entry.data);
-    else if (entry.type === "records") q = buildRecordsAreaQuestion(entry.data);
-    if (q) {
-      items.push(q);
-      if (key) {
-        usedKeys.add(key);
-        usedThisTurn.add(key);
-      }
+
+  function drawFrom(kind) {
+    const queue = queues[kind];
+    while (cursor[kind] < queue.length) {
+      const entry = queue[cursor[kind]++];
+      const key = poolEntryKey(entry);
+      if (key && usedThisTurn.has(key)) continue; // منع تكرار نفس الموضوع مرتين في نفس الدور
+      let q = null;
+      if (entry.type === "player") q = buildBankQuestion(entry.data);
+      else if (entry.type === "competition") q = buildCompetitionQuestion(entry.data);
+      else if (entry.type === "club") q = buildClubQuestion(entry.data);
+      else if (entry.type === "records") q = buildRecordsAreaQuestion(entry.data);
+      if (!q) continue; // سؤال اتصفّى (متسرّب/غير مؤكد) — نكمل على اللي بعده
+      if (key) { usedKeys.add(key); usedThisTurn.add(key); }
+      return q;
     }
-    // لو رجّع null (زي سؤال records اتصفّى) بنكمل على العنصر اللي بعده من غير ما نعتبره سؤال ضايع
+    return null;
   }
+
+  slots.forEach(kind => {
+    // لو المجموعة المطلوبة خلصت، بنسحب من التانية بدل ما الدور يطلع ناقص
+    const q = drawFrom(kind) || drawFrom(kind === "player" ? "other" : "player");
+    if (q) items.push(q);
+  });
   return items;
 }
 
@@ -1025,6 +1312,7 @@ function buildRoundRobinFixtures(n) {
 }
 
 function startMatch() {
+  bankSnapshotInputs();
   if (bankTournamentMode === "league") {
     startLeague();
     return;
@@ -1054,6 +1342,7 @@ function startMatch() {
   }
   bankSetupError = false;
   bankReadSettingsFromInputs();
+  bankSaveSettings();
 
   matchState = {
     p1Name: p1n, p2Name: p2n,
@@ -1080,6 +1369,7 @@ function startLeague() {
   }
   bankSetupError = false;
   bankReadSettingsFromInputs();
+  bankSaveSettings();
 
   leagueState = {
     teams: names,
@@ -1138,7 +1428,9 @@ function startTurn(contestantKey) {
     answerRevealed: false,
     timeLeft: bankTimeLimitSetting,
     timerRunning: false,
-    timeUp: false
+    timeUp: false,
+    // إحصائيات الدور (بتتجمّع في ملخص آخر الماتش)
+    log: [], streak: 0, bestStreak: 0, maxRisk: 0, lost: 0, archived: false
   };
   bankView = "turn";
   render();
@@ -1150,6 +1442,10 @@ function bankMarkCorrect() {
   if (turnState.atRisk === 0) turnState.atRisk = 1;
   else if (turnState.atRisk === 1) turnState.atRisk = 4;
   else turnState.atRisk = turnState.atRisk * 2;
+  turnState.log.push({ q: turnState.questions[turnState.qIndex], result: "correct" });
+  turnState.streak += 1;
+  turnState.bestStreak = Math.max(turnState.bestStreak, turnState.streak);
+  turnState.maxRisk = Math.max(turnState.maxRisk, turnState.atRisk);
   bankPlayCorrect();
   render();
 }
@@ -1157,6 +1453,9 @@ function bankMarkCorrect() {
 function bankMarkWrong() {
   if (!turnState || turnState.answered) return;
   turnState.answered = true;
+  turnState.lost += turnState.atRisk; // النقط اللي كانت برا البنك وضاعت بالغلطة
+  turnState.log.push({ q: turnState.questions[turnState.qIndex], result: "wrong" });
+  turnState.streak = 0;
   turnState.atRisk = 0;
   bankPlayWrong();
   render();
@@ -1180,6 +1479,7 @@ function bankNextQuestion() {
   const isLast = turnState.qIndex + 1 >= turnState.questions.length;
   if (isLast) {
     bankClearTimer();
+    bankArchiveTurn();
     const finalScore = turnState.banked;
     if (turnState.contestant === "p1") {
       matchState.p1Score = finalScore;
@@ -1223,6 +1523,7 @@ function bankStartTimer() {
 function bankForceEndTurn() {
   if (!turnState || !turnState.timeUp) return;
   bankClearTimer();
+  bankArchiveTurn();
   const finalScore = turnState.banked;
   if (turnState.contestant === "p1") {
     matchState.p1Score = finalScore;
@@ -1235,6 +1536,70 @@ function bankForceEndTurn() {
 }
 
 function bankStartP2Turn() { startTurn("p2"); }
+
+function bankBlankStats() { return { correct: 0, wrong: 0, bestStreak: 0, maxRisk: 0, lost: 0, banked: 0 }; }
+
+// بيحط إحصائيات الدور اللي خلص في إحصائيات الماتش (مرة واحدة بس لكل دور)
+function bankArchiveTurn() {
+  if (!turnState || !matchState || turnState.archived) return;
+  turnState.archived = true;
+  const key = turnState.contestant;
+  if (!matchState.stats) matchState.stats = { p1: bankBlankStats(), p2: bankBlankStats() };
+  if (!matchState.review) matchState.review = [];
+  const st = matchState.stats[key];
+  turnState.log.forEach(e => {
+    if (e.result === "correct") st.correct += 1; else st.wrong += 1;
+    matchState.review.push({ round: matchState.round, who: key, ar: e.q.ar, en: e.q.en,
+      answerAr: e.q.answerAr, answerEn: e.q.answerEn, result: e.result });
+  });
+  st.bestStreak = Math.max(st.bestStreak, turnState.bestStreak);
+  st.maxRisk = Math.max(st.maxRisk, turnState.maxRisk);
+  st.lost += turnState.lost;
+  st.banked += turnState.banked;
+}
+
+function bankStatsHtml() {
+  const st = matchState && matchState.stats;
+  if (!st) return "";
+  const ar = lang === "ar";
+  const acc = s => { const n = s.correct + s.wrong; return n ? Math.round(100 * s.correct / n) : null; };
+  // dir: "high" = الأعلى أحسن، "low" = الأقل أحسن
+  const rows = [
+    { label: ar ? "إجابات صح ✅" : "Correct ✅", a: st.p1.correct, b: st.p2.correct, dir: "high" },
+    { label: ar ? "إجابات غلط ❌" : "Wrong ❌", a: st.p1.wrong, b: st.p2.wrong, dir: "low" },
+    { label: ar ? "الدقة" : "Accuracy", a: acc(st.p1), b: acc(st.p2), dir: "high", fmt: v => (v === null ? "—" : v + "%") },
+    { label: ar ? "أطول سلسلة صح 🔥" : "Longest streak 🔥", a: st.p1.bestStreak, b: st.p2.bestStreak, dir: "high" },
+    { label: ar ? "أعلى نقط برا البنك" : "Biggest unbanked pile", a: st.p1.maxRisk, b: st.p2.maxRisk, dir: "high" },
+    { label: ar ? "نقط ضاعت بغلطة 💥" : "Points lost to a miss 💥", a: st.p1.lost, b: st.p2.lost, dir: "low" },
+    { label: ar ? "إجمالي اللي اتبنّك 🏦" : "Total banked 🏦", a: st.p1.banked, b: st.p2.banked, dir: "high" }
+  ];
+  const cell = (v, other, dir, fmt) => {
+    const better = v !== null && other !== null && v !== other && (dir === "high" ? v > other : v < other);
+    return `<td class="${better ? "better" : ""}">${fmt ? fmt(v) : v}</td>`;
+  };
+  const body = rows.map(r => `<tr>${cell(r.a, r.b, r.dir, r.fmt)}<th>${esc(r.label)}</th>${cell(r.b, r.a, r.dir, r.fmt)}</tr>`).join("");
+
+  const review = (matchState.review || []).map(e => {
+    const who = e.who === "p1" ? matchState.p1Name : matchState.p2Name;
+    return `<div class="review-item ${e.result}">
+      <div class="review-meta">${e.result === "correct" ? "✅" : "❌"} ${esc(t().bankRoundLabel)} ${e.round} · ${esc(who)}</div>
+      <div>${esc(ar ? e.ar : e.en)}</div>
+      <div class="review-ans">${esc(ar ? e.answerAr : e.answerEn)}</div>
+    </div>`;
+  }).join("");
+
+  return `
+      <h3 style="margin-top:1.2rem;">${ar ? "ملخص الماتش" : "Match summary"}</h3>
+      <table class="stats-table">
+        <thead><tr><th>${esc(matchState.p1Name)}</th><th></th><th>${esc(matchState.p2Name)}</th></tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+      ${review ? `<details class="review">
+        <summary>📋 ${ar ? `مراجعة الأسئلة (${matchState.review.length})` : `Review questions (${matchState.review.length})`}</summary>
+        <div class="review-list">${review}</div>
+      </details>` : ""}`;
+}
+
 
 function finishRound() {
   const { p1Score, p2Score } = matchState;
@@ -1283,27 +1648,52 @@ function bankMatchTracker() {
     ${leagueNote}`;
 }
 
+function bankSourceChipsHtml() {
+  const labels = {
+    player:      { ar: "👤 لاعيبة", en: "👤 Players" },
+    club:        { ar: "🏟️ أندية", en: "🏟️ Clubs" },
+    competition: { ar: "🏆 بطولات", en: "🏆 Competitions" },
+    records:     { ar: "📊 ريكوردز وهدافين", en: "📊 Records & scorers" }
+  };
+  const chips = BANK_SOURCE_TYPES.map(k =>
+    `<button class="chip ${bankSources.includes(k) ? "on" : ""}" onclick="toggleBankSource('${k}')">${esc(labels[k][lang])}</button>`).join("");
+  const all = bankSources.length === BANK_SOURCE_TYPES.length;
+  const hasPlayers = bankSources.includes("player");
+  const pct = Math.round(BANK_PLAYER_SHARE * 100);
+  let note;
+  if (all) note = lang === "ar" ? `الديفولت: كل الأنواع مع بعض — حوالي ${pct}٪ لاعيبة والباقي راندوم.` : `Default: all types mixed — about ${pct}% players, the rest random.`;
+  else if (bankSources.length === 1) note = lang === "ar" ? "كل الأسئلة هتبقى من النوع ده بس." : "Every question will come from this type only.";
+  else if (hasPlayers) note = lang === "ar" ? `حوالي ${pct}٪ لاعيبة والباقي راندوم من الأنواع التانية المختارة.` : `About ${pct}% players, the rest random from the other selected types.`;
+  else note = lang === "ar" ? "الأسئلة راندوم من الأنواع المختارة." : "Questions are random from the selected types.";
+  return `
+      <div style="margin-top:1.1rem;">
+        <label class="small-note">${lang === "ar" ? "نوع الأسئلة (اختار نوع أو أكتر)" : "Question types (pick one or more)"}</label>
+        <div class="chip-row" style="margin:0.4rem 0 0.2rem;">${chips}</div>
+        <p class="small-note" style="margin-top:0.2rem;">${esc(note)}</p>
+      </div>`;
+}
+
 function renderBankSetup() {
   const isLeague = bankTournamentMode === "league";
   const isTeam = bankMode === "team";
   const namesFieldsHtml = isTeam ? `
       <div class="type-row" style="flex-direction:column;">
         <label class="small-note">${esc(t().bankTeam1Label)}</label>
-        <input type="text" id="bankT1M1Input" placeholder="${esc(t().bankMember1Ph)}" style="margin-bottom:0.5rem;">
-        <input type="text" id="bankT1M2Input" placeholder="${esc(t().bankMember2Ph)}">
+        <input type="text" id="bankT1M1Input" value="${esc(bankDraft.t1m1)}" placeholder="${esc(t().bankMember1Ph)}" style="margin-bottom:0.5rem;">
+        <input type="text" id="bankT1M2Input" value="${esc(bankDraft.t1m2)}" placeholder="${esc(t().bankMember2Ph)}">
       </div>
       <div class="type-row" style="flex-direction:column; margin-top:1rem;">
         <label class="small-note">${esc(t().bankTeam2Label)}</label>
-        <input type="text" id="bankT2M1Input" placeholder="${esc(t().bankMember1Ph)}" style="margin-bottom:0.5rem;">
-        <input type="text" id="bankT2M2Input" placeholder="${esc(t().bankMember2Ph)}">
+        <input type="text" id="bankT2M1Input" value="${esc(bankDraft.t2m1)}" placeholder="${esc(t().bankMember1Ph)}" style="margin-bottom:0.5rem;">
+        <input type="text" id="bankT2M2Input" value="${esc(bankDraft.t2m2)}" placeholder="${esc(t().bankMember2Ph)}">
       </div>` : `
       <div class="type-row" style="flex-direction:column;">
         <label class="small-note" for="bankP1Input">${esc(t().bankP1Label)}</label>
-        <input type="text" id="bankP1Input" placeholder="${esc(t().bankNamePh1)}">
+        <input type="text" id="bankP1Input" value="${esc(bankDraft.p1)}" placeholder="${esc(t().bankNamePh1)}">
       </div>
       <div class="type-row" style="flex-direction:column; margin-top:1rem;">
         <label class="small-note" for="bankP2Input">${esc(t().bankP2Label)}</label>
-        <input type="text" id="bankP2Input" placeholder="${esc(t().bankNamePh2)}">
+        <input type="text" id="bankP2Input" value="${esc(bankDraft.p2)}" placeholder="${esc(t().bankNamePh2)}">
       </div>`;
 
   const singleModeFieldsHtml = `
@@ -1317,7 +1707,7 @@ function renderBankSetup() {
   const leagueTeamInputsHtml = Array.from({ length: bankLeagueTeamCount }, (_, i) => `
       <div class="type-row" style="flex-direction:column; margin-top:${i === 0 ? "1.1rem" : "0.7rem"};">
         <label class="small-note">${lang === "ar" ? `اسم الفريق ${i + 1}` : `Team ${i + 1} name`}</label>
-        <input type="text" id="bankLeagueTeamInput${i}" placeholder="${lang === "ar" ? `الفريق ${i + 1}` : `Team ${i + 1}`}">
+        <input type="text" id="bankLeagueTeamInput${i}" value="${esc(bankDraft.league[i])}" placeholder="${lang === "ar" ? `الفريق ${i + 1}` : `Team ${i + 1}`}">
       </div>`).join("");
 
   const leagueModeFieldsHtml = `
@@ -1340,19 +1730,22 @@ function renderBankSetup() {
       </div>
       <div style="margin-top:1.1rem;">${isLeague ? leagueModeFieldsHtml : singleModeFieldsHtml}</div>
 
+      ${bankSourceChipsHtml()}
+
       <div class="type-row" style="flex-direction:column; margin-top:1.1rem;">
         <label class="small-note" for="bankTimeLimitInput">${lang === "ar" ? "مدة كل دور (بالثانية)" : "Time per turn (seconds)"}</label>
-        <input type="number" id="bankTimeLimitInput" min="${MIN_TIME_LIMIT_SECONDS}" max="${MAX_TIME_LIMIT_SECONDS}" value="${DEFAULT_TURN_TIME_LIMIT_SECONDS}">
+        <input type="number" id="bankTimeLimitInput" min="${MIN_TIME_LIMIT_SECONDS}" max="${MAX_TIME_LIMIT_SECONDS}" value="${esc(bankDraft.time)}">
       </div>
       <div class="type-row" style="flex-direction:column; margin-top:1rem;">
         <label class="small-note" for="bankQCountInput">${lang === "ar" ? "عدد الأسئلة في كل دور" : "Questions per turn"}</label>
-        <input type="number" id="bankQCountInput" min="${MIN_QUESTIONS_PER_TURN}" max="${MAX_QUESTIONS_PER_TURN}" value="${DEFAULT_QUESTIONS_PER_TURN}">
+        <input type="number" id="bankQCountInput" min="${MIN_QUESTIONS_PER_TURN}" max="${MAX_QUESTIONS_PER_TURN}" value="${esc(bankDraft.q)}">
       </div>
 
       ${bankSetupError ? `<div class="feedback bad" style="margin-top:0.9rem;">${esc(t().bankNeedNames)}</div>` : ""}
       <div class="footer-actions">
         <button class="pill-btn pill-gold" onclick="startMatch()">${isLeague ? (lang === "ar" ? "ابدأ الدوري" : "Start league") : esc(t().bankStartBtn)}</button>
       </div>
+      ${bankHasSaved() ? `<p class="small-note" style="text-align:center; margin-top:0.8rem;"><a href="#" onclick="bankClearSaved(); return false;" style="color:inherit;">🗑 ${lang === "ar" ? "مسح الأسماء والإعدادات المحفوظة" : "Clear saved names & settings"}</a></p>` : ""}
     </div>`;
 }
 
@@ -1485,6 +1878,7 @@ function renderBankMatchEnd() {
       <h2>${esc(t().bankChampion)}: ${esc(championName)} 🏆</h2>
       <p class="reveal-name">${esc(matchState.p1Name)} ${matchState.p1Wins} - ${matchState.p2Wins} ${esc(matchState.p2Name)}</p>
       <div class="hints-list" style="margin-top:1.1rem;">${historyHtml}</div>
+      ${bankStatsHtml()}
       <div class="footer-actions">
         ${footerBtnHtml}
       </div>

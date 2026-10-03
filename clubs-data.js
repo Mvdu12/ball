@@ -1,12 +1,4 @@
-// ================= بيانات الأندية الكبيرة (الدوريات الأوروبية الكبرى + الأندية الكبيرة في مصر) =================
-// محدّثة لحد 24 سبتمبر 2026. كل عنصر = نادي واحد.
-// honours بيتحسب أوتوماتيك من ملف competitions-data.js (نفس الأعداد والسنين)، وهو بيشمل البطولات اللي النادي ظاهر فيها بس.
-// في البطولات اللي winnersComplete فيها false (زي كأس الاتحاد الإنجليزي) غياب بطولة من honours مش معناه إن النادي ماكسبهاش.
-// domesticLeagueTitles = عدد ألقاب الدوري المحلي من leagueCompetitionId (إنجلترا: كل تاريخ الدرجة الأولى، فرنسا: العصر الاحترافي من 1933، ألمانيا: اللقب الألماني كله). null = الدوري المحلي للنادي مش موجود في competitions-data.js فالعدد مجهول (مش صفر).
-// bioAr/bioEn متولدين من الحقول نفسها (بدون معلومات إضافية). أي حقل مش متأكد منه سبته فاضي ("" أو []).
-// الحقول الأساسية (سنة التأسيس، الملعب، المدينة، الألقاب الشعبية، الألوان، الخصوم) من معرفتي ومش مراجعة على مصدر في المحادثة.
 const clubs = [
-  // ================= إنجلترا =================
   {
     id: "manchester-united",
     nameAr: "مانشستر يونايتد",
@@ -21,8 +13,12 @@ const clubs = [
     formerNameEn: "Newton Heath L&YR",
     stadiumAr: "أولد ترافورد",
     stadiumEn: "Old Trafford",
-    nicknamesAr: ["الشياطين الحمر"],
-    nicknamesEn: ["The Red Devils"],
+    nicknamesAr: [
+      "الشياطين الحمر",
+    ],
+    nicknamesEn: [
+      "The Red Devils",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "ليفربول", nameEn: "Liverpool" }, { nameAr: "مانشستر سيتي", nameEn: "Manchester City" }],
@@ -76,8 +72,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "أنفيلد",
     stadiumEn: "Anfield",
-    nicknamesAr: ["الريدز"],
-    nicknamesEn: ["The Reds"],
+    nicknamesAr: [
+      "الريدز",
+    ],
+    nicknamesEn: [
+      "The Reds",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "إيفرتون", nameEn: "Everton" }, { nameAr: "مانشستر يونايتد", nameEn: "Manchester United" }],
@@ -131,8 +131,12 @@ const clubs = [
     formerNameEn: "Dial Square",
     stadiumAr: "ملعب الإمارات",
     stadiumEn: "Emirates Stadium",
-    nicknamesAr: ["المدفعجية"],
-    nicknamesEn: ["The Gunners"],
+    nicknamesAr: [
+      "المدفعجية",
+    ],
+    nicknamesEn: [
+      "The Gunners",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "توتنهام هوتسبير", nameEn: "Tottenham Hotspur" }],
@@ -174,8 +178,12 @@ const clubs = [
     formerNameEn: "St. Mark's (West Gorton)",
     stadiumAr: "ملعب الاتحاد",
     stadiumEn: "Etihad Stadium",
-    nicknamesAr: ["السيتيزنز"],
-    nicknamesEn: ["The Citizens"],
+    nicknamesAr: [
+      "السيتيزنز",
+    ],
+    nicknamesEn: [
+      "The Citizens",
+    ],
     colorsAr: "سماوي",
     colorsEn: "Sky blue",
     rivals: [{ nameAr: "مانشستر يونايتد", nameEn: "Manchester United" }],
@@ -226,8 +234,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ستامفورد بريدج",
     stadiumEn: "Stamford Bridge",
-    nicknamesAr: ["البلوز"],
-    nicknamesEn: ["The Blues"],
+    nicknamesAr: [
+      "البلوز",
+    ],
+    nicknamesEn: [
+      "The Blues",
+    ],
     colorsAr: "أزرق",
     colorsEn: "Blue",
     rivals: [{ nameAr: "أرسنال", nameEn: "Arsenal" }, { nameAr: "توتنهام هوتسبير", nameEn: "Tottenham Hotspur" }],
@@ -284,8 +296,12 @@ const clubs = [
     formerNameEn: "Hotspur Football Club",
     stadiumAr: "ملعب توتنهام هوتسبير",
     stadiumEn: "Tottenham Hotspur Stadium",
-    nicknamesAr: ["سبيرز"],
-    nicknamesEn: ["Spurs"],
+    nicknamesAr: [
+      "سبيرز",
+    ],
+    nicknamesEn: [
+      "Spurs",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
     rivals: [{ nameAr: "أرسنال", nameEn: "Arsenal" }],
@@ -327,8 +343,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "فيلا بارك",
     stadiumEn: "Villa Park",
-    nicknamesAr: ["الفيلانز"],
-    nicknamesEn: ["The Villans"],
+    nicknamesAr: [
+      "الفيلانز",
+    ],
+    nicknamesEn: [
+      "The Villans",
+    ],
     colorsAr: "عنابي وأزرق سماوي",
     colorsEn: "Claret and blue",
     rivals: [{ nameAr: "برمنجهام سيتي", nameEn: "Birmingham City" }],
@@ -374,10 +394,12 @@ const clubs = [
     founded: 1878,
     formerNameAr: "سانت دومينجو",
     formerNameEn: "St. Domingo's",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "هيل ديكينسون (برامبلي مور دوك)",
+    stadiumEn: "Hill Dickinson Stadium (Bramley-Moore Dock)",
     nicknamesAr: [],
-    nicknamesEn: ["The Toffees"],
+    nicknamesEn: [
+      "The Toffees",
+    ],
     colorsAr: "أزرق",
     colorsEn: "Blue",
     rivals: [{ nameAr: "ليفربول", nameEn: "Liverpool" }],
@@ -397,7 +419,7 @@ const clubs = [
       { competitionId: "fa-cup", titles: 5, years: [1906, 1933, 1966, 1984, 1995] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Everton_F.C."
   },
   {
     id: "newcastle-united",
@@ -414,7 +436,9 @@ const clubs = [
     stadiumAr: "سانت جيمس بارك",
     stadiumEn: "St James' Park",
     nicknamesAr: [],
-    nicknamesEn: ["The Magpies"],
+    nicknamesEn: [
+      "The Magpies",
+    ],
     colorsAr: "أبيض وأسود (خطوط)",
     colorsEn: "Black and white stripes",
     rivals: [{ nameAr: "سندرلاند", nameEn: "Sunderland" }],
@@ -437,7 +461,7 @@ const clubs = [
       { competitionId: "efl-cup", titles: 1, years: [2025] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Newcastle_United_F.C."
   },
   {
     id: "leeds-united",
@@ -454,27 +478,32 @@ const clubs = [
     stadiumAr: "إلاند رود",
     stadiumEn: "Elland Road",
     nicknamesAr: [],
-    nicknamesEn: ["The Whites"],
+    nicknamesEn: [
+      "The Whites",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
-    rivals: [],
+    rivals: [{ nameAr: "مانشستر يونايتد", nameEn: "Manchester United" }],
     domesticLeagueTitles: 3,
     bioAr: "نادي كرة قدم من ليدز في إنجلترا، تأسس سنة 1919، ويلعب على ملعب إلاند رود. كسب لقب الدوري الإنجليزي 3 مرات.",
     bioEn: "Football club from Leeds, England, founded in 1919, playing at Elland Road. Has won the English league title 3 times.",
     achievementsAr: [
       "3 ألقاب: الدوري الإنجليزي (كل تاريخ الدرجة الأولى)",
+      "لقب واحد: كأس الاتحاد الإنجليزي",
       "لقب واحد: كأس الرابطة الإنجليزية (كاراباو)",
     ],
     achievementsEn: [
       "3x English top flight (all-time)",
+      "1x FA Cup",
       "1x EFL Cup (League Cup)",
     ],
     honours: [
       { competitionId: "english-top-flight", titles: 3, years: [1969, 1974, 1992] },
+      { competitionId: "fa-cup", titles: 1, years: [1972] },
       { competitionId: "efl-cup", titles: 1, years: [1968] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Leeds_United_F.C."
   },
   {
     id: "nottingham-forest",
@@ -490,8 +519,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "سيتي جراوند",
     stadiumEn: "The City Ground",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الريدز",
+      "الأشجار الماكرة",
+    ],
+    nicknamesEn: [
+      "The Reds",
+      "Tricky Trees",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "ديربي كاونتي", nameEn: "Derby County" }],
@@ -502,22 +537,25 @@ const clubs = [
       "لقب واحد: الدوري الإنجليزي (كل تاريخ الدرجة الأولى)",
       "لقبان: دوري أبطال أوروبا",
       "لقب واحد: السوبر الأوروبي",
+      "لقبان: كأس الاتحاد الإنجليزي",
       "4 ألقاب: كأس الرابطة الإنجليزية (كاراباو)",
     ],
     achievementsEn: [
       "1x English top flight (all-time)",
       "2x UEFA Champions League (European Cup)",
       "1x UEFA Super Cup",
+      "2x FA Cup",
       "4x EFL Cup (League Cup)",
     ],
     honours: [
       { competitionId: "english-top-flight", titles: 1, years: [1978] },
       { competitionId: "uefa-champions-league", titles: 2, years: [1979, 1980] },
       { competitionId: "uefa-super-cup", titles: 1, years: [1979] },
+      { competitionId: "fa-cup", titles: 2, years: [1898, 1959] },
       { competitionId: "efl-cup", titles: 4, years: [1978, 1979, 1989, 1990] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Nottingham_Forest_F.C."
   },
   {
     id: "west-ham-united",
@@ -534,24 +572,29 @@ const clubs = [
     stadiumAr: "ملعب لندن",
     stadiumEn: "London Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["The Hammers"],
+    nicknamesEn: [
+      "The Hammers",
+    ],
     colorsAr: "عنابي وأزرق سماوي",
     colorsEn: "Claret and blue",
-    rivals: [],
+    rivals: [{ nameAr: "ميلوول", nameEn: "Millwall" }, { nameAr: "توتنهام هوتسبير", nameEn: "Tottenham Hotspur" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من لندن في إنجلترا، تأسس سنة 1895 باسم تيمز أيرونووركس، ويلعب على ملعب ملعب لندن.",
     bioEn: "Football club from London, England, founded in 1895 as Thames Ironworks, playing at London Stadium.",
     achievementsAr: [
       "لقب واحد: دوري المؤتمر الأوروبي (كونفرنس ليج)",
+      "3 ألقاب: كأس الاتحاد الإنجليزي",
     ],
     achievementsEn: [
       "1x UEFA Conference League",
+      "3x FA Cup",
     ],
     honours: [
       { competitionId: "uefa-conference-league", titles: 1, years: [2023] },
+      { competitionId: "fa-cup", titles: 3, years: [1964, 1975, 1980] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/West_Ham_United_F.C."
   },
   {
     id: "leicester-city",
@@ -568,32 +611,36 @@ const clubs = [
     stadiumAr: "كينج باور ستاديوم",
     stadiumEn: "King Power Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["The Foxes"],
+    nicknamesEn: [
+      "The Foxes",
+    ],
     colorsAr: "أزرق",
     colorsEn: "Blue",
-    rivals: [],
+    rivals: [{ nameAr: "نوتنجهام فورست", nameEn: "Nottingham Forest" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من ليستر في إنجلترا، تأسس سنة 1884 باسم ليستر فوس، ويلعب على ملعب كينج باور ستاديوم. كسب لقب الدوري الإنجليزي مرة واحدة.",
     bioEn: "Football club from Leicester, England, founded in 1884 as Leicester Fosse, playing at King Power Stadium. Has won the English league title 1 time.",
     achievementsAr: [
       "لقب واحد: الدوري الإنجليزي الممتاز",
       "لقب واحد: الدوري الإنجليزي (كل تاريخ الدرجة الأولى)",
+      "لقب واحد: كأس الاتحاد الإنجليزي",
       "3 ألقاب: كأس الرابطة الإنجليزية (كاراباو)",
     ],
     achievementsEn: [
       "1x Premier League",
       "1x English top flight (all-time)",
+      "1x FA Cup",
       "3x EFL Cup (League Cup)",
     ],
     honours: [
       { competitionId: "premier-league", titles: 1, years: [2016] },
       { competitionId: "english-top-flight", titles: 1, years: [2016] },
+      { competitionId: "fa-cup", titles: 1, years: [2021] },
       { competitionId: "efl-cup", titles: 3, years: [1964, 1997, 2000] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Leicester_City_F.C."
   },
-  // ================= إسبانيا =================
   {
     id: "real-madrid",
     nameAr: "ريال مدريد",
@@ -608,8 +655,12 @@ const clubs = [
     formerNameEn: "Madrid Football Club",
     stadiumAr: "سانتياجو برنابيو",
     stadiumEn: "Santiago Bernabéu",
-    nicknamesAr: ["الملكي"],
-    nicknamesEn: ["Los Blancos"],
+    nicknamesAr: [
+      "الملكي",
+    ],
+    nicknamesEn: [
+      "Los Blancos",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
     rivals: [{ nameAr: "برشلونة", nameEn: "FC Barcelona" }, { nameAr: "أتلتيكو مدريد", nameEn: "Atlético Madrid" }],
@@ -660,8 +711,13 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "كامب نو",
     stadiumEn: "Camp Nou",
-    nicknamesAr: ["البلوجرانا"],
-    nicknamesEn: ["Blaugrana", "Barça"],
+    nicknamesAr: [
+      "البلوجرانا",
+    ],
+    nicknamesEn: [
+      "Blaugrana",
+      "Barça",
+    ],
     colorsAr: "أزرق وعنابي",
     colorsEn: "Blue and garnet",
     rivals: [{ nameAr: "ريال مدريد", nameEn: "Real Madrid" }, { nameAr: "إسبانيول", nameEn: "Espanyol" }],
@@ -710,7 +766,9 @@ const clubs = [
     stadiumAr: "ملعب متروبوليتانو",
     stadiumEn: "Metropolitano Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["Los Colchoneros"],
+    nicknamesEn: [
+      "Los Colchoneros",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "ريال مدريد", nameEn: "Real Madrid" }],
@@ -756,7 +814,9 @@ const clubs = [
     stadiumAr: "ميستايا",
     stadiumEn: "Mestalla",
     nicknamesAr: [],
-    nicknamesEn: ["Los Che"],
+    nicknamesEn: [
+      "Los Che",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
     rivals: [{ nameAr: "ليفانتي", nameEn: "Levante" }],
@@ -785,7 +845,7 @@ const clubs = [
       { competitionId: "supercopa-de-espana", titles: 1, years: [1999] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Valencia_CF"
   },
   {
     id: "sevilla",
@@ -801,8 +861,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "رامون سانشيز بيثخوان",
     stadiumEn: "Ramón Sánchez-Pizjuán",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "لوس نيرفيونينسيس",
+    ],
+    nicknamesEn: [
+      "Los Nervionenses",
+    ],
     colorsAr: "أبيض وأحمر",
     colorsEn: "White and red",
     rivals: [{ nameAr: "ريال بيتيس", nameEn: "Real Betis" }],
@@ -831,7 +895,7 @@ const clubs = [
       { competitionId: "supercopa-de-espana", titles: 1, years: [2007] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Sevilla_FC"
   },
   {
     id: "athletic-bilbao",
@@ -848,7 +912,9 @@ const clubs = [
     stadiumAr: "سان مامس",
     stadiumEn: "San Mamés",
     nicknamesAr: [],
-    nicknamesEn: ["Los Leones"],
+    nicknamesEn: [
+      "Los Leones",
+    ],
     colorsAr: "أحمر وأبيض (خطوط)",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "ريال سوسييداد", nameEn: "Real Sociedad" }],
@@ -871,7 +937,7 @@ const clubs = [
       { competitionId: "supercopa-de-espana", titles: 3, years: [1984, 2015, 2021] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Athletic_Bilbao"
   },
   {
     id: "real-sociedad",
@@ -887,8 +953,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ملعب أنويتا",
     stadiumEn: "Anoeta Stadium",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "لا ريال",
+      "تشوري-أوردين",
+    ],
+    nicknamesEn: [
+      "La Real",
+      "Txuri-urdin",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "أتلتيك بلباو", nameEn: "Athletic Bilbao" }],
@@ -907,11 +979,11 @@ const clubs = [
     ],
     honours: [
       { competitionId: "la-liga", titles: 2, years: [1981, 1982] },
-      { competitionId: "copa-del-rey", titles: 3, years: [1987, 2021, 2026] },
+      { competitionId: "copa-del-rey", titles: 3, years: [1987, 2020, 2026] },
       { competitionId: "supercopa-de-espana", titles: 1, years: [1982] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Real_Sociedad"
   },
   {
     id: "villarreal",
@@ -927,11 +999,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إستاديو دي لا سيراميكا",
     stadiumEn: "Estadio de la Cerámica",
-    nicknamesAr: ["الغواصة الصفراء"],
-    nicknamesEn: ["The Yellow Submarine"],
+    nicknamesAr: [
+      "الغواصة الصفراء",
+    ],
+    nicknamesEn: [
+      "The Yellow Submarine",
+    ],
     colorsAr: "أصفر",
     colorsEn: "Yellow",
-    rivals: [],
+    rivals: [{ nameAr: "فالنسيا", nameEn: "Valencia" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من فياريال في إسبانيا، تأسس سنة 1923، ويلعب على ملعب إستاديو دي لا سيراميكا.",
     bioEn: "Football club from Villarreal, Spain, founded in 1923, playing at Estadio de la Cerámica.",
@@ -945,7 +1021,7 @@ const clubs = [
       { competitionId: "uefa-europa-league", titles: 1, years: [2021] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Villarreal_CF"
   },
   {
     id: "real-betis",
@@ -962,7 +1038,9 @@ const clubs = [
     stadiumAr: "بينيتو فياماريين",
     stadiumEn: "Estadio Benito Villamarín",
     nicknamesAr: [],
-    nicknamesEn: ["Los Verdiblancos"],
+    nicknamesEn: [
+      "Los Verdiblancos",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
     rivals: [{ nameAr: "إشبيلية", nameEn: "Sevilla" }],
@@ -971,15 +1049,18 @@ const clubs = [
     bioEn: "Football club from Seville, Spain, founded in 1907, playing at Estadio Benito Villamarín. Has won the Spanish league title 1 time.",
     achievementsAr: [
       "لقب واحد: الدوري الإسباني (لاليجا)",
+      "3 ألقاب: كأس ملك إسبانيا",
     ],
     achievementsEn: [
       "1x La Liga",
+      "3x Copa del Rey",
     ],
     honours: [
       { competitionId: "la-liga", titles: 1, years: [1935] },
+      { competitionId: "copa-del-rey", titles: 3, years: [1977, 2005, 2022] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Real_Betis"
   },
   {
     id: "deportivo-la-coruna",
@@ -995,30 +1076,36 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ريازور",
     stadiumEn: "Riazor Stadium",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "ديبور",
+    ],
+    nicknamesEn: [
+      "Depor",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
-    rivals: [],
+    rivals: [{ nameAr: "سلتا فيجو", nameEn: "Celta Vigo" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من لا كورونيا في إسبانيا، تأسس سنة 1906، ويلعب على ملعب ريازور. كسب لقب الدوري الإسباني مرة واحدة.",
     bioEn: "Football club from A Coruña, Spain, founded in 1906, playing at Riazor Stadium. Has won the Spanish league title 1 time.",
     achievementsAr: [
       "لقب واحد: الدوري الإسباني (لاليجا)",
+      "لقبان: كأس ملك إسبانيا",
       "3 ألقاب: السوبر الإسباني",
     ],
     achievementsEn: [
       "1x La Liga",
+      "2x Copa del Rey",
       "3x Supercopa de España",
     ],
     honours: [
       { competitionId: "la-liga", titles: 1, years: [2000] },
+      { competitionId: "copa-del-rey", titles: 2, years: [1995, 2002] },
       { competitionId: "supercopa-de-espana", titles: 3, years: [1991, 1995, 2000] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Deportivo_de_La_Coruña"
   },
-  // ================= إيطاليا =================
   {
     id: "juventus",
     nameAr: "يوفنتوس",
@@ -1033,8 +1120,13 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "أليانز ستاديوم",
     stadiumEn: "Allianz Stadium",
-    nicknamesAr: ["السيدة العجوز"],
-    nicknamesEn: ["The Old Lady", "Bianconeri"],
+    nicknamesAr: [
+      "السيدة العجوز",
+    ],
+    nicknamesEn: [
+      "The Old Lady",
+      "Bianconeri",
+    ],
     colorsAr: "أبيض وأسود (خطوط)",
     colorsEn: "Black and white stripes",
     rivals: [{ nameAr: "إنتر ميلان", nameEn: "Inter Milan" }, { nameAr: "تورينو", nameEn: "Torino" }],
@@ -1079,8 +1171,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "سان سيرو (جوزيبي مياتزا)",
     stadiumEn: "San Siro (Stadio Giuseppe Meazza)",
-    nicknamesAr: ["النيراتزوري"],
-    nicknamesEn: ["Nerazzurri"],
+    nicknamesAr: [
+      "النيراتزوري",
+    ],
+    nicknamesEn: [
+      "Nerazzurri",
+    ],
     colorsAr: "أزرق وأسود",
     colorsEn: "Blue and black",
     rivals: [{ nameAr: "ميلان", nameEn: "AC Milan" }, { nameAr: "يوفنتوس", nameEn: "Juventus" }],
@@ -1125,8 +1221,12 @@ const clubs = [
     formerNameEn: "Milan Foot-Ball and Cricket Club",
     stadiumAr: "سان سيرو (جوزيبي مياتزا)",
     stadiumEn: "San Siro (Stadio Giuseppe Meazza)",
-    nicknamesAr: ["الروسونيري"],
-    nicknamesEn: ["Rossoneri"],
+    nicknamesAr: [
+      "الروسونيري",
+    ],
+    nicknamesEn: [
+      "Rossoneri",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [{ nameAr: "إنتر ميلان", nameEn: "Inter Milan" }],
@@ -1155,7 +1255,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 5, years: [1967, 1972, 1973, 1977, 2003] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/AC_Milan"
   },
   {
     id: "napoli",
@@ -1172,10 +1272,12 @@ const clubs = [
     stadiumAr: "ستاديو دييجو أرماندو مارادونا",
     stadiumEn: "Stadio Diego Armando Maradona",
     nicknamesAr: [],
-    nicknamesEn: ["Partenopei"],
+    nicknamesEn: [
+      "Partenopei",
+    ],
     colorsAr: "سماوي",
     colorsEn: "Sky blue",
-    rivals: [],
+    rivals: [{ nameAr: "يوفنتوس", nameEn: "Juventus" }],
     domesticLeagueTitles: 4,
     bioAr: "نادي كرة قدم من نابولي في إيطاليا، تأسس سنة 1926، ويلعب على ملعب ستاديو دييجو أرماندو مارادونا. كسب لقب الدوري الإيطالي 4 مرات.",
     bioEn: "Football club from Naples, Italy, founded in 1926, playing at Stadio Diego Armando Maradona. Has won the Italian league title 4 times.",
@@ -1195,7 +1297,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 6, years: [1962, 1976, 1987, 2012, 2014, 2020] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/SSC_Napoli"
   },
   {
     id: "roma",
@@ -1212,7 +1314,9 @@ const clubs = [
     stadiumAr: "ستاديو أولمبيكو",
     stadiumEn: "Stadio Olimpico",
     nicknamesAr: [],
-    nicknamesEn: ["Giallorossi"],
+    nicknamesEn: [
+      "Giallorossi",
+    ],
     colorsAr: "أصفر وأحمر",
     colorsEn: "Yellow and red",
     rivals: [{ nameAr: "لاتسيو", nameEn: "Lazio" }],
@@ -1235,7 +1339,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 9, years: [1964, 1969, 1980, 1981, 1984, 1986, 1991, 2007, 2008] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/AS_Roma"
   },
   {
     id: "lazio",
@@ -1251,8 +1355,13 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ستاديو أولمبيكو",
     stadiumEn: "Stadio Olimpico",
-    nicknamesAr: ["النسور"],
-    nicknamesEn: ["Biancocelesti", "The Eagles"],
+    nicknamesAr: [
+      "النسور",
+    ],
+    nicknamesEn: [
+      "Biancocelesti",
+      "The Eagles",
+    ],
     colorsAr: "سماوي وأبيض",
     colorsEn: "Sky blue and white",
     rivals: [{ nameAr: "روما", nameEn: "AS Roma" }],
@@ -1292,7 +1401,9 @@ const clubs = [
     stadiumAr: "ستاديو أرتيميو فرانكي",
     stadiumEn: "Stadio Artemio Franchi",
     nicknamesAr: [],
-    nicknamesEn: ["La Viola"],
+    nicknamesEn: [
+      "La Viola",
+    ],
     colorsAr: "بنفسجي",
     colorsEn: "Purple",
     rivals: [{ nameAr: "يوفنتوس", nameEn: "Juventus" }],
@@ -1312,7 +1423,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 6, years: [1940, 1961, 1966, 1975, 1996, 2001] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/ACF_Fiorentina"
   },
   {
     id: "atalanta",
@@ -1329,7 +1440,9 @@ const clubs = [
     stadiumAr: "جيويس ستاديوم",
     stadiumEn: "Gewiss Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["La Dea"],
+    nicknamesEn: [
+      "La Dea",
+    ],
     colorsAr: "أزرق وأسود",
     colorsEn: "Blue and black",
     rivals: [],
@@ -1338,15 +1451,18 @@ const clubs = [
     bioEn: "Football club from Bergamo, Italy, founded in 1907, playing at Gewiss Stadium.",
     achievementsAr: [
       "لقب واحد: الدوري الأوروبي (يوروبا ليج)",
+      "لقب واحد: كوبا إيطاليا",
     ],
     achievementsEn: [
       "1x UEFA Europa League (UEFA Cup)",
+      "1x Coppa Italia",
     ],
     honours: [
       { competitionId: "uefa-europa-league", titles: 1, years: [2024] },
+      { competitionId: "coppa-italia", titles: 1, years: [1963] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Atalanta_B.C."
   },
   {
     id: "torino",
@@ -1363,7 +1479,9 @@ const clubs = [
     stadiumAr: "ستاديو أولمبيكو جراندي تورينو",
     stadiumEn: "Stadio Olimpico Grande Torino",
     nicknamesAr: [],
-    nicknamesEn: ["Il Toro"],
+    nicknamesEn: [
+      "Il Toro",
+    ],
     colorsAr: "عنابي (جرانا)",
     colorsEn: "Granata (maroon)",
     rivals: [{ nameAr: "يوفنتوس", nameEn: "Juventus" }],
@@ -1383,7 +1501,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 5, years: [1936, 1943, 1968, 1971, 1993] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Torino_F.C."
   },
   {
     id: "sampdoria",
@@ -1400,7 +1518,9 @@ const clubs = [
     stadiumAr: "ستاديو لويجي فيراريس",
     stadiumEn: "Stadio Luigi Ferraris",
     nicknamesAr: [],
-    nicknamesEn: ["I Blucerchiati"],
+    nicknamesEn: [
+      "I Blucerchiati",
+    ],
     colorsAr: "أزرق وأبيض وأحمر وأسود",
     colorsEn: "Blue, white, red and black",
     rivals: [{ nameAr: "جنوى", nameEn: "Genoa" }],
@@ -1420,7 +1540,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 4, years: [1985, 1988, 1989, 1994] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/UC_Sampdoria"
   },
   {
     id: "genoa",
@@ -1437,7 +1557,9 @@ const clubs = [
     stadiumAr: "ستاديو لويجي فيراريس",
     stadiumEn: "Stadio Luigi Ferraris",
     nicknamesAr: [],
-    nicknamesEn: ["Il Grifone"],
+    nicknamesEn: [
+      "Il Grifone",
+    ],
     colorsAr: "أحمر وأزرق",
     colorsEn: "Red and blue",
     rivals: [{ nameAr: "سامبدوريا", nameEn: "Sampdoria" }],
@@ -1446,15 +1568,18 @@ const clubs = [
     bioEn: "Football club from Genoa, Italy, founded in 1893, playing at Stadio Luigi Ferraris. Has won the Italian league title 9 times.",
     achievementsAr: [
       "9 ألقاب: الدوري الإيطالي (الكالتشيو)",
+      "لقب واحد: كوبا إيطاليا",
     ],
     achievementsEn: [
       "9x Serie A (Italian championship)",
+      "1x Coppa Italia",
     ],
     honours: [
       { competitionId: "serie-a", titles: 9, years: [1898, 1899, 1900, 1902, 1903, 1904, 1915, 1923, 1924] },
+      { competitionId: "coppa-italia", titles: 1, years: [1937] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Genoa_CFC"
   },
   {
     id: "bologna",
@@ -1470,11 +1595,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ستاديو رينالو دال آرا",
     stadiumEn: "Stadio Renato Dall'Ara",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الروسوبلو",
+    ],
+    nicknamesEn: [
+      "I Rossoblù",
+    ],
     colorsAr: "أحمر وأزرق",
     colorsEn: "Red and blue",
-    rivals: [],
+    rivals: [{ nameAr: "فيورنتينا", nameEn: "Fiorentina" }],
     domesticLeagueTitles: 7,
     bioAr: "نادي كرة قدم من بولونيا في إيطاليا، تأسس سنة 1909، ويلعب على ملعب ستاديو رينالو دال آرا. كسب لقب الدوري الإيطالي 7 مرات.",
     bioEn: "Football club from Bologna, Italy, founded in 1909, playing at Stadio Renato Dall'Ara. Has won the Italian league title 7 times.",
@@ -1491,7 +1620,7 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 3, years: [1970, 1974, 2025] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Bologna_F.C._1909"
   },
   {
     id: "parma",
@@ -1508,7 +1637,9 @@ const clubs = [
     stadiumAr: "ستاديو إينيو تاردييني",
     stadiumEn: "Stadio Ennio Tardini",
     nicknamesAr: [],
-    nicknamesEn: ["I Crociati"],
+    nicknamesEn: [
+      "I Crociati",
+    ],
     colorsAr: "أصفر وأزرق",
     colorsEn: "Yellow and blue",
     rivals: [],
@@ -1531,9 +1662,8 @@ const clubs = [
       { competitionId: "coppa-italia", titles: 3, years: [1992, 1999, 2002] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Parma_Calcio_1913"
   },
-  // ================= ألمانيا =================
   {
     id: "bayern-munich",
     nameAr: "بايرن ميونخ",
@@ -1549,7 +1679,9 @@ const clubs = [
     stadiumAr: "أليانز أرينا",
     stadiumEn: "Allianz Arena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Roten"],
+    nicknamesEn: [
+      "Die Roten",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "بروسيا دورتموند", nameEn: "Borussia Dortmund" }, { nameAr: "ميونخ 1860", nameEn: "TSV 1860 Munich" }],
@@ -1598,7 +1730,10 @@ const clubs = [
     stadiumAr: "سيجنال إيدونا بارك",
     stadiumEn: "Signal Iduna Park",
     nicknamesAr: [],
-    nicknamesEn: ["BVB", "Die Schwarzgelben"],
+    nicknamesEn: [
+      "BVB",
+      "Die Schwarzgelben",
+    ],
     colorsAr: "أصفر وأسود",
     colorsEn: "Yellow and black",
     rivals: [{ nameAr: "شالكه", nameEn: "Schalke 04" }, { nameAr: "بايرن ميونخ", nameEn: "Bayern Munich" }],
@@ -1638,10 +1773,12 @@ const clubs = [
     stadiumAr: "باي أرينا",
     stadiumEn: "BayArena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Werkself"],
+    nicknamesEn: [
+      "Die Werkself",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
-    rivals: [],
+    rivals: [{ nameAr: "كولن", nameEn: "1. FC Köln" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من ليفركوزن في ألمانيا، تأسس سنة 1904، ويلعب على ملعب باي أرينا. كسب لقب الدوري الألماني مرة واحدة.",
     bioEn: "Football club from Leverkusen, Germany, founded in 1904, playing at BayArena. Has won the German championship 1 time.",
@@ -1661,7 +1798,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 2, years: [1993, 2024] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Bayer_04_Leverkusen"
   },
   {
     id: "schalke-04",
@@ -1678,7 +1815,9 @@ const clubs = [
     stadiumAr: "فيلتينز-أرينا",
     stadiumEn: "Veltins-Arena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Knappen"],
+    nicknamesEn: [
+      "Die Knappen",
+    ],
     colorsAr: "أزرق ملكي",
     colorsEn: "Royal blue",
     rivals: [{ nameAr: "بروسيا دورتموند", nameEn: "Borussia Dortmund" }],
@@ -1717,8 +1856,13 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "فيزرشتاديون",
     stadiumEn: "Weserstadion",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "فيردراينر",
+    ],
+    nicknamesEn: [
+      "Die Werderaner",
+      "Grün-Weißen",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
     rivals: [{ nameAr: "هامبورج", nameEn: "Hamburger SV" }],
@@ -1755,9 +1899,11 @@ const clubs = [
     stadiumAr: "فولكسبارك شتاديون",
     stadiumEn: "Volksparkstadion",
     nicknamesAr: [],
-    nicknamesEn: ["Der Dino"],
-    colorsAr: "",
-    colorsEn: "",
+    nicknamesEn: [
+      "Der Dino",
+    ],
+    colorsAr: "أزرق وأسود وأبيض",
+    colorsEn: "Blue, black and white",
     rivals: [{ nameAr: "فيردر بريمن", nameEn: "Werder Bremen" }],
     domesticLeagueTitles: 6,
     bioAr: "نادي كرة قدم من هامبورج في ألمانيا، تأسس سنة 1887، ويلعب على ملعب فولكسبارك شتاديون. كسب لقب الدوري الألماني 6 مرات.",
@@ -1778,7 +1924,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 3, years: [1963, 1976, 1987] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Hamburger_SV"
   },
   {
     id: "eintracht-frankfurt",
@@ -1795,10 +1941,12 @@ const clubs = [
     stadiumAr: "دويتشه بانك بارك",
     stadiumEn: "Deutsche Bank Park",
     nicknamesAr: [],
-    nicknamesEn: ["Die Adler"],
+    nicknamesEn: [
+      "Die Adler",
+    ],
     colorsAr: "أسود وأحمر وأبيض",
     colorsEn: "Black, red and white",
-    rivals: [],
+    rivals: [{ nameAr: "كايزرسلاوترن", nameEn: "1. FC Kaiserslautern" }, { nameAr: "ماينتس 05", nameEn: "1. FSV Mainz 05" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من فرانكفورت في ألمانيا، تأسس سنة 1899، ويلعب على ملعب دويتشه بانك بارك. كسب لقب الدوري الألماني مرة واحدة.",
     bioEn: "Football club from Frankfurt, Germany, founded in 1899, playing at Deutsche Bank Park. Has won the German championship 1 time.",
@@ -1818,7 +1966,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 5, years: [1974, 1975, 1981, 1988, 2018] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Eintracht_Frankfurt"
   },
   {
     id: "borussia-monchengladbach",
@@ -1835,7 +1983,9 @@ const clubs = [
     stadiumAr: "بروسيا بارك",
     stadiumEn: "Borussia-Park",
     nicknamesAr: [],
-    nicknamesEn: ["Die Fohlen"],
+    nicknamesEn: [
+      "Die Fohlen",
+    ],
     colorsAr: "أخضر وأبيض وأسود",
     colorsEn: "Green, white and black",
     rivals: [{ nameAr: "كولن", nameEn: "1. FC Köln" }],
@@ -1858,7 +2008,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 3, years: [1960, 1973, 1995] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Borussia_Mönchengladbach"
   },
   {
     id: "vfb-stuttgart",
@@ -1875,10 +2025,12 @@ const clubs = [
     stadiumAr: "إم إتش بي أرينا",
     stadiumEn: "MHPArena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Schwaben"],
+    nicknamesEn: [
+      "Die Schwaben",
+    ],
     colorsAr: "أبيض وأحمر",
     colorsEn: "White and red",
-    rivals: [],
+    rivals: [{ nameAr: "كارلسروه", nameEn: "Karlsruher SC" }],
     domesticLeagueTitles: 5,
     bioAr: "نادي كرة قدم من شتوتجارت في ألمانيا، تأسس سنة 1893، ويلعب على ملعب إم إتش بي أرينا. كسب لقب الدوري الألماني 5 مرات.",
     bioEn: "Football club from Stuttgart, Germany, founded in 1893, playing at MHPArena. Has won the German championship 5 times.",
@@ -1895,7 +2047,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 4, years: [1954, 1958, 1997, 2025] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/VfB_Stuttgart"
   },
   {
     id: "koln",
@@ -1912,7 +2064,9 @@ const clubs = [
     stadiumAr: "رين إنيرجي شتاديون",
     stadiumEn: "RheinEnergieStadion",
     nicknamesAr: [],
-    nicknamesEn: ["Die Geißböcke"],
+    nicknamesEn: [
+      "Die Geißböcke",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "بروسيا مونشنجلادباخ", nameEn: "Borussia Mönchengladbach" }],
@@ -1932,7 +2086,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 4, years: [1968, 1977, 1978, 1983] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/1._FC_Köln"
   },
   {
     id: "vfl-wolfsburg",
@@ -1949,24 +2103,29 @@ const clubs = [
     stadiumAr: "فولكسفاجن أرينا",
     stadiumEn: "Volkswagen Arena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Wölfe"],
+    nicknamesEn: [
+      "Die Wölfe",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
-    rivals: [],
+    rivals: [{ nameAr: "هانوفر 96", nameEn: "Hannover 96" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من فولفسبورج في ألمانيا، تأسس سنة 1945، ويلعب على ملعب فولكسفاجن أرينا. كسب لقب الدوري الألماني مرة واحدة.",
     bioEn: "Football club from Wolfsburg, Germany, founded in 1945, playing at Volkswagen Arena. Has won the German championship 1 time.",
     achievementsAr: [
       "لقب واحد: الدوري الألماني (البوندسليجا واللقب الألماني)",
+      "لقب واحد: كأس ألمانيا",
     ],
     achievementsEn: [
       "1x German championship (incl. Bundesliga)",
+      "1x DFB-Pokal",
     ],
     honours: [
       { competitionId: "german-championship", titles: 1, years: [2009] },
+      { competitionId: "dfb-pokal", titles: 1, years: [2015] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/VfL_Wolfsburg"
   },
   {
     id: "rb-leipzig",
@@ -1983,7 +2142,9 @@ const clubs = [
     stadiumAr: "ريد بول أرينا",
     stadiumEn: "Red Bull Arena",
     nicknamesAr: [],
-    nicknamesEn: ["Die Roten Bullen"],
+    nicknamesEn: [
+      "Die Roten Bullen",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [],
@@ -2000,7 +2161,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 2, years: [2022, 2023] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/RB_Leipzig"
   },
   {
     id: "nurnberg",
@@ -2017,7 +2178,9 @@ const clubs = [
     stadiumAr: "ماكس مورلوك شتاديون",
     stadiumEn: "Max-Morlock-Stadion",
     nicknamesAr: [],
-    nicknamesEn: ["Der Club"],
+    nicknamesEn: [
+      "Der Club",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [],
@@ -2037,7 +2200,7 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 4, years: [1935, 1939, 1962, 2007] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/1._FC_Nürnberg"
   },
   {
     id: "kaiserslautern",
@@ -2054,10 +2217,12 @@ const clubs = [
     stadiumAr: "فريتز فالتر شتاديون",
     stadiumEn: "Fritz-Walter-Stadion",
     nicknamesAr: [],
-    nicknamesEn: ["Die Roten Teufel"],
+    nicknamesEn: [
+      "Die Roten Teufel",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
-    rivals: [],
+    rivals: [{ nameAr: "آينتراخت فرانكفورت", nameEn: "Eintracht Frankfurt" }],
     domesticLeagueTitles: 4,
     bioAr: "نادي كرة قدم من كايزرسلاوترن في ألمانيا، تأسس سنة 1900، ويلعب على ملعب فريتز فالتر شتاديون. كسب لقب الدوري الألماني 4 مرات.",
     bioEn: "Football club from Kaiserslautern, Germany, founded in 1900, playing at Fritz-Walter-Stadion. Has won the German championship 4 times.",
@@ -2074,9 +2239,8 @@ const clubs = [
       { competitionId: "dfb-pokal", titles: 2, years: [1990, 1996] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/1._FC_Kaiserslautern"
   },
-  // ================= فرنسا =================
   {
     id: "paris-saint-germain",
     nameAr: "باريس سان جيرمان",
@@ -2092,7 +2256,9 @@ const clubs = [
     stadiumAr: "بارك دي برانس",
     stadiumEn: "Parc des Princes",
     nicknamesAr: [],
-    nicknamesEn: ["Les Parisiens"],
+    nicknamesEn: [
+      "Les Parisiens",
+    ],
     colorsAr: "أزرق وأحمر",
     colorsEn: "Blue and red",
     rivals: [{ nameAr: "مارسيليا", nameEn: "Olympique de Marseille" }],
@@ -2135,7 +2301,10 @@ const clubs = [
     stadiumAr: "ستاد فيلودروم",
     stadiumEn: "Stade Vélodrome",
     nicknamesAr: [],
-    nicknamesEn: ["OM", "Les Phocéens"],
+    nicknamesEn: [
+      "OM",
+      "Les Phocéens",
+    ],
     colorsAr: "أبيض وأزرق سماوي",
     colorsEn: "White and sky blue",
     rivals: [{ nameAr: "باريس سان جيرمان", nameEn: "Paris Saint-Germain" }],
@@ -2175,7 +2344,10 @@ const clubs = [
     stadiumAr: "جروباما ستاديوم",
     stadiumEn: "Groupama Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["OL", "Les Gones"],
+    nicknamesEn: [
+      "OL",
+      "Les Gones",
+    ],
     colorsAr: "أبيض وأحمر وأزرق",
     colorsEn: "White, red and blue",
     rivals: [{ nameAr: "سانت إتيان", nameEn: "AS Saint-Étienne" }],
@@ -2184,15 +2356,18 @@ const clubs = [
     bioEn: "Football club from Lyon, France, founded in 1950 as Lyon Olympique Universitaire, playing at Groupama Stadium. Has won the French league title 7 times.",
     achievementsAr: [
       "7 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "5 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
       "7x Ligue 1 (professional era)",
+      "5x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 7, years: [2002, 2003, 2004, 2005, 2006, 2007, 2008] },
+      { competitionId: "coupe-de-france", titles: 5, years: [1964, 1967, 1973, 2008, 2012] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Olympique_Lyonnais"
   },
   {
     id: "monaco",
@@ -2209,24 +2384,29 @@ const clubs = [
     stadiumAr: "ستاد لويس الثاني",
     stadiumEn: "Stade Louis II",
     nicknamesAr: [],
-    nicknamesEn: ["Les Monégasques"],
+    nicknamesEn: [
+      "Les Monégasques",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
-    rivals: [],
+    rivals: [{ nameAr: "نيس", nameEn: "OGC Nice" }],
     domesticLeagueTitles: 8,
     bioAr: "نادي كرة قدم من موناكو في فرنسا، تأسس سنة 1924، ويلعب على ملعب ستاد لويس الثاني. كسب لقب الدوري الفرنسي 8 مرات.",
     bioEn: "Football club from Monaco, France, founded in 1924, playing at Stade Louis II. Has won the French league title 8 times.",
     achievementsAr: [
       "8 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "5 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
       "8x Ligue 1 (professional era)",
+      "5x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 8, years: [1961, 1963, 1978, 1982, 1988, 1997, 2000, 2017] },
+      { competitionId: "coupe-de-france", titles: 5, years: [1960, 1963, 1980, 1985, 1991] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/AS_Monaco_FC"
   },
   {
     id: "saint-etienne",
@@ -2243,7 +2423,9 @@ const clubs = [
     stadiumAr: "ستاد جوفروا جيشار",
     stadiumEn: "Stade Geoffroy-Guichard",
     nicknamesAr: [],
-    nicknamesEn: ["Les Verts"],
+    nicknamesEn: [
+      "Les Verts",
+    ],
     colorsAr: "أخضر",
     colorsEn: "Green",
     rivals: [{ nameAr: "ليون", nameEn: "Olympique Lyonnais" }],
@@ -2280,24 +2462,29 @@ const clubs = [
     stadiumAr: "ستاد بيير موروا",
     stadiumEn: "Stade Pierre-Mauroy",
     nicknamesAr: [],
-    nicknamesEn: ["Les Dogues"],
+    nicknamesEn: [
+      "Les Dogues",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "لانس", nameEn: "RC Lens" }],
-    domesticLeagueTitles: 5,
-    bioAr: "نادي كرة قدم من ليل في فرنسا، تأسس سنة 1944، ويلعب على ملعب ستاد بيير موروا. كسب لقب الدوري الفرنسي 5 مرات.",
-    bioEn: "Football club from Lille, France, founded in 1944, playing at Stade Pierre-Mauroy. Has won the French league title 5 times.",
+    domesticLeagueTitles: 4,
+    bioAr: "نادي كرة قدم من ليل في فرنسا، تأسس سنة 1944، ويلعب على ملعب ستاد بيير موروا. كسب لقب الدوري الفرنسي 4 مرات.",
+    bioEn: "Football club from Lille, France, founded in 1944, playing at Stade Pierre-Mauroy. Has won the French league title 4 times.",
     achievementsAr: [
-      "5 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "4 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "6 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
-      "5x Ligue 1 (professional era)",
+      "4x Ligue 1 (professional era)",
+      "6x Coupe de France",
     ],
     honours: [
-      { competitionId: "ligue-1", titles: 5, years: [1933, 1946, 1954, 2011, 2021] },
+      { competitionId: "ligue-1", titles: 4, years: [1946, 1954, 2011, 2021] },
+      { competitionId: "coupe-de-france", titles: 6, years: [1946, 1947, 1948, 1953, 1955, 2011] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Lille_OSC"
   },
   {
     id: "nice",
@@ -2314,24 +2501,29 @@ const clubs = [
     stadiumAr: "أليانز ريفييرا",
     stadiumEn: "Allianz Riviera",
     nicknamesAr: [],
-    nicknamesEn: ["Les Aiglons"],
+    nicknamesEn: [
+      "Les Aiglons",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
-    rivals: [],
+    rivals: [{ nameAr: "موناكو", nameEn: "AS Monaco" }],
     domesticLeagueTitles: 4,
     bioAr: "نادي كرة قدم من نيس في فرنسا، تأسس سنة 1904، ويلعب على ملعب أليانز ريفييرا. كسب لقب الدوري الفرنسي 4 مرات.",
     bioEn: "Football club from Nice, France, founded in 1904, playing at Allianz Riviera. Has won the French league title 4 times.",
     achievementsAr: [
       "4 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "3 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
       "4x Ligue 1 (professional era)",
+      "3x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 4, years: [1951, 1952, 1956, 1959] },
+      { competitionId: "coupe-de-france", titles: 3, years: [1952, 1954, 1997] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/OGC_Nice"
   },
   {
     id: "lens",
@@ -2348,7 +2540,9 @@ const clubs = [
     stadiumAr: "ستاد بولار ديلليس",
     stadiumEn: "Stade Bollaert-Delelis",
     nicknamesAr: [],
-    nicknamesEn: ["Les Sang et Or"],
+    nicknamesEn: [
+      "Les Sang et Or",
+    ],
     colorsAr: "أحمر وأصفر",
     colorsEn: "Red and yellow",
     rivals: [{ nameAr: "ليل", nameEn: "Lille OSC" }],
@@ -2357,15 +2551,18 @@ const clubs = [
     bioEn: "Football club from Lens, France, founded in 1906, playing at Stade Bollaert-Delelis. Has won the French league title 1 time.",
     achievementsAr: [
       "لقب واحد: الدوري الفرنسي (الدوري الاحترافي)",
+      "لقب واحد: كأس فرنسا",
     ],
     achievementsEn: [
       "1x Ligue 1 (professional era)",
+      "1x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 1, years: [1998] },
+      { competitionId: "coupe-de-france", titles: 1, years: [2026] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/RC_Lens"
   },
   {
     id: "nantes",
@@ -2382,24 +2579,29 @@ const clubs = [
     stadiumAr: "ستاد لا بوجوار",
     stadiumEn: "Stade de la Beaujoire",
     nicknamesAr: [],
-    nicknamesEn: ["Les Canaris"],
+    nicknamesEn: [
+      "Les Canaris",
+    ],
     colorsAr: "أصفر وأخضر",
     colorsEn: "Yellow and green",
-    rivals: [],
+    rivals: [{ nameAr: "ستاد رين", nameEn: "Stade Rennais" }],
     domesticLeagueTitles: 8,
     bioAr: "نادي كرة قدم من نانت في فرنسا، تأسس سنة 1943، ويلعب على ملعب ستاد لا بوجوار. كسب لقب الدوري الفرنسي 8 مرات.",
     bioEn: "Football club from Nantes, France, founded in 1943, playing at Stade de la Beaujoire. Has won the French league title 8 times.",
     achievementsAr: [
       "8 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "4 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
       "8x Ligue 1 (professional era)",
+      "4x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 8, years: [1965, 1966, 1973, 1977, 1980, 1983, 1995, 2001] },
+      { competitionId: "coupe-de-france", titles: 4, years: [1979, 1999, 2000, 2022] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Nantes"
   },
   {
     id: "bordeaux",
@@ -2415,25 +2617,32 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ماتموت أتلانتيك",
     stadiumEn: "Matmut Atlantique",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الجيروندان",
+    ],
+    nicknamesEn: [
+      "Les Girondins",
+    ],
     colorsAr: "كحلي وأبيض",
     colorsEn: "Navy and white",
-    rivals: [],
+    rivals: [{ nameAr: "تولوز", nameEn: "Toulouse FC" }],
     domesticLeagueTitles: 6,
     bioAr: "نادي كرة قدم من بوردو في فرنسا، تأسس سنة 1881، ويلعب على ملعب ماتموت أتلانتيك. كسب لقب الدوري الفرنسي 6 مرات.",
     bioEn: "Football club from Bordeaux, France, founded in 1881, playing at Matmut Atlantique. Has won the French league title 6 times.",
     achievementsAr: [
       "6 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "4 ألقاب: كأس فرنسا",
     ],
     achievementsEn: [
       "6x Ligue 1 (professional era)",
+      "4x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 6, years: [1950, 1984, 1985, 1987, 1999, 2009] },
+      { competitionId: "coupe-de-france", titles: 4, years: [1941, 1986, 1987, 2013] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Girondins_de_Bordeaux"
   },
   {
     id: "reims",
@@ -2449,8 +2658,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ستاد أوجيست ديلون",
     stadiumEn: "Stade Auguste-Delaune",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الأحمر والأبيض",
+    ],
+    nicknamesEn: [
+      "Les Rouge et Blanc",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [],
@@ -2459,17 +2672,19 @@ const clubs = [
     bioEn: "Football club from Reims, France, founded in 1911, playing at Stade Auguste-Delaune. Has won the French league title 6 times.",
     achievementsAr: [
       "6 ألقاب: الدوري الفرنسي (الدوري الاحترافي)",
+      "لقبان: كأس فرنسا",
     ],
     achievementsEn: [
       "6x Ligue 1 (professional era)",
+      "2x Coupe de France",
     ],
     honours: [
       { competitionId: "ligue-1", titles: 6, years: [1949, 1953, 1955, 1958, 1960, 1962] },
+      { competitionId: "coupe-de-france", titles: 2, years: [1950, 1958] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Stade_de_Reims"
   },
-  // ================= البرتغال =================
   {
     id: "benfica",
     nameAr: "بنفيكا",
@@ -2484,8 +2699,12 @@ const clubs = [
     formerNameEn: "Sport Lisboa",
     stadiumAr: "إستاديو دا لوز",
     stadiumEn: "Estádio da Luz",
-    nicknamesAr: ["النسور"],
-    nicknamesEn: ["As Águias"],
+    nicknamesAr: [
+      "النسور",
+    ],
+    nicknamesEn: [
+      "As Águias",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "سبورتينج لشبونة", nameEn: "Sporting CP" }, { nameAr: "بورتو", nameEn: "FC Porto" }],
@@ -2505,7 +2724,7 @@ const clubs = [
       { competitionId: "uefa-champions-league", titles: 2, years: [1961, 1962] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/S.L._Benfica"
   },
   {
     id: "porto",
@@ -2521,8 +2740,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إستاديو دو دراجاو",
     stadiumEn: "Estádio do Dragão",
-    nicknamesAr: ["التنانين"],
-    nicknamesEn: ["Os Dragões"],
+    nicknamesAr: [
+      "التنانين",
+    ],
+    nicknamesEn: [
+      "Os Dragões",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "بنفيكا", nameEn: "Benfica" }],
@@ -2548,7 +2771,7 @@ const clubs = [
       { competitionId: "uefa-super-cup", titles: 1, years: [1987] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Porto"
   },
   {
     id: "sporting-cp",
@@ -2564,8 +2787,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إستاديو جوزيه ألفالادي",
     stadiumEn: "Estádio José Alvalade",
-    nicknamesAr: ["الأسود"],
-    nicknamesEn: ["Os Leões"],
+    nicknamesAr: [
+      "الأسود",
+    ],
+    nicknamesEn: [
+      "Os Leões",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
     rivals: [{ nameAr: "بنفيكا", nameEn: "Benfica" }],
@@ -2582,7 +2809,7 @@ const clubs = [
       { competitionId: "primeira-liga", titles: 21, years: [1941, 1944, 1947, 1948, 1949, 1951, 1952, 1953, 1954, 1958, 1962, 1966, 1970, 1974, 1980, 1982, 2000, 2002, 2021, 2024, 2025] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Sporting_CP"
   },
   {
     id: "braga",
@@ -2599,21 +2826,20 @@ const clubs = [
     stadiumAr: "إستاديو مونيسيبال دي براجا",
     stadiumEn: "Estádio Municipal de Braga",
     nicknamesAr: [],
-    nicknamesEn: ["Os Arsenalistas"],
+    nicknamesEn: [
+      "Os Arsenalistas",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "فيتوريا جيمارايش", nameEn: "Vitória de Guimarães" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من براجا في البرتغال، تأسس سنة 1921، ويلعب على ملعب إستاديو مونيسيبال دي براجا.",
     bioEn: "Football club from Braga, Portugal, founded in 1921, playing at Estádio Municipal de Braga.",
-    achievementsAr: [
-    ],
-    achievementsEn: [
-    ],
-    honours: [
-    ],
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/S.C._Braga"
   },
   {
     id: "boavista",
@@ -2630,10 +2856,12 @@ const clubs = [
     stadiumAr: "إستاديو دو بيسا",
     stadiumEn: "Estádio do Bessa",
     nicknamesAr: [],
-    nicknamesEn: ["Os Axadrezados"],
+    nicknamesEn: [
+      "Os Axadrezados",
+    ],
     colorsAr: "أبيض وأسود (مربعات)",
     colorsEn: "Black and white checkered",
-    rivals: [],
+    rivals: [{ nameAr: "بورتو", nameEn: "FC Porto" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من بورتو في البرتغال، تأسس سنة 1903، ويلعب على ملعب إستاديو دو بيسا. كسب لقب الدوري البرتغالي مرة واحدة.",
     bioEn: "Football club from Porto, Portugal, founded in 1903, playing at Estádio do Bessa. Has won the Portuguese league title 1 time.",
@@ -2647,7 +2875,7 @@ const clubs = [
       { competitionId: "primeira-liga", titles: 1, years: [2001] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Boavista_F.C."
   },
   {
     id: "vitoria-guimaraes",
@@ -2663,24 +2891,25 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إستاديو دوم أفونسو إنريكيس",
     stadiumEn: "Estádio D. Afonso Henriques",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الفيتوريانوس",
+    ],
+    nicknamesEn: [
+      "Vitorianos",
+      "Os Conquistadores",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
     rivals: [{ nameAr: "براجا", nameEn: "SC Braga" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من جيمارايش في البرتغال، تأسس سنة 1922، ويلعب على ملعب إستاديو دوم أفونسو إنريكيس.",
     bioEn: "Football club from Guimarães, Portugal, founded in 1922, playing at Estádio D. Afonso Henriques.",
-    achievementsAr: [
-    ],
-    achievementsEn: [
-    ],
-    honours: [
-    ],
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Vitória_S.C."
   },
-  // ================= مصر =================
   {
     id: "al-ahly",
     nameAr: "الأهلي",
@@ -2693,10 +2922,14 @@ const clubs = [
     founded: 1907,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: ["القلعة الحمراء"],
-    nicknamesEn: ["The Red Castle"],
+    stadiumAr: "استاد القاهرة الدولي",
+    stadiumEn: "Cairo International Stadium",
+    nicknamesAr: [
+      "القلعة الحمراء",
+    ],
+    nicknamesEn: [
+      "The Red Castle",
+    ],
     colorsAr: "أحمر",
     colorsEn: "Red",
     rivals: [{ nameAr: "الزمالك", nameEn: "Zamalek" }],
@@ -2742,10 +2975,14 @@ const clubs = [
     founded: 1911,
     formerNameAr: "نادي قصر النيل",
     formerNameEn: "Qasr El Nil Club",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: ["القلعة البيضاء"],
-    nicknamesEn: ["The White Castle"],
+    stadiumAr: "استاد القاهرة الدولي",
+    stadiumEn: "Cairo International Stadium",
+    nicknamesAr: [
+      "القلعة البيضاء",
+    ],
+    nicknamesEn: [
+      "The White Castle",
+    ],
     colorsAr: "أبيض",
     colorsEn: "White",
     rivals: [{ nameAr: "الأهلي", nameEn: "Al Ahly" }],
@@ -2786,18 +3023,22 @@ const clubs = [
     countryAr: "مصر",
     countryEn: "Egypt",
     leagueCompetitionId: "egyptian-premier-league",
-    cityAr: "",
-    cityEn: "",
+    cityAr: "القاهرة الجديدة",
+    cityEn: "New Cairo",
     founded: 2008,
     formerNameAr: "أسيوطي سبورت",
     formerNameEn: "Al Assiouty Sport",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد 30 يونيو (الدفاع الجوي)",
+    stadiumEn: "30 June Stadium (Air Defense Stadium)",
+    nicknamesAr: [
+      "الأهرامات",
+    ],
+    nicknamesEn: [
+      "The Pyramids",
+    ],
     colorsAr: "سماوي",
     colorsEn: "Sky blue",
-    rivals: [],
+    rivals: [{ nameAr: "الأهلي", nameEn: "Al Ahly" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم في مصر، تأسس سنة 2008 باسم أسيوطي سبورت.",
     bioEn: "Football club in Egypt, founded in 2008 as Al Assiouty Sport.",
@@ -2833,11 +3074,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد الإسماعيلية",
     stadiumEn: "Ismailia Stadium",
-    nicknamesAr: ["الدراويش"],
-    nicknamesEn: ["The Dervishes"],
+    nicknamesAr: [
+      "الدراويش",
+    ],
+    nicknamesEn: [
+      "The Dervishes",
+    ],
     colorsAr: "أصفر وأزرق",
     colorsEn: "Yellow and blue",
-    rivals: [],
+    rivals: [{ nameAr: "المصري", nameEn: "Al Masry" }],
     domesticLeagueTitles: 3,
     bioAr: "نادي كرة قدم من الإسماعيلية في مصر، تأسس سنة 1924، ويلعب على ملعب استاد الإسماعيلية. كسب لقب الدوري المصري 3 مرات.",
     bioEn: "Football club from Ismailia, Egypt, founded in 1924, playing at Ismailia Stadium. Has won the Egyptian league title 3 times.",
@@ -2873,11 +3118,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد بورسعيد",
     stadiumEn: "Port Said Stadium",
-    nicknamesAr: ["النسور الخضر"],
-    nicknamesEn: ["The Green Eagles"],
+    nicknamesAr: [
+      "النسور الخضر",
+    ],
+    nicknamesEn: [
+      "The Green Eagles",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
-    rivals: [],
+    rivals: [{ nameAr: "الإسماعيلي", nameEn: "Ismaily" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من بورسعيد في مصر، تأسس سنة 1920، ويلعب على ملعب استاد بورسعيد.",
     bioEn: "Football club from Port Said, Egypt, founded in 1920, playing at Port Said Stadium.",
@@ -2907,11 +3156,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد الإسكندرية",
     stadiumEn: "Alexandria Stadium",
-    nicknamesAr: ["سيد البلد"],
-    nicknamesEn: ["Sayed El Balad"],
+    nicknamesAr: [
+      "سيد البلد",
+    ],
+    nicknamesEn: [
+      "Sayed El Balad",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
-    rivals: [],
+    rivals: [{ nameAr: "الأولمبي", nameEn: "Olympic Club" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من الإسكندرية في مصر، تأسس سنة 1914، ويلعب على ملعب استاد الإسكندرية.",
     bioEn: "Football club from Alexandria, Egypt, founded in 1914, playing at Alexandria Stadium.",
@@ -2941,11 +3194,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد عثمان أحمد عثمان",
     stadiumEn: "Osman Ahmed Osman Stadium",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    nicknamesAr: [
+      "ذئاب الجبل",
+    ],
+    nicknamesEn: [
+      "Mountain Wolves",
+    ],
+    colorsAr: "أصفر وأسود",
+    colorsEn: "Yellow and black stripes",
+    rivals: [{ nameAr: "إنبي", nameEn: "ENPPI" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من القاهرة في مصر، تأسس سنة 1973، ويلعب على ملعب استاد عثمان أحمد عثمان. كسب لقب الدوري المصري مرة واحدة.",
     bioEn: "Football club from Cairo, Egypt, founded in 1973, playing at Osman Ahmed Osman Stadium. Has won the Egyptian league title 1 time.",
@@ -2974,18 +3231,22 @@ const clubs = [
     countryAr: "مصر",
     countryEn: "Egypt",
     leagueCompetitionId: "egyptian-premier-league",
-    cityAr: "",
-    cityEn: "",
+    cityAr: "الجيزة",
+    cityEn: "Giza",
     founded: 1921,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    stadiumAr: "استاد ميت عقبة",
+    stadiumEn: "Mit Okba Stadium",
+    nicknamesAr: [
+      "الهامرز",
+    ],
+    nicknamesEn: [
+      "The Hammers",
+    ],
+    colorsAr: "أزرق وأبيض",
+    colorsEn: "Blue and white",
+    rivals: [{ nameAr: "الزمالك", nameEn: "Zamalek" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم في مصر، تأسس سنة 1921. كسب لقب الدوري المصري مرة واحدة.",
     bioEn: "Football club in Egypt, founded in 1921. Has won the Egyptian league title 1 time.",
@@ -3002,7 +3263,7 @@ const clubs = [
       { competitionId: "egypt-cup", titles: 6, years: [1923, 1929, 1954, 1965, 1967, 1986] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Tersana_SC"
   },
   {
     id: "olympic-club",
@@ -3016,13 +3277,13 @@ const clubs = [
     founded: 1905,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "استاد عز الدين يعقوب",
+    stadiumEn: "Izz al-Din Yacoub Stadium",
     nicknamesAr: [],
     nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    colorsAr: "أحمر وأبيض",
+    colorsEn: "Red and white",
+    rivals: [{ nameAr: "الاتحاد السكندري", nameEn: "Al Ittihad Alexandria" }],
     domesticLeagueTitles: 1,
     bioAr: "نادي كرة قدم من الإسكندرية في مصر، تأسس سنة 1905. كسب لقب الدوري المصري مرة واحدة.",
     bioEn: "Football club from Alexandria, Egypt, founded in 1905. Has won the Egyptian league title 1 time.",
@@ -3055,11 +3316,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد بتروسبورت",
     stadiumEn: "Petro Sport Stadium",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    nicknamesAr: [
+      "نادي البترول",
+    ],
+    nicknamesEn: [
+      "The Petroleum Club",
+    ],
+    colorsAr: "أزرق وأبيض",
+    colorsEn: "Blue and white",
+    rivals: [{ nameAr: "المقاولون العرب", nameEn: "Al Mokawloon Al Arab" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من القاهرة في مصر، تأسس سنة 1980، ويلعب على ملعب استاد بتروسبورت.",
     bioEn: "Football club from Cairo, Egypt, founded in 1980, playing at Petro Sport Stadium.",
@@ -3075,7 +3340,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: ""
   },
-  // ================= هولندا =================
   {
     id: "ajax",
     nameAr: "أياكس",
@@ -3091,7 +3355,9 @@ const clubs = [
     stadiumAr: "يوهان كرويف أرينا",
     stadiumEn: "Johan Cruyff Arena",
     nicknamesAr: [],
-    nicknamesEn: ["De Godenzonen"],
+    nicknamesEn: [
+      "De Godenzonen",
+    ],
     colorsAr: "أبيض وأحمر",
     colorsEn: "White and red",
     rivals: [{ nameAr: "فينورد", nameEn: "Feyenoord" }],
@@ -3114,7 +3380,7 @@ const clubs = [
       { competitionId: "uefa-super-cup", titles: 2, years: [1973, 1995] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/AFC_Ajax"
   },
   {
     id: "psv-eindhoven",
@@ -3130,11 +3396,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ملعب فيليبس",
     stadiumEn: "Philips Stadion",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "البوير",
+    ],
+    nicknamesEn: [
+      "Boeren (Farmers)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
-    rivals: [],
+    rivals: [{ nameAr: "أياكس", nameEn: "Ajax" }, { nameAr: "فينورد", nameEn: "Feyenoord" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من آيندهوفن في هولندا، تأسس سنة 1913، ويلعب على ملعب ملعب فيليبس.",
     bioEn: "Football club from Eindhoven, Netherlands, founded in 1913, playing at Philips Stadion.",
@@ -3151,7 +3421,7 @@ const clubs = [
       { competitionId: "uefa-europa-league", titles: 1, years: [1978] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/PSV_Eindhoven"
   },
   {
     id: "feyenoord",
@@ -3167,8 +3437,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "دي كويب (ستاديون فينورد)",
     stadiumEn: "De Kuip (Stadion Feijenoord)",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "فخر الجنوب",
+    ],
+    nicknamesEn: [
+      "De Trots van Zuid (Pride of South)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "أياكس", nameEn: "Ajax" }],
@@ -3188,9 +3462,8 @@ const clubs = [
       { competitionId: "uefa-europa-league", titles: 2, years: [1974, 2002] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Feyenoord"
   },
-  // ================= اسكتلندا =================
   {
     id: "celtic",
     nameAr: "سلتيك",
@@ -3206,7 +3479,9 @@ const clubs = [
     stadiumAr: "سلتيك بارك",
     stadiumEn: "Celtic Park",
     nicknamesAr: [],
-    nicknamesEn: ["The Bhoys"],
+    nicknamesEn: [
+      "The Bhoys",
+    ],
     colorsAr: "أخضر وأبيض (خطوط)",
     colorsEn: "Green and white hoops",
     rivals: [{ nameAr: "رينجرز", nameEn: "Rangers" }],
@@ -3223,9 +3498,8 @@ const clubs = [
       { competitionId: "uefa-champions-league", titles: 1, years: [1967] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Celtic_F.C."
   },
-  // ================= تركيا =================
   {
     id: "galatasaray",
     nameAr: "جلطة سراي",
@@ -3238,10 +3512,12 @@ const clubs = [
     founded: 1905,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "رامز بارك",
+    stadiumEn: "Rams Park",
     nicknamesAr: [],
-    nicknamesEn: ["Cim Bom"],
+    nicknamesEn: [
+      "Cim Bom",
+    ],
     colorsAr: "أصفر وأحمر",
     colorsEn: "Yellow and red",
     rivals: [{ nameAr: "فنربخشة", nameEn: "Fenerbahçe" }],
@@ -3261,9 +3537,8 @@ const clubs = [
       { competitionId: "uefa-super-cup", titles: 1, years: [2000] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)"
   },
-  // ================= صربيا =================
   {
     id: "red-star-belgrade",
     nameAr: "النجم الأحمر",
@@ -3278,8 +3553,13 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ملعب راجكو ميتيتش",
     stadiumEn: "Rajko Mitić Stadium",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "زفيزدا",
+    ],
+    nicknamesEn: [
+      "Zvezda",
+      "Crveno-beli (Red-Whites)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "بارتيزان", nameEn: "Partizan" }],
@@ -3296,9 +3576,8 @@ const clubs = [
       { competitionId: "uefa-champions-league", titles: 1, years: [1991] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Red_Star_Belgrade"
   },
-  // ================= بلجيكا =================
   {
     id: "anderlecht",
     nameAr: "أندرلخت",
@@ -3313,11 +3592,16 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "لوتو بارك",
     stadiumEn: "Lotto Park",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الأرجواني والأبيض",
+    ],
+    nicknamesEn: [
+      "Le Sporting",
+      "Paars-Wit (Purple and White)",
+    ],
     colorsAr: "بنفسجي وأبيض",
     colorsEn: "Purple and white",
-    rivals: [],
+    rivals: [{ nameAr: "كلوب بروج", nameEn: "Club Brugge" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من بروكسل في بلجيكا، تأسس سنة 1908، ويلعب على ملعب لوتو بارك.",
     bioEn: "Football club from Brussels, Belgium, founded in 1908, playing at Lotto Park.",
@@ -3334,9 +3618,8 @@ const clubs = [
       { competitionId: "uefa-super-cup", titles: 2, years: [1976, 1978] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
   },
-  // ================= المغرب =================
   {
     id: "wydad",
     nameAr: "الوداد",
@@ -3349,10 +3632,14 @@ const clubs = [
     founded: 1937,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "ملعب محمد الخامس",
+    stadiumEn: "Stade Mohammed V",
+    nicknamesAr: [
+      "الأحمر",
+    ],
+    nicknamesEn: [
+      "Al Ahmar (The Red)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "الرجاء", nameEn: "Raja CA" }],
@@ -3372,7 +3659,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2018] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Wydad_AC"
   },
   {
     id: "raja",
@@ -3386,10 +3673,12 @@ const clubs = [
     founded: 1949,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "ملعب محمد الخامس",
+    stadiumEn: "Stade Mohammed V",
     nicknamesAr: [],
-    nicknamesEn: ["Les Aigles Verts"],
+    nicknamesEn: [
+      "Les Aigles Verts",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
     rivals: [{ nameAr: "الوداد", nameEn: "Wydad AC" }],
@@ -3412,7 +3701,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 2, years: [2000, 2019] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Raja_CA"
   },
   {
     id: "rs-berkane",
@@ -3426,10 +3715,14 @@ const clubs = [
     founded: 1938,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "الملعب البلدي ببركان",
+    stadiumEn: "Berkane Municipal Stadium",
+    nicknamesAr: [
+      "الأولاد البرتقاليون",
+    ],
+    nicknamesEn: [
+      "The Orange Boys",
+    ],
     colorsAr: "برتقالي وأبيض",
     colorsEn: "Orange and white",
     rivals: [],
@@ -3449,9 +3742,8 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2022] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/RS_Berkane"
   },
-  // ================= تونس =================
   {
     id: "esperance-tunis",
     nameAr: "الترجي التونسي",
@@ -3464,10 +3756,14 @@ const clubs = [
     founded: 1919,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد حمادي العقربي",
+    stadiumEn: "Hammadi Agrebi Stadium",
+    nicknamesAr: [
+      "الترجي",
+    ],
+    nicknamesEn: [
+      "Taraji",
+    ],
     colorsAr: "أحمر وأصفر",
     colorsEn: "Red and yellow",
     rivals: [{ nameAr: "النادي الأفريقي", nameEn: "Club Africain" }],
@@ -3487,7 +3783,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [1995] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Espérance_Sportive_de_Tunis"
   },
   {
     id: "etoile-du-sahel",
@@ -3501,13 +3797,17 @@ const clubs = [
     founded: 1925,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد سوسة الأولمبي",
+    stadiumEn: "Sousse Olympic Stadium",
+    nicknamesAr: [
+      "النجم",
+    ],
+    nicknamesEn: [
+      "L'Étoile",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
-    rivals: [],
+    rivals: [{ nameAr: "الترجي", nameEn: "Espérance de Tunis" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من سوسة في تونس، تأسس سنة 1925.",
     bioEn: "Football club from Sousse, Tunisia, founded in 1925.",
@@ -3527,7 +3827,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 2, years: [1998, 2008] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Étoile_Sportive_du_Sahel"
   },
   {
     id: "cs-sfaxien",
@@ -3541,13 +3841,17 @@ const clubs = [
     founded: 1928,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد الطيب المهيري",
+    stadiumEn: "Taïeb Mhiri Stadium",
+    nicknamesAr: [
+      "يوفنتوس العرب",
+    ],
+    nicknamesEn: [
+      "Juventus El Arab",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
-    rivals: [],
+    rivals: [{ nameAr: "النجم الساحلي", nameEn: "Étoile du Sahel" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من صفاقس في تونس، تأسس سنة 1928.",
     bioEn: "Football club from Sfax, Tunisia, founded in 1928.",
@@ -3561,9 +3865,8 @@ const clubs = [
       { competitionId: "caf-confederation-cup", titles: 3, years: [2007, 2008, 2013] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/CS_Sfaxien"
   },
-  // ================= الجزائر =================
   {
     id: "usm-alger",
     nameAr: "اتحاد الجزائر",
@@ -3576,10 +3879,14 @@ const clubs = [
     founded: 1937,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد عمر حمادي",
+    stadiumEn: "Omar Hamadi Stadium",
+    nicknamesAr: [
+      "اليوسمة",
+    ],
+    nicknamesEn: [
+      "USMA",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [],
@@ -3599,7 +3906,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2023] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/USM_Alger"
   },
   {
     id: "es-setif",
@@ -3613,10 +3920,16 @@ const clubs = [
     founded: 1958,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد 8 ماي 1945",
+    stadiumEn: "8 May 1945 Stadium",
+    nicknamesAr: [
+      "الكحلة",
+      "النسور السوداء",
+    ],
+    nicknamesEn: [
+      "El Kahla (The Black One)",
+      "Les Aigles Noirs (Black Eagles)",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
     rivals: [],
@@ -3636,7 +3949,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2015] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/ES_Sétif"
   },
   {
     id: "js-kabylie",
@@ -3650,10 +3963,14 @@ const clubs = [
     founded: 1946,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد حسين آيت أحمد",
+    stadiumEn: "Hocine Aït Ahmed Stadium",
+    nicknamesAr: [
+      "الكناري",
+    ],
+    nicknamesEn: [
+      "The Canaries",
+    ],
     colorsAr: "أصفر وأخضر",
     colorsEn: "Yellow and green",
     rivals: [],
@@ -3670,9 +3987,8 @@ const clubs = [
       { competitionId: "caf-champions-league", titles: 2, years: [1981, 1990] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/JS_Kabylie"
   },
-  // ================= جنوب أفريقيا =================
   {
     id: "mamelodi-sundowns",
     nameAr: "ماميلودي صنداونز",
@@ -3685,13 +4001,15 @@ const clubs = [
     founded: 1970,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "لوفتوس فيرسفيلد",
+    stadiumEn: "Loftus Versfeld Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["Masandawana"],
+    nicknamesEn: [
+      "Masandawana",
+    ],
     colorsAr: "أصفر وأزرق",
     colorsEn: "Yellow and blue",
-    rivals: [],
+    rivals: [{ nameAr: "أورلاندو بايرتس", nameEn: "Orlando Pirates" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من بريتوريا في جنوب أفريقيا، تأسس سنة 1970.",
     bioEn: "Football club from Pretoria, South Africa, founded in 1970.",
@@ -3708,7 +4026,7 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2017] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Mamelodi_Sundowns_F.C."
   },
   {
     id: "orlando-pirates",
@@ -3722,10 +4040,12 @@ const clubs = [
     founded: 1937,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
+    stadiumAr: "استاد أورلاندو",
+    stadiumEn: "Orlando Stadium",
     nicknamesAr: [],
-    nicknamesEn: ["The Buccaneers"],
+    nicknamesEn: [
+      "The Buccaneers",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
     rivals: [{ nameAr: "كايزر تشيفز", nameEn: "Kaizer Chiefs" }],
@@ -3745,9 +4065,8 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [1996] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Orlando_Pirates_F.C."
   },
-  // ================= الكونغو الديمقراطية =================
   {
     id: "tp-mazembe",
     nameAr: "مازيمبي",
@@ -3760,13 +4079,17 @@ const clubs = [
     founded: 1939,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    stadiumAr: "استاد تي بي مازيمبي",
+    stadiumEn: "Stade TP Mazembe",
+    nicknamesAr: [
+      "الغربان",
+    ],
+    nicknamesEn: [
+      "Les Corbeaux (The Ravens)",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
-    rivals: [],
+    rivals: [{ nameAr: "إنييمبا", nameEn: "Enyimba" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من لوبومباشي في الكونغو الديمقراطية، تأسس سنة 1939.",
     bioEn: "Football club from Lubumbashi, DR Congo, founded in 1939.",
@@ -3786,9 +4109,8 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 3, years: [2010, 2011, 2016] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/TP_Mazembe"
   },
-  // ================= غانا =================
   {
     id: "asante-kotoko",
     nameAr: "كوتوكو",
@@ -3801,13 +4123,17 @@ const clubs = [
     founded: 1935,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    stadiumAr: "استاد بابا يارا",
+    stadiumEn: "Baba Yara Sports Stadium",
+    nicknamesAr: [
+      "محاربو الشيح",
+    ],
+    nicknamesEn: [
+      "Porcupine Warriors",
+    ],
+    colorsAr: "أحمر وأصفر وأخضر",
+    colorsEn: "Red, yellow and green",
+    rivals: [{ nameAr: "هارتس أوف أوك", nameEn: "Hearts of Oak" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من كوماسي في غانا، تأسس سنة 1935.",
     bioEn: "Football club from Kumasi, Ghana, founded in 1935.",
@@ -3821,7 +4147,7 @@ const clubs = [
       { competitionId: "caf-champions-league", titles: 2, years: [1970, 1983] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Asante_Kotoko_S.C."
   },
   {
     id: "hearts-of-oak",
@@ -3835,13 +4161,17 @@ const clubs = [
     founded: 1911,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    stadiumAr: "استاد أكرا الرياضي",
+    stadiumEn: "Accra Sports Stadium",
+    nicknamesAr: [
+      "فوبيا",
+    ],
+    nicknamesEn: [
+      "Phobia",
+    ],
+    colorsAr: "أحمر وأصفر وأزرق (قوس قزح)",
+    colorsEn: "Red, yellow and blue (rainbow)",
+    rivals: [{ nameAr: "أشانتي كوتوكو", nameEn: "Asante Kotoko" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من أكرا في غانا، تأسس سنة 1911.",
     bioEn: "Football club from Accra, Ghana, founded in 1911.",
@@ -3861,9 +4191,8 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 1, years: [2001] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Accra_Hearts_of_Oak_S.C."
   },
-  // ================= نيجيريا =================
   {
     id: "enyimba",
     nameAr: "إنييمبا",
@@ -3876,13 +4205,19 @@ const clubs = [
     founded: 1976,
     formerNameAr: "",
     formerNameEn: "",
-    stadiumAr: "",
-    stadiumEn: "",
-    nicknamesAr: [],
-    nicknamesEn: [],
-    colorsAr: "",
-    colorsEn: "",
-    rivals: [],
+    stadiumAr: "استاد إنييمبا الدولي",
+    stadiumEn: "Enyimba International Stadium",
+    nicknamesAr: [
+      "فيل الشعب",
+      "محاربو أبا",
+    ],
+    nicknamesEn: [
+      "Peoples' Elephant",
+      "The Aba Warriors",
+    ],
+    colorsAr: "أزرق وأبيض",
+    colorsEn: "Blue and white",
+    rivals: [{ nameAr: "تي بي مازيمبي", nameEn: "TP Mazembe" }],
     domesticLeagueTitles: null,
     bioAr: "نادي كرة قدم من أبا في نيجيريا، تأسس سنة 1976.",
     bioEn: "Football club from Aba, Nigeria, founded in 1976.",
@@ -3899,9 +4234,8 @@ const clubs = [
       { competitionId: "caf-super-cup", titles: 2, years: [2004, 2005] },
     ],
     wikiUrlAr: "",
-    wikiUrlEn: ""
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Enyimba_International_F.C."
   },
-  // ================= إضافات: إنجلترا (نفس مدن أندية موجودة) =================
   {
     id: "birmingham-city",
     nameAr: "برمنجهام سيتي",
@@ -3916,8 +4250,12 @@ const clubs = [
     formerNameEn: "Small Heath Alliance",
     stadiumAr: "سانت أندروز",
     stadiumEn: "St Andrew's",
-    nicknamesAr: ["ذا بلوز"],
-    nicknamesEn: ["The Blues"],
+    nicknamesAr: [
+      "ذا بلوز",
+    ],
+    nicknamesEn: [
+      "The Blues",
+    ],
     colorsAr: "أزرق ملكي وأبيض",
     colorsEn: "Royal blue and white",
     rivals: [{ nameAr: "أستون فيلا", nameEn: "Aston Villa" }],
@@ -3925,13 +4263,13 @@ const clubs = [
     bioAr: "نادي كرة قدم من برمنجهام في إنجلترا، تأسس سنة 1875 باسم سمول هيث أليانس، ويلعب على ملعب سانت أندروز. لم يفز بلقب الدوري الإنجليزي حتى الآن.",
     bioEn: "Football club from Birmingham, England, founded in 1875 as Small Heath Alliance, playing at St Andrew's. Has never won the English top-flight title.",
     achievementsAr: [
-      "لقب واحد: كأس الرابطة الإنجليزية (كاراباو)",
+      "لقبان: كأس الرابطة الإنجليزية (كاراباو)",
     ],
     achievementsEn: [
-      "1x EFL Cup (League Cup)",
+      "2x EFL Cup (League Cup)",
     ],
     honours: [
-      { competitionId: "efl-cup", titles: 1, years: [1963] },
+      { competitionId: "efl-cup", titles: 2, years: [1963, 2011] },
     ],
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Birmingham_City_F.C."
@@ -3950,8 +4288,12 @@ const clubs = [
     formerNameEn: "The Wednesday",
     stadiumAr: "هيلزبره",
     stadiumEn: "Hillsborough Stadium",
-    nicknamesAr: ["ذا أولز"],
-    nicknamesEn: ["The Owls"],
+    nicknamesAr: [
+      "ذا أولز",
+    ],
+    nicknamesEn: [
+      "The Owls",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "شيفيلد يونايتد", nameEn: "Sheffield United" }],
@@ -3990,8 +4332,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "برامال لين",
     stadiumEn: "Bramall Lane",
-    nicknamesAr: ["ذا بليدز"],
-    nicknamesEn: ["The Blades"],
+    nicknamesAr: [
+      "ذا بليدز",
+    ],
+    nicknamesEn: [
+      "The Blades",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "شيفيلد وينزداي", nameEn: "Sheffield Wednesday" }],
@@ -4027,8 +4373,12 @@ const clubs = [
     formerNameEn: "St. Luke's F.C.",
     stadiumAr: "مولينيو",
     stadiumEn: "Molineux Stadium",
-    nicknamesAr: ["الذئاب"],
-    nicknamesEn: ["Wolves"],
+    nicknamesAr: [
+      "الذئاب",
+    ],
+    nicknamesEn: [
+      "Wolves",
+    ],
     colorsAr: "ذهبي وأسود",
     colorsEn: "Old gold and black",
     rivals: [{ nameAr: "وست بروميتش ألبيون", nameEn: "West Bromwich Albion" }],
@@ -4067,8 +4417,12 @@ const clubs = [
     formerNameEn: "St. Mary's Y.M.A.",
     stadiumAr: "سانت ماريز ستاديوم",
     stadiumEn: "St Mary's Stadium",
-    nicknamesAr: ["ذا سينتس"],
-    nicknamesEn: ["The Saints"],
+    nicknamesAr: [
+      "ذا سينتس",
+    ],
+    nicknamesEn: [
+      "The Saints",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "بورتسموث", nameEn: "Portsmouth" }],
@@ -4101,8 +4455,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أوف لايت",
     stadiumEn: "Stadium of Light",
-    nicknamesAr: ["ذا بلاك كاتس"],
-    nicknamesEn: ["The Black Cats"],
+    nicknamesAr: [
+      "ذا بلاك كاتس",
+    ],
+    nicknamesEn: [
+      "The Black Cats",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "نيوكاسل يونايتد", nameEn: "Newcastle United" }],
@@ -4124,7 +4482,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Sunderland_A.F.C."
   },
-  // ================= إضافات: إسبانيا (نفس مدن أندية موجودة) =================
   {
     id: "espanyol",
     nameAr: "إسبانيول",
@@ -4139,8 +4496,12 @@ const clubs = [
     formerNameEn: "Sociedad Española de Football",
     stadiumAr: "استاد آر سي دي إي",
     stadiumEn: "RCDE Stadium",
-    nicknamesAr: ["البيريكيتوس"],
-    nicknamesEn: ["Periquitos"],
+    nicknamesAr: [
+      "البيريكيتوس",
+    ],
+    nicknamesEn: [
+      "Periquitos",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "برشلونة", nameEn: "FC Barcelona" }],
@@ -4173,8 +4534,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد سيوداد دي فالنسيا",
     stadiumEn: "Estadi Ciutat de València",
-    nicknamesAr: ["الضفادع"],
-    nicknamesEn: ["Granotes (The Frogs)"],
+    nicknamesAr: [
+      "الضفادع",
+    ],
+    nicknamesEn: [
+      "Granotes (The Frogs)",
+    ],
     colorsAr: "أزرق كحلي وعنابي",
     colorsEn: "Navy blue and maroon",
     rivals: [{ nameAr: "فالنسيا", nameEn: "Valencia CF" }],
@@ -4201,8 +4566,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "لا روماريدا",
     stadiumEn: "La Romareda",
-    nicknamesAr: ["لوس مانيوس"],
-    nicknamesEn: ["Los Maños"],
+    nicknamesAr: [
+      "لوس مانيوس",
+    ],
+    nicknamesEn: [
+      "Los Maños",
+    ],
     colorsAr: "أبيض وأزرق",
     colorsEn: "White and blue",
     rivals: [{ nameAr: "أوساسونا", nameEn: "CA Osasuna" }],
@@ -4224,7 +4593,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Real_Zaragoza"
   },
-  // ================= إضافات: إيطاليا =================
   {
     id: "hellas-verona",
     nameAr: "هيلاس فيرونا",
@@ -4239,8 +4607,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد ماركانتونيو بينتيجودي",
     stadiumEn: "Stadio Marcantonio Bentegodi",
-    nicknamesAr: ["جالوبلو"],
-    nicknamesEn: ["Gialloblù"],
+    nicknamesAr: [
+      "جالوبلو",
+    ],
+    nicknamesEn: [
+      "Gialloblù",
+    ],
     colorsAr: "أصفر وأزرق",
     colorsEn: "Yellow and blue",
     rivals: [],
@@ -4273,8 +4645,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد فريولي",
     stadiumEn: "Stadio Friuli",
-    nicknamesAr: ["زيبريتي"],
-    nicknamesEn: ["Le Zebrette"],
+    nicknamesAr: [
+      "زيبريتي",
+    ],
+    nicknamesEn: [
+      "Le Zebrette",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white stripes",
     rivals: [],
@@ -4301,8 +4677,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "يونيبول دوموس",
     stadiumEn: "Unipol Domus",
-    nicknamesAr: ["روسوبلو"],
-    nicknamesEn: ["Rossoblù"],
+    nicknamesAr: [
+      "روسوبلو",
+    ],
+    nicknamesEn: [
+      "Rossoblù",
+    ],
     colorsAr: "أحمر وأزرق",
     colorsEn: "Red and blue",
     rivals: [],
@@ -4321,7 +4701,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Cagliari_Calcio"
   },
-  // ================= إضافات: ألمانيا (مدينتا ميونخ وبرلين وهامبورج) =================
   {
     id: "1860-munich",
     nameAr: "1860 ميونخ",
@@ -4336,8 +4715,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "جرونفالدر شتاديون",
     stadiumEn: "Grünwalder Stadion",
-    nicknamesAr: ["الأسود"],
-    nicknamesEn: ["Die Löwen (The Lions)"],
+    nicknamesAr: [
+      "الأسود",
+    ],
+    nicknamesEn: [
+      "Die Löwen (The Lions)",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "بايرن ميونخ", nameEn: "Bayern Munich" }],
@@ -4346,12 +4729,15 @@ const clubs = [
     bioEn: "Football club from Munich, Germany, founded in 1860, playing at Grünwalder Stadion. Has won the German league title once.",
     achievementsAr: [
       "لقب واحد: الدوري الألماني",
+      "لقبان: كأس ألمانيا",
     ],
     achievementsEn: [
       "1x German championship",
+      "2x DFB-Pokal",
     ],
     honours: [
       { competitionId: "german-championship", titles: 1, years: [1966] },
+      { competitionId: "dfb-pokal", titles: 2, years: [1942, 1964] },
     ],
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/TSV_1860_Munich"
@@ -4370,8 +4756,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أولمبيا برلين",
     stadiumEn: "Olympiastadion",
-    nicknamesAr: ["السيدة العجوز"],
-    nicknamesEn: ["Die Alte Dame (The Old Lady)"],
+    nicknamesAr: [
+      "السيدة العجوز",
+    ],
+    nicknamesEn: [
+      "Die Alte Dame (The Old Lady)",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "يونيون برلين", nameEn: "Union Berlin" }],
@@ -4404,8 +4794,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد آن دير ألتن فورستيراي",
     stadiumEn: "Stadion An der Alten Försterei",
-    nicknamesAr: ["الحديديون"],
-    nicknamesEn: ["Die Eisernen (The Iron Ones)"],
+    nicknamesAr: [
+      "الحديديون",
+    ],
+    nicknamesEn: [
+      "Die Eisernen (The Iron Ones)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "هيرتا برلين", nameEn: "Hertha BSC" }],
@@ -4432,8 +4826,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ميلرنتور شتاديون",
     stadiumEn: "Millerntor-Stadion",
-    nicknamesAr: ["كيتزكيكر"],
-    nicknamesEn: ["Kiezkicker"],
+    nicknamesAr: [
+      "كيتزكيكر",
+    ],
+    nicknamesEn: [
+      "Kiezkicker",
+    ],
     colorsAr: "بني وأبيض",
     colorsEn: "Brown and white",
     rivals: [{ nameAr: "هامبورج", nameEn: "Hamburger SV" }],
@@ -4460,8 +4858,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أوروبا بارك",
     stadiumEn: "Europa-Park Stadion",
-    nicknamesAr: ["برايسجاو-برازيليانر"],
-    nicknamesEn: ["Breisgau-Brasilianer"],
+    nicknamesAr: [
+      "برايسجاو-برازيليانر",
+    ],
+    nicknamesEn: [
+      "Breisgau-Brasilianer",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [],
@@ -4474,7 +4876,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/SC_Freiburg"
   },
-  // ================= إضافات: فرنسا (مدينة باريس) =================
   {
     id: "paris-fc",
     nameAr: "باريس إف سي",
@@ -4489,8 +4890,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد جان بوان",
     stadiumEn: "Stade Jean-Bouin",
-    nicknamesAr: ["الباريسيون"],
-    nicknamesEn: ["Les Parisiens"],
+    nicknamesAr: [
+      "الباريسيون",
+    ],
+    nicknamesEn: [
+      "Les Parisiens",
+    ],
     colorsAr: "أزرق",
     colorsEn: "Blue",
     rivals: [{ nameAr: "باريس سان جيرمان", nameEn: "Paris Saint-Germain" }],
@@ -4517,8 +4922,12 @@ const clubs = [
     formerNameEn: "Red Star Club Français",
     stadiumAr: "استاد باوير",
     stadiumEn: "Stade Bauer",
-    nicknamesAr: ["النجمة الحمراء"],
-    nicknamesEn: ["L'Étoile Rouge"],
+    nicknamesAr: [
+      "النجمة الحمراء",
+    ],
+    nicknamesEn: [
+      "L'Étoile Rouge",
+    ],
     colorsAr: "أخضر وأبيض",
     colorsEn: "Green and white",
     rivals: [{ nameAr: "باريس إف سي", nameEn: "Paris FC" }],
@@ -4551,8 +4960,12 @@ const clubs = [
     formerNameEn: "FC Neudorf",
     stadiumAr: "استاد لا مينو",
     stadiumEn: "Stade de la Meinau",
-    nicknamesAr: ["الريسينج"],
-    nicknamesEn: ["Le Racing"],
+    nicknamesAr: [
+      "الريسينج",
+    ],
+    nicknamesEn: [
+      "Le Racing",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [],
@@ -4574,7 +4987,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/RC_Strasbourg_Alsace"
   },
-  // ================= الدفعة الثانية: إنجلترا =================
   {
     id: "fulham",
     nameAr: "فولهام",
@@ -4589,8 +5001,12 @@ const clubs = [
     formerNameEn: "St Andrews Cricket & Football Club",
     stadiumAr: "كريفن كوتيدج",
     stadiumEn: "Craven Cottage",
-    nicknamesAr: ["ذا كوتيجرز"],
-    nicknamesEn: ["The Cottagers"],
+    nicknamesAr: [
+      "ذا كوتيجرز",
+    ],
+    nicknamesEn: [
+      "The Cottagers",
+    ],
     colorsAr: "أبيض وأسود",
     colorsEn: "White and black",
     rivals: [{ nameAr: "تشيلسي", nameEn: "Chelsea" }],
@@ -4617,8 +5033,12 @@ const clubs = [
     formerNameEn: "The Glaziers",
     stadiumAr: "سيلهيرست بارك",
     stadiumEn: "Selhurst Park",
-    nicknamesAr: ["ذا إيجلز"],
-    nicknamesEn: ["The Eagles"],
+    nicknamesAr: [
+      "ذا إيجلز",
+    ],
+    nicknamesEn: [
+      "The Eagles",
+    ],
     colorsAr: "أحمر وأزرق",
     colorsEn: "Red and blue",
     rivals: [{ nameAr: "برايتون", nameEn: "Brighton & Hove Albion" }],
@@ -4654,8 +5074,12 @@ const clubs = [
     formerNameEn: "West Bromwich Strollers",
     stadiumAr: "ذا هوثورنز",
     stadiumEn: "The Hawthorns",
-    nicknamesAr: ["ذا باجيز"],
-    nicknamesEn: ["The Baggies"],
+    nicknamesAr: [
+      "ذا باجيز",
+    ],
+    nicknamesEn: [
+      "The Baggies",
+    ],
     colorsAr: "أزرق كحلي وأبيض",
     colorsEn: "Navy blue and white stripes",
     rivals: [{ nameAr: "وولفرهامبتون ويندررز", nameEn: "Wolverhampton Wanderers" }],
@@ -4694,8 +5118,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "برايد بارك",
     stadiumEn: "Pride Park Stadium",
-    nicknamesAr: ["ذا رامز"],
-    nicknamesEn: ["The Rams"],
+    nicknamesAr: [
+      "ذا رامز",
+    ],
+    nicknamesEn: [
+      "The Rams",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
     rivals: [{ nameAr: "نوتنجهام فورست", nameEn: "Nottingham Forest" }],
@@ -4731,8 +5159,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "تيرف مور",
     stadiumEn: "Turf Moor",
-    nicknamesAr: ["ذا كلاريتس"],
-    nicknamesEn: ["The Clarets"],
+    nicknamesAr: [
+      "ذا كلاريتس",
+    ],
+    nicknamesEn: [
+      "The Clarets",
+    ],
     colorsAr: "عنابي وأزرق سماوي",
     colorsEn: "Claret and sky blue",
     rivals: [{ nameAr: "بلاكبيرن روفرز", nameEn: "Blackburn Rovers" }],
@@ -4754,7 +5186,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Burnley_F.C."
   },
-  // ================= الدفعة الثانية: إسبانيا =================
   {
     id: "celta-vigo",
     nameAr: "سلتا فيجو",
@@ -4769,8 +5200,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "بالايدوس",
     stadiumEn: "Balaídos",
-    nicknamesAr: ["أوس سيليستيس"],
-    nicknamesEn: ["Os Celestes (The Sky Blues)"],
+    nicknamesAr: [
+      "أوس سيليستيس",
+    ],
+    nicknamesEn: [
+      "Os Celestes (The Sky Blues)",
+    ],
     colorsAr: "أزرق سماوي وأبيض",
     colorsEn: "Sky blue and white",
     rivals: [{ nameAr: "ديبورتيفو لاكورونيا", nameEn: "Deportivo La Coruña" }],
@@ -4797,8 +5232,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إل سادار",
     stadiumEn: "El Sadar Stadium",
-    nicknamesAr: ["لوس روخيوس"],
-    nicknamesEn: ["Los Rojillos"],
+    nicknamesAr: [
+      "لوس روخيوس",
+    ],
+    nicknamesEn: [
+      "Los Rojillos",
+    ],
     colorsAr: "أحمر وأزرق كحلي",
     colorsEn: "Red and navy blue",
     rivals: [{ nameAr: "ريال سرقسطة", nameEn: "Real Zaragoza" }],
@@ -4825,8 +5264,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "خوسيه ثوريا",
     stadiumEn: "Estadio José Zorrilla",
-    nicknamesAr: ["بوسيلا", "بلانكيفيوليتاس"],
-    nicknamesEn: ["Pucela", "Blanquivioletas (White and Violets)"],
+    nicknamesAr: [
+      "بوسيلا",
+      "بلانكيفيوليتاس",
+    ],
+    nicknamesEn: [
+      "Pucela",
+      "Blanquivioletas (White and Violets)",
+    ],
     colorsAr: "أبيض وبنفسجي",
     colorsEn: "White and violet",
     rivals: [],
@@ -4853,8 +5298,12 @@ const clubs = [
     formerNameEn: "Club Atlético Malagueño",
     stadiumAr: "لا روساليدا",
     stadiumEn: "La Rosaleda",
-    nicknamesAr: ["لوس بوكيرونيس"],
-    nicknamesEn: ["Los Boquerones (The Anchovies)"],
+    nicknamesAr: [
+      "لوس بوكيرونيس",
+    ],
+    nicknamesEn: [
+      "Los Boquerones (The Anchovies)",
+    ],
     colorsAr: "أبيض وأزرق سماوي",
     colorsEn: "White and sky blue",
     rivals: [{ nameAr: "إشبيلية", nameEn: "Sevilla" }],
@@ -4867,7 +5316,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/M%C3%A1laga_CF"
   },
-  // ================= الدفعة الثانية: إيطاليا =================
   {
     id: "palermo",
     nameAr: "باليرمو",
@@ -4882,8 +5330,12 @@ const clubs = [
     formerNameEn: "Anglo-Palermitan Athletic and Foot-Ball Club",
     stadiumAr: "استاد رينزو باربيرا",
     stadiumEn: "Stadio Renzo Barbera",
-    nicknamesAr: ["الروزانيرو"],
-    nicknamesEn: ["I Rosanero (The Pink and Blacks)"],
+    nicknamesAr: [
+      "الروزانيرو",
+    ],
+    nicknamesEn: [
+      "I Rosanero (The Pink and Blacks)",
+    ],
     colorsAr: "وردي وأسود",
     colorsEn: "Pink and black",
     rivals: [{ nameAr: "كاتانيا", nameEn: "Catania" }],
@@ -4910,8 +5362,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد مابيي",
     stadiumEn: "Mapei Stadium – Città del Tricolore",
-    nicknamesAr: ["النيروفيردي"],
-    nicknamesEn: ["I Neroverdi (The Black and Greens)"],
+    nicknamesAr: [
+      "النيروفيردي",
+    ],
+    nicknamesEn: [
+      "I Neroverdi (The Black and Greens)",
+    ],
     colorsAr: "أسود وأخضر",
     colorsEn: "Black and green",
     rivals: [],
@@ -4938,8 +5394,14 @@ const clubs = [
     formerNameEn: "Sporting Club Lecce",
     stadiumAr: "استاد فيا ديل ماري",
     stadiumEn: "Stadio Via del Mare",
-    nicknamesAr: ["الجالوروسي", "الذئاب"],
-    nicknamesEn: ["I Giallorossi", "I Lupi (The Wolves)"],
+    nicknamesAr: [
+      "الجالوروسي",
+      "الذئاب",
+    ],
+    nicknamesEn: [
+      "I Giallorossi",
+      "I Lupi (The Wolves)",
+    ],
     colorsAr: "أصفر وأحمر",
     colorsEn: "Yellow and red",
     rivals: [],
@@ -4966,8 +5428,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد كارلو كاستيلاني",
     stadiumEn: "Stadio Carlo Castellani",
-    nicknamesAr: ["الأزوري"],
-    nicknamesEn: ["Gli Azzurri (The Blues)"],
+    nicknamesAr: [
+      "الأزوري",
+    ],
+    nicknamesEn: [
+      "Gli Azzurri (The Blues)",
+    ],
     colorsAr: "أزرق",
     colorsEn: "Blue",
     rivals: [{ nameAr: "فيورنتينا", nameEn: "Fiorentina" }],
@@ -4980,7 +5446,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Empoli_FC"
   },
-  // ================= الدفعة الثانية: ألمانيا =================
   {
     id: "mainz-05",
     nameAr: "ماينتس 05",
@@ -4995,8 +5460,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد ميفا أرينا",
     stadiumEn: "MEWA Arena",
-    nicknamesAr: ["دي نول فونفر"],
-    nicknamesEn: ["Die Nullfünfer (The 05ers)"],
+    nicknamesAr: [
+      "دي نول فونفر",
+    ],
+    nicknamesEn: [
+      "Die Nullfünfer (The 05ers)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "آينتراخت فرانكفورت", nameEn: "Eintracht Frankfurt" }],
@@ -5023,8 +5492,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "هاينز فون هايدن أرينا",
     stadiumEn: "Heinz von Heiden Arena",
-    nicknamesAr: ["دي روتن"],
-    nicknamesEn: ["Die Roten (The Reds)"],
+    nicknamesAr: [
+      "دي روتن",
+    ],
+    nicknamesEn: [
+      "Die Roten (The Reds)",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [{ nameAr: "آينتراخت براونشفايج", nameEn: "Eintracht Braunschweig" }],
@@ -5060,8 +5533,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد ميركور شبيل أرينا",
     stadiumEn: "Merkur Spiel-Arena",
-    nicknamesAr: ["فلينجيرانر"],
-    nicknamesEn: ["Flingeraner"],
+    nicknamesAr: [
+      "فلينجيرانر",
+    ],
+    nicknamesEn: [
+      "Flingeraner",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "كولن", nameEn: "1. FC Köln" }],
@@ -5097,8 +5574,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "أوستزيه شتاديون",
     stadiumEn: "Ostseestadion",
-    nicknamesAr: ["كوجيه"],
-    nicknamesEn: ["Kogge"],
+    nicknamesAr: [
+      "كوجيه",
+    ],
+    nicknamesEn: [
+      "Kogge",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [],
@@ -5111,7 +5592,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Hansa_Rostock"
   },
-  // ================= الدفعة الثانية: فرنسا =================
   {
     id: "rennes",
     nameAr: "ستاد رين",
@@ -5126,8 +5606,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "روازون بارك",
     stadiumEn: "Roazhon Park",
-    nicknamesAr: ["الأحمر والأسود"],
-    nicknamesEn: ["Les Rouge et Noir"],
+    nicknamesAr: [
+      "الأحمر والأسود",
+    ],
+    nicknamesEn: [
+      "Les Rouge et Noir",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [{ nameAr: "نانت", nameEn: "Nantes" }],
@@ -5160,14 +5644,18 @@ const clubs = [
     formerNameEn: "Stade Olympique Montpelliérain",
     stadiumAr: "استاد لا موسون",
     stadiumEn: "Stade de la Mosson",
-    nicknamesAr: ["لا بايادي"],
-    nicknamesEn: ["La Paillade"],
+    nicknamesAr: [
+      "لا بايادي",
+    ],
+    nicknamesEn: [
+      "La Paillade",
+    ],
     colorsAr: "أزرق وبرتقالي",
     colorsEn: "Blue and orange",
     rivals: [{ nameAr: "نيم", nameEn: "Nîmes" }],
     domesticLeagueTitles: 1,
-    bioAr: "نادي كرة قدم من مدينة مونبلييه في فرنسا، تأسس سنة 1974 تحت اسم ستاد أولمبيك مونبلييرين، ويلعب على ملعب استاد لا موسون. كسب لقب الدوري الفرنسي مرة واحدة سنة 2012.",
-    bioEn: "Football club from Montpellier, France, founded in 1974 as Stade Olympique Montpelliérain, playing at the Stade de la Mosson. Won the Ligue 1 title once, in 2012.",
+    bioAr: "نادي كرة قدم من مدينة مونبلييه في فرنسا، تأسس بشكله الحالي سنة 1974 بدمج ناديين، وتعود جذوره إلى سنة 1919 باسم ستاد أولمبيك مونبلييرين، ويلعب على ملعب استاد لا موسون. كسب لقب الدوري الفرنسي مرة واحدة سنة 2012.",
+    bioEn: "Football club from Montpellier, France, founded in its current form in 1974 through a merger, with origins dating to 1919 as Stade Olympique Montpelliérain, playing at the Stade de la Mosson. Won the Ligue 1 title once, in 2012.",
     achievementsAr: [
       "لقب واحد: الدوري الفرنسي",
       "لقبان: كأس فرنسا",
@@ -5197,8 +5685,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد تولوز",
     stadiumEn: "Stadium de Toulouse",
-    nicknamesAr: ["البنفسجيون"],
-    nicknamesEn: ["Les Violets"],
+    nicknamesAr: [
+      "البنفسجيون",
+    ],
+    nicknamesEn: [
+      "Les Violets",
+    ],
     colorsAr: "بنفسجي",
     colorsEn: "Violet/purple",
     rivals: [],
@@ -5217,7 +5709,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Toulouse_FC"
   },
-  // ================= مدينة المحلة الكبرى (مصر) - نفس المدينة، نفس الملعب =================
   {
     id: "ghazl-el-mahalla",
     nameAr: "غزل المحلة",
@@ -5232,8 +5723,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد غزل المحلة",
     stadiumEn: "Ghazl El Mahalla Stadium",
-    nicknamesAr: ["زعيم الفلاحين", "أرجنتين مصر"],
-    nicknamesEn: ["Za'eim El Fallahin (Boss of the Peasants)", "Arjntin El Misr (Egypt's Argentina)"],
+    nicknamesAr: [
+      "زعيم الفلاحين",
+      "أرجنتين مصر",
+    ],
+    nicknamesEn: [
+      "Za'eim El Fallahin (Boss of the Peasants)",
+      "Arjntin El Misr (Egypt's Argentina)",
+    ],
     colorsAr: "سماوي (أزرق فاتح) وأبيض",
     colorsEn: "Sky blue and white",
     rivals: [{ nameAr: "بلدية المحلة", nameEn: "Baladiyat El Mahalla" }],
@@ -5280,7 +5777,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Baladiyat_El_Mahalla_SC"
   },
-  // ================= الدفعة الثالثة: إنجلترا (أندية دوري الأبطال الممتاز الحالية) =================
   {
     id: "brighton-hove-albion",
     nameAr: "برايتون آند هوف ألبيون",
@@ -5295,8 +5791,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد فالمر (الأمكس)",
     stadiumEn: "Falmer Stadium (Amex Stadium)",
-    nicknamesAr: ["ذا سيجلز"],
-    nicknamesEn: ["The Seagulls"],
+    nicknamesAr: [
+      "ذا سيجلز",
+    ],
+    nicknamesEn: [
+      "The Seagulls",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white stripes",
     rivals: [{ nameAr: "كريستال بالاس", nameEn: "Crystal Palace" }],
@@ -5323,8 +5823,12 @@ const clubs = [
     formerNameEn: "Boscombe",
     stadiumAr: "دين كورت (فيتاليتي ستاديوم)",
     stadiumEn: "Dean Court (Vitality Stadium)",
-    nicknamesAr: ["ذا تشيريز"],
-    nicknamesEn: ["The Cherries"],
+    nicknamesAr: [
+      "ذا تشيريز",
+    ],
+    nicknamesEn: [
+      "The Cherries",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black stripes",
     rivals: [],
@@ -5351,8 +5855,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد جيتك كوميونيتي",
     stadiumEn: "Gtech Community Stadium",
-    nicknamesAr: ["ذا بيز"],
-    nicknamesEn: ["The Bees"],
+    nicknamesAr: [
+      "ذا بيز",
+    ],
+    nicknamesEn: [
+      "The Bees",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "فولهام", nameEn: "Fulham" }],
@@ -5365,7 +5873,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Brentford_F.C."
   },
-  // ================= الدفعة الثالثة: إسبانيا =================
   {
     id: "getafe",
     nameAr: "خيتافي",
@@ -5380,8 +5887,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد كوليسيوم",
     stadiumEn: "Estadio Coliseum",
-    nicknamesAr: ["الأزولونيس"],
-    nicknamesEn: ["Geta Azulones (Deep Blue Ones)"],
+    nicknamesAr: [
+      "الأزولونيس",
+    ],
+    nicknamesEn: [
+      "Geta Azulones (Deep Blue Ones)",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "ريال مدريد", nameEn: "Real Madrid" }],
@@ -5408,8 +5919,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد مونتيليفي",
     stadiumEn: "Estadi Montilivi",
-    nicknamesAr: ["البلانكيفيرميس"],
-    nicknamesEn: ["Blanquivermells (White and Reds)"],
+    nicknamesAr: [
+      "البلانكيفيرميس",
+    ],
+    nicknamesEn: [
+      "Blanquivermells (White and Reds)",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white stripes",
     rivals: [],
@@ -5436,8 +5951,12 @@ const clubs = [
     formerNameEn: "Agrupación Deportiva El Rayo",
     stadiumAr: "استاد فاييكاس",
     stadiumEn: "Estadio de Vallecas",
-    nicknamesAr: ["الفرانخيروخوس"],
-    nicknamesEn: ["Los Franjirrojos (The Red Stripes)"],
+    nicknamesAr: [
+      "الفرانخيروخوس",
+    ],
+    nicknamesEn: [
+      "Los Franjirrojos (The Red Stripes)",
+    ],
     colorsAr: "أبيض بخط أحمر مائل",
     colorsEn: "White with a diagonal red stripe",
     rivals: [{ nameAr: "أتلتيكو مدريد", nameEn: "Atlético Madrid" }],
@@ -5464,8 +5983,12 @@ const clubs = [
     formerNameEn: "Alfonso XIII Foot-Ball Club",
     stadiumAr: "استاد مايوركا سون موش",
     stadiumEn: "Estadi Mallorca Son Moix",
-    nicknamesAr: ["البيرميوينيس"],
-    nicknamesEn: ["Los Bermellones (The Vermilions)"],
+    nicknamesAr: [
+      "البيرميوينيس",
+    ],
+    nicknamesEn: [
+      "Los Bermellones (The Vermilions)",
+    ],
     colorsAr: "أحمر وأسود",
     colorsEn: "Red and black",
     rivals: [],
@@ -5487,7 +6010,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/RCD_Mallorca"
   },
-  // ================= الدفعة الثالثة: ألمانيا =================
   {
     id: "hoffenheim",
     nameAr: "هوفنهايم",
@@ -5502,8 +6024,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد إس إن بي",
     stadiumEn: "SNP-Arena (Rhein-Neckar-Arena)",
-    nicknamesAr: ["دي كرايشجاور"],
-    nicknamesEn: ["Die Kraichgauer"],
+    nicknamesAr: [
+      "دي كرايشجاور",
+    ],
+    nicknamesEn: [
+      "Die Kraichgauer",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [],
@@ -5530,8 +6056,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد دبليو دبليو كيه أرينا",
     stadiumEn: "WWK Arena",
-    nicknamesAr: ["فوجرشتادتر"],
-    nicknamesEn: ["Fuggerstädter"],
+    nicknamesAr: [
+      "فوجرشتادتر",
+    ],
+    nicknamesEn: [
+      "Fuggerstädter",
+    ],
     colorsAr: "أحمر وأخضر وأبيض",
     colorsEn: "Red, green and white",
     rivals: [],
@@ -5572,7 +6102,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/1._FC_Heidenheim"
   },
-  // ================= الدفعة الثالثة: فرنسا =================
   {
     id: "auxerre",
     nameAr: "أوكسير",
@@ -5587,8 +6116,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد الأب ديشون",
     stadiumEn: "Stade de l'Abbé-Deschamps",
-    nicknamesAr: ["الأجاييست"],
-    nicknamesEn: ["Les Ajaïstes"],
+    nicknamesAr: [
+      "الأجاييست",
+    ],
+    nicknamesEn: [
+      "Les Ajaïstes",
+    ],
     colorsAr: "أبيض وأزرق",
     colorsEn: "White and blue",
     rivals: [],
@@ -5624,8 +6157,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد فرانسيس لوبليه",
     stadiumEn: "Stade Francis-Le Blé",
-    nicknamesAr: ["القراصنة"],
-    nicknamesEn: ["Les Pirates"],
+    nicknamesAr: [
+      "القراصنة",
+    ],
+    nicknamesEn: [
+      "Les Pirates",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [],
@@ -5652,8 +6189,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد سان سامفوريان",
     stadiumEn: "Stade Saint-Symphorien",
-    nicknamesAr: ["الجرينا"],
-    nicknamesEn: ["Les Grenats (The Maroons)"],
+    nicknamesAr: [
+      "الجرينا",
+    ],
+    nicknamesEn: [
+      "Les Grenats (The Maroons)",
+    ],
     colorsAr: "عنابي وأبيض",
     colorsEn: "Maroon and white",
     rivals: [{ nameAr: "نانسي", nameEn: "AS Nancy" }],
@@ -5672,7 +6213,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Metz"
   },
-  // ================= الدفعة الرابعة: إيطاليا =================
   {
     id: "como",
     nameAr: "كومو",
@@ -5687,8 +6227,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد جوزيبي سينيجالا",
     stadiumEn: "Stadio Giuseppe Sinigaglia",
-    nicknamesAr: ["اللاريانى", "البيانكوبلو"],
-    nicknamesEn: ["I Lariani", "I Biancoblù (The Blue and Whites)"],
+    nicknamesAr: [
+      "اللاريانى",
+      "البيانكوبلو",
+    ],
+    nicknamesEn: [
+      "I Lariani",
+      "I Biancoblù (The Blue and Whites)",
+    ],
     colorsAr: "أزرق ملكي وأبيض",
     colorsEn: "Royal blue and white",
     rivals: [],
@@ -5701,7 +6247,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Como_1907"
   },
-  // ================= الدفعة الرابعة: إسبانيا =================
   {
     id: "alaves",
     nameAr: "ديبورتيفو ألافيس",
@@ -5716,11 +6261,17 @@ const clubs = [
     formerNameEn: "Sport Friend's Club",
     stadiumAr: "استاد مينديزوروثا",
     stadiumEn: "Mendizorroza",
-    nicknamesAr: ["الجلوريوسو", "البابازوروس"],
-    nicknamesEn: ["El Glorioso", "Babazorros"],
+    nicknamesAr: [
+      "الجلوريوسو",
+      "البابازوروس",
+    ],
+    nicknamesEn: [
+      "El Glorioso",
+      "Babazorros",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white stripes",
-    rivals: [],
+    rivals: [{ nameAr: "أتلتيك بيلباو", nameEn: "Athletic Bilbao" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من مدينة فيتوريا-جاستيز في إقليم الباسك الإسباني، تأسس سنة 1921 باسم سبورت فريندز كلوب، ويلعب على ملعب استاد مينديزوروثا. وصل لنهائي كأس الاتحاد الأوروبي سنة 2001 (خسر أمام ليفربول) ونهائي كأس الملك سنة 2017 (خسر أمام برشلونة)، ولم يفز بلقب كبير حتى الآن.",
     bioEn: "Football club from Vitoria-Gasteiz, Basque Country, Spain, founded in 1921 as Sport Friend's Club, playing at Mendizorroza. Reached the 2001 UEFA Cup final (lost to Liverpool) and the 2017 Copa del Rey final (lost to Barcelona); has never won a major trophy.",
@@ -5744,8 +6295,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد كارلوس تارتيير",
     stadiumEn: "Estadio Carlos Tartiere",
-    nicknamesAr: ["الكاربايونيس", "لوس أزوليس"],
-    nicknamesEn: ["Carbayones", "Los Azules (The Blues)"],
+    nicknamesAr: [
+      "الكاربايونيس",
+      "لوس أزوليس",
+    ],
+    nicknamesEn: [
+      "Carbayones",
+      "Los Azules (The Blues)",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "سبورتينج خيخون", nameEn: "Sporting de Gijón" }],
@@ -5772,8 +6329,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد مارتينيز فاليرو",
     stadiumEn: "Estadio Martínez Valero",
-    nicknamesAr: ["الفرانخيفيرديس"],
-    nicknamesEn: ["Los Franjiverdes (The Green-Striped Ones)"],
+    nicknamesAr: [
+      "الفرانخيفيرديس",
+    ],
+    nicknamesEn: [
+      "Los Franjiverdes (The Green-Striped Ones)",
+    ],
     colorsAr: "أبيض بخط أخضر",
     colorsEn: "White with a green sash",
     rivals: [],
@@ -5786,7 +6347,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Elche_CF"
   },
-  // ================= الدفعة الرابعة: فرنسا =================
   {
     id: "angers",
     nameAr: "أنجيه",
@@ -5801,8 +6361,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد ريمون كوبا",
     stadiumEn: "Stade Raymond Kopa",
-    nicknamesAr: ["السود والبيض"],
-    nicknamesEn: ["Les Noirs et Blancs (The Black and Whites)"],
+    nicknamesAr: [
+      "السود والبيض",
+    ],
+    nicknamesEn: [
+      "Les Noirs et Blancs (The Black and Whites)",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
     rivals: [],
@@ -5829,27 +6393,32 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أوسيان",
     stadiumEn: "Stade Océane",
-    nicknamesAr: ["النادي العميد", "السماوي والبحري"],
-    nicknamesEn: ["Le Club Doyen (The Dean Club)", "Les Ciel et Marine"],
+    nicknamesAr: [
+      "النادي العميد",
+      "السماوي والبحري",
+    ],
+    nicknamesEn: [
+      "Le Club Doyen (The Dean Club)",
+      "Les Ciel et Marine",
+    ],
     colorsAr: "أزرق سماوي وكحلي",
     colorsEn: "Sky blue and navy",
     rivals: [],
     domesticLeagueTitles: 0,
-    bioAr: "نادي كرة قدم من مدينة لوهافر في إقليم نورماندي الفرنسي، تأسس سنة 1872، وهو أقدم نادي كرة قدم في فرنسا، ويلعب على ملعب استاد أوسيان. فاز بكأس فرنسا 3 مرات (1919 و1920 و1959)، ولم يفز بلقب الدوري الفرنسي حتى الآن.",
-    bioEn: "Football club from Le Havre, Normandy, France, founded in 1872, the oldest football club in France, playing at the Stade Océane. Won the Coupe de France 3 times (1919, 1920 and 1959); has never won the Ligue 1 title.",
+    bioAr: "نادي كرة قدم من مدينة لوهافر في إقليم نورماندي الفرنسي، تأسس سنة 1872، وهو أقدم نادي كرة قدم في فرنسا، ويلعب على ملعب استاد أوسيان. فاز بكأس فرنسا مرة واحدة (1959)، ولم يفز بلقب الدوري الفرنسي حتى الآن.",
+    bioEn: "Football club from Le Havre, Normandy, France, founded in 1872, the oldest football club in France, playing at the Stade Océane. Won the Coupe de France once (1959); has never won the Ligue 1 title.",
     achievementsAr: [
-      "3 ألقاب: كأس فرنسا",
+      "لقب واحد: كأس فرنسا",
     ],
     achievementsEn: [
-      "3x Coupe de France",
+      "1x Coupe de France",
     ],
     honours: [
-      { competitionId: "coupe-de-france", titles: 3, years: [1919, 1920, 1959] },
+      { competitionId: "coupe-de-france", titles: 1, years: [1959] },
     ],
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Le_Havre_AC"
   },
-  // ================= الدفعة الخامسة: إنجلترا (أزواج مدن: نوتنجهام، بريستول، لندن) =================
   {
     id: "notts-county",
     nameAr: "نوتس كاونتي",
@@ -5864,8 +6433,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ميدو لين",
     stadiumEn: "Meadow Lane",
-    nicknamesAr: ["ذا ماجبايز"],
-    nicknamesEn: ["The Magpies"],
+    nicknamesAr: [
+      "ذا ماجبايز",
+    ],
+    nicknamesEn: [
+      "The Magpies",
+    ],
     colorsAr: "أسود وأبيض",
     colorsEn: "Black and white",
     rivals: [{ nameAr: "نوتنجهام فورست", nameEn: "Nottingham Forest" }],
@@ -5898,8 +6471,12 @@ const clubs = [
     formerNameEn: "Bristol South End",
     stadiumAr: "أشتون جيت",
     stadiumEn: "Ashton Gate",
-    nicknamesAr: ["ذا روبنز"],
-    nicknamesEn: ["The Robins"],
+    nicknamesAr: [
+      "ذا روبنز",
+    ],
+    nicknamesEn: [
+      "The Robins",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red and white",
     rivals: [{ nameAr: "بريستول روفرز", nameEn: "Bristol Rovers" }],
@@ -5926,8 +6503,14 @@ const clubs = [
     formerNameEn: "Black Arabs F.C.",
     stadiumAr: "ميموريال ستاديوم",
     stadiumEn: "Memorial Stadium",
-    nicknamesAr: ["ذا بايرتس", "ذا جاس"],
-    nicknamesEn: ["The Pirates", "The Gas"],
+    nicknamesAr: [
+      "ذا بايرتس",
+      "ذا جاس",
+    ],
+    nicknamesEn: [
+      "The Pirates",
+      "The Gas",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "بريستول سيتي", nameEn: "Bristol City" }],
@@ -5954,15 +6537,17 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "لوفتوس رود",
     stadiumEn: "Loftus Road",
-    nicknamesAr: ["ذا هوبس", "ذا آرز"],
-    nicknamesEn: ["The Hoops", "The Rs"],
+    nicknamesAr: [
+      "ذا هوبس",
+      "ذا آرز",
+    ],
+    nicknamesEn: [
+      "The Hoops",
+      "The Rs",
+    ],
     colorsAr: "أزرق وأبيض (خطوط عرضية)",
     colorsEn: "Blue and white hoops",
-    rivals: [
-      { nameAr: "تشيلسي", nameEn: "Chelsea" },
-      { nameAr: "فولهام", nameEn: "Fulham" },
-      { nameAr: "برينتفورد", nameEn: "Brentford" },
-    ],
+    rivals: [{ nameAr: "تشيلسي", nameEn: "Chelsea" }, { nameAr: "فولهام", nameEn: "Fulham" }, { nameAr: "برينتفورد", nameEn: "Brentford" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من غرب لندن في إنجلترا، تأسس سنة 1882، ويلعب على ملعب لوفتوس رود. فاز بكأس الرابطة الإنجليزية سنة 1967 وكان أول فريق من الدرجة الثالثة يفوز بلقب كبير في ويمبلي، وحل وصيفًا للدوري موسم 1975-1976، ولم يفز بلقب الدوري الإنجليزي حتى الآن.",
     bioEn: "Football club from west London, England, founded in 1882, playing at Loftus Road. Won the League Cup in 1967, becoming the first Third Division side to win a major trophy at Wembley, and finished runner-up in the league in 1975-76; has never won the English top-flight title.",
@@ -5992,8 +6577,12 @@ const clubs = [
     formerNameEn: "Millwall Rovers",
     stadiumAr: "ذا دين",
     stadiumEn: "The Den",
-    nicknamesAr: ["الأسود"],
-    nicknamesEn: ["The Lions"],
+    nicknamesAr: [
+      "الأسود",
+    ],
+    nicknamesEn: [
+      "The Lions",
+    ],
     colorsAr: "أزرق داكن وأبيض",
     colorsEn: "Dark blue and white",
     rivals: [{ nameAr: "وست هام يونايتد", nameEn: "West Ham United" }],
@@ -6020,8 +6609,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "إيوود بارك",
     stadiumEn: "Ewood Park",
-    nicknamesAr: ["روفرز", "الأزرق والأبيض"],
-    nicknamesEn: ["Rovers", "The Blue and Whites", "The Riversiders"],
+    nicknamesAr: [
+      "روفرز",
+      "الأزرق والأبيض",
+    ],
+    nicknamesEn: [
+      "Rovers",
+      "The Blue and Whites",
+      "The Riversiders",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white halves",
     rivals: [{ nameAr: "بيرنلي", nameEn: "Burnley" }],
@@ -6049,7 +6645,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Blackburn_Rovers_F.C."
   },
-  // ================= الدفعة السادسة: إنجلترا =================
   {
     id: "ipswich-town",
     nameAr: "إيبسويتش تاون",
@@ -6064,8 +6659,14 @@ const clubs = [
     formerNameEn: "Ipswich A.F.C.",
     stadiumAr: "بورتمان رود",
     stadiumEn: "Portman Road",
-    nicknamesAr: ["ذا بلوز", "ذا تراكتور بويز"],
-    nicknamesEn: ["The Blues", "The Tractor Boys"],
+    nicknamesAr: [
+      "ذا بلوز",
+      "ذا تراكتور بويز",
+    ],
+    nicknamesEn: [
+      "The Blues",
+      "The Tractor Boys",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "نورويتش سيتي", nameEn: "Norwich City" }],
@@ -6104,8 +6705,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "فراتون بارك",
     stadiumEn: "Fratton Park",
-    nicknamesAr: ["بومبي"],
-    nicknamesEn: ["Pompey"],
+    nicknamesAr: [
+      "بومبي",
+    ],
+    nicknamesEn: [
+      "Pompey",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "ساوثهامبتون", nameEn: "Southampton" }],
@@ -6141,11 +6746,15 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أكو (جون سميث)",
     stadiumEn: "Accu Stadium (John Smith's Stadium)",
-    nicknamesAr: ["ذا تيريرز"],
-    nicknamesEn: ["The Terriers"],
+    nicknamesAr: [
+      "ذا تيريرز",
+    ],
+    nicknamesEn: [
+      "The Terriers",
+    ],
     colorsAr: "أزرق وأبيض (خطوط طولية)",
     colorsEn: "Blue and white stripes",
-    rivals: [],
+    rivals: [{ nameAr: "ليدز يونايتد", nameEn: "Leeds United" }],
     domesticLeagueTitles: 3,
     bioAr: "نادي كرة قدم من مدينة هيدرسفيلد في إنجلترا، تأسس سنة 1908، ويلعب على ملعب استاد أكو (جون سميث). كسب لقب الدوري الإنجليزي 3 مرات متتالية (1924 و1925 و1926) بقيادة هربرت تشابمان، وكان أول فريق إنجليزي يحقق ذلك، وفاز بكأس الاتحاد الإنجليزي سنة 1922.",
     bioEn: "Football club from Huddersfield, England, founded in 1908, playing at the Accu Stadium (John Smith's Stadium). Won the English top-flight title 3 times in a row (1924, 1925 and 1926) under Herbert Chapman, the first English club to do so, and won the FA Cup in 1922.",
@@ -6178,8 +6787,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ديردايل",
     stadiumEn: "Deepdale",
-    nicknamesAr: ["ذا ليليوايتس", "الذين لا يُقهرون"],
-    nicknamesEn: ["The Lilywhites", "The Invincibles"],
+    nicknamesAr: [
+      "ذا ليليوايتس",
+      "الذين لا يُقهرون",
+    ],
+    nicknamesEn: [
+      "The Lilywhites",
+      "The Invincibles",
+    ],
     colorsAr: "أبيض وكحلي",
     colorsEn: "White and navy blue",
     rivals: [{ nameAr: "بلاكبول", nameEn: "Blackpool" }],
@@ -6201,7 +6816,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Preston_North_End_F.C."
   },
-  // ================= الدفعة السادسة: إسبانيا =================
   {
     id: "sporting-gijon",
     nameAr: "سبورتينج خيخون",
@@ -6216,8 +6830,12 @@ const clubs = [
     formerNameEn: "Sporting Club Gijonés",
     stadiumAr: "إل مولينون",
     stadiumEn: "El Molinón – Enrique Castro \"Quini\"",
-    nicknamesAr: ["لوس روخيبلانكوس"],
-    nicknamesEn: ["Los Rojiblancos (The Red-and-Whites)"],
+    nicknamesAr: [
+      "لوس روخيبلانكوس",
+    ],
+    nicknamesEn: [
+      "Los Rojiblancos (The Red-and-Whites)",
+    ],
     colorsAr: "أحمر وأبيض (خطوط طولية)",
     colorsEn: "Red and white stripes",
     rivals: [{ nameAr: "ريال أوفييدو", nameEn: "Real Oviedo" }],
@@ -6244,8 +6862,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد جران كناريا",
     stadiumEn: "Estadio Gran Canaria",
-    nicknamesAr: ["لوس أماريلوس", "بيو بيو"],
-    nicknamesEn: ["Los Amarillos (The Yellows)", "Pío Pío"],
+    nicknamesAr: [
+      "لوس أماريلوس",
+      "بيو بيو",
+    ],
+    nicknamesEn: [
+      "Los Amarillos (The Yellows)",
+      "Pío Pío",
+    ],
     colorsAr: "أصفر وأزرق",
     colorsEn: "Yellow and blue",
     rivals: [{ nameAr: "تينيريفي", nameEn: "CD Tenerife" }],
@@ -6258,7 +6882,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/UD_Las_Palmas"
   },
-  // ================= الدفعة السادسة: ألمانيا =================
   {
     id: "karlsruher-sc",
     nameAr: "كارلسروه",
@@ -6273,8 +6896,13 @@ const clubs = [
     formerNameEn: "Karlsruher FC Phönix",
     stadiumAr: "بي بي بانك فيلدبارك",
     stadiumEn: "BBBank Wildpark (Wildparkstadion)",
-    nicknamesAr: [],
-    nicknamesEn: [],
+    nicknamesAr: [
+      "الكا إس سي",
+    ],
+    nicknamesEn: [
+      "Der KSC",
+      "Die Blau-Weißen",
+    ],
     colorsAr: "أزرق وأبيض",
     colorsEn: "Blue and white",
     rivals: [{ nameAr: "شتوتجارت", nameEn: "VfB Stuttgart" }],
@@ -6296,7 +6924,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/Karlsruher_SC"
   },
-  // ================= الدفعة السادسة: فرنسا =================
   {
     id: "sochaux",
     nameAr: "سوشو",
@@ -6311,8 +6938,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد أوجست بونال",
     stadiumEn: "Stade Auguste Bonal",
-    nicknamesAr: ["الأشبال", "الأصفر والأزرق"],
-    nicknamesEn: ["Les Lionceaux (The Lion Cubs)", "Les Jaunes et Bleus"],
+    nicknamesAr: [
+      "الأشبال",
+      "الأصفر والأزرق",
+    ],
+    nicknamesEn: [
+      "Les Lionceaux (The Lion Cubs)",
+      "Les Jaunes et Bleus",
+    ],
     colorsAr: "أصفر وأزرق كحلي",
     colorsEn: "Yellow and navy blue",
     rivals: [],
@@ -6334,7 +6967,6 @@ const clubs = [
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/FC_Sochaux-Montb%C3%A9liard"
   },
-  // ================= الدفعة السابعة =================
   {
     id: "norwich-city",
     nameAr: "نورويتش سيتي",
@@ -6349,8 +6981,14 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "كارو رود",
     stadiumEn: "Carrow Road",
-    nicknamesAr: ["الكناري", "الأصفر"],
-    nicknamesEn: ["The Canaries", "The Yellows"],
+    nicknamesAr: [
+      "الكناري",
+      "الأصفر",
+    ],
+    nicknamesEn: [
+      "The Canaries",
+      "The Yellows",
+    ],
     colorsAr: "أصفر وأخضر",
     colorsEn: "Yellow and green",
     rivals: [{ nameAr: "إيبسويتش تاون", nameEn: "Ipswich Town" }],
@@ -6383,14 +7021,17 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "ريفرسايد ستاديوم",
     stadiumEn: "Riverside Stadium",
-    nicknamesAr: ["ذا بورو", "السموجيز"],
-    nicknamesEn: ["The Boro", "Smoggies"],
+    nicknamesAr: [
+      "ذا بورو",
+      "السموجيز",
+    ],
+    nicknamesEn: [
+      "The Boro",
+      "Smoggies",
+    ],
     colorsAr: "أحمر وأبيض",
     colorsEn: "Red with white detailing",
-    rivals: [
-      { nameAr: "نيوكاسل يونايتد", nameEn: "Newcastle United" },
-      { nameAr: "سندرلاند", nameEn: "Sunderland" },
-    ],
+    rivals: [{ nameAr: "نيوكاسل يونايتد", nameEn: "Newcastle United" }, { nameAr: "سندرلاند", nameEn: "Sunderland" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من مدينة ميدلزبره في شمال شرق إنجلترا، تأسس سنة 1876، ويلعب على ملعب ريفرسايد ستاديوم. فاز بكأس الرابطة الإنجليزية سنة 2004 وهو لقبه الكبير الوحيد، ووصل لنهائي كأس الاتحاد الأوروبي سنة 2006 وخسر أمام إشبيلية.",
     bioEn: "Football club from Middlesbrough, north-east England, founded in 1876, playing at the Riverside Stadium. Won the League Cup in 2004, its only major trophy, and reached the 2006 UEFA Cup final, losing to Sevilla.",
@@ -6420,11 +7061,15 @@ const clubs = [
     formerNameEn: "Singers F.C.",
     stadiumAr: "كوفنتري بيلدنج سوسايتي أرينا",
     stadiumEn: "Coventry Building Society Arena",
-    nicknamesAr: ["ذا سكاي بلوز"],
-    nicknamesEn: ["The Sky Blues"],
+    nicknamesAr: [
+      "ذا سكاي بلوز",
+    ],
+    nicknamesEn: [
+      "The Sky Blues",
+    ],
     colorsAr: "أزرق سماوي",
     colorsEn: "Sky blue",
-    rivals: [],
+    rivals: [{ nameAr: "برمنجهام سيتي", nameEn: "Birmingham City" }],
     domesticLeagueTitles: 0,
     bioAr: "نادي كرة قدم من مدينة كوفنتري في إنجلترا، تأسس سنة 1883 باسم سينجرز على يد عمال شركة سينجر للدراجات، ويلعب على ملعب كوفنتري بيلدنج سوسايتي أرينا. فاز بكأس الاتحاد الإنجليزي سنة 1987 على حساب توتنهام وهو لقبه الكبير الوحيد، وصعد للدوري الإنجليزي الممتاز بعد فوزه بلقب التشامبيونشيب موسم 2025-2026.",
     bioEn: "Football club from Coventry, England, founded in 1883 as Singers F.C. by workers of the Singer cycle company, playing at the Coventry Building Society Arena. Won the FA Cup in 1987 by beating Tottenham, its only major trophy, and won promotion to the Premier League as 2025-26 Championship winners.",
@@ -6454,8 +7099,16 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد هيليودورو رودريجيز لوبيز",
     stadiumEn: "Estadio Heliodoro Rodríguez López",
-    nicknamesAr: ["تيتي", "تشيتشاريروس", "بلانكيازوليس"],
-    nicknamesEn: ["Tete", "Chicharreros", "Blanquiazules"],
+    nicknamesAr: [
+      "تيتي",
+      "تشيتشاريروس",
+      "بلانكيازوليس",
+    ],
+    nicknamesEn: [
+      "Tete",
+      "Chicharreros",
+      "Blanquiazules",
+    ],
     colorsAr: "أبيض وأزرق",
     colorsEn: "White and blue",
     rivals: [{ nameAr: "لاس بالماس", nameEn: "UD Las Palmas" }],
@@ -6482,8 +7135,12 @@ const clubs = [
     formerNameEn: "",
     stadiumAr: "استاد مارسيل بيكو",
     stadiumEn: "Stade Marcel Picot",
-    nicknamesAr: ["الشوك"],
-    nicknamesEn: ["Les Chardons (The Thistles)"],
+    nicknamesAr: [
+      "الشوك",
+    ],
+    nicknamesEn: [
+      "Les Chardons (The Thistles)",
+    ],
     colorsAr: "",
     colorsEn: "",
     rivals: [{ nameAr: "ميتز", nameEn: "FC Metz" }],
@@ -6501,5 +7158,766 @@ const clubs = [
     ],
     wikiUrlAr: "",
     wikiUrlEn: "https://en.wikipedia.org/wiki/AS_Nancy_Lorraine"
+  },
+  {
+    id: "rangers",
+    nameAr: "رينجرز",
+    nameEn: "Rangers",
+    countryAr: "اسكتلندا",
+    countryEn: "Scotland",
+    leagueCompetitionId: "",
+    cityAr: "جلاسجو",
+    cityEn: "Glasgow",
+    founded: 1872,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "إيبروكس",
+    stadiumEn: "Ibrox Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Gers",
+      "The Light Blues",
+      "The Teddy Bears",
+    ],
+    colorsAr: "أزرق ملكي وأبيض وأحمر",
+    colorsEn: "Royal blue, white and red",
+    rivals: [{ nameAr: "سلتيك", nameEn: "Celtic" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من جلاسجو في اسكتلندا، تأسس سنة 1872، ويلعب على ملعب إيبروكس. صاحب أكبر عدد ألقاب دوري محلي لأي نادٍ في العالم (أكثر من 55 لقبًا)، ويخوض مع سلتيك ديربي 'أولد فيرم' الأشهر في الكرة الاسكتلندية. وصل لنهائي كأس الكؤوس الأوروبية مرتين (1961 و1967) قبل أن يفوز به سنة 1972.",
+    bioEn: "Football club from Glasgow, Scotland, founded in 1872, playing at Ibrox Stadium. Holds the record for the most domestic league titles of any club in the world (more than 55), and contests the famous 'Old Firm' derby against Celtic. Reached the European Cup Winners' Cup final twice (1961 and 1967) before winning it in 1972.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Rangers_F.C."
+  },
+  {
+    id: "fenerbahce",
+    nameAr: "فنربخشة",
+    nameEn: "Fenerbahçe",
+    countryAr: "تركيا",
+    countryEn: "Turkey",
+    leagueCompetitionId: "",
+    cityAr: "إسطنبول",
+    cityEn: "Istanbul",
+    founded: 1907,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "استاد شكرو سراج أوغلو",
+    stadiumEn: "Şükrü Saracoğlu Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Sarı Kanaryalar (The Yellow Canaries)",
+    ],
+    colorsAr: "أصفر وأزرق كحلي",
+    colorsEn: "Yellow and navy blue",
+    rivals: [{ nameAr: "جلطة سراي", nameEn: "Galatasaray" }, { nameAr: "بشكتاش", nameEn: "Beşiktaş" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من إسطنبول في تركيا، تأسس سنة 1907 في حي قاضي كوي بالجانب الآسيوي من المدينة، ويلعب على ملعب استاد شكرو سراج أوغلو. صاحب أكبر عدد ألقاب دوري في تركيا (19 لقب دوري ممتاز)، ويخوض ديربي القارتين الشهير ضد جلطة سراي. أفضل نتيجة له في البطولات الأوروبية كانت الوصول لنصف نهائي الدوري الأوروبي (يوروبا ليج) سنة 2013.",
+    bioEn: "Football club from Istanbul, Turkey, founded in 1907 in the Kadıköy district on the city's Asian side, playing at Şükrü Saracoğlu Stadium. Holds the record for the most Turkish league titles (19 Süper Lig titles), and contests the famous Intercontinental Derby against Galatasaray. Its best European result was reaching the UEFA Europa League semi-finals in 2013.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Fenerbah%C3%A7e_S.K._(football)"
+  },
+  {
+    id: "besiktas",
+    nameAr: "بشكتاش",
+    nameEn: "Beşiktaş",
+    countryAr: "تركيا",
+    countryEn: "Turkey",
+    leagueCompetitionId: "",
+    cityAr: "إسطنبول",
+    cityEn: "Istanbul",
+    founded: 1903,
+    formerNameAr: "بريكت جيمناستيك كلوب",
+    formerNameEn: "Bereket Jimnastik Kulübü",
+    stadiumAr: "استاد بشكتاش (تُوبراش حاليًا)",
+    stadiumEn: "Beşiktaş Stadium (currently Tüpraş Stadyumu)",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Kara Kartallar (Black Eagles)",
+      "Siyah Beyazlılar (Black and Whites)",
+    ],
+    colorsAr: "أسود وأبيض",
+    colorsEn: "Black and white",
+    rivals: [{ nameAr: "جلطة سراي", nameEn: "Galatasaray" }, { nameAr: "فنربخشة", nameEn: "Fenerbahçe" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من حي بشكتاش في إسطنبول بتركيا، تأسس سنة 1903 كنادٍ للجمباز، وهو أقدم نادي رياضي مسجل في تركيا، ويلعب على ملعب استاد بشكتاش. أحد أندية 'الكبار الثلاثة' في إسطنبول مع جلطة سراي وفنربخشة، وأفضل نتيجة له في البطولات الأوروبية كانت الوصول لربع نهائي كأس أوروبا سنة 1987.",
+    bioEn: "Football club from the Beşiktaş district of Istanbul, Turkey, founded in 1903 as a gymnastics club and the oldest registered sports club in Turkey, playing at Beşiktaş Stadium. One of Istanbul's 'Big Three' alongside Galatasaray and Fenerbahçe, its best European result was reaching the European Cup quarter-finals in 1987.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Be%C5%9Fikta%C5%9F_J.K."
+  },
+  {
+    id: "club-brugge",
+    nameAr: "كلوب بروج",
+    nameEn: "Club Brugge",
+    countryAr: "بلجيكا",
+    countryEn: "Belgium",
+    leagueCompetitionId: "",
+    cityAr: "بروج",
+    cityEn: "Bruges",
+    founded: 1891,
+    formerNameAr: "بروجشه إف سي",
+    formerNameEn: "Brugsche FC",
+    stadiumAr: "استاد يان بريدل",
+    stadiumEn: "Jan Breydel Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Blauw-Zwart (Blue-Black)",
+    ],
+    colorsAr: "أزرق وأسود",
+    colorsEn: "Blue and black",
+    rivals: [{ nameAr: "أندرلخت", nameEn: "Anderlecht" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مدينة بروج في بلجيكا، تأسس سنة 1891 باسم بروجشه إف سي، ويلعب على ملعب استاد يان بريدل الذي يشاركه فيه جاره سيركل بروج. صاحب ثاني أكبر عدد ألقاب دوري في بلجيكا بعد أندرلخت، والنادي البلجيكي الوحيد الذي وصل لنهائي كأس أوروبا للأندية البطلة (خسر أمام ليفربول سنة 1978)، ووصل أيضًا لنهائي كأس الاتحاد الأوروبي سنة 1976 (خسر أمام ليفربول كذلك).",
+    bioEn: "Football club from Bruges, Belgium, founded in 1891 as Brugsche FC, playing at the Jan Breydel Stadium, which it shares with local rival Cercle Brugge. Holds the second-highest number of Belgian league titles after Anderlecht, and is the only Belgian club to have reached the European Cup final (lost to Liverpool in 1978), also reaching the 1976 UEFA Cup final (lost to Liverpool as well).",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Club_Brugge_KV"
+  },
+  {
+    id: "trabzonspor",
+    nameAr: "طرابزون سبور",
+    nameEn: "Trabzonspor",
+    countryAr: "تركيا",
+    countryEn: "Turkey",
+    leagueCompetitionId: "",
+    cityAr: "طرابزون",
+    cityEn: "Trabzon",
+    founded: 1967,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "بابارا بارك",
+    stadiumEn: "Papara Park (Şenol Güneş Stadium)",
+    nicknamesAr: [
+      "عاصفة البحر الأسود",
+    ],
+    nicknamesEn: [
+      "Karadeniz Fırtınası (Black Sea Storm)",
+      "Bordo-Mavililer (The Claret-Blues)",
+    ],
+    colorsAr: "عنابي وأزرق",
+    colorsEn: "Claret (maroon) and blue",
+    rivals: [{ nameAr: "فنربخشة", nameEn: "Fenerbahçe" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مدينة طرابزون على ساحل البحر الأسود في تركيا، تأسس سنة 1967 من اندماج عدة أندية محلية، ويلعب على ملعب بابارا بارك. أحد 'الكبار الأربعة' في الكرة التركية، وأول نادٍ من خارج إسطنبول يفوز بالدوري التركي الممتاز موسم 1975-1976، وفاز به 7 مرات إجمالًا، آخرها موسم 2021-2022 بعد انتظار 38 عامًا.",
+    bioEn: "Football club from Trabzon, on Turkey's Black Sea coast, founded in 1967 from the merger of several local clubs, playing at Papara Park. One of Turkish football's 'Big Four,' and the first club from outside Istanbul to win the Süper Lig, in the 1975-76 season; has won the league 7 times in total, most recently in 2021-22 after a 38-year wait.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Trabzonspor"
+  },
+  {
+    id: "kaizer-chiefs",
+    nameAr: "كايزر تشيفز",
+    nameEn: "Kaizer Chiefs",
+    countryAr: "جنوب أفريقيا",
+    countryEn: "South Africa",
+    leagueCompetitionId: "",
+    cityAr: "جوهانسبرج",
+    cityEn: "Johannesburg",
+    founded: 1970,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "استاد إف إن بي",
+    stadiumEn: "FNB Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Amakhosi (Kings/Chiefs)",
+      "The Glamour Boys",
+    ],
+    colorsAr: "ذهبي وأسود",
+    colorsEn: "Gold and black",
+    rivals: [{ nameAr: "أورلاندو بايرتس", nameEn: "Orlando Pirates" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من جوهانسبرج في جنوب أفريقيا، أسسه كايزر موتاونج سنة 1970، ويلعب على ملعب إف إن بي. صاحب أكبر عدد ألقاب في تاريخ الكرة الجنوب أفريقية، ويخوض مع أورلاندو بايرتس ديربي سويتو الشهير. فاز بكأس الكؤوس الأفريقية سنة 2001 وهو أول لقب قاري لنادٍ جنوب أفريقي.",
+    bioEn: "Football club from Johannesburg, South Africa, founded by Kaizer Motaung in 1970, playing at FNB Stadium. Holds the most trophies in South African football history, and contests the famous Soweto Derby against Orlando Pirates. Won the African Cup Winners' Cup in 2001, the first continental title by a South African club.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Kaizer_Chiefs_F.C."
+  },
+  {
+    id: "boca-juniors",
+    nameAr: "بوكا جونيورز",
+    nameEn: "Boca Juniors",
+    countryAr: "الأرجنتين",
+    countryEn: "Argentina",
+    leagueCompetitionId: "",
+    cityAr: "بوينس آيرس",
+    cityEn: "Buenos Aires",
+    founded: 1905,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "لا بومبونيرا",
+    stadiumEn: "La Bombonera (Estadio Alberto J. Armando)",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Xeneizes (Genoese)",
+      "La Mitad Más Uno (Half Plus One)",
+    ],
+    colorsAr: "أزرق وأصفر",
+    colorsEn: "Blue and yellow",
+    rivals: [{ nameAr: "ريفر بليت", nameEn: "River Plate" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من حي لا بوكا بمدينة بوينس آيرس في الأرجنتين، أسسه مهاجرون إيطاليون سنة 1905، ويلعب على ملعب لا بومبونيرا. فاز بكوبا ليبرتادوريس (بطولة أمريكا الجنوبية للأندية) 6 مرات، ويخوض مع ريفر بليت ديربي 'السوبركلاسيكو' الذي يُعد من أعظم المباريات في تاريخ الرياضة.",
+    bioEn: "Football club from the La Boca neighbourhood of Buenos Aires, Argentina, founded by Italian immigrants in 1905, playing at La Bombonera. Has won the Copa Libertadores (South America's top club competition) 6 times, and contests the 'Superclásico' derby against River Plate, widely regarded as one of the greatest fixtures in world sport.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Boca_Juniors"
+  },
+  {
+    id: "river-plate",
+    nameAr: "ريفر بليت",
+    nameEn: "River Plate",
+    countryAr: "الأرجنتين",
+    countryEn: "Argentina",
+    leagueCompetitionId: "",
+    cityAr: "بوينس آيرس",
+    cityEn: "Buenos Aires",
+    founded: 1901,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "الإستاد الأكثر ضخامة (مونومنتال)",
+    stadiumEn: "Estadio Más Monumental",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Los Millonarios (The Millionaires)",
+    ],
+    colorsAr: "أبيض بشريط أحمر مائل",
+    colorsEn: "White with a diagonal red sash",
+    rivals: [{ nameAr: "بوكا جونيورز", nameEn: "Boca Juniors" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من بوينس آيرس في الأرجنتين، تأسس سنة 1901، ويلعب على ملعب الإستاد الأكثر ضخامة (المونومنتال) أكبر ملعب في أمريكا الجنوبية. صاحب أكبر عدد ألقاب دوري في تاريخ الأرجنتين، وفاز بكوبا ليبرتادوريس عدة مرات، آخرها سنة 2018 بالفوز على غريمه بوكا جونيورز في نهائي أقيم في مدريد.",
+    bioEn: "Football club from Buenos Aires, Argentina, founded in 1901, playing at the Estadio Más Monumental, the largest stadium in South America. Holds the record for the most league titles in Argentine history, and has won the Copa Libertadores multiple times, most recently in 2018, beating arch-rival Boca Juniors in a final held in Madrid.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Club_Atl%C3%A9tico_River_Plate"
+  },
+  {
+    id: "flamengo",
+    nameAr: "فلامنجو",
+    nameEn: "Flamengo",
+    countryAr: "البرازيل",
+    countryEn: "Brazil",
+    leagueCompetitionId: "",
+    cityAr: "ريو دي جانيرو",
+    cityEn: "Rio de Janeiro",
+    founded: 1895,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "الماراكانا",
+    stadiumEn: "Maracanã Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Rubro-Negro (Red-Black)",
+      "Mengão",
+    ],
+    colorsAr: "أحمر وأسود",
+    colorsEn: "Red and black",
+    rivals: [{ nameAr: "فلومينينسي", nameEn: "Fluminense" }, { nameAr: "بوتافوجو", nameEn: "Botafogo" }, { nameAr: "فاسكو دا جاما", nameEn: "Vasco da Gama" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من ريو دي جانيرو في البرازيل، تأسس سنة 1895 كنادي تجديف قبل أن يضم قسمًا لكرة القدم سنة 1911، ويلعب على ملعب الماراكانا. صاحب أكبر عدد جماهير في أمريكا الجنوبية، وفاز بكوبا ليبرتادوريس 3 مرات (1981 و2019 و2022)، ويخوض ديربي 'فلا-فلو' الشهير ضد فلومينينسي.",
+    bioEn: "Football club from Rio de Janeiro, Brazil, founded in 1895 as a rowing club before adding a football department in 1911, playing at the Maracanã Stadium. Has the largest fanbase in South America, and has won the Copa Libertadores 3 times (1981, 2019 and 2022), contesting the famous 'Fla-Flu' derby against Fluminense.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Clube_de_Regatas_do_Flamengo"
+  },
+  {
+    id: "corinthians",
+    nameAr: "كورينثيانز",
+    nameEn: "Corinthians",
+    countryAr: "البرازيل",
+    countryEn: "Brazil",
+    leagueCompetitionId: "",
+    cityAr: "ساو باولو",
+    cityEn: "São Paulo",
+    founded: 1910,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "نيو كيميكا أرينا",
+    stadiumEn: "Neo Química Arena",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Timão",
+    ],
+    colorsAr: "أسود وأبيض",
+    colorsEn: "Black and white",
+    rivals: [{ nameAr: "بالميراس", nameEn: "Palmeiras" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من ساو باولو في البرازيل، أسسه عمال سكة حديد سنة 1910 تيمنًا بنادي كورنثيان الإنجليزي الهاوي، ويلعب على ملعب نيو كيميكا أرينا. فاز بكأس العالم للأندية مرتين (2000 و2012)، وبكوبا ليبرتادوريس مرة واحدة سنة 2012، ويخوض ديربي ساو باولو الشهير ضد بالميراس.",
+    bioEn: "Football club from São Paulo, Brazil, founded by railway workers in 1910 in homage to the amateur English club Corinthian F.C., playing at the Neo Química Arena. Has won the FIFA Club World Cup twice (2000 and 2012), and the Copa Libertadores once, in 2012, contesting the famous São Paulo derby against Palmeiras.",
+    achievementsAr: [
+      "لقبان: كأس العالم للأندية",
+    ],
+    achievementsEn: [
+      "2x FIFA Club World Cup",
+    ],
+    honours: [
+      { competitionId: "fifa-club-world-cup", titles: 2, years: [2000, 2012] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/SC_Corinthians_Paulista"
+  },
+  {
+    id: "palmeiras",
+    nameAr: "بالميراس",
+    nameEn: "SE Palmeiras",
+    countryAr: "البرازيل",
+    countryEn: "Brazil",
+    leagueCompetitionId: "",
+    cityAr: "ساو باولو",
+    cityEn: "São Paulo",
+    founded: 1914,
+    formerNameAr: "باليسترا إيطاليا",
+    formerNameEn: "Palestra Itália",
+    stadiumAr: "أليانز باركي",
+    stadiumEn: "Allianz Parque",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Verdão (Big Green)",
+      "Alviverde (Green and White)",
+    ],
+    colorsAr: "أخضر وأبيض",
+    colorsEn: "Green and white",
+    rivals: [{ nameAr: "كورينثيانز", nameEn: "Corinthians" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من ساو باولو في البرازيل، أسسه مهاجرون إيطاليون سنة 1914 باسم باليسترا إيطاليا قبل أن يتغير الاسم سنة 1942، ويلعب على ملعب أليانز باركي. صاحب أكبر عدد ألقاب دوري برازيلي، وفاز بكوبا ليبرتادوريس 3 مرات (1999 و2020 و2021)، ويخوض ديربي ساو باولو الشهير ضد كورينثيانز.",
+    bioEn: "Football club from São Paulo, Brazil, founded by Italian immigrants in 1914 as Palestra Itália before the name changed in 1942, playing at Allianz Parque. Holds the record for the most Brazilian league titles, and has won the Copa Libertadores 3 times (1999, 2020 and 2021), contesting the famous São Paulo derby against Corinthians.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/SE_Palmeiras"
+  },
+  {
+    id: "independiente",
+    nameAr: "إندبندنتي",
+    nameEn: "Independiente",
+    countryAr: "الأرجنتين",
+    countryEn: "Argentina",
+    leagueCompetitionId: "",
+    cityAr: "أبيانيدا",
+    cityEn: "Avellaneda",
+    founded: 1905,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "استاد ليبرتادوريس دي أمريكا",
+    stadiumEn: "Estadio Libertadores de América",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "El Rojo (The Red)",
+      "Rey de Copas (King of Cups)",
+    ],
+    colorsAr: "أحمر مع تفاصيل بيضاء",
+    colorsEn: "Red with white trim",
+    rivals: [{ nameAr: "ريسينج كلوب", nameEn: "Racing Club" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مدينة أبيانيدا بمقاطعة بوينس آيرس في الأرجنتين، تأسس سنة 1905، ويلعب على ملعب استاد ليبرتادوريس دي أمريكا. صاحب الرقم القياسي لأكثر ألقاب في تاريخ كوبا ليبرتادوريس (7 مرات)، منها 4 ألقاب متتالية بين 1972 و1975، ما أكسبه لقب 'ملك الكؤوس'. يخوض ديربي أبيانيدا الشهير ضد جاره ريسينج كلوب.",
+    bioEn: "Football club from Avellaneda, Buenos Aires Province, Argentina, founded in 1905, playing at the Estadio Libertadores de América. Holds the record for the most Copa Libertadores titles in history (7), including 4 in a row between 1972 and 1975, earning it the nickname 'King of Cups'. Contests the famous Avellaneda derby against neighbouring Racing Club.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Club_Atl%C3%A9tico_Independiente"
+  },
+  {
+    id: "racing-club",
+    nameAr: "ريسينج كلوب",
+    nameEn: "Racing Club",
+    countryAr: "الأرجنتين",
+    countryEn: "Argentina",
+    leagueCompetitionId: "",
+    cityAr: "أبيانيدا",
+    cityEn: "Avellaneda",
+    founded: 1903,
+    formerNameAr: "فوت بول ريسينج كلوب",
+    formerNameEn: "Foot Ball Racing Club",
+    stadiumAr: "استاد الرئيس بيرون (السلندر)",
+    stadiumEn: "Estadio Presidente Perón (El Cilindro)",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "La Academia (The Academy)",
+      "El Primer Grande (The First Great One)",
+    ],
+    colorsAr: "أزرق سماوي وأبيض",
+    colorsEn: "Sky blue and white stripes",
+    rivals: [{ nameAr: "إندبندنتي", nameEn: "Independiente" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مدينة أبيانيدا بمقاطعة بوينس آيرس في الأرجنتين، تأسس سنة 1903، ويلعب على ملعب استاد الرئيس بيرون (السلندر). أول نادٍ في العالم يفوز بالدوري 7 مرات متتالية (1913-1919)، وأول نادٍ أرجنتيني يفوز بكوبا ليبرتادوريس وكأس إنتركونتيننتال معًا سنة 1967. يخوض ديربي أبيانيدا ضد جاره إندبندنتي.",
+    bioEn: "Football club from Avellaneda, Buenos Aires Province, Argentina, founded in 1903, playing at the Estadio Presidente Perón (El Cilindro). The first club in the world to win seven consecutive league titles (1913-1919), and the first Argentine club to win both the Copa Libertadores and Intercontinental Cup, in 1967. Contests the Avellaneda derby against neighbouring Independiente.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Racing_Club_de_Avellaneda"
+  },
+  {
+    id: "penarol",
+    nameAr: "بينارول",
+    nameEn: "Peñarol",
+    countryAr: "الأوروجواي",
+    countryEn: "Uruguay",
+    leagueCompetitionId: "",
+    cityAr: "مونتيفيديو",
+    cityEn: "Montevideo",
+    founded: 1891,
+    formerNameAr: "نادي كريكيت سكة حديد أوروجواي المركزية",
+    formerNameEn: "Central Uruguay Railway Cricket Club (CURCC)",
+    stadiumAr: "استاد بطل القرن",
+    stadiumEn: "Estadio Campeón del Siglo",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Manyas",
+      "Aurinegros (Gold and Blacks)",
+      "Carboneros",
+    ],
+    colorsAr: "أصفر وأسود",
+    colorsEn: "Yellow and black stripes",
+    rivals: [{ nameAr: "ناسيونال", nameEn: "Nacional" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مونتيفيديو في الأوروجواي، تأسس سنة 1891 باسم نادي كريكيت سكة حديد أوروجواي المركزية على يد عمال بريطانيين، ويلعب على ملعب استاد بطل القرن. فاز بكوبا ليبرتادوريس 5 مرات، ويخوض مع ناسيونال 'الكلاسيكو الأوروجوياني' وهو من أقدم الديربيات في العالم خارج الجزر البريطانية.",
+    bioEn: "Football club from Montevideo, Uruguay, founded in 1891 as the Central Uruguay Railway Cricket Club (CURCC) by British railway workers, playing at the Estadio Campeón del Siglo. Has won the Copa Libertadores 5 times, and contests the 'Clásico Uruguayo' against Nacional, one of the oldest derbies in the world outside the British Isles.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Club_Atl%C3%A9tico_Pe%C3%B1arol"
+  },
+  {
+    id: "nacional",
+    nameAr: "ناسيونال",
+    nameEn: "Nacional",
+    countryAr: "الأوروجواي",
+    countryEn: "Uruguay",
+    leagueCompetitionId: "",
+    cityAr: "مونتيفيديو",
+    cityEn: "Montevideo",
+    founded: 1899,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "جران باركي سنترال",
+    stadiumEn: "Gran Parque Central",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Los Tricolores",
+      "Los Bolsos",
+    ],
+    colorsAr: "أبيض وأزرق وأحمر",
+    colorsEn: "White, blue and red",
+    rivals: [{ nameAr: "بينارول", nameEn: "Peñarol" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مونتيفيديو في الأوروجواي، تأسس سنة 1899، وهو أول نادٍ كرة قدم في أمريكا الجنوبية يؤسسه أبناء البلد أنفسهم لا مهاجرون أو أجانب، ويلعب على ملعب جران باركي سنترال. فاز بكوبا ليبرتادوريس 3 مرات، ويخوض مع بينارول 'الكلاسيكو الأوروجوياني' الذي استحوذ الناديان معًا على أغلبية ألقاب الدوري الأوروجوياني منذ انطلاقه.",
+    bioEn: "Football club from Montevideo, Uruguay, founded in 1899, the first South American football club founded by locals rather than immigrants or expatriates, playing at Gran Parque Central. Has won the Copa Libertadores 3 times, and contests the 'Clásico Uruguayo' against Peñarol, with the two clubs together having won the large majority of Uruguayan league titles since the competition began.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Club_Nacional_de_Football"
+  },
+  {
+    id: "santos-fc",
+    nameAr: "سانتوس",
+    nameEn: "Santos FC",
+    countryAr: "البرازيل",
+    countryEn: "Brazil",
+    leagueCompetitionId: "",
+    cityAr: "سانتوس",
+    cityEn: "Santos",
+    founded: 1912,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "فيلا بيلميرو",
+    stadiumEn: "Vila Belmiro",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "Peixe (Fish)",
+      "Alvinegro (Black-and-White)",
+    ],
+    colorsAr: "أبيض وأسود",
+    colorsEn: "White and black",
+    rivals: [{ nameAr: "كورينثيانز", nameEn: "Corinthians" }],
+    domesticLeagueTitles: null,
+    bioAr: "نادي كرة قدم من مدينة سانتوس الساحلية في ولاية ساو باولو بالبرازيل، تأسس سنة 1912، ويلعب على ملعب فيلا بيلميرو. النادي الذي احترف فيه بيليه طوال مسيرته تقريبًا، وفاز بكوبا ليبرتادوريس 3 مرات (1962 و1963 و2011)، وكان أول نادٍ برازيلي يفوز باللقب.",
+    bioEn: "Football club from the coastal city of Santos in São Paulo state, Brazil, founded in 1912, playing at Vila Belmiro. The club where Pelé spent almost his entire career, and winner of the Copa Libertadores 3 times (1962, 1963 and 2011), becoming the first Brazilian club to win the title.",
+    achievementsAr: [],
+    achievementsEn: [],
+    honours: [],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Santos_FC"
+  },
+  {
+    id: "wigan-athletic",
+    nameAr: "ويجان أتلتيك",
+    nameEn: "Wigan Athletic",
+    countryAr: "إنجلترا",
+    countryEn: "England",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "ويجان",
+    cityEn: "Wigan",
+    founded: 1932,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "استاد بريك كوميونيتي",
+    stadiumEn: "Brick Community Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Latics",
+      "Tics",
+    ],
+    colorsAr: "أزرق وأبيض",
+    colorsEn: "Blue and white",
+    rivals: [{ nameAr: "بولتون واندررز", nameEn: "Bolton Wanderers" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من مدينة ويجان في مانشستر الكبرى بإنجلترا، تأسس سنة 1932، ويلعب على استاد بريك كوميونيتي. فاز بكأس الاتحاد الإنجليزي مرة واحدة (2013).",
+    bioEn: "Football club from Wigan, Greater Manchester, England, founded in 1932, playing at the Brick Community Stadium. Winner of the FA Cup once (2013).",
+    achievementsAr: [
+      "لقب واحد: كأس الاتحاد الإنجليزي",
+    ],
+    achievementsEn: [
+      "1x FA Cup",
+    ],
+    honours: [
+      { competitionId: "fa-cup", titles: 1, years: [2013] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Wigan_Athletic_F.C."
+  },
+  {
+    id: "stoke-city",
+    nameAr: "ستوك سيتي",
+    nameEn: "Stoke City",
+    countryAr: "إنجلترا",
+    countryEn: "England",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "ستوك أون ترنت",
+    cityEn: "Stoke-on-Trent",
+    founded: 1863,
+    formerNameAr: "ستوك رامبلرز",
+    formerNameEn: "Stoke Ramblers",
+    stadiumAr: "استاد بيت 365",
+    stadiumEn: "bet365 Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Potters",
+    ],
+    colorsAr: "أحمر وأبيض",
+    colorsEn: "Red and white",
+    rivals: [{ nameAr: "وست بروميتش ألبيون", nameEn: "West Bromwich Albion" }, { nameAr: "وولفرهامبتون ويندررز", nameEn: "Wolverhampton Wanderers" }, { nameAr: "بورت فيل", nameEn: "Port Vale" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من مدينة ستوك أون ترنت في ستافوردشاير بإنجلترا، تأسس سنة 1863 باسم ستوك رامبلرز، ويلعب على استاد بيت 365. فاز بكأس الرابطة الإنجليزية مرة واحدة (1972).",
+    bioEn: "Football club from Stoke-on-Trent, Staffordshire, England, founded in 1863 as Stoke Ramblers, playing at the bet365 Stadium. Winner of the EFL Cup once (1972).",
+    achievementsAr: [
+      "لقب واحد: كأس الرابطة الإنجليزية (كاراباو)",
+    ],
+    achievementsEn: [
+      "1x EFL Cup (League Cup)",
+    ],
+    honours: [
+      { competitionId: "efl-cup", titles: 1, years: [1972] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Stoke_City_F.C."
+  },
+  {
+    id: "swansea-city",
+    nameAr: "سوانزي سيتي",
+    nameEn: "Swansea City",
+    countryAr: "ويلز",
+    countryEn: "Wales",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "سوانزي",
+    cityEn: "Swansea",
+    founded: 1912,
+    formerNameAr: "سوانزي تاون",
+    formerNameEn: "Swansea Town",
+    stadiumAr: "استاد سوانزي دوت كوم",
+    stadiumEn: "Swansea.com Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Swans",
+      "The Jacks",
+    ],
+    colorsAr: "",
+    colorsEn: "",
+    rivals: [{ nameAr: "كارديف سيتي", nameEn: "Cardiff City" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من مدينة سوانزي في ويلز، تأسس سنة 1912 باسم سوانزي تاون، ويلعب على استاد سوانزي دوت كوم ضمن منظومة الدوري الإنجليزي. فاز بكأس الرابطة الإنجليزية مرة واحدة (2013).",
+    bioEn: "Football club from Swansea, Wales, founded in 1912 as Swansea Town, playing at the Swansea.com Stadium within the English football league system. Winner of the EFL Cup once (2013).",
+    achievementsAr: [
+      "لقب واحد: كأس الرابطة الإنجليزية (كاراباو)",
+    ],
+    achievementsEn: [
+      "1x EFL Cup (League Cup)",
+    ],
+    honours: [
+      { competitionId: "efl-cup", titles: 1, years: [2013] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Swansea_City_A.F.C."
+  },
+  {
+    id: "bolton-wanderers",
+    nameAr: "بولتون ويندررز",
+    nameEn: "Bolton Wanderers",
+    countryAr: "إنجلترا",
+    countryEn: "England",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "بولتون",
+    cityEn: "Bolton",
+    founded: 1874,
+    formerNameAr: "كرايست تشيرش",
+    formerNameEn: "Christ Church F.C.",
+    stadiumAr: "استاد تافشيت كوميونيتي",
+    stadiumEn: "Toughsheet Community Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Trotters",
+      "The Wanderers",
+      "The Whites",
+    ],
+    colorsAr: "",
+    colorsEn: "",
+    rivals: [],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من بولتون في مانشستر الكبرى بإنجلترا، تأسس سنة 1874 باسم كرايست تشيرش، ويلعب على استاد تافشيت كوميونيتي. أحد الأندية الاثني عشر المؤسسة للدوري الإنجليزي سنة 1888، وفاز بكأس الاتحاد الإنجليزي 4 مرات.",
+    bioEn: "Football club from Bolton, Greater Manchester, England, founded in 1874 as Christ Church F.C., playing at the Toughsheet Community Stadium. One of the 12 founding members of the Football League in 1888, and winner of the FA Cup 4 times.",
+    achievementsAr: [
+      "4 ألقاب: كأس الاتحاد الإنجليزي",
+    ],
+    achievementsEn: [
+      "4x FA Cup",
+    ],
+    honours: [
+      { competitionId: "fa-cup", titles: 4, years: [1923, 1926, 1929, 1958] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Bolton_Wanderers_F.C."
+  },
+  {
+    id: "charlton-athletic",
+    nameAr: "تشارلتون أثليتيك",
+    nameEn: "Charlton Athletic",
+    countryAr: "إنجلترا",
+    countryEn: "England",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "لندن",
+    cityEn: "London",
+    founded: 1905,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "ذا فالي",
+    stadiumEn: "The Valley",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Addicks",
+      "The Valiants",
+      "Red Robins",
+    ],
+    colorsAr: "أحمر وأبيض",
+    colorsEn: "Red and white",
+    rivals: [{ nameAr: "كريستال بالاس", nameEn: "Crystal Palace" }, { nameAr: "ميلوول", nameEn: "Millwall" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من منطقة تشارلتون جنوب شرق لندن في إنجلترا، تأسس سنة 1905، ويلعب على ملعب ذا فالي. فاز بكأس الاتحاد الإنجليزي مرة واحدة (1947).",
+    bioEn: "Football club from Charlton, south-east London, England, founded in 1905, playing at The Valley. Winner of the FA Cup once (1947).",
+    achievementsAr: [
+      "لقب واحد: كأس الاتحاد الإنجليزي",
+    ],
+    achievementsEn: [
+      "1x FA Cup",
+    ],
+    honours: [
+      { competitionId: "fa-cup", titles: 1, years: [1947] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Charlton_Athletic_F.C."
+  },
+  {
+    id: "cardiff-city",
+    nameAr: "كارديف سيتي",
+    nameEn: "Cardiff City",
+    countryAr: "ويلز",
+    countryEn: "Wales",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "كارديف",
+    cityEn: "Cardiff",
+    founded: 1899,
+    formerNameAr: "ريفرسايد",
+    formerNameEn: "Riverside A.F.C.",
+    stadiumAr: "استاد كارديف سيتي",
+    stadiumEn: "Cardiff City Stadium",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Bluebirds",
+      "Yr Adar Gleision (Welsh)",
+    ],
+    colorsAr: "أزرق وأبيض",
+    colorsEn: "Blue and white",
+    rivals: [{ nameAr: "سوانزي سيتي", nameEn: "Swansea City" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من العاصمة الويلزية كارديف، تأسس سنة 1899 باسم ريفرسايد، ويلعب على استاد كارديف سيتي ضمن منظومة الدوري الإنجليزي. النادي الوحيد من خارج إنجلترا الذي فاز بكأس الاتحاد الإنجليزي (1927).",
+    bioEn: "Football club from Cardiff, Wales, founded in 1899 as Riverside A.F.C., playing at the Cardiff City Stadium within the English football league system. The only club from outside England to have won the FA Cup (1927).",
+    achievementsAr: [
+      "لقب واحد: كأس الاتحاد الإنجليزي",
+    ],
+    achievementsEn: [
+      "1x FA Cup",
+    ],
+    honours: [
+      { competitionId: "fa-cup", titles: 1, years: [1927] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Cardiff_City_F.C."
+  },
+  {
+    id: "luton-town",
+    nameAr: "لوتون تاون",
+    nameEn: "Luton Town",
+    countryAr: "إنجلترا",
+    countryEn: "England",
+    leagueCompetitionId: "english-top-flight",
+    cityAr: "لوتون",
+    cityEn: "Luton",
+    founded: 1885,
+    formerNameAr: "",
+    formerNameEn: "",
+    stadiumAr: "كينيلوورث رود",
+    stadiumEn: "Kenilworth Road",
+    nicknamesAr: [],
+    nicknamesEn: [
+      "The Hatters",
+    ],
+    colorsAr: "",
+    colorsEn: "",
+    rivals: [{ nameAr: "واتفورد", nameEn: "Watford" }],
+    domesticLeagueTitles: 0,
+    bioAr: "نادي كرة قدم من مدينة لوتون في بيدفوردشاير بإنجلترا، تأسس سنة 1885، ويلعب على ملعب كينيلوورث رود منذ 1905. فاز بكأس الرابطة الإنجليزية مرة واحدة (1988).",
+    bioEn: "Football club from Luton, Bedfordshire, England, founded in 1885, playing at Kenilworth Road since 1905. Winner of the EFL Cup once (1988).",
+    achievementsAr: [
+      "لقب واحد: كأس الرابطة الإنجليزية (كاراباو)",
+    ],
+    achievementsEn: [
+      "1x EFL Cup (League Cup)",
+    ],
+    honours: [
+      { competitionId: "efl-cup", titles: 1, years: [1988] },
+    ],
+    wikiUrlAr: "",
+    wikiUrlEn: "https://en.wikipedia.org/wiki/Luton_Town_F.C."
   },
 ];

@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>لعبة نجوم الكرة — مود الحكم</title>
+<title>لعبة نجوم الكرة</title>
+<meta name="description" content="لعبة أسئلة كرة قدم جماعية: مود الحكم، بنك النقط، والسلّم الكبير.">
+<meta name="theme-color" content="#080a42">
+<meta property="og:title" content="لعبة نجوم الكرة">
+<meta property="og:description" content="مود الحكم وبنك النقط والسلّم الكبير — تحدّي أصحابك في معلومات الكرة.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a2fc0'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+<!-- خطوط: El Messiri للعناوين، IBM Plex Sans Arabic للنصوص. لو النت قطع بتتحول لـ Tahoma -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +26,13 @@
 <script src="clubs-data.js"></script>
 <!-- بيانات الهدافين التاريخيين والأرقام القياسية: عدّل هنا عشان تضيف/تعدّل رقم -->
 <script src="records-scorers-data.js"></script>
+<!-- مود السلّم الكبير (لازم يتحمّل قبل app.js لأن الصفحة الرئيسية بتقرا نصوصه) -->
+<script src="ladder.js"></script>
 <!-- منطق اللعبة المشترك + مود الحكم -->
 <script src="app.js"></script>
 <!-- مود بنك النقط -->
 <script src="bank.js"></script>
+<!-- مود مين الدخيل؟ (لازم بعد bank.js) -->
+<script src="intruder.js"></script>
 </body>
 </html>

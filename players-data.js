@@ -1,5 +1,11 @@
 // players-data.js
 // مصفوفة بيانات اللاعبين (الأسماء، الأندية، الإنجازات، روابط ويكيبيديا)
+//
+// ---- حقول الربط مع clubs-data.js (بيتأكد منها validate-links.js) ----
+// clubId  = id النادي المكتوب في clubEn داخل clubs-data.js (للنشط: ناديه الحالي، وللمعتزل/المتوفى: آخر نادي مذكور). null = النادي مش موجود في clubs-data.js، أو clubEn = Retired/Free agent.
+// clubIds = ids الأندية الموجودة في clubs-data.js من clubsHistoryEn بالترتيب، من غير تكرار. مش قائمة كاملة بمشوار اللاعب: الأندية اللي مش في clubs-data.js، وفرق الشباب (youth) والفرق الثانية (B)، مش بتتحط هنا.
+// الربط بالأسماء بيتم بتطابق تام أو بجدول aliases صريح (مفيش تطابق جزئي)، والربط هيكلي بس: وجود الحقل مش معناه إن كل معلومة في السيرة اتراجعت على مصدر.
+// الهدافين والأرقام القياسية في records-scorers-data.js بتشاور على id اللاعب هنا بـ playerId / relatedPlayerIds.
 
 const players = [
   {
@@ -10,6 +16,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "تراب زون سبور (تركيا)",
     "clubEn": "Trabzonspor (Turkey)",
+    "clubId": "trabzonspor",
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -48,6 +55,14 @@ const players = [
       "Liverpool",
       "Trabzonspor"
     ],
+    "clubIds": [
+      "al-mokawloon-al-arab",
+      "chelsea",
+      "fiorentina",
+      "roma",
+      "liverpool",
+      "trabzonspor"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/محمد_صلاح",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mohamed_Salah"
   },
@@ -59,6 +74,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "النصر",
     "clubEn": "Al Nassr",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -95,6 +111,12 @@ const players = [
       "Manchester United",
       "Al Nassr"
     ],
+    "clubIds": [
+      "sporting-cp",
+      "manchester-united",
+      "real-madrid",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كريستيانو_رونالدو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
   },
@@ -106,6 +128,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "إنتر ميامي",
     "clubEn": "Inter Miami",
+    "clubId": null,
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Playmaker"
@@ -136,6 +159,10 @@ const players = [
       "Paris Saint-Germain",
       "Inter Miami"
     ],
+    "clubIds": [
+      "barcelona",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ليونيل_ميسي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lionel_Messi"
   },
@@ -147,6 +174,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد (معتزل)",
     "clubEn": "Real Madrid (retired)",
+    "clubId": "real-madrid",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -179,6 +207,11 @@ const players = [
       "Juventus",
       "Real Madrid"
     ],
+    "clubIds": [
+      "bordeaux",
+      "juventus",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/زين_الدين_زيدان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Zinedine_Zidane"
   },
@@ -190,6 +223,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "بوكا جونيورز (معتزل)",
     "clubEn": "Boca Juniors (retired)",
+    "clubId": "boca-juniors",
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Playmaker / Forward"
@@ -228,6 +262,12 @@ const players = [
       "Newell's Old Boys",
       "Boca Juniors"
     ],
+    "clubIds": [
+      "boca-juniors",
+      "barcelona",
+      "napoli",
+      "sevilla"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دييغو_مارادونا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Diego_Maradona"
   },
@@ -239,6 +279,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "سانتوس (معتزل)",
     "clubEn": "Santos (retired)",
+    "clubId": "santos-fc",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -267,6 +308,9 @@ const players = [
       "Santos",
       "New York Cosmos"
     ],
+    "clubIds": [
+      "santos-fc"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيليه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Pelé"
   },
@@ -278,6 +322,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "أتلتيكو مينيرو (معتزل)",
     "clubEn": "Atlético Mineiro (retired)",
+    "clubId": null,
     "position": {
       "ar": "جناح / صانع ألعاب",
       "en": "Winger / Playmaker"
@@ -314,6 +359,12 @@ const players = [
       "Flamengo",
       "Atlético Mineiro"
     ],
+    "clubIds": [
+      "paris-saint-germain",
+      "barcelona",
+      "ac-milan",
+      "flamengo"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رونالدينيو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ronaldinho"
   },
@@ -325,6 +376,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "باريس سان جيرمان (معتزل)",
     "clubEn": "Paris Saint-Germain (retired)",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "جناح / وسط ميدان",
       "en": "Winger / Midfielder"
@@ -359,6 +411,12 @@ const players = [
       "Milan (loan)",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "manchester-united",
+      "real-madrid",
+      "ac-milan",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديفيد_بيكهام",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Beckham"
   },
@@ -370,6 +428,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -400,6 +459,11 @@ const players = [
       "Paris Saint-Germain",
       "Real Madrid"
     ],
+    "clubIds": [
+      "monaco",
+      "paris-saint-germain",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كيليان_مبابي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kylian_Mbappé"
   },
@@ -411,6 +475,7 @@ const players = [
     "nationalityEn": "Norwegian",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -445,6 +510,10 @@ const players = [
       "Borussia Dortmund",
       "Manchester City"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيرلينغ_هالاند",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Erling_Haaland"
   },
@@ -456,6 +525,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "نابولي",
     "clubEn": "Napoli",
+    "clubId": "napoli",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Midfielder / Playmaker"
@@ -492,6 +562,13 @@ const players = [
       "Manchester City",
       "Napoli"
     ],
+    "clubIds": [
+      "chelsea",
+      "werder-bremen",
+      "vfl-wolfsburg",
+      "manchester-city",
+      "napoli"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كيفن_دي_بروين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
   },
@@ -503,6 +580,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "ميلان",
     "clubEn": "Milan",
+    "clubId": "ac-milan",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -537,6 +615,11 @@ const players = [
       "Real Madrid",
       "Milan"
     ],
+    "clubIds": [
+      "tottenham",
+      "real-madrid",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لوكا_مودريتش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Luka_Modrić"
   },
@@ -548,6 +631,7 @@ const players = [
     "nationalityEn": "Polish",
     "clubAr": "شيكاغو فاير (الدوري الأمريكي MLS)",
     "clubEn": "Chicago Fire (MLS)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -584,6 +668,11 @@ const players = [
       "Barcelona",
       "Chicago Fire"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "bayern-munich",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبرت_ليفاندوفسكي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Robert_Lewandowski"
   },
@@ -595,6 +684,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "نيويورك ريد بولز (معتزل)",
     "clubEn": "New York Red Bulls (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -629,6 +719,12 @@ const players = [
       "Barcelona",
       "New York Red Bulls"
     ],
+    "clubIds": [
+      "monaco",
+      "juventus",
+      "arsenal",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تييري_هنري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Thierry_Henry"
   },
@@ -640,6 +736,7 @@ const players = [
     "nationalityEn": "Ivorian",
     "clubAr": "فينيكس رايزينغ (معتزل)",
     "clubEn": "Phoenix Rising (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -680,6 +777,11 @@ const players = [
       "Chelsea",
       "Phoenix Rising"
     ],
+    "clubIds": [
+      "marseille",
+      "chelsea",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديديه_دروغبا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Didier_Drogba"
   },
@@ -691,6 +793,7 @@ const players = [
     "nationalityEn": "Cameroonian",
     "clubAr": "أنطاليا سبور (معتزل)",
     "clubEn": "Antalyaspor (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -733,6 +836,14 @@ const players = [
       "Everton",
       "Antalyaspor"
     ],
+    "clubIds": [
+      "real-madrid",
+      "mallorca",
+      "barcelona",
+      "inter-milan",
+      "chelsea",
+      "everton"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/صامويل_إيتو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Samuel_Eto'o"
   },
@@ -744,6 +855,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "الأهلي (معتزل)",
     "clubEn": "Al Ahly (retired)",
+    "clubId": "al-ahly",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -770,6 +882,9 @@ const players = [
     "clubsHistoryEn": [
       "Al Ahly"
     ],
+    "clubIds": [
+      "al-ahly"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/محمود_الخطيب",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mahmoud_El_Khatib"
   },
@@ -781,47 +896,51 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "الزمالك (معتزل)",
     "clubEn": "Zamalek (retired)",
+    "clubId": "zamalek",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
     },
     "era": "1995-2013",
     "active": false,
-    "bioAr": "لاعب وسط مصري، يحمل الرقم القياسي لأكثر لاعب مشاركة دوليًا في تاريخ كرة القدم الرجالية بأكثر من 180 مباراة مع منتخب مصر. قاد الفراعنة للفوز بثلاث بطولات أمم إفريقيا متتالية (2006، 2008، 2010).",
-    "bioEn": "An Egyptian midfielder who holds the record for most international caps in men's football history, with over 180 appearances for Egypt. He led the Pharaohs to three consecutive Africa Cup of Nations titles (2006, 2008, 2010).",
+    "bioAr": "لاعب وسط مصري سابق، صاحب 184 مباراة دولية مع منتخب مصر وهو ثامن أكثر لاعب مشاركة دوليًا في تاريخ كرة القدم الرجالية. بدأ مع أسوان ثم الإسماعيلي، ولعب في تركيا وبلجيكا قبل عودته للأهلي ثم الزمالك، وفاز مع مصر بأربع بطولات أمم إفريقيا.",
+    "bioEn": "Former Egyptian midfielder with 184 caps for Egypt, the eighth-most capped men's international footballer in history. He began at Aswan and Ismaily, played in Turkey and Belgium, then returned to Egypt with Al Ahly and Zamalek, and won four Africa Cup of Nations titles with Egypt.",
     "achievementsAr": [
-      "3 بطولات كأس الأمم الإفريقية متتالية مع مصر",
-      "الرقم القياسي العالمي لعدد المشاركات الدولية",
-      "أفضل لاعب في كأس الأمم الإفريقية 2006",
-      "ألقاب دوري ودوري أبطال إفريقيا مع الأهلي"
+      "4 بطولات كأس أمم إفريقيا مع مصر (1998 و2006 و2008 و2010)",
+      "184 مباراة دولية و33 هدفًا مع منتخب مصر"
     ],
     "achievementsEn": [
-      "3 consecutive Africa Cup of Nations titles with Egypt",
-      "World record for most international caps",
-      "Africa Cup of Nations Best Player award 2006",
-      "League and CAF Champions League titles with Al Ahly"
+      "4 Africa Cup of Nations titles with Egypt (1998, 2006, 2008, 2010)",
+      "184 international caps and 33 goals for Egypt"
     ],
     "clubsHistoryAr": [
-      "الطلائع",
-      "الزمالك",
-      "أندرلخت",
-      "نانت",
-      "أستون فيلا",
-      "الأهلي",
+      "أسوان",
       "الإسماعيلي",
-      "كوينزبارك رينجرز",
+      "كوجالي سبور",
+      "دنيزلي سبور",
+      "غنجلربيرليغي",
+      "بشكتاش",
+      "أندرلخت",
+      "الأهلي",
       "الزمالك"
     ],
     "clubsHistoryEn": [
-      "El-Talaia",
-      "Zamalek",
-      "Anderlecht",
-      "Nantes",
-      "Aston Villa",
-      "Al Ahly",
+      "Aswan",
       "Ismaily",
-      "Queens Park Rangers",
+      "Kocaelispor",
+      "Denizlispor",
+      "Gençlerbirliği",
+      "Beşiktaş",
+      "Anderlecht",
+      "Al Ahly",
       "Zamalek"
+    ],
+    "clubIds": [
+      "ismaily",
+      "besiktas",
+      "anderlecht",
+      "al-ahly",
+      "zamalek"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أحمد_حسن_(لاعب_كرة_قدم)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ahmed_Hassan_(footballer,_born_1975)"
@@ -834,6 +953,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "وادي دجلة (معتزل)",
     "clubEn": "Wadi Degla (retired)",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -870,6 +990,9 @@ const players = [
       "Al-Merrikh",
       "Wadi Degla"
     ],
+    "clubIds": [
+      "al-ahly"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/عصام_الحضري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Essam_El_Hadary"
   },
@@ -881,6 +1004,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "الأهلي (معتزل)",
     "clubEn": "Al Ahly (retired)",
+    "clubId": "al-ahly",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -911,6 +1035,11 @@ const players = [
       "Al Ahly",
       "Wigan Athletic"
     ],
+    "clubIds": [
+      "tersana",
+      "al-ahly",
+      "wigan-athletic"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/محمد_أبو_تريكة",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mohamed_Aboutrika"
   },
@@ -922,6 +1051,7 @@ const players = [
     "nationalityEn": "Algerian",
     "clubAr": "الأهلي (السعودية)",
     "clubEn": "Al Ahli (Saudi Arabia)",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -954,6 +1084,11 @@ const players = [
       "Manchester City",
       "Al Ahli (Saudi Arabia)"
     ],
+    "clubIds": [
+      "le-havre",
+      "leicester-city",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رياض_محرز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Riyad_Mahrez"
   },
@@ -965,6 +1100,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "سانتوس",
     "clubEn": "Santos",
+    "clubId": "santos-fc",
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -999,6 +1135,11 @@ const players = [
       "Al-Hilal",
       "Santos"
     ],
+    "clubIds": [
+      "santos-fc",
+      "barcelona",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نيمار",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Neymar"
   },
@@ -1010,6 +1151,7 @@ const players = [
     "nationalityEn": "Senegalese",
     "clubAr": "النصر",
     "clubEn": "Al Nassr",
+    "clubId": null,
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -1046,6 +1188,12 @@ const players = [
       "Bayern Munich",
       "Al Nassr"
     ],
+    "clubIds": [
+      "metz",
+      "southampton",
+      "liverpool",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ساديو_ماني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sadio_Mané"
   },
@@ -1057,6 +1205,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "بارما (معتزل)",
     "clubEn": "Parma (retired)",
+    "clubId": "parma",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -1091,6 +1240,11 @@ const players = [
       "Juventus",
       "Parma"
     ],
+    "clubIds": [
+      "parma",
+      "juventus",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جانلويجي_بوفون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
   },
@@ -1102,6 +1256,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "نيويورك سيتي (معتزل)",
     "clubEn": "New York City FC (retired)",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Deep-lying Playmaker"
@@ -1138,6 +1293,11 @@ const players = [
       "Juventus",
       "New York City FC"
     ],
+    "clubIds": [
+      "inter-milan",
+      "ac-milan",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أندريا_بيرلو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andrea_Pirlo"
   },
@@ -1149,6 +1309,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "دربي كاونتي (معتزل كلاعب)",
     "clubEn": "Derby County (retired as player)",
+    "clubId": "derby-county",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1183,6 +1344,11 @@ const players = [
       "Everton",
       "Derby County"
     ],
+    "clubIds": [
+      "everton",
+      "manchester-united",
+      "derby-county"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/واين_روني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Wayne_Rooney"
   },
@@ -1194,6 +1360,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "لوس أنجلوس غالاكسي (معتزل)",
     "clubEn": "LA Galaxy (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1222,6 +1389,9 @@ const players = [
       "Liverpool",
       "LA Galaxy"
     ],
+    "clubIds": [
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ستيفن_جيرارد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Steven_Gerrard"
   },
@@ -1233,6 +1403,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "نيويورك سيتي (معتزل)",
     "clubEn": "New York City FC (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1267,6 +1438,12 @@ const players = [
       "Manchester City",
       "New York City FC"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "swansea-city",
+      "chelsea",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانك_لامبارد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Frank_Lampard"
   },
@@ -1278,6 +1455,7 @@ const players = [
     "nationalityEn": "Welsh",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -1304,6 +1482,9 @@ const players = [
     "clubsHistoryEn": [
       "Manchester United"
     ],
+    "clubIds": [
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/راين_غيغز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ryan_Giggs"
   },
@@ -1315,6 +1496,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1353,6 +1535,14 @@ const players = [
       "Leeds United",
       "Manchester United"
     ],
+    "clubIds": [
+      "auxerre",
+      "marseille",
+      "bordeaux",
+      "montpellier",
+      "leeds-united",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إريك_كانتونا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eric_Cantona"
   },
@@ -1364,6 +1554,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "نيوكاسل يونايتد (معتزل)",
     "clubEn": "Newcastle United (retired)",
+    "clubId": "newcastle-united",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1394,6 +1585,11 @@ const players = [
       "Blackburn Rovers",
       "Newcastle United"
     ],
+    "clubIds": [
+      "southampton",
+      "blackburn-rovers",
+      "newcastle-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/آلان_شيرر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alan_Shearer"
   },
@@ -1405,6 +1601,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "أرسنال (معتزل)",
     "clubEn": "Arsenal (retired)",
+    "clubId": "arsenal",
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Playmaker"
@@ -1435,6 +1632,11 @@ const players = [
       "Inter Milan",
       "Arsenal"
     ],
+    "clubIds": [
+      "ajax",
+      "inter-milan",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دينيس_بيركامب",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dennis_Bergkamp"
   },
@@ -1446,6 +1648,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "ميلان (معتزل)",
     "clubEn": "Milan (retired)",
+    "clubId": "ac-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1474,6 +1677,10 @@ const players = [
       "Ajax",
       "Milan"
     ],
+    "clubIds": [
+      "ajax",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركو_فان_باستن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_van_Basten"
   },
@@ -1485,6 +1692,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "فيينورد (معتزل)",
     "clubEn": "Feyenoord (retired)",
+    "clubId": "feyenoord",
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Playmaker"
@@ -1519,6 +1727,11 @@ const players = [
       "Washington Diplomats",
       "Feyenoord"
     ],
+    "clubIds": [
+      "ajax",
+      "barcelona",
+      "feyenoord"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يوهان_كرويف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Johan_Cruyff"
   },
@@ -1530,6 +1743,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "نيويورك كوزموس (معتزل)",
     "clubEn": "New York Cosmos (retired)",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender (Libero)"
@@ -1562,6 +1776,10 @@ const players = [
       "Hamburger SV",
       "New York Cosmos"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "hamburger-sv"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانتس_بكنباور",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
   },
@@ -1573,6 +1791,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1607,6 +1826,11 @@ const players = [
       "Bayern Munich",
       "NY/NJ MetroStars"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "bayern-munich",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لوتار_ماتيوس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lothar_Matthäus"
   },
@@ -1618,6 +1842,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "باير ليفركوزن (معتزل)",
     "clubEn": "Bayer Leverkusen (retired)",
+    "clubId": "bayer-leverkusen",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1652,6 +1877,12 @@ const players = [
       "Chelsea",
       "Bayer Leverkusen"
     ],
+    "clubIds": [
+      "kaiserslautern",
+      "bayer-leverkusen",
+      "bayern-munich",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ميشائيل_بالاك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Ballack"
   },
@@ -1663,6 +1894,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -1691,6 +1923,10 @@ const players = [
       "Schalke 04",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "schalke-04",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مانويل_نوير",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Manuel_Neuer"
   },
@@ -1702,6 +1938,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "لاعب حر (آخر أنديته مونتيري)",
     "clubEn": "Free agent (most recently Monterrey)",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -1736,6 +1973,11 @@ const players = [
       "Sevilla",
       "Monterrey"
     ],
+    "clubIds": [
+      "sevilla",
+      "real-madrid",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سيرخيو_راموس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sergio_Ramos"
   },
@@ -1745,13 +1987,14 @@ const players = [
     "nameEn": "Fernando Torres",
     "nationalityAr": "إسباني",
     "nationalityEn": "Spanish",
-    "clubAr": "أتلتيكو مدريد (معتزل)",
-    "clubEn": "Atlético Madrid (retired)",
+    "clubAr": "ساغان توسو (اليابان) - معتزل",
+    "clubEn": "Sagan Tosu (Japan) (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
     },
-    "era": "2001-2018",
+    "era": "2001-2019",
     "active": false,
     "bioAr": "مهاجم إسباني سريع وحاد التهديف، كان أحد أفضل المهاجمين في العالم خلال فترته مع ليفربول قبل انتقاله بصفقة قياسية إلى تشيلسي، وكان جزءًا من الجيل الذهبي لمنتخب إسبانيا.",
     "bioEn": "A fast and clinical Spanish forward who was among the world's best strikers during his Liverpool spell before a then-record transfer to Chelsea, and was part of Spain's golden generation.",
@@ -1772,14 +2015,22 @@ const players = [
       "ليفربول",
       "تشيلسي",
       "ميلان (إعارة)",
-      "أتلتيكو مدريد"
+      "أتلتيكو مدريد",
+      "ساغان توسو"
     ],
     "clubsHistoryEn": [
       "Atlético Madrid",
       "Liverpool",
       "Chelsea",
       "Milan (loan)",
-      "Atlético Madrid"
+      "Atlético Madrid",
+      "Sagan Tosu"
+    ],
+    "clubIds": [
+      "atletico-madrid",
+      "liverpool",
+      "chelsea",
+      "ac-milan"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرناندو_توريس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Fernando_Torres"
@@ -1792,6 +2043,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد (معتزل كلاعب)",
     "clubEn": "Real Madrid (retired as player)",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1824,6 +2076,12 @@ const players = [
       "Real Madrid",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "real-sociedad",
+      "liverpool",
+      "real-madrid",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تشابي_ألونسو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Xabi_Alonso"
   },
@@ -1835,6 +2093,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "الكوكاز (معتزل)",
     "clubEn": "Al Sadd (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1865,6 +2124,10 @@ const players = [
       "Schalke 04",
       "Al Sadd"
     ],
+    "clubIds": [
+      "real-madrid",
+      "schalke-04"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/راؤول_غونزاليس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Raúl_González"
   },
@@ -1876,6 +2139,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "الهلال (السعودية)",
     "clubEn": "Al-Hilal (Saudi Arabia)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1908,6 +2172,10 @@ const players = [
       "Al-Ittihad",
       "Al-Hilal"
     ],
+    "clubIds": [
+      "lyon",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كريم_بنزيما",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Karim_Benzema"
   },
@@ -1919,6 +2187,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "ريال مدريد (معتزل)",
     "clubEn": "Real Madrid (retired)",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -1949,6 +2218,11 @@ const players = [
       "Bayer Leverkusen (loan)",
       "Real Madrid"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "bayer-leverkusen",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/توني_كروس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Toni_Kroos"
   },
@@ -1960,6 +2234,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "برشلونة (معتزل)",
     "clubEn": "Barcelona (retired)",
+    "clubId": "barcelona",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -1992,6 +2267,12 @@ const players = [
       "Manchester City",
       "Barcelona"
     ],
+    "clubIds": [
+      "independiente",
+      "atletico-madrid",
+      "manchester-city",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سيرخيو_أغويرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sergio_Agüero"
   },
@@ -2003,6 +2284,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "برشيا (معتزل)",
     "clubEn": "Brescia (retired)",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Playmaker / Forward"
@@ -2041,6 +2323,13 @@ const players = [
       "Inter Milan",
       "Brescia"
     ],
+    "clubIds": [
+      "fiorentina",
+      "juventus",
+      "ac-milan",
+      "bologna",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبرتو_باجيو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Roberto_Baggio"
   },
@@ -2052,6 +2341,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "روما (معتزل)",
     "clubEn": "Roma (retired)",
+    "clubId": "roma",
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Playmaker / Forward"
@@ -2078,6 +2368,9 @@ const players = [
     "clubsHistoryEn": [
       "Roma"
     ],
+    "clubIds": [
+      "roma"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانشيسكو_توتي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Francesco_Totti"
   },
@@ -2089,6 +2382,7 @@ const players = [
     "nationalityEn": "Northern Irish",
     "clubAr": "بورنموث (معتزل)",
     "clubEn": "Bournemouth (retired)",
+    "clubId": "bournemouth",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -2121,6 +2415,11 @@ const players = [
       "Fulham",
       "Bournemouth"
     ],
+    "clubIds": [
+      "manchester-united",
+      "fulham",
+      "bournemouth"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جورج_بيست",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/George_Best"
   },
@@ -2132,6 +2431,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة (معتزل)",
     "clubEn": "Barcelona (retired)",
+    "clubId": "barcelona",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -2160,6 +2460,9 @@ const players = [
       "Barcelona",
       "Al Sadd"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تشافي_هيرنانديز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Xavi"
   },
@@ -2171,6 +2474,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "الإمارات (معتزل)",
     "clubEn": "Emirates Club (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -2201,6 +2505,9 @@ const players = [
       "Vissel Kobe",
       "Emirates Club"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أندريس_إنييستا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andrés_Iniesta"
   },
@@ -2212,6 +2519,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة (معتزل)",
     "clubEn": "Barcelona (retired)",
+    "clubId": "barcelona",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -2238,6 +2546,9 @@ const players = [
     "clubsHistoryEn": [
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كارليس_بويول",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Carles_Puyol"
   },
@@ -2249,6 +2560,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة (معتزل)",
     "clubEn": "Barcelona (retired)",
+    "clubId": "barcelona",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -2279,6 +2591,11 @@ const players = [
       "Zaragoza (loan)",
       "Barcelona"
     ],
+    "clubIds": [
+      "manchester-united",
+      "real-zaragoza",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيرارد_بيكيه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gerard_Piqué"
   },
@@ -2290,6 +2607,7 @@ const players = [
     "nationalityEn": "Uruguayan",
     "clubAr": "إنتر ميامي",
     "clubEn": "Inter Miami",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -2330,6 +2648,13 @@ const players = [
       "Grêmio",
       "Inter Miami"
     ],
+    "clubIds": [
+      "nacional",
+      "ajax",
+      "liverpool",
+      "barcelona",
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لويس_سواريز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Luis_Suárez"
   },
@@ -2341,6 +2666,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "موغي ميريم (معتزل)",
     "clubEn": "Mogi Mirim (retired)",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Playmaker / Forward"
@@ -2385,6 +2711,13 @@ const players = [
       "Olympiacos",
       "Al Ahli (UAE)"
     ],
+    "clubIds": [
+      "corinthians",
+      "palmeiras",
+      "deportivo-la-coruna",
+      "barcelona",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريفالدو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rivaldo"
   },
@@ -2396,6 +2729,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "فيينورد (معتزل كلاعب)",
     "clubEn": "Feyenoord (retired as player)",
+    "clubId": "feyenoord",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -2430,6 +2764,12 @@ const players = [
       "Barcelona",
       "Feyenoord"
     ],
+    "clubIds": [
+      "ajax",
+      "psv-eindhoven",
+      "barcelona",
+      "feyenoord"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رونالد_كومان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ronald_Koeman"
   },
@@ -2441,6 +2781,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "إنتر ميامي (معتزل)",
     "clubEn": "Inter Miami (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان دفاعي",
       "en": "Defensive Midfielder"
@@ -2469,6 +2810,9 @@ const players = [
       "Barcelona",
       "Inter Miami"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سيرجيو_بوسكيتس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sergio_Busquets"
   },
@@ -2480,6 +2824,7 @@ const players = [
     "nationalityEn": "Argentine-Spanish",
     "clubAr": "إسبانيول (معتزل)",
     "clubEn": "Espanyol (retired)",
+    "clubId": "espanyol",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -2512,6 +2857,11 @@ const players = [
       "Real Madrid",
       "Espanyol"
     ],
+    "clubIds": [
+      "river-plate",
+      "real-madrid",
+      "espanyol"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألفريدو_دي_ستيفانو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alfredo_Di_Stéfano"
   },
@@ -2523,6 +2873,7 @@ const players = [
     "nationalityEn": "Hungarian-Spanish",
     "clubAr": "ريال مدريد (معتزل)",
     "clubEn": "Real Madrid (retired)",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -2553,6 +2904,9 @@ const players = [
       "Budapest Honvéd",
       "Real Madrid"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيرينس_بوشكاش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ferenc_Puskás"
   },
@@ -2564,6 +2918,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "بورتو (معتزل)",
     "clubEn": "Porto (retired)",
+    "clubId": "porto",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -2592,6 +2947,10 @@ const players = [
       "Real Madrid",
       "Porto"
     ],
+    "clubIds": [
+      "real-madrid",
+      "porto"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيكر_كاسياس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Iker_Casillas"
   },
@@ -2603,6 +2962,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender (Left-back)"
@@ -2639,6 +2999,12 @@ const players = [
       "Fenerbahçe",
       "Retired"
     ],
+    "clubIds": [
+      "palmeiras",
+      "inter-milan",
+      "real-madrid",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبرتو_كارلوس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Roberto_Carlos_(footballer,_born_1973)"
   },
@@ -2650,6 +3016,7 @@ const players = [
     "nationalityEn": "Welsh",
     "clubAr": "لوس أنجلوس إف سي (معتزل)",
     "clubEn": "Los Angeles FC (retired)",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -2682,6 +3049,11 @@ const players = [
       "Real Madrid",
       "Los Angeles FC"
     ],
+    "clubIds": [
+      "southampton",
+      "tottenham",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غاريث_بيل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gareth_Bale"
   },
@@ -2693,6 +3065,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -2721,6 +3094,10 @@ const players = [
       "Flamengo",
       "Real Madrid"
     ],
+    "clubIds": [
+      "flamengo",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فينيسيوس_جونيور",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Vinícius_Júnior"
   },
@@ -2732,6 +3109,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -2758,6 +3136,9 @@ const players = [
     "clubsHistoryEn": [
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لامين_يامال",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lamine_Yamal"
   },
@@ -2769,6 +3150,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -2797,6 +3179,10 @@ const players = [
       "Las Palmas",
       "Barcelona"
     ],
+    "clubIds": [
+      "las-palmas",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيدري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Pedri"
   },
@@ -2808,6 +3194,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -2844,6 +3231,12 @@ const players = [
       "Leeds United",
       "Barcelona"
     ],
+    "clubIds": [
+      "sporting-cp",
+      "rennes",
+      "leeds-united",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رافينيا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Raphinha"
   },
@@ -2855,6 +3248,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -2885,6 +3279,10 @@ const players = [
       "Ajax",
       "Barcelona"
     ],
+    "clubIds": [
+      "ajax",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرينكي_دي_يونغ",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Frenkie_de_Jong"
   },
@@ -2896,6 +3294,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -2922,6 +3321,9 @@ const players = [
     "clubsHistoryEn": [
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باو_كوبارسي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Pau_Cubarsí"
   },
@@ -2933,6 +3335,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -2963,6 +3366,11 @@ const players = [
       "Borussia Dortmund",
       "Real Madrid"
     ],
+    "clubIds": [
+      "birmingham-city",
+      "borussia-dortmund",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جود_بيلينغهام",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jude_Bellingham"
   },
@@ -2974,6 +3382,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -3008,6 +3417,11 @@ const players = [
       "Chelsea",
       "Real Madrid"
     ],
+    "clubIds": [
+      "chelsea",
+      "atletico-madrid",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تيبو_كورتوا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Thibaut_Courtois"
   },
@@ -3019,6 +3433,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -3047,6 +3462,10 @@ const players = [
       "Santos",
       "Real Madrid"
     ],
+    "clubIds": [
+      "santos-fc",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رودريغو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rodrygo"
   },
@@ -3058,6 +3477,7 @@ const players = [
     "nationalityEn": "Uruguayan",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -3088,6 +3508,11 @@ const players = [
       "Deportivo La Coruña (loan)",
       "Real Madrid"
     ],
+    "clubIds": [
+      "penarol",
+      "deportivo-la-coruna",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيديريكو_فالفيردي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Federico_Valverde"
   },
@@ -3099,6 +3524,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط ميدان دفاعي",
       "en": "Defensive Midfielder"
@@ -3129,6 +3555,11 @@ const players = [
       "Monaco",
       "Real Madrid"
     ],
+    "clubIds": [
+      "bordeaux",
+      "monaco",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أوريلين_تشواميني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Aurélien_Tchouaméni"
   },
@@ -3140,6 +3571,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -3170,6 +3602,10 @@ const players = [
       "Porto",
       "Real Madrid"
     ],
+    "clubIds": [
+      "porto",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيدير_ميليتاو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Éder_Militão"
   },
@@ -3181,6 +3617,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -3207,6 +3644,9 @@ const players = [
     "clubsHistoryEn": [
       "Arsenal"
     ],
+    "clubIds": [
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بوكايو_ساكا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bukayo_Saka"
   },
@@ -3218,6 +3658,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "جناح / وسط ميدان هجومي",
       "en": "Winger / Attacking Midfielder"
@@ -3244,6 +3685,9 @@ const players = [
     "clubsHistoryEn": [
       "Manchester City"
     ],
+    "clubIds": [
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيل_فودين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Phil_Foden"
   },
@@ -3255,6 +3699,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "تشيلسي",
     "clubEn": "Chelsea",
+    "clubId": "chelsea",
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -3264,16 +3709,14 @@ const players = [
     "bioAr": "لاعب إنجليزي انتقل من مانشستر سيتي إلى تشيلسي وأصبح النجم الأبرز في الفريق، عُرف بهدوئه أمام المرمى وقدرته على صناعة الفرص، وأصبح أحد أفضل صناعي الألعاب الشباب في الدوري الإنجليزي الممتاز.",
     "bioEn": "An English player who moved from Manchester City to Chelsea and became the club's standout star, known for his composure in front of goal and chance creation, emerging as one of the finest young playmakers in the Premier League.",
     "achievementsAr": [
-      "دوري المؤتمر الأوروبي / بطولات أوروبية مع تشيلسي",
-      "هداف ومصنع رئيسي في هجوم تشيلسي",
-      "لاعب الشهر في الدوري الإنجليزي الممتاز عدة مرات",
-      "لاعب أساسي في منتخب إنجلترا"
+      "دوري المؤتمر الأوروبي 2024-25 مع تشيلسي",
+      "كأس العالم للأندية 2025 مع تشيلسي",
+      "وصيف بطولة أوروبا 2024 مع إنجلترا"
     ],
     "achievementsEn": [
-      "European competition success with Chelsea",
-      "Key scorer and creator in Chelsea's attack",
-      "Premier League Player of the Month multiple times",
-      "Regular for the England national team"
+      "UEFA Conference League 2024-25 with Chelsea",
+      "2025 FIFA Club World Cup with Chelsea",
+      "UEFA Euro 2024 runner-up with England"
     ],
     "clubsHistoryAr": [
       "مانشستر سيتي",
@@ -3282,6 +3725,10 @@ const players = [
     "clubsHistoryEn": [
       "Manchester City",
       "Chelsea"
+    ],
+    "clubIds": [
+      "manchester-city",
+      "chelsea"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كول_بالمر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cole_Palmer"
@@ -3294,6 +3741,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -3326,6 +3774,11 @@ const players = [
       "Southampton",
       "Liverpool"
     ],
+    "clubIds": [
+      "celtic",
+      "southampton",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيرجيل_فان_دايك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
   },
@@ -3337,6 +3790,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "مانشستر يونايتد",
     "clubEn": "Manchester United",
+    "clubId": "manchester-united",
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -3371,6 +3825,12 @@ const players = [
       "Sporting CP",
       "Manchester United"
     ],
+    "clubIds": [
+      "udinese",
+      "sampdoria",
+      "sporting-cp",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/برونو_فرنانديز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bruno_Fernandes"
   },
@@ -3382,6 +3842,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "توتنهام هوتسبير",
     "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -3416,6 +3877,10 @@ const players = [
       "Everton",
       "Tottenham Hotspur"
     ],
+    "clubIds": [
+      "everton",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريتشارليسون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Richarlison"
   },
@@ -3427,6 +3892,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "كورينثيانز (معتزل)",
     "clubEn": "Corinthians (retired)",
+    "clubId": "corinthians",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -3465,6 +3931,14 @@ const players = [
       "Milan",
       "Corinthians"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "barcelona",
+      "inter-milan",
+      "real-madrid",
+      "ac-milan",
+      "corinthians"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رونالدو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
   },
@@ -3476,6 +3950,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "يوفنتوس (معتزل)",
     "clubEn": "Juventus (retired)",
+    "clubId": "juventus",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -3506,6 +3981,11 @@ const players = [
       "Saint-Étienne",
       "Juventus"
     ],
+    "clubIds": [
+      "nancy",
+      "saint-etienne",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ميشيل_بلاتيني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michel_Platini"
   },
@@ -3517,6 +3997,7 @@ const players = [
     "nationalityEn": "Liberian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -3557,6 +4038,14 @@ const players = [
       "Marseille",
       "Al-Ittihad"
     ],
+    "clubIds": [
+      "monaco",
+      "paris-saint-germain",
+      "ac-milan",
+      "chelsea",
+      "manchester-city",
+      "marseille"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جورج_ويا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/George_Weah"
   },
@@ -3568,6 +4057,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -3604,6 +4094,13 @@ const players = [
       "Real Madrid",
       "Juventus"
     ],
+    "clubIds": [
+      "napoli",
+      "parma",
+      "inter-milan",
+      "juventus",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فابيو_كانافارو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Fabio_Cannavaro"
   },
@@ -3615,6 +4112,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "أورلاندو سيتي (معتزل)",
     "clubEn": "Orlando City (retired)",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -3649,6 +4147,10 @@ const players = [
       "Milan",
       "Orlando City"
     ],
+    "clubIds": [
+      "ac-milan",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كاكا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kaká"
   },
@@ -3660,6 +4162,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "إنتر ميلان (معتزل)",
     "clubEn": "Inter Milan (retired)",
+    "clubId": "inter-milan",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -3692,6 +4195,12 @@ const players = [
       "Real Madrid",
       "Inter Milan"
     ],
+    "clubIds": [
+      "sporting-cp",
+      "barcelona",
+      "real-madrid",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لويس_فيغو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Luís_Figo"
   },
@@ -3703,6 +4212,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بوروسيا دورتموند (معتزل)",
     "clubEn": "Borussia Dortmund (retired)",
+    "clubId": "borussia-dortmund",
     "position": {
       "ar": "مدافع ليبرو",
       "en": "Defender (Sweeper)"
@@ -3735,6 +4245,11 @@ const players = [
       "Inter Milan",
       "Borussia Dortmund"
     ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "inter-milan",
+      "borussia-dortmund"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماتياس_سامر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Matthias_Sammer"
   },
@@ -3746,6 +4261,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -3767,10 +4283,18 @@ const players = [
       "England's all-time top scorer for many years"
     ],
     "clubsHistoryAr": [
-      "مانشستر يونايتد"
+      "مانشستر يونايتد",
+      "بريستون نورث إند",
+      "ووترفورد"
     ],
     "clubsHistoryEn": [
-      "Manchester United"
+      "Manchester United",
+      "Preston North End",
+      "Waterford"
+    ],
+    "clubIds": [
+      "manchester-united",
+      "preston-north-end"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بوبي_تشارلتون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bobby_Charlton"
@@ -3783,6 +4307,7 @@ const players = [
     "nationalityEn": "Scottish",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -3817,6 +4342,12 @@ const players = [
       "Manchester United",
       "Manchester City"
     ],
+    "clubIds": [
+      "huddersfield-town",
+      "manchester-city",
+      "torino",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دينيس_لو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Denis_Law"
   },
@@ -3828,6 +4359,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "وسط ميدان دفاعي",
       "en": "Defensive Midfielder"
@@ -3860,6 +4392,12 @@ const players = [
       "Manchester City",
       "Barcelona"
     ],
+    "clubIds": [
+      "villarreal",
+      "atletico-madrid",
+      "manchester-city",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رودري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rodri"
   },
@@ -3871,6 +4409,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -3903,6 +4442,12 @@ const players = [
       "Barcelona",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "rennes",
+      "borussia-dortmund",
+      "barcelona",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/عثمان_ديمبلي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ousmane_Dembélé"
   },
@@ -3914,6 +4459,7 @@ const players = [
     "nationalityEn": "Ukrainian",
     "clubAr": "ديناموا كييف (معتزل)",
     "clubEn": "Dynamo Kyiv (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -3948,6 +4494,10 @@ const players = [
       "Milan",
       "Dynamo Kyiv"
     ],
+    "clubIds": [
+      "ac-milan",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أندريه_شيفتشينكو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andriy_Shevchenko"
   },
@@ -3959,6 +4509,7 @@ const players = [
     "nationalityEn": "Czech",
     "clubAr": "يوفنتوس (معتزل)",
     "clubEn": "Juventus (retired)",
+    "clubId": "juventus",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -3991,6 +4542,10 @@ const players = [
       "Lazio",
       "Juventus"
     ],
+    "clubIds": [
+      "lazio",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بافيل_نيدفيد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Pavel_Nedvěd"
   },
@@ -4002,6 +4557,7 @@ const players = [
     "nationalityEn": "Bulgarian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4038,6 +4594,10 @@ const players = [
       "MLS clubs",
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona",
+      "parma"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هريستو_ستويتشكوف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hristo_Stoichkov"
   },
@@ -4049,6 +4609,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4085,6 +4646,13 @@ const players = [
       "Bayern Munich",
       "Bordeaux"
     ],
+    "clubIds": [
+      "club-brugge",
+      "marseille",
+      "ac-milan",
+      "bayern-munich",
+      "bordeaux"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جان-بيير_بابان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jean-Pierre_Papin"
   },
@@ -4096,6 +4664,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4126,6 +4695,10 @@ const players = [
       "Inter Milan",
       "Servette"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كارل-هاينتس_رومينيجه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Karl-Heinz_Rummenigge"
   },
@@ -4137,6 +4710,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4171,6 +4745,11 @@ const players = [
       "Southampton",
       "Newcastle United"
     ],
+    "clubIds": [
+      "liverpool",
+      "southampton",
+      "newcastle-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كيفن_كيغان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kevin_Keegan"
   },
@@ -4182,6 +4761,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4220,6 +4800,12 @@ const players = [
       "Milan",
       "Verona"
     ],
+    "clubIds": [
+      "juventus",
+      "como",
+      "ac-milan",
+      "hellas-verona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باولو_روسي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paolo_Rossi"
   },
@@ -4231,6 +4817,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4259,6 +4846,9 @@ const players = [
       "Bayern Munich",
       "Fort Lauderdale Strikers"
     ],
+    "clubIds": [
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غيرد_مولر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gerd_Müller"
   },
@@ -4270,6 +4860,7 @@ const players = [
     "nationalityEn": "Soviet",
     "clubAr": "دينامو موسكو (معتزل)",
     "clubEn": "Dynamo Moscow (retired)",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -4296,6 +4887,7 @@ const players = [
     "clubsHistoryEn": [
       "Dynamo Moscow"
     ],
+    "clubIds": [],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ليف_ياشين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lev_Yashin"
   },
@@ -4307,6 +4899,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان هجومي / مهاجم",
       "en": "Attacking Midfielder / Forward"
@@ -4345,6 +4938,13 @@ const players = [
       "Milan",
       "Chelsea"
     ],
+    "clubIds": [
+      "feyenoord",
+      "psv-eindhoven",
+      "ac-milan",
+      "sampdoria",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رود_خوليت",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ruud_Gullit"
   },
@@ -4356,6 +4956,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ستوك سيتي (معتزل)",
     "clubEn": "Stoke City (retired)",
+    "clubId": "stoke-city",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4390,6 +4991,13 @@ const players = [
       "Manchester United",
       "Stoke City"
     ],
+    "clubIds": [
+      "liverpool",
+      "real-madrid",
+      "newcastle-united",
+      "manchester-united",
+      "stoke-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مايكل_أوين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Owen"
   },
@@ -4401,6 +5009,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ستوك سيتي (معتزل)",
     "clubEn": "Stoke City (retired)",
+    "clubId": "stoke-city",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -4431,6 +5040,9 @@ const players = [
       "Blackpool",
       "Stoke City"
     ],
+    "clubIds": [
+      "stoke-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ستانلي_ماثيوز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Stanley_Matthews"
   },
@@ -4442,6 +5054,7 @@ const players = [
     "nationalityEn": "Argentine-Italian",
     "clubAr": "نابولي (معتزل)",
     "clubEn": "Napoli (retired)",
+    "clubId": "napoli",
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Playmaker"
@@ -4472,6 +5085,11 @@ const players = [
       "Juventus",
       "Napoli"
     ],
+    "clubIds": [
+      "river-plate",
+      "juventus",
+      "napoli"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أومار_سيفوري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Omar_Sívori"
   },
@@ -4483,6 +5101,7 @@ const players = [
     "nationalityEn": "Czechoslovak",
     "clubAr": "دوكلا براغ (معتزل)",
     "clubEn": "Dukla Prague (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -4504,11 +5123,14 @@ const players = [
       "Regarded as Czechoslovakia's Golden Player of the 20th century"
     ],
     "clubsHistoryAr": [
-      "دوكلا براغ"
+      "دوكلا براغ",
+      "كروسينغ مولينبيك"
     ],
     "clubsHistoryEn": [
-      "Dukla Prague"
+      "Dukla Prague",
+      "Crossing Molenbeek"
     ],
+    "clubIds": [],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يوزيف_ماسوبوست",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Josef_Masopust"
   },
@@ -4520,6 +5142,7 @@ const players = [
     "nationalityEn": "Hungarian",
     "clubAr": "فيرينتس فاروش (معتزل)",
     "clubEn": "Ferencváros (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4546,6 +5169,7 @@ const players = [
     "clubsHistoryEn": [
       "Ferencváros"
     ],
+    "clubIds": [],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فلوريان_ألبرت",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Flórián_Albert"
   },
@@ -4557,6 +5181,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "ميلان (معتزل)",
     "clubEn": "Milan (retired)",
+    "clubId": "ac-milan",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Playmaker"
@@ -4585,6 +5210,9 @@ const players = [
       "Alessandria",
       "Milan"
     ],
+    "clubIds": [
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جياني_ريفيرا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gianni_Rivera"
   },
@@ -4596,6 +5224,7 @@ const players = [
     "nationalityEn": "Soviet",
     "clubAr": "فورفيرتس شتاينفيلد (معتزل)",
     "clubEn": "Vorwärts Steyr (retired)",
+    "clubId": null,
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -4624,6 +5253,7 @@ const players = [
       "Dynamo Kyiv",
       "Vorwärts Steyr"
     ],
+    "clubIds": [],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أوليغ_بلوخين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Oleh_Blokhin"
   },
@@ -4635,6 +5265,7 @@ const players = [
     "nationalityEn": "Danish",
     "clubAr": "فيجله (معتزل)",
     "clubEn": "Vejle (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4669,6 +5300,10 @@ const players = [
       "Borussia Mönchengladbach",
       "Vejle"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألان_سيمونسن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Allan_Simonsen"
   },
@@ -4680,6 +5315,7 @@ const players = [
     "nationalityEn": "Soviet",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -4712,6 +5348,9 @@ const players = [
       "Borussia Mönchengladbach",
       "Eintracht Braunschweig"
     ],
+    "clubIds": [
+      "borussia-monchengladbach"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيغور_بيلانوف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Igor_Belanov"
   },
@@ -4723,6 +5362,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -4751,6 +5391,10 @@ const players = [
       "Karlsruher SC",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "karlsruher-sc",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أوليفر_كان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Oliver_Kahn"
   },
@@ -4762,6 +5406,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "مدافع / وسط ميدان",
       "en": "Defender / Midfielder"
@@ -4792,6 +5437,10 @@ const players = [
       "Stuttgart (loan)",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "vfb-stuttgart"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيليب_لام",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Philipp_Lahm"
   },
@@ -4803,6 +5452,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "شيكاغو فاير (معتزل)",
     "clubEn": "Chicago Fire (retired)",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -4833,6 +5483,10 @@ const players = [
       "Manchester United",
       "Chicago Fire"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باستيان_شفاينشتايغر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bastian_Schweinsteiger"
   },
@@ -4844,6 +5498,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "فانكوفر وايت كابس",
     "clubEn": "Vancouver Whitecaps",
+    "clubId": null,
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Playmaker"
@@ -4872,6 +5527,9 @@ const players = [
       "Bayern Munich",
       "Vancouver Whitecaps"
     ],
+    "clubIds": [
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/توماس_مولر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Thomas_Müller"
   },
@@ -4883,6 +5541,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "خرونينغن (معتزل)",
     "clubEn": "Groningen (retired)",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -4919,6 +5578,12 @@ const players = [
       "Bayern Munich",
       "Groningen"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "chelsea",
+      "real-madrid",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أرين_روبن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Arjen_Robben"
   },
@@ -4930,6 +5595,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -4968,6 +5634,13 @@ const players = [
       "Fiorentina",
       "Salernitana"
     ],
+    "clubIds": [
+      "galatasaray",
+      "brest",
+      "marseille",
+      "bayern-munich",
+      "fiorentina"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانك_ريبيري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Franck_Ribéry"
   },
@@ -4979,6 +5652,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -5005,6 +5679,9 @@ const players = [
     "clubsHistoryEn": [
       "Bayern Munich"
     ],
+    "clubIds": [
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/زيب_ماير",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sepp_Maier"
   },
@@ -5016,6 +5693,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "مدافع / وسط ميدان",
       "en": "Defender / Midfielder"
@@ -5048,6 +5726,10 @@ const players = [
       "Eintracht Braunschweig",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بول_برايتنر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paul_Breitner"
   },
@@ -5059,6 +5741,7 @@ const players = [
     "nationalityEn": "Irish",
     "clubAr": "سلتيك (معتزل)",
     "clubEn": "Celtic (retired)",
+    "clubId": "celtic",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -5091,6 +5774,11 @@ const players = [
       "Manchester United",
       "Celtic"
     ],
+    "clubIds": [
+      "nottingham-forest",
+      "manchester-united",
+      "celtic"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روي_كين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Roy_Keane"
   },
@@ -5102,6 +5790,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -5128,6 +5817,9 @@ const players = [
     "clubsHistoryEn": [
       "Manchester United"
     ],
+    "clubIds": [
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بول_سكولز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paul_Scholes"
   },
@@ -5139,6 +5831,7 @@ const players = [
     "nationalityEn": "Danish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -5175,6 +5868,12 @@ const players = [
       "Aston Villa",
       "Manchester City"
     ],
+    "clubIds": [
+      "manchester-united",
+      "sporting-cp",
+      "aston-villa",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيتر_شمايكل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Peter_Schmeichel"
   },
@@ -5186,6 +5885,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -5220,6 +5920,13 @@ const players = [
       "Manchester United",
       "Queens Park Rangers"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "bournemouth",
+      "leeds-united",
+      "manchester-united",
+      "queens-park-rangers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريو_فرديناند",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rio_Ferdinand"
   },
@@ -5231,6 +5938,7 @@ const players = [
     "nationalityEn": "Serbian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -5263,6 +5971,11 @@ const players = [
       "Manchester United",
       "Inter Milan"
     ],
+    "clubIds": [
+      "red-star-belgrade",
+      "manchester-united",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نيمانيا_فيديتش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nemanja_Vidić"
   },
@@ -5274,6 +5987,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -5306,6 +6020,12 @@ const players = [
       "Fulham",
       "Manchester United"
     ],
+    "clubIds": [
+      "ajax",
+      "juventus",
+      "fulham",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إدوين_فان_دير_سار",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Edwin_van_der_Sar"
   },
@@ -5317,6 +6037,7 @@ const players = [
     "nationalityEn": "Trinidadian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -5351,6 +6072,13 @@ const players = [
       "Birmingham City",
       "Sunderland"
     ],
+    "clubIds": [
+      "aston-villa",
+      "manchester-united",
+      "blackburn-rovers",
+      "birmingham-city",
+      "sunderland"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دوايت_يورك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dwight_Yorke"
   },
@@ -5362,6 +6090,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -5394,6 +6123,12 @@ const players = [
       "Manchester United",
       "Fenerbahçe"
     ],
+    "clubIds": [
+      "feyenoord",
+      "arsenal",
+      "manchester-united",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبين_فان_بيرسي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Robin_van_Persie"
   },
@@ -5405,6 +6140,7 @@ const players = [
     "nationalityEn": "Scottish",
     "clubAr": "ليفربول (معتزل)",
     "clubEn": "Liverpool (retired)",
+    "clubId": "liverpool",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -5433,6 +6169,10 @@ const players = [
       "Celtic",
       "Liverpool"
     ],
+    "clubIds": [
+      "celtic",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كيني_دالغليش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kenny_Dalglish"
   },
@@ -5444,6 +6184,7 @@ const players = [
     "nationalityEn": "Welsh",
     "clubAr": "ليفربول (معتزل)",
     "clubEn": "Liverpool (retired)",
+    "clubId": "liverpool",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -5476,6 +6217,10 @@ const players = [
       "Juventus",
       "Liverpool"
     ],
+    "clubIds": [
+      "liverpool",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيان_راش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ian_Rush"
   },
@@ -5487,6 +6232,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ليفربول (معتزل)",
     "clubEn": "Liverpool (retired)",
+    "clubId": "liverpool",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -5513,6 +6259,9 @@ const players = [
     "clubsHistoryEn": [
       "Liverpool"
     ],
+    "clubIds": [
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيمي_كاراغر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jamie_Carragher"
   },
@@ -5524,6 +6273,7 @@ const players = [
     "nationalityEn": "Finnish",
     "clubAr": "باير ليفركوزن (معتزل)",
     "clubEn": "Bayer Leverkusen (retired)",
+    "clubId": "bayer-leverkusen",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -5556,6 +6306,10 @@ const players = [
       "Liverpool",
       "Bayer Leverkusen"
     ],
+    "clubIds": [
+      "liverpool",
+      "bayer-leverkusen"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سامي_هيبيا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sami_Hyypiä"
   },
@@ -5567,6 +6321,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -5603,6 +6358,13 @@ const players = [
       "Cardiff City",
       "Blackburn Rovers"
     ],
+    "clubIds": [
+      "liverpool",
+      "leeds-united",
+      "manchester-city",
+      "cardiff-city",
+      "blackburn-rovers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبي_فاولر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Robbie_Fowler"
   },
@@ -5614,6 +6376,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -5646,6 +6409,11 @@ const players = [
       "Newcastle United",
       "Charlton Athletic"
     ],
+    "clubIds": [
+      "liverpool",
+      "newcastle-united",
+      "charlton-athletic"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جون_بارنز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/John_Barnes"
   },
@@ -5657,6 +6425,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -5687,6 +6456,10 @@ const players = [
       "Roma",
       "Liverpool"
     ],
+    "clubIds": [
+      "roma",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أليسون_بيكر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alisson_Becker"
   },
@@ -5696,16 +6469,17 @@ const players = [
     "nameEn": "Jordan Henderson",
     "nationalityAr": "إنجليزي",
     "nationalityEn": "English",
-    "clubAr": "برينتفورد",
-    "clubEn": "Brentford",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
     },
     "era": "2005-الآن",
     "active": true,
-    "bioAr": "وسط ميدان إنجليزي كان قائد ليفربول خلال فوزهم بدوري أبطال أوروبا 2019 والدوري الإنجليزي الممتاز 2019-2020، عُرف بروحه القيادية العالية وقدرته على تحفيز زملائه، رغم انتقادات مستمرة لمستواه الفني في بداية مسيرته.",
-    "bioEn": "An English midfielder who captained Liverpool during their 2019 UEFA Champions League and 2019-20 Premier League triumphs, known for his strong leadership and ability to motivate teammates, despite persistent criticism of his technical ability early in his career.",
+    "bioAr": "لاعب وسط إنجليزي قاد ليفربول كقائد للفوز بدوري أبطال أوروبا 2019 والدوري الإنجليزي 2019-20، ثم لعب لاتفاق وأياكس وبرينتفورد، وانضم إلى تشيلسي في 3 أغسطس 2026 بعقد لعامين، وشارك مع إنجلترا في كأس العالم 2026.",
+    "bioEn": "English midfielder who captained Liverpool to the 2019 UEFA Champions League and the 2019-20 Premier League, then played for Al-Ettifaq, Ajax and Brentford, and joined Chelsea on 3 August 2026 on a two-year deal; he was in England's 2026 World Cup squad.",
     "achievementsAr": [
       "دوري أبطال أوروبا 2019 مع ليفربول",
       "لقب الدوري الإنجليزي الممتاز 2019-2020 مع ليفربول (كقائد)",
@@ -5722,9 +6496,10 @@ const players = [
       "سندرلاند",
       "كوفنتري سيتي (إعارة)",
       "ليفربول",
-      "الاتحاد",
+      "الاتفاق",
       "أياكس",
-      "برينتفورد"
+      "برينتفورد",
+      "تشيلسي"
     ],
     "clubsHistoryEn": [
       "Sunderland",
@@ -5732,7 +6507,16 @@ const players = [
       "Liverpool",
       "Al-Ettifaq",
       "Ajax",
-      "Brentford"
+      "Brentford",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "sunderland",
+      "coventry-city",
+      "liverpool",
+      "ajax",
+      "brentford",
+      "chelsea"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جوردان_هندرسون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jordan_Henderson"
@@ -5745,6 +6529,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "ميلان (معتزل)",
     "clubEn": "Milan (retired)",
+    "clubId": "ac-milan",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -5771,6 +6556,9 @@ const players = [
     "clubsHistoryEn": [
       "Milan"
     ],
+    "clubIds": [
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باولو_مالديني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paolo_Maldini"
   },
@@ -5782,6 +6570,7 @@ const players = [
     "nationalityEn": "Algerian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -5816,6 +6605,10 @@ const players = [
       "Valencia (loan)",
       "Qatar SC"
     ],
+    "clubIds": [
+      "porto",
+      "valencia"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رابح_ماجر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rabah_Madjer"
   },
@@ -5827,6 +6620,7 @@ const players = [
     "nationalityEn": "Saudi Arabian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -5853,6 +6647,7 @@ const players = [
     "clubsHistoryEn": [
       "Al-Nassr"
     ],
+    "clubIds": [],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماجد_عبدالله",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Majed_Abdullah"
   },
@@ -5864,6 +6659,7 @@ const players = [
     "nationalityEn": "Moroccan",
     "clubAr": "بوتافوغو (البرازيل)",
     "clubEn": "Botafogo (Brazil)",
+    "clubId": null,
     "position": {
       "ar": "جناح أيمن / صانع ألعاب هجومي",
       "en": "Right Winger / Attacking Midfielder"
@@ -5904,6 +6700,12 @@ const players = [
       "Wydad AC",
       "Botafogo"
     ],
+    "clubIds": [
+      "ajax",
+      "chelsea",
+      "galatasaray",
+      "wydad"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/حكيم_زياش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hakim_Ziyech"
   },
@@ -5915,6 +6717,7 @@ const players = [
     "nationalityEn": "Moroccan",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right-back"
@@ -5947,6 +6750,12 @@ const players = [
       "Inter Milan",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "real-madrid",
+      "borussia-dortmund",
+      "inter-milan",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أشرف_حكيمي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Achraf_Hakimi"
   },
@@ -5958,6 +6767,7 @@ const players = [
     "nationalityEn": "South Korean",
     "clubAr": "لوس أنجلوس إف سي",
     "clubEn": "Los Angeles FC",
+    "clubId": null,
     "position": {
       "ar": "جناح أيسر",
       "en": "Left Winger"
@@ -5990,6 +6800,11 @@ const players = [
       "Tottenham Hotspur",
       "Los Angeles FC"
     ],
+    "clubIds": [
+      "hamburger-sv",
+      "bayer-leverkusen",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سون_هيونغ_مين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Son_Heung-min"
   },
@@ -6001,6 +6816,7 @@ const players = [
     "nationalityEn": "South Korean",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -6035,6 +6851,11 @@ const players = [
       "Queens Park Rangers",
       "PSV Eindhoven (loan)"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "manchester-united",
+      "queens-park-rangers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بارك_جي_سونغ",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Park_Ji-sung"
   },
@@ -6046,6 +6867,7 @@ const players = [
     "nationalityEn": "Nigerian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -6086,6 +6908,12 @@ const players = [
       "Qatar Stars League club",
       "Hull City"
     ],
+    "clubIds": [
+      "eintracht-frankfurt",
+      "fenerbahce",
+      "paris-saint-germain",
+      "bolton-wanderers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جي-جي_أوكوتشا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jay-Jay_Okocha"
   },
@@ -6097,6 +6925,7 @@ const players = [
     "nationalityEn": "Ghanaian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان هجومي",
       "en": "Attacking Midfielder"
@@ -6143,6 +6972,13 @@ const players = [
       "1860 Munich",
       "Al Ain"
     ],
+    "clubIds": [
+      "marseille",
+      "lille",
+      "lyon",
+      "torino",
+      "1860-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/عبيدي_بيليه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Abedi_Pele"
   },
@@ -6154,6 +6990,7 @@ const players = [
     "nationalityEn": "Mexican",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -6196,6 +7033,11 @@ const players = [
       "Dallas Burn",
       "Celaya"
     ],
+    "clubIds": [
+      "atletico-madrid",
+      "real-madrid",
+      "rayo-vallecano"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هوغو_سانشيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hugo_Sánchez"
   },
@@ -6207,6 +7049,7 @@ const players = [
     "nationalityEn": "American",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -6241,6 +7084,11 @@ const players = [
       "Bayern Munich (loan)",
       "Everton (loan)"
     ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "bayern-munich",
+      "everton"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لاندون_دونوفان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Landon_Donovan"
   },
@@ -6252,6 +7100,7 @@ const players = [
     "nationalityEn": "Colombian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Playmaker"
@@ -6294,6 +7143,10 @@ const players = [
       "Colorado Rapids",
       "Real Valladolid"
     ],
+    "clubIds": [
+      "montpellier",
+      "real-valladolid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كارلوس_فالديراما",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Carlos_Valderrama"
   },
@@ -6305,6 +7158,7 @@ const players = [
     "nationalityEn": "Colombian",
     "clubAr": "أتلتيكو ناسيونال",
     "clubEn": "Atlético Nacional",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب هجومي",
       "en": "Attacking Midfielder"
@@ -6357,6 +7211,14 @@ const players = [
       "Minnesota United",
       "Atlético Nacional"
     ],
+    "clubIds": [
+      "porto",
+      "monaco",
+      "real-madrid",
+      "bayern-munich",
+      "everton",
+      "rayo-vallecano"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خاميس_رودريغيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/James_Rodríguez"
   },
@@ -6368,6 +7230,7 @@ const players = [
     "nationalityEn": "Paraguayan",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -6406,6 +7269,11 @@ const players = [
       "Strasbourg",
       "Peñarol"
     ],
+    "clubIds": [
+      "real-zaragoza",
+      "strasbourg",
+      "penarol"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خوسيه_لويس_تشيلافيرت",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/José_Luis_Chilavert"
   },
@@ -6417,6 +7285,7 @@ const players = [
     "nationalityEn": "Polish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان / جناح أيمن",
       "en": "Midfielder / Right Winger"
@@ -6449,6 +7318,10 @@ const players = [
       "Juventus",
       "Roma"
     ],
+    "clubIds": [
+      "juventus",
+      "roma"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/زبيغنيو_بونيك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Zbigniew_Boniek"
   },
@@ -6460,6 +7333,7 @@ const players = [
     "nationalityEn": "Romanian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب هجومي",
       "en": "Attacking Midfielder"
@@ -6498,6 +7372,11 @@ const players = [
       "Barcelona",
       "Galatasaray"
     ],
+    "clubIds": [
+      "real-madrid",
+      "barcelona",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غورغي_هاجي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gheorghe_Hagi"
   },
@@ -6509,6 +7388,7 @@ const players = [
     "nationalityEn": "Australian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان هجومي / مهاجم",
       "en": "Attacking Midfielder / Forward"
@@ -6547,6 +7427,10 @@ const players = [
       "Melbourne City",
       "Jamshedpur"
     ],
+    "clubIds": [
+      "millwall",
+      "everton"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تيم_كاهيل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Tim_Cahill"
   },
@@ -6558,6 +7442,7 @@ const players = [
     "nationalityEn": "Turkish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -6598,6 +7483,13 @@ const players = [
       "Blackburn Rovers",
       "Galatasaray"
     ],
+    "clubIds": [
+      "galatasaray",
+      "torino",
+      "inter-milan",
+      "parma",
+      "blackburn-rovers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هاكان_شوكور",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hakan_Şükür"
   },
@@ -6609,6 +7501,7 @@ const players = [
     "nationalityEn": "Swedish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -6653,6 +7546,15 @@ const players = [
       "LA Galaxy",
       "AC Milan"
     ],
+    "clubIds": [
+      "ajax",
+      "juventus",
+      "inter-milan",
+      "barcelona",
+      "ac-milan",
+      "paris-saint-germain",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/زلاتان_إبراهيموفيتش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Zlatan_Ibrahimović"
   },
@@ -6664,6 +7566,7 @@ const players = [
     "nationalityEn": "Swiss",
     "clubAr": "بازل",
     "clubEn": "Basel",
+    "clubId": null,
     "position": {
       "ar": "جناح / وسط مهاجم",
       "en": "Winger / Attacking Midfielder"
@@ -6706,6 +7609,13 @@ const players = [
       "Chicago Fire",
       "Basel"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "inter-milan",
+      "stoke-city",
+      "liverpool",
+      "lyon"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/شيردان_شاكيري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Xherdan_Shaqiri"
   },
@@ -6717,6 +7627,7 @@ const players = [
     "nationalityEn": "Austrian",
     "clubAr": "بدون نادي",
     "clubEn": "Free agent",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -6747,6 +7658,10 @@ const players = [
       "Bayern Munich",
       "Real Madrid"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديفيد_ألابا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Alaba"
   },
@@ -6758,6 +7673,7 @@ const players = [
     "nationalityEn": "Russian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم / مهاجم",
       "en": "Attacking Midfielder / Forward"
@@ -6788,6 +7704,9 @@ const players = [
       "Arsenal",
       "Zenit Saint Petersburg"
     ],
+    "clubIds": [
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أندريه_أرشافين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andrei_Arshavin"
   },
@@ -6799,6 +7718,7 @@ const players = [
     "nationalityEn": "Japanese",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -6835,6 +7755,12 @@ const players = [
       "Bologna",
       "Fiorentina"
     ],
+    "clubIds": [
+      "roma",
+      "parma",
+      "bologna",
+      "fiorentina"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هيديتوشي_ناكاتا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hidetoshi_Nakata"
   },
@@ -6846,6 +7772,7 @@ const players = [
     "nationalityEn": "Japanese",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -6882,6 +7809,12 @@ const players = [
       "Beşiktaş",
       "Real Zaragoza"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "manchester-united",
+      "besiktas",
+      "real-zaragoza"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/شينجي_كاجاوا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Shinji_Kagawa"
   },
@@ -6893,6 +7826,7 @@ const players = [
     "nationalityEn": "Iranian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -6929,6 +7863,10 @@ const players = [
       "Hertha Berlin",
       "Al Sadd"
     ],
+    "clubIds": [
+      "bayern-munich",
+      "hertha-berlin"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/علي_دائي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ali_Daei"
   },
@@ -6940,6 +7878,7 @@ const players = [
     "nationalityEn": "Iranian",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -6978,6 +7917,10 @@ const players = [
       "Porto",
       "Inter Milan"
     ],
+    "clubIds": [
+      "porto",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مهدي_طارمي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mehdi_Taremi"
   },
@@ -6989,6 +7932,7 @@ const players = [
     "nationalityEn": "South African",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7023,6 +7967,12 @@ const players = [
       "Blackburn Rovers",
       "West Ham United"
     ],
+    "clubIds": [
+      "celta-vigo",
+      "porto",
+      "blackburn-rovers",
+      "west-ham-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيني_مكارثي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Benni_McCarthy"
   },
@@ -7034,6 +7984,7 @@ const players = [
     "nationalityEn": "Malian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -7070,6 +8021,12 @@ const players = [
       "Dalian Aerbin",
       "Real Betis"
     ],
+    "clubIds": [
+      "lens",
+      "sevilla",
+      "barcelona",
+      "real-betis"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سيدو_كيتا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Seydou_Keita"
   },
@@ -7081,6 +8038,7 @@ const players = [
     "nationalityEn": "Bosnian",
     "clubAr": "سراييفو",
     "clubEn": "FK Sarajevo",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7123,6 +8081,13 @@ const players = [
       "Fenerbahçe",
       "FK Sarajevo"
     ],
+    "clubIds": [
+      "vfl-wolfsburg",
+      "manchester-city",
+      "roma",
+      "inter-milan",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إدين_جيكو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Edin_Džeko"
   },
@@ -7134,6 +8099,7 @@ const players = [
     "nationalityEn": "Slovak",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -7170,6 +8136,10 @@ const players = [
       "Göteborg",
       "Trabzonspor"
     ],
+    "clubIds": [
+      "napoli",
+      "trabzonspor"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماريك_هامشيك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marek_Hamšík"
   },
@@ -7181,6 +8151,7 @@ const players = [
     "nationalityEn": "Icelandic",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -7215,6 +8186,12 @@ const players = [
       "Swansea City",
       "Everton"
     ],
+    "clubIds": [
+      "hoffenheim",
+      "tottenham",
+      "swansea-city",
+      "everton"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيلفي_سيجوردسون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gylfi_Sigurðsson"
   },
@@ -7226,6 +8203,7 @@ const players = [
     "nationalityEn": "Canadian",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -7254,6 +8232,9 @@ const players = [
       "Vancouver Whitecaps",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألفونسو_ديفيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alphonso_Davies"
   },
@@ -7265,6 +8246,7 @@ const players = [
     "nationalityEn": "Chilean",
     "clubAr": "أودينيزي",
     "clubEn": "Udinese",
+    "clubId": "udinese",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7309,6 +8291,15 @@ const players = [
       "Marseille",
       "Udinese"
     ],
+    "clubIds": [
+      "river-plate",
+      "udinese",
+      "barcelona",
+      "arsenal",
+      "manchester-united",
+      "inter-milan",
+      "marseille"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أليكسيس_سانشيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alexis_Sánchez"
   },
@@ -7320,6 +8311,7 @@ const players = [
     "nationalityEn": "Chilean",
     "clubAr": "كولو كولو",
     "clubEn": "Colo-Colo",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -7330,13 +8322,13 @@ const players = [
     "bioEn": "Chilean midfielder known for his physicality and combative spirit on the pitch, he won two Copa América titles with the national team and played for major European clubs including Bayern Munich, Juventus, Barcelona and Inter Milan.",
     "achievementsAr": [
       "لقبا كوبا أمريكا متتاليان مع تشيلي (2015، 2016)",
-      "لقب دوري أبطال أوروبا 2015 مع بايرن ميونخ",
+      "3 ألقاب متتالية في الدوري الألماني (2016 و2017 و2018) مع بايرن ميونخ",
       "عدة ألقاب دوري إيطالي مع يوفنتوس",
       "لقب الدوري الإسباني مع برشلونة"
     ],
     "achievementsEn": [
       "Back-to-back Copa América titles with Chile (2015, 2016)",
-      "UEFA Champions League title 2015 with Bayern Munich",
+      "Bundesliga titles 2016, 2017 and 2018 with Bayern Munich",
       "Multiple Serie A titles with Juventus",
       "La Liga title with Barcelona"
     ],
@@ -7362,6 +8354,14 @@ const players = [
       "Atlético Mineiro",
       "Colo-Colo"
     ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "juventus",
+      "bayern-munich",
+      "barcelona",
+      "inter-milan",
+      "flamengo"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أرتورو_فيدال",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Arturo_Vidal"
   },
@@ -7373,6 +8373,7 @@ const players = [
     "nationalityEn": "Peruvian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7411,6 +8412,12 @@ const players = [
       "Flamengo",
       "Internacional"
     ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "bayern-munich",
+      "corinthians",
+      "flamengo"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باولو_غيريرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paolo_Guerrero"
   },
@@ -7422,6 +8429,7 @@ const players = [
     "nationalityEn": "Costa Rican",
     "clubAr": "بوماس يونام (المكسيك)",
     "clubEn": "Pumas UNAM (Mexico)",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -7462,6 +8470,12 @@ const players = [
       "Newell's Old Boys",
       "Pumas UNAM"
     ],
+    "clubIds": [
+      "levante",
+      "real-madrid",
+      "paris-saint-germain",
+      "nottingham-forest"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كيلور_نافاس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Keylor_Navas"
   },
@@ -7473,6 +8487,7 @@ const players = [
     "nationalityEn": "Iraqi",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7509,6 +8524,9 @@ const players = [
       "AGMK",
       "Al-Shorta"
     ],
+    "clubIds": [
+      "ismaily"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يونس_محمود",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Younis_Mahmoud"
   },
@@ -7520,6 +8538,7 @@ const players = [
     "nationalityEn": "Qatari",
     "clubAr": "السد",
     "clubEn": "Al Sadd",
+    "clubId": null,
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -7552,6 +8571,10 @@ const players = [
       "Sporting Gijón (loan)",
       "Al Sadd"
     ],
+    "clubIds": [
+      "villarreal",
+      "sporting-gijon"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أكرم_عفيف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Akram_Afif"
   },
@@ -7563,6 +8586,7 @@ const players = [
     "nationalityEn": "Tunisian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم / مهاجم",
       "en": "Attacking Midfielder / Forward"
@@ -7603,6 +8627,14 @@ const players = [
       "Saint-Étienne",
       "Montpellier"
     ],
+    "clubIds": [
+      "cs-sfaxien",
+      "bordeaux",
+      "sunderland",
+      "rennes",
+      "saint-etienne",
+      "montpellier"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/وهبي_الخزري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Wahbi_Khazri"
   },
@@ -7614,6 +8646,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7648,6 +8681,9 @@ const players = [
       "Las Vegas Quicksilvers",
       "Toronto Metros-Croatia"
     ],
+    "clubIds": [
+      "benfica"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يوسيبيو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eusébio"
   },
@@ -7659,6 +8695,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع (ليبرو)",
       "en": "Defender (Sweeper)"
@@ -7685,6 +8722,9 @@ const players = [
     "clubsHistoryEn": [
       "Milan"
     ],
+    "clubIds": [
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانكو_باريزي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Franco_Baresi"
   },
@@ -7696,6 +8736,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -7734,6 +8775,15 @@ const players = [
       "Everton",
       "Burnley"
     ],
+    "clubIds": [
+      "newcastle-united",
+      "tottenham",
+      "lazio",
+      "rangers",
+      "middlesbrough",
+      "everton",
+      "burnley"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بول_غاسكوين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paul_Gascoigne"
   },
@@ -7745,6 +8795,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7757,13 +8808,13 @@ const players = [
       "الرقم القياسي التاريخي لأكثر الأهداف في نهائيات كأس العالم (16 هدفًا)",
       "بطولة كأس العالم 2014 مع ألمانيا",
       "حذاء ذهبي كأس العالم 2006",
-      "لقب دوري إيطالي مع لاتسيو"
+      "كأس إيطاليا 2013 مع لاتسيو"
     ],
     "achievementsEn": [
       "All-time record for most FIFA World Cup finals goals (16 goals)",
       "2014 FIFA World Cup title with Germany",
       "2006 FIFA World Cup Golden Boot",
-      "Serie A title with Lazio"
+      "Coppa Italia 2013 with Lazio"
     ],
     "clubsHistoryAr": [
       "كايزرسلاوترن",
@@ -7777,6 +8828,12 @@ const players = [
       "Bayern Munich",
       "Lazio"
     ],
+    "clubIds": [
+      "kaiserslautern",
+      "werder-bremen",
+      "bayern-munich",
+      "lazio"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ميروسلاف_كلوزه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Miroslav_Klose"
   },
@@ -7788,6 +8845,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7826,6 +8884,13 @@ const players = [
       "Inter Milan",
       "Al Arabi"
     ],
+    "clubIds": [
+      "river-plate",
+      "boca-juniors",
+      "fiorentina",
+      "roma",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غابرييل_باتيستوتا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gabriel_Batistuta"
   },
@@ -7837,6 +8902,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7873,6 +8939,13 @@ const players = [
       "1899 Hoffenheim",
       "West Ham United"
     ],
+    "clubIds": [
+      "sevilla",
+      "real-madrid",
+      "arsenal",
+      "hoffenheim",
+      "west-ham-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دافور_شوكر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Davor_Šuker"
   },
@@ -7884,6 +8957,7 @@ const players = [
     "nationalityEn": "Cameroonian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -7924,6 +8998,11 @@ const players = [
       "Montpellier",
       "JS Saint-Pierroise (loan)"
     ],
+    "clubIds": [
+      "monaco",
+      "saint-etienne",
+      "montpellier"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روجيه_ميلا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Roger_Milla"
   },
@@ -7935,6 +9014,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -7965,6 +9045,10 @@ const players = [
       "Udinese",
       "Kashima Antlers"
     ],
+    "clubIds": [
+      "flamengo",
+      "udinese"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/زيكو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Zico"
   },
@@ -7976,6 +9060,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8012,6 +9097,12 @@ const players = [
       "Valencia",
       "Vasco da Gama"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "barcelona",
+      "flamengo",
+      "valencia"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روماريو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Romário"
   },
@@ -8023,6 +9114,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -8055,6 +9147,10 @@ const players = [
       "Flamengo",
       "Olimpia (Paraguay)"
     ],
+    "clubIds": [
+      "corinthians",
+      "flamengo"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غارينشا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Garrincha"
   },
@@ -8066,6 +9162,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان / صانع لعب",
       "en": "Midfielder / Playmaker"
@@ -8100,6 +9197,12 @@ const players = [
       "Flamengo",
       "Santos"
     ],
+    "clubIds": [
+      "corinthians",
+      "fiorentina",
+      "flamengo",
+      "santos-fc"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سقراط_(لاعب_كرة_قدم)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sócrates_(footballer)"
   },
@@ -8111,6 +9214,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right-back"
@@ -8143,6 +9247,11 @@ const players = [
       "Roma",
       "Milan"
     ],
+    "clubIds": [
+      "real-zaragoza",
+      "roma",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كافو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cafu"
   },
@@ -8154,6 +9263,7 @@ const players = [
     "nationalityEn": "Ivorian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان",
       "en": "Midfielder"
@@ -8194,6 +9304,11 @@ const players = [
       "Manchester City",
       "Olympiacos"
     ],
+    "clubIds": [
+      "monaco",
+      "barcelona",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ياي_توريه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Yaya_Touré"
   },
@@ -8205,6 +9320,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8235,6 +9351,9 @@ const players = [
       "Neuchâtel Xamax (Switzerland)",
       "Al Ahly"
     ],
+    "clubIds": [
+      "al-ahly"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/حسام_حسن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hossam_Hassan"
   },
@@ -8246,6 +9365,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم / وسط مهاجم",
       "en": "Forward / Attacking Midfielder"
@@ -8276,6 +9396,9 @@ const players = [
       "Sydney FC",
       "Delhi Dynamos"
     ],
+    "clubIds": [
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أليساندرو_ديل_بييرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alessandro_Del_Piero"
   },
@@ -8287,6 +9410,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -8319,6 +9443,11 @@ const players = [
       "Napoli",
       "Juventus"
     ],
+    "clubIds": [
+      "udinese",
+      "napoli",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دينو_زوف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dino_Zoff"
   },
@@ -8330,6 +9459,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8364,6 +9494,12 @@ const players = [
       "Tottenham Hotspur",
       "Nagoya Grampus"
     ],
+    "clubIds": [
+      "leicester-city",
+      "everton",
+      "barcelona",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غاري_لينيكر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gary_Lineker"
   },
@@ -8375,6 +9511,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8415,6 +9552,13 @@ const players = [
       "New York City FC",
       "Vissel Kobe"
     ],
+    "clubIds": [
+      "sporting-gijon",
+      "real-zaragoza",
+      "valencia",
+      "barcelona",
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دافيد_فيا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Villa"
   },
@@ -8426,6 +9570,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط ميدان / مدافع",
       "en": "Midfielder / Defender"
@@ -8460,6 +9605,12 @@ const players = [
       "Milan",
       "Ajax"
     ],
+    "clubIds": [
+      "ajax",
+      "sporting-cp",
+      "real-zaragoza",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرانك_ريكارد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Frank_Rijkaard"
   },
@@ -8471,6 +9622,7 @@ const players = [
     "nationalityEn": "Uruguayan",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم / صانع لعب",
       "en": "Attacking Midfielder / Playmaker"
@@ -8509,6 +9661,12 @@ const players = [
       "Torino",
       "River Plate"
     ],
+    "clubIds": [
+      "river-plate",
+      "marseille",
+      "cagliari",
+      "torino"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إنزو_فرانشيسكولي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Enzo_Francescoli"
   },
@@ -8520,6 +9678,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8550,6 +9709,10 @@ const players = [
       "Nice",
       "Stade de Reims"
     ],
+    "clubIds": [
+      "nice",
+      "reims"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جوست_فونتين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Just_Fontaine"
   },
@@ -8561,6 +9724,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8601,6 +9765,14 @@ const players = [
       "Sampdoria",
       "Tottenham Hotspur"
     ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "inter-milan",
+      "monaco",
+      "tottenham",
+      "bayern-munich",
+      "sampdoria"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يورغن_كلينسمان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jürgen_Klinsmann"
   },
@@ -8612,6 +9784,7 @@ const players = [
     "nationalityEn": "Nigerian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8646,6 +9819,9 @@ const players = [
       "Olympiacos",
       "Sporting Gijón"
     ],
+    "clubIds": [
+      "sporting-gijon"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رشيدي_يكيني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rashidi_Yekini"
   },
@@ -8657,6 +9833,7 @@ const players = [
     "nationalityEn": "South Korean",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8687,6 +9864,10 @@ const players = [
       "Eintracht Frankfurt",
       "Bayer Leverkusen"
     ],
+    "clubIds": [
+      "eintracht-frankfurt",
+      "bayer-leverkusen"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تشا_بوم-كون",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cha_Bum-kun"
   },
@@ -8698,6 +9879,7 @@ const players = [
     "nationalityEn": "Japanese",
     "clubAr": "يوكوهاما إف سي",
     "clubEn": "Yokohama FC",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8734,6 +9916,10 @@ const players = [
       "Vissel Kobe",
       "Yokohama FC"
     ],
+    "clubIds": [
+      "santos-fc",
+      "genoa"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كازوشي_ميورا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kazuyoshi_Miura"
   },
@@ -8745,6 +9931,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيمن / وسط ميدان",
       "en": "Right-back / Midfielder"
@@ -8775,6 +9962,9 @@ const players = [
       "Banfield",
       "Inter Milan"
     ],
+    "clubIds": [
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خافيير_زانيتي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Javier_Zanetti"
   },
@@ -8786,6 +9976,7 @@ const players = [
     "nationalityEn": "Uruguayan",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -8824,6 +10015,14 @@ const players = [
       "Celta Vigo",
       "Kitchee"
     ],
+    "clubIds": [
+      "independiente",
+      "manchester-united",
+      "villarreal",
+      "atletico-madrid",
+      "inter-milan",
+      "celta-vigo"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دييغو_فورلان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Diego_Forlán"
   },
@@ -8835,6 +10034,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم / صانع لعب",
       "en": "Attacking Midfielder / Playmaker"
@@ -8871,6 +10071,13 @@ const players = [
       "Nice",
       "Al Gharafa"
     ],
+    "clubIds": [
+      "ajax",
+      "real-madrid",
+      "inter-milan",
+      "galatasaray",
+      "nice"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ويسلي_سنايدر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Wesley_Sneijder"
   },
@@ -8882,6 +10089,7 @@ const players = [
     "nationalityEn": "Mexican",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -8918,6 +10126,11 @@ const players = [
       "Hellas Verona",
       "Atlas"
     ],
+    "clubIds": [
+      "monaco",
+      "barcelona",
+      "hellas-verona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رافائيل_ماركيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rafael_Márquez"
   },
@@ -8929,6 +10142,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -8965,6 +10179,13 @@ const players = [
       "Inter Milan",
       "Manchester City"
     ],
+    "clubIds": [
+      "ac-milan",
+      "arsenal",
+      "juventus",
+      "inter-milan",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باتريك_فييرا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Patrick_Vieira"
   },
@@ -8976,6 +10197,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -9006,6 +10228,11 @@ const players = [
       "Nottingham Forest (loan)",
       "Aston Villa"
     ],
+    "clubIds": [
+      "chelsea",
+      "nottingham-forest",
+      "aston-villa"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جون_تيري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/John_Terry"
   },
@@ -9017,6 +10244,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -9049,6 +10277,10 @@ const players = [
       "Salernitana",
       "AC Milan"
     ],
+    "clubIds": [
+      "rangers",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جينارو_غاتوزو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gennaro_Gattuso"
   },
@@ -9060,6 +10292,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -9092,6 +10325,10 @@ const players = [
       "Montreal Impact",
       "Chennaiyin"
     ],
+    "clubIds": [
+      "lazio",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أليساندرو_نيستا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alessandro_Nesta"
   },
@@ -9103,6 +10340,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع / وسط دفاعي",
       "en": "Defender / Defensive Midfielder"
@@ -9139,6 +10377,12 @@ const players = [
       "Al-Gharafa",
       "Qatar SC"
     ],
+    "clubIds": [
+      "nantes",
+      "marseille",
+      "ac-milan",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مارسيل_ديسايي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcel_Desailly"
   },
@@ -9150,25 +10394,28 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
     },
     "era": "2018-الآن",
     "active": true,
-    "bioAr": "مهاجم أرجنتيني، خريج أكاديمية ريفر بليت، وأول لاعب يفوز بكأس العالم وبثلاثية قارية في نفس الموسم (مع مانشستر سيتي 2022-2023). انتقل إلى أتلتيكو مدريد الإسباني في صفقة قياسية عام 2024.",
-    "bioEn": "Argentine forward and River Plate academy graduate, the first player to win the FIFA World Cup and a continental treble in the same season (with Manchester City 2022-23). He moved to Atlético Madrid in a club-record deal in 2024.",
+    "bioAr": "مهاجم أرجنتيني، خريج أكاديمية ريفر بليت، وأول لاعب يفوز بكأس العالم وبثلاثية قارية في نفس الموسم (مع مانشستر سيتي 2022-2023). انتقل إلى أتلتيكو مدريد الإسباني عام 2024.",
+    "bioEn": "Argentine forward and River Plate academy graduate, the first player to win the FIFA World Cup and a continental treble in the same season (with Manchester City 2022-23). He moved to Atlético Madrid in 2024.",
     "achievementsAr": [
       "بطولة كأس العالم 2022 مع الأرجنتين",
       "لقب دوري أبطال أوروبا 2023 مع مانشستر سيتي",
       "لقبا الدوري الإنجليزي الممتاز مع مانشستر سيتي",
-      "بطولتا كوبا أمريكا مع الأرجنتين (2021، 2024)"
+      "بطولة كوبا أمريكا 2024 مع الأرجنتين",
+      "وصافة كأس العالم 2026 مع الأرجنتين"
     ],
     "achievementsEn": [
       "2022 FIFA World Cup title with Argentina",
       "2023 UEFA Champions League title with Manchester City",
       "2 Premier League titles with Manchester City",
-      "2 Copa América titles with Argentina (2021, 2024)"
+      "2024 Copa América title with Argentina",
+      "2026 FIFA World Cup runner-up with Argentina"
     ],
     "clubsHistoryAr": [
       "ريفر بليت",
@@ -9179,6 +10426,11 @@ const players = [
       "River Plate",
       "Manchester City",
       "Atlético Madrid"
+    ],
+    "clubIds": [
+      "river-plate",
+      "manchester-city",
+      "atletico-madrid"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خوليان_ألفاريز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Julián_Alvarez"
@@ -9191,6 +10443,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "أتلتيك بيلباو",
     "clubEn": "Athletic Bilbao",
+    "clubId": "athletic-bilbao",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -9217,6 +10470,9 @@ const players = [
     "clubsHistoryEn": [
       "Athletic Bilbao"
     ],
+    "clubIds": [
+      "athletic-bilbao"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نيكو_ويليامز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nico_Williams"
   },
@@ -9228,6 +10484,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -9256,6 +10513,10 @@ const players = [
       "West Ham United",
       "Arsenal"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديكلان_رايس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Declan_Rice"
   },
@@ -9267,6 +10528,7 @@ const players = [
     "nationalityEn": "Norwegian",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -9303,6 +10565,11 @@ const players = [
       "Real Sociedad (loan)",
       "Arsenal (loan then permanent)"
     ],
+    "clubIds": [
+      "real-madrid",
+      "real-sociedad",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مارتن_أوديجارد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Martin_Ødegaard"
   },
@@ -9314,6 +10581,7 @@ const players = [
     "nationalityEn": "Swedish",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -9350,6 +10618,12 @@ const players = [
       "Newcastle United",
       "Liverpool"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "real-sociedad",
+      "newcastle-united",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألكسندر_إيساك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alexander_Isak"
   },
@@ -9361,6 +10635,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -9397,6 +10672,12 @@ const players = [
       "Marseille (loan)",
       "Arsenal"
     ],
+    "clubIds": [
+      "saint-etienne",
+      "arsenal",
+      "nice",
+      "marseille"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ويليام_ساليبا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/William_Saliba"
   },
@@ -9408,6 +10689,7 @@ const players = [
     "nationalityEn": "Ecuadorian",
     "clubAr": "تشيلسي",
     "clubEn": "Chelsea",
+    "clubId": "chelsea",
     "position": {
       "ar": "وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -9440,6 +10722,10 @@ const players = [
       "Beerschot (loan)",
       "Chelsea"
     ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مويسيس_كايسيدو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Moisés_Caicedo"
   },
@@ -9451,6 +10737,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "وسط",
       "en": "Central Midfielder"
@@ -9477,6 +10764,9 @@ const players = [
     "clubsHistoryEn": [
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غافي_(لاعب_كرة_قدم)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gavi_(footballer)"
   },
@@ -9488,6 +10778,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -9522,6 +10813,13 @@ const players = [
       "Bournemouth",
       "Real Madrid"
     ],
+    "clubIds": [
+      "malaga",
+      "juventus",
+      "roma",
+      "bournemouth",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دين_هويسن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dean_Huijsen"
   },
@@ -9533,6 +10831,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "أورلاندو سيتي (الدوري الأمريكي MLS)",
     "clubEn": "Orlando City (MLS)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Attacking Midfielder"
@@ -9543,27 +10842,36 @@ const players = [
     "bioEn": "French forward who spent most of his European career between Real Sociedad, Atlético Madrid and Barcelona, and was a key figure in France's 2018 World Cup triumph, before retiring from international football and moving to Orlando City in Major League Soccer (MLS) in 2026.",
     "achievementsAr": [
       "بطولة كأس العالم 2018 مع فرنسا",
-      "المركز الثالث في المرتب الفضي لجائزة الكرة الذهبية أكثر من مرة",
-      "لقب الدوري الأوروبي (يوروبا ليغ) مع أتلتيكو مدريد",
-      "لقب الدوري الإسباني مع أتلتيكو مدريد (2021)"
+      "المركز الثالث في الكرة الذهبية 2016",
+      "لقب الدوري الأوروبي 2017-2018 مع أتلتيكو مدريد",
+      "لقب كأس السوبر الأوروبي 2018 مع أتلتيكو مدريد"
     ],
     "achievementsEn": [
       "2018 FIFA World Cup title with France",
-      "Multiple top-3 finishes in the Ballon d'Or voting",
-      "UEFA Europa League title with Atlético Madrid",
-      "La Liga title with Atlético Madrid (2021)"
+      "Third place in the 2016 Ballon d'Or",
+      "2017-18 UEFA Europa League title with Atlético Madrid",
+      "2018 UEFA Super Cup with Atlético Madrid"
     ],
     "clubsHistoryAr": [
+      "ماكون (شباب)",
       "ريال سوسيداد",
       "أتلتيكو مدريد",
       "برشلونة",
+      "أتلتيكو مدريد",
       "أورلاندو سيتي"
     ],
     "clubsHistoryEn": [
+      "Mâcon (youth)",
       "Real Sociedad",
       "Atlético Madrid",
       "Barcelona",
+      "Atlético Madrid",
       "Orlando City"
+    ],
+    "clubIds": [
+      "real-sociedad",
+      "atletico-madrid",
+      "barcelona"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أنطوان_غريزمان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Antoine_Griezmann"
@@ -9576,6 +10884,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "إنتر ميامي (الدوري الأمريكي MLS)",
     "clubEn": "Inter Miami (MLS)",
+    "clubId": null,
     "position": {
       "ar": "وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -9612,6 +10921,11 @@ const players = [
       "Manchester United",
       "Inter Miami"
     ],
+    "clubIds": [
+      "porto",
+      "real-madrid",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كاسيميرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Casemiro"
   },
@@ -9623,6 +10937,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر يونايتد",
     "clubEn": "Manchester United",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -9655,6 +10970,11 @@ const players = [
       "Barcelona (loan)",
       "Manchester United"
     ],
+    "clubIds": [
+      "manchester-united",
+      "aston-villa",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركوس_راشفورد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcus_Rashford"
   },
@@ -9666,6 +10986,7 @@ const players = [
     "nationalityEn": "Uruguayan",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -9706,6 +11027,13 @@ const players = [
       "Atlético Mineiro",
       "Vélez Sarsfield"
     ],
+    "clubIds": [
+      "nacional",
+      "villarreal",
+      "atletico-madrid",
+      "inter-milan",
+      "cagliari"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دييغو_غودين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Diego_Godín"
   },
@@ -9717,6 +11045,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -9743,6 +11072,9 @@ const players = [
     "clubsHistoryEn": [
       "Atlético Madrid"
     ],
+    "clubIds": [
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كوكي_(لاعب_كرة_قدم_مواليد_1992)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Koke_(footballer,_born_1992)"
   },
@@ -9754,6 +11086,7 @@ const players = [
     "nationalityEn": "Turkish",
     "clubAr": "معتزل (مدرب حاليًا لبشكتاش)",
     "clubEn": "Retired (current Beşiktaş head coach)",
+    "clubId": null,
     "position": {
       "ar": "وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -9792,6 +11125,12 @@ const players = [
       "Beşiktaş",
       "Eskişehirspor"
     ],
+    "clubIds": [
+      "besiktas",
+      "fenerbahce",
+      "trabzonspor",
+      "galatasaray"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sergen_Yalçın"
   },
@@ -9803,6 +11142,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -9849,6 +11189,14 @@ const players = [
       "Kasımpaşa",
       "Vitória Guimarães"
     ],
+    "clubIds": [
+      "sporting-cp",
+      "barcelona",
+      "porto",
+      "inter-milan",
+      "chelsea",
+      "besiktas"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريكاردو_كواريسما",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ricardo_Quaresma"
   },
@@ -9860,6 +11208,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -9896,6 +11245,13 @@ const players = [
       "Leicester City (loan)",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "tottenham",
+      "millwall",
+      "norwich-city",
+      "leicester-city",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هاري_كين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Harry_Kane"
   },
@@ -9907,6 +11263,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "فنربخشة (تركيا)",
     "clubEn": "Fenerbahçe (Turkey)",
+    "clubId": "fenerbahce",
     "position": {
       "ar": "وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -9943,6 +11300,11 @@ const players = [
       "Al-Ittihad",
       "Fenerbahçe"
     ],
+    "clubIds": [
+      "leicester-city",
+      "chelsea",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نغولو_كانتي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/N%27Golo_Kant%C3%A9"
   },
@@ -9954,6 +11316,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -9984,6 +11347,11 @@ const players = [
       "Chelsea",
       "Real Madrid"
     ],
+    "clubIds": [
+      "lille",
+      "chelsea",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيدين_هازارد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eden_Hazard"
   },
@@ -9995,6 +11363,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "موناكو",
     "clubEn": "AS Monaco",
+    "clubId": "monaco",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -10029,6 +11398,11 @@ const players = [
       "Juventus",
       "AS Monaco"
     ],
+    "clubIds": [
+      "manchester-united",
+      "juventus",
+      "monaco"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بول_بوغبا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paul_Pogba"
   },
@@ -10040,6 +11414,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "لاعب حر (آخر أنديته فينورد)",
     "clubEn": "Free agent (most recently Feyenoord)",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -10076,6 +11451,14 @@ const players = [
       "Arsenal (loan)",
       "Feyenoord"
     ],
+    "clubIds": [
+      "queens-park-rangers",
+      "liverpool",
+      "manchester-city",
+      "chelsea",
+      "arsenal",
+      "feyenoord"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رحيم_ستيرلينغ",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Raheem_Sterling"
   },
@@ -10087,6 +11470,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "الدحيل (قطر)",
     "clubEn": "Al Duhail (Qatar)",
+    "clubId": null,
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -10119,6 +11503,9 @@ const players = [
       "Al-Arabi",
       "Al Duhail"
     ],
+    "clubIds": [
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركو_فيراتي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_Verratti"
   },
@@ -10130,6 +11517,7 @@ const players = [
     "nationalityEn": "Slovenian",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -10141,28 +11529,40 @@ const players = [
     "achievementsAr": [
       "جائزة القفاز الذهبي (سامورا) أكثر من مرة كأفضل حارس في الدوري الإسباني",
       "لقب الدوري الإسباني 2020-2021 مع أتلتيكو مدريد",
-      "الرقم القياسي لأقل عدد أهداف مستقبلة في موسم واحد بالدوري الإسباني",
-      "وصافة دوري أبطال أوروبا مرتين مع أتلتيكو مدريد"
+      "لقب الدوري الأوروبي 2017-2018 والسوبر الأوروبي 2018 مع أتلتيكو مدريد",
+      "وصافة دوري أبطال أوروبا 2016 مع أتلتيكو مدريد",
+      "الثلاثية المحلية 2013-2014 مع بنفيكا (الدوري وكأس البرتغال وكأس الرابطة)"
     ],
     "achievementsEn": [
       "Multiple-time winner of the Zamora Trophy as La Liga's best goalkeeper",
       "2020-21 La Liga title with Atlético Madrid",
-      "Record for fewest goals conceded in a single La Liga season",
-      "2 UEFA Champions League runner-up finishes with Atlético Madrid"
+      "2017-18 UEFA Europa League and 2018 UEFA Super Cup with Atlético Madrid",
+      "2016 UEFA Champions League runner-up with Atlético Madrid",
+      "2013-14 domestic treble with Benfica (league, Taça de Portugal, Taça da Liga)"
     ],
     "clubsHistoryAr": [
       "أولمبيا ليوبليانا",
       "بنفيكا",
-      "ريال سوسيداد (إعارة)",
+      "بيرا مار (إعارة)",
+      "أولهانينسي (إعارة)",
+      "ليريا (إعارة)",
+      "ريو آفي (إعارة)",
       "بنفيكا",
       "أتلتيكو مدريد"
     ],
     "clubsHistoryEn": [
       "Olimpija Ljubljana",
       "Benfica",
-      "Real Sociedad (loan)",
+      "Beira-Mar (loan)",
+      "Olhanense (loan)",
+      "União de Leiria (loan)",
+      "Rio Ave (loan)",
       "Benfica",
       "Atlético Madrid"
+    ],
+    "clubIds": [
+      "benfica",
+      "atletico-madrid"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يان_أوبلاك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jan_Oblak"
@@ -10175,6 +11575,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -10205,6 +11606,11 @@ const players = [
       "Paris Saint-Germain",
       "Manchester City"
     ],
+    "clubIds": [
+      "ac-milan",
+      "paris-saint-germain",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جانلويجي_دوناروما",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gianluigi_Donnarumma"
   },
@@ -10216,6 +11622,7 @@ const players = [
     "nationalityEn": "Nigerian",
     "clubAr": "غلطة سراي",
     "clubEn": "Galatasaray",
+    "clubId": "galatasaray",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -10250,6 +11657,12 @@ const players = [
       "Napoli",
       "Galatasaray (loan then permanent)"
     ],
+    "clubIds": [
+      "vfl-wolfsburg",
+      "lille",
+      "napoli",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيكتور_أوسيمين",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Victor_Osimhen"
   },
@@ -10261,6 +11674,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -10291,6 +11705,11 @@ const players = [
       "Roma",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "corinthians",
+      "roma",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركينيوس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marquinhos"
   },
@@ -10302,6 +11721,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "فلومينينسي",
     "clubEn": "Fluminense",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -10346,6 +11766,12 @@ const players = [
       "Porto",
       "Fluminense"
     ],
+    "clubIds": [
+      "porto",
+      "ac-milan",
+      "paris-saint-germain",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تياغو_سيلفا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Thiago_Silva"
   },
@@ -10357,6 +11783,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "وسط",
       "en": "Central Midfielder"
@@ -10387,6 +11814,11 @@ const players = [
       "Wolverhampton Wanderers (loan)",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "porto",
+      "wolverhampton-wanderers",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيتينيا_(لاعب_كرة_قدم_مواليد_فبراير_2000)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Vitinha_(footballer,_born_February_2000)"
   },
@@ -10398,6 +11830,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "روزاريو سنترال",
     "clubEn": "Rosario Central",
+    "clubId": null,
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -10438,6 +11871,13 @@ const players = [
       "Benfica",
       "Rosario Central"
     ],
+    "clubIds": [
+      "benfica",
+      "real-madrid",
+      "manchester-united",
+      "paris-saint-germain",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أنخل_دي_ماريا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ángel_Di_María"
   },
@@ -10449,6 +11889,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -10477,6 +11918,10 @@ const players = [
       "Racing Club",
       "Inter Milan"
     ],
+    "clubIds": [
+      "racing-club",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لاوتارو_مارتينيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lautaro_Martínez"
   },
@@ -10488,6 +11933,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "غلطة سراي",
     "clubEn": "Galatasaray",
+    "clubId": "galatasaray",
     "position": {
       "ar": "جناح أيسر",
       "en": "Left Winger"
@@ -10520,6 +11966,12 @@ const players = [
       "AC Milan",
       "Galatasaray"
     ],
+    "clubIds": [
+      "sporting-cp",
+      "lille",
+      "ac-milan",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رفائيل_لياو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rafael_Leão"
   },
@@ -10531,6 +11983,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -10559,6 +12012,10 @@ const players = [
       "Benfica",
       "Manchester City"
     ],
+    "clubIds": [
+      "benfica",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبن_دياز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rúben_Dias"
   },
@@ -10570,6 +12027,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -10602,6 +12060,12 @@ const players = [
       "Manchester City",
       "Real Madrid"
     ],
+    "clubIds": [
+      "benfica",
+      "monaco",
+      "manchester-city",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/برناردو_سيلفا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bernardo_Silva"
   },
@@ -10613,6 +12077,7 @@ const players = [
     "nationalityEn": "Georgian",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "جناح أيسر",
       "en": "Left Winger"
@@ -10651,6 +12116,10 @@ const players = [
       "Napoli",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "napoli",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خفيتشا_كفاراتسخيليا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Khvicha_Kvaratskhelia"
   },
@@ -10662,6 +12131,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "وسط",
       "en": "Central Midfielder"
@@ -10692,6 +12162,11 @@ const players = [
       "Como (loan)",
       "Inter Milan (loan then permanent)"
     ],
+    "clubIds": [
+      "cagliari",
+      "como",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نيكولو_باريلا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nicolò_Barella"
   },
@@ -10703,6 +12178,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "وسط / ظهير أيمن",
       "en": "Midfielder / Right-back"
@@ -10733,6 +12209,11 @@ const players = [
       "RB Leipzig (loan)",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "rb-leipzig",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جوشوا_كيميش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Joshua_Kimmich"
   },
@@ -10744,6 +12225,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder"
@@ -10780,6 +12262,13 @@ const players = [
       "Fenerbahçe",
       "Istanbul Başakşehir"
     ],
+    "clubIds": [
+      "schalke-04",
+      "werder-bremen",
+      "real-madrid",
+      "arsenal",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مسعود_أوزيل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mesut_Özil"
   },
@@ -10791,6 +12280,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "نابولي",
     "clubEn": "Napoli",
+    "clubId": "napoli",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -10833,6 +12323,16 @@ const players = [
       "Roma (loan)",
       "Napoli"
     ],
+    "clubIds": [
+      "anderlecht",
+      "chelsea",
+      "west-bromwich-albion",
+      "everton",
+      "manchester-united",
+      "inter-milan",
+      "roma",
+      "napoli"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روميلو_لوكاكو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Romelu_Lukaku"
   },
@@ -10842,37 +12342,51 @@ const players = [
     "nameEn": "Emiliano Martínez",
     "nationalityAr": "أرجنتيني",
     "nationalityEn": "Argentine",
-    "clubAr": "أستون فيلا",
-    "clubEn": "Aston Villa",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
     },
     "era": "2012-الآن",
     "active": true,
-    "bioAr": "حارس مرمى أرجنتيني، خرّيج أكاديمية آرسنال قبل أن يستقر مع أستون فيلا الإنجليزي ويجدد عقده معه حتى 2029. كان بطلاً لنهائي كأس العالم 2022 مع الأرجنتين وحصل على جائزة القفاز الذهبي كأفضل حارس في البطولة، كما توّج بكوبا أمريكا مرتين مع منتخب بلاده.",
-    "bioEn": "Argentine goalkeeper, an Arsenal academy graduate who settled at Aston Villa and extended his contract there until 2029. He was Argentina's hero in the 2022 World Cup final and won the Golden Glove as the tournament's best goalkeeper, and has also won the Copa América twice with his national team.",
+    "bioAr": "حارس مرمى أرجنتيني تخرج من أكاديمية أرسنال وبرز مع أستون فيلا الذي انضم إليه عام 2020، وكان بطل الأرجنتين في نهائي كأس العالم 2022. انتقل إلى تشيلسي في 30 أغسطس 2026 بعقد لثلاث سنوات مقابل نحو 7.5 مليون جنيه إسترليني.",
+    "bioEn": "Argentine goalkeeper who came through Arsenal's academy, became a star at Aston Villa after joining in 2020, and was Argentina's hero in the 2022 World Cup final. He moved to Chelsea on 30 August 2026 on a three-year contract for a reported £7.5 million.",
     "achievementsAr": [
       "بطولة كأس العالم 2022 مع الأرجنتين",
       "جائزة القفاز الذهبي لأفضل حارس في كأس العالم 2022",
       "بطولة كوبا أمريكا مرتين (2021 و2024) مع الأرجنتين",
-      "بطولة فينالِسيما 2022 مع الأرجنتين"
+      "بطولة فينالِسيما 2022 مع الأرجنتين",
+      "جائزة ياشين لأفضل حارس مرمى في حفل الكرة الذهبية 2023 و2024",
+      "الدوري الأوروبي 2025-26 مع أستون فيلا",
+      "وصيف كأس العالم 2026 مع الأرجنتين"
     ],
     "achievementsEn": [
       "2022 FIFA World Cup title with Argentina",
       "Golden Glove as best goalkeeper of the 2022 World Cup",
       "Copa América title twice (2021 and 2024) with Argentina",
-      "2022 CONMEBOL–UEFA Finalissima title with Argentina"
+      "2022 CONMEBOL–UEFA Finalissima title with Argentina",
+      "Yashin Trophy (best goalkeeper) at the 2023 and 2024 Ballon d'Or ceremonies",
+      "UEFA Europa League 2025-26 with Aston Villa",
+      "2026 FIFA World Cup runner-up with Argentina"
     ],
     "clubsHistoryAr": [
-      "آرسنال",
-      "عدة أندية بالإعارة (أكسفورد يونايتد، شيفيلد وينزداي، روذرهام، جيرونا، ريدينغ)",
-      "أستون فيلا"
+      "أرسنال",
+      "إعارات متعددة (أكسفورد يونايتد، شيفيلد وينزداي، روثرهام، خيتافي، ريدينغ)",
+      "أستون فيلا",
+      "تشيلسي"
     ],
     "clubsHistoryEn": [
       "Arsenal",
       "Multiple loan spells (Oxford United, Sheffield Wednesday, Rotherham, Getafe, Reading)",
-      "Aston Villa"
+      "Aston Villa",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "arsenal",
+      "aston-villa",
+      "chelsea"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إميليانو_مارتينيز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Emiliano_Martínez"
@@ -10885,6 +12399,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right-back"
@@ -10913,6 +12428,10 @@ const players = [
       "Liverpool",
       "Real Madrid"
     ],
+    "clubIds": [
+      "liverpool",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ترنت_ألكسندر-أرنولد",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Trent_Alexander-Arnold"
   },
@@ -10924,6 +12443,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "كومو (معتزل)",
     "clubEn": "Como (retired)",
+    "clubId": "como",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Midfielder / Playmaker"
@@ -10958,6 +12478,12 @@ const players = [
       "Monza (loan)",
       "Como"
     ],
+    "clubIds": [
+      "arsenal",
+      "barcelona",
+      "chelsea",
+      "como"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سيسك_فابريغاس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cesc_Fàbregas"
   },
@@ -10969,6 +12495,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال سوسيداد (معتزل)",
     "clubEn": "Real Sociedad (retired)",
+    "clubId": "real-sociedad",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder"
@@ -10981,13 +12508,13 @@ const players = [
       "بطولة كأس العالم 2010 مع إسبانيا",
       "بطولتا أمم أوروبا 2008 و2012 مع إسبانيا",
       "عدة ألقاب دوري إنجليزي ممتاز مع مانشستر سيتي",
-      "لقب الدوري الإسباني 2007-2008 مع فالنسيا"
+      "كأس ملك إسبانيا 2008 مع فالنسيا"
     ],
     "achievementsEn": [
       "2010 FIFA World Cup title with Spain",
       "UEFA European Championship titles in 2008 and 2012 with Spain",
       "Multiple Premier League titles with Manchester City",
-      "2007-08 La Liga title with Valencia"
+      "Copa del Rey 2008 with Valencia"
     ],
     "clubsHistoryAr": [
       "فالنسيا",
@@ -11003,6 +12530,12 @@ const players = [
       "Manchester City",
       "Real Sociedad"
     ],
+    "clubIds": [
+      "valencia",
+      "celta-vigo",
+      "manchester-city",
+      "real-sociedad"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديفيد_سيلفا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Silva"
   },
@@ -11014,6 +12547,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -11058,6 +12592,14 @@ const players = [
       "Milan",
       "Monterrey (Mexico)"
     ],
+    "clubIds": [
+      "torino",
+      "juventus",
+      "atletico-madrid",
+      "lazio",
+      "inter-milan",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كريستيان_فييري",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Christian_Vieri"
   },
@@ -11069,6 +12611,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Playmaker / Forward"
@@ -11101,6 +12644,12 @@ const players = [
       "Chelsea",
       "Cagliari"
     ],
+    "clubIds": [
+      "napoli",
+      "parma",
+      "chelsea",
+      "cagliari"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيانفرانكو_زولا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gianfranco_Zola"
   },
@@ -11112,6 +12661,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -11148,6 +12698,10 @@ const players = [
       "Hércules",
       "First Vienna (Austria)"
     ],
+    "clubIds": [
+      "valencia",
+      "river-plate"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماريو_كيمبس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mario_Kempes"
   },
@@ -11159,6 +12713,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -11189,6 +12744,11 @@ const players = [
       "Fiorentina",
       "Milan"
     ],
+    "clubIds": [
+      "benfica",
+      "fiorentina",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روي_كوستا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rui_Costa"
   },
@@ -11200,6 +12760,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -11230,6 +12791,11 @@ const players = [
       "Juventus (loan then permanent)",
       "Liverpool"
     ],
+    "clubIds": [
+      "fiorentina",
+      "juventus",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيديريكو_كييزا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Federico_Chiesa"
   },
@@ -11241,6 +12807,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "غالطة سراي",
     "clubEn": "Galatasaray",
+    "clubId": "galatasaray",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -11277,6 +12844,13 @@ const players = [
       "Manchester City",
       "Galatasaray"
     ],
+    "clubIds": [
+      "nurnberg",
+      "borussia-dortmund",
+      "manchester-city",
+      "barcelona",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إلكاي_غوندوغان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ilkay_Gündoğan"
   },
@@ -11288,6 +12862,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "روما",
     "clubEn": "Roma",
+    "clubId": "roma",
     "position": {
       "ar": "صانع ألعاب / مهاجم",
       "en": "Attacking Midfielder / Forward"
@@ -11320,6 +12895,11 @@ const players = [
       "Juventus",
       "Roma"
     ],
+    "clubIds": [
+      "palermo",
+      "juventus",
+      "roma"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باولو_ديبالا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paulo_Dybala"
   },
@@ -11331,6 +12911,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "بدون نادي",
     "clubEn": "Free agent",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right-back"
@@ -11361,6 +12942,10 @@ const players = [
       "Bayer Leverkusen (loan)",
       "Real Madrid"
     ],
+    "clubIds": [
+      "real-madrid",
+      "bayer-leverkusen"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/داني_كارفاخال",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dani_Carvajal"
   },
@@ -11372,6 +12957,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -11404,6 +12990,12 @@ const players = [
       "Chelsea",
       "Real Madrid"
     ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "roma",
+      "chelsea",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أنطونيو_روديغر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Antonio_Rüdiger"
   },
@@ -11415,6 +13007,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -11453,6 +13046,11 @@ const players = [
       "Perugia",
       "Inter Milan"
     ],
+    "clubIds": [
+      "hellas-verona",
+      "everton",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركو_ماتيرازي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_Materazzi"
   },
@@ -11464,6 +13062,7 @@ const players = [
     "nationalityEn": "Portuguese (Brazilian-born)",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder / Playmaker"
@@ -11504,6 +13103,13 @@ const players = [
       "Chelsea",
       "Fluminense"
     ],
+    "clubIds": [
+      "corinthians",
+      "benfica",
+      "porto",
+      "barcelona",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديكو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Deco"
   },
@@ -11515,6 +13121,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "جناح أيسر / صانع ألعاب",
       "en": "Left Winger / Playmaker"
@@ -11545,6 +13152,9 @@ const players = [
       "Fluminense",
       "Al-Hilal (Saudi Arabia)"
     ],
+    "clubIds": [
+      "corinthians"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريفيلينو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rivellino"
   },
@@ -11556,6 +13166,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ميلان",
     "clubEn": "AC Milan",
+    "clubId": "ac-milan",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -11586,6 +13197,11 @@ const players = [
       "Lille",
       "AC Milan"
     ],
+    "clubIds": [
+      "paris-saint-germain",
+      "lille",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مايك_مينيان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mike_Maignan"
   },
@@ -11597,6 +13213,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "الهلال (السعودية)",
     "clubEn": "Al-Hilal (Saudi Arabia)",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -11633,6 +13250,13 @@ const players = [
       "AC Milan",
       "Al-Hilal"
     ],
+    "clubIds": [
+      "atletico-madrid",
+      "alaves",
+      "real-madrid",
+      "real-sociedad",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ثيو_هيرنانديز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Theo_Hernández"
   },
@@ -11644,6 +13268,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right-back"
@@ -11670,6 +13295,9 @@ const players = [
     "clubsHistoryEn": [
       "Manchester United"
     ],
+    "clubIds": [
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غاري_نيفيل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gary_Neville"
   },
@@ -11681,6 +13309,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -11717,6 +13346,13 @@ const players = [
       "LA Galaxy",
       "Derby County"
     ],
+    "clubIds": [
+      "arsenal",
+      "crystal-palace",
+      "chelsea",
+      "roma",
+      "derby-county"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أشلي_كول",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ashley_Cole"
   },
@@ -11728,6 +13364,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -11760,6 +13397,11 @@ const players = [
       "Al-Qadisiyah (Qatar)",
       "Bolton Wanderers"
     ],
+    "clubIds": [
+      "real-valladolid",
+      "real-madrid",
+      "bolton-wanderers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فرناندو_هييرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Fernando_Hierro"
   },
@@ -11771,6 +13413,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -11799,6 +13442,9 @@ const players = [
       "Legnago",
       "Cagliari"
     ],
+    "clubIds": [
+      "cagliari"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لويجي_ريفا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gigi_Riva"
   },
@@ -11810,6 +13456,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -11838,6 +13485,9 @@ const players = [
       "Sporting Lisbon",
       "Paris Saint-Germain (loan then permanent)"
     ],
+    "clubIds": [
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نونو_مينديش_(لاعب_كرة_قدم_مواليد_2002)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nuno_Mendes_(footballer,_born_2002)"
   },
@@ -11849,6 +13499,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -11881,6 +13532,11 @@ const players = [
       "Borussia Mönchengladbach",
       "Inter Milan"
     ],
+    "clubIds": [
+      "sochaux",
+      "borussia-monchengladbach",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركوس_تورام",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcus_Thuram"
   },
@@ -11892,6 +13548,7 @@ const players = [
     "nationalityEn": "American",
     "clubAr": "ميلان",
     "clubEn": "AC Milan",
+    "clubId": "ac-milan",
     "position": {
       "ar": "جناح / صانع ألعاب",
       "en": "Winger / Attacking Midfielder"
@@ -11922,6 +13579,11 @@ const players = [
       "Chelsea",
       "AC Milan"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "chelsea",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كريستيان_بوليسيتش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Christian_Pulisic"
   },
@@ -11933,6 +13595,7 @@ const players = [
     "nationalityEn": "Swedish",
     "clubAr": "آرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -11971,6 +13634,13 @@ const players = [
       "Sporting Lisbon",
       "Arsenal"
     ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "st-pauli",
+      "swansea-city",
+      "coventry-city",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فكتور_غيوكيريس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Viktor_Gyökeres"
   },
@@ -11982,6 +13652,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -12014,6 +13685,12 @@ const players = [
       "Juventus",
       "Hertha Berlin"
     ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "real-madrid",
+      "juventus",
+      "hertha-berlin"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سامي_خضيرة",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sami_Khedira"
   },
@@ -12025,6 +13702,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -12059,6 +13737,11 @@ const players = [
       "Sevilla",
       "Vitória (Brazil)"
     ],
+    "clubIds": [
+      "flamengo",
+      "deportivo-la-coruna",
+      "sevilla"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيبيتو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bebeto"
   },
@@ -12070,6 +13753,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -12104,6 +13788,10 @@ const players = [
       "Atlético Mineiro",
       "Galatasaray"
     ],
+    "clubIds": [
+      "inter-milan",
+      "galatasaray"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كلاوديو_تافاريل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Taffarel"
   },
@@ -12115,6 +13803,7 @@ const players = [
     "nationalityEn": "Turkish",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -12147,6 +13836,12 @@ const players = [
       "AC Milan",
       "Inter Milan"
     ],
+    "clubIds": [
+      "hamburger-sv",
+      "bayer-leverkusen",
+      "ac-milan",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/خاقان_جال_خان_أوغلي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hakan_Çalhanoğlu"
   },
@@ -12158,6 +13853,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder"
@@ -12188,6 +13884,11 @@ const players = [
       "Bayer Leverkusen",
       "Liverpool"
     ],
+    "clubIds": [
+      "koln",
+      "bayer-leverkusen",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فلوريان_فيرتز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Florian_Wirtz"
   },
@@ -12199,6 +13900,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "صانع ألعاب",
       "en": "Attacking Midfielder"
@@ -12227,6 +13929,10 @@ const players = [
       "Chelsea",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "chelsea",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جمال_موسيالا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jamal_Musiala"
   },
@@ -12238,6 +13944,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "فولهام (معتزل)",
     "clubEn": "Fulham (retired)",
+    "clubId": "fulham",
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -12266,6 +13973,10 @@ const players = [
       "West Ham United",
       "Fulham"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "fulham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بوبي_مور",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bobby_Moore"
   },
@@ -12277,6 +13988,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "وست بروميتش ألبيون (معتزل)",
     "clubEn": "West Bromwich Albion (retired)",
+    "clubId": "west-bromwich-albion",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -12307,6 +14019,11 @@ const players = [
       "Stoke City",
       "West Bromwich Albion"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "stoke-city",
+      "west-bromwich-albion"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيوف_هورست",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Geoff_Hurst"
   },
@@ -12318,6 +14035,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "أستون فيلا (معتزل)",
     "clubEn": "Aston Villa (retired)",
+    "clubId": "aston-villa",
     "position": {
       "ar": "جناح / لاعب وسط هجومي",
       "en": "Winger / Attacking midfielder"
@@ -12352,6 +14070,13 @@ const players = [
       "Villarreal",
       "Aston Villa"
     ],
+    "clubIds": [
+      "metz",
+      "marseille",
+      "arsenal",
+      "villarreal",
+      "aston-villa"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/روبير_بيريز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Robert_Pir%C3%A8s"
   },
@@ -12363,6 +14088,7 @@ const players = [
     "nationalityEn": "Czech",
     "clubAr": "أرسنال (معتزل)",
     "clubEn": "Arsenal (retired)",
+    "clubId": "arsenal",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -12397,6 +14123,11 @@ const players = [
       "Chelsea",
       "Arsenal"
     ],
+    "clubIds": [
+      "rennes",
+      "chelsea",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيتر_تشيك",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Petr_%C4%8Cech"
   },
@@ -12408,6 +14139,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "مانشستر سيتي (معتزل كلاعب)",
     "clubEn": "Manchester City (retired as player)",
+    "clubId": "manchester-city",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -12438,6 +14170,10 @@ const players = [
       "Hamburg",
       "Manchester City"
     ],
+    "clubIds": [
+      "anderlecht",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فينسنت_كومباني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Vincent_Kompany"
   },
@@ -12449,6 +14185,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "بوتافوغو (معتزل)",
     "clubEn": "Botafogo (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -12485,6 +14222,13 @@ const players = [
       "AC Milan",
       "Botafogo"
     ],
+    "clubIds": [
+      "ajax",
+      "sampdoria",
+      "real-madrid",
+      "inter-milan",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كلارنس_سيدورف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Clarence_Seedorf"
   },
@@ -12496,6 +14240,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "مالقة (معتزل)",
     "clubEn": "Málaga (retired)",
+    "clubId": "malaga",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -12534,6 +14279,12 @@ const players = [
       "Hamburg",
       "Málaga"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "manchester-united",
+      "real-madrid",
+      "malaga"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رود_فان_نيستلروي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ruud_van_Nistelrooy"
   },
@@ -12545,6 +14296,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "ميلان (معتزل)",
     "clubEn": "AC Milan (retired)",
+    "clubId": "ac-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -12577,6 +14329,11 @@ const players = [
       "Juventus",
       "AC Milan"
     ],
+    "clubIds": [
+      "atalanta",
+      "juventus",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/فيليبو_إنزاغي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Filippo_Inzaghi"
   },
@@ -12588,6 +14345,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "تشيلسي (معتزل)",
     "clubEn": "Chelsea (retired)",
+    "clubId": "chelsea",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -12620,6 +14378,11 @@ const players = [
       "Juventus",
       "Chelsea"
     ],
+    "clubIds": [
+      "sampdoria",
+      "juventus",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جانلوكا_فيالي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gianluca_Vialli"
   },
@@ -12631,6 +14394,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ستاد دو رانس (معتزل)",
     "clubEn": "Stade de Reims (retired)",
+    "clubId": "reims",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -12661,6 +14425,11 @@ const players = [
       "Stade de Reims",
       "Real Madrid"
     ],
+    "clubIds": [
+      "angers",
+      "reims",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ريمون_كوبا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Raymond_Kopa"
   },
@@ -12672,6 +14441,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "أتالانتا (معتزل)",
     "clubEn": "Atalanta (retired)",
+    "clubId": "atalanta",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -12704,6 +14474,12 @@ const players = [
       "Juventus",
       "Atalanta"
     ],
+    "clubIds": [
+      "inter-milan",
+      "ac-milan",
+      "juventus",
+      "atalanta"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جوزيبي_مياتزا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Giuseppe_Meazza"
   },
@@ -12715,6 +14491,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "أرسنال (معتزل)",
     "clubEn": "Arsenal (retired)",
+    "clubId": "arsenal",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -12749,6 +14526,13 @@ const players = [
       "Arsenal",
       "VfB Stuttgart"
     ],
+    "clubIds": [
+      "schalke-04",
+      "ac-milan",
+      "borussia-dortmund",
+      "arsenal",
+      "vfb-stuttgart"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ينس_ليمان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jens_Lehmann"
   },
@@ -12760,6 +14544,7 @@ const players = [
     "nationalityEn": "Danish",
     "clubAr": "أياكس (معتزل)",
     "clubEn": "Ajax (retired)",
+    "clubId": "ajax",
     "position": {
       "ar": "لاعب وسط هجومي",
       "en": "Attacking midfielder"
@@ -12796,6 +14581,13 @@ const players = [
       "Vissel Kobe",
       "Ajax"
     ],
+    "clubIds": [
+      "lazio",
+      "juventus",
+      "barcelona",
+      "real-madrid",
+      "ajax"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مايكل_لاودروب",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Laudrup"
   },
@@ -12807,6 +14599,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "غراسهوبرز زيورخ (معتزل)",
     "clubEn": "Grasshopper Zürich (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -12837,6 +14630,10 @@ const players = [
       "Real Madrid",
       "Grasshopper Zürich"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غونتر_نيتزر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/G%C3%BCnter_Netzer"
   },
@@ -12848,6 +14645,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "باير ليفركوزن (معتزل)",
     "clubEn": "Bayer Leverkusen (retired)",
+    "clubId": "bayer-leverkusen",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -12882,6 +14680,13 @@ const players = [
       "Marseille",
       "Bayer Leverkusen"
     ],
+    "clubIds": [
+      "1860-munich",
+      "werder-bremen",
+      "roma",
+      "marseille",
+      "bayer-leverkusen"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رودي_فولر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rudi_V%C3%B6ller"
   },
@@ -12893,6 +14698,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "كايزرسلاوترن (معتزل)",
     "clubEn": "Kaiserslautern (retired)",
+    "clubId": "kaiserslautern",
     "position": {
       "ar": "مدافع",
       "en": "Full-back"
@@ -12927,6 +14733,12 @@ const players = [
       "Real Zaragoza",
       "Kaiserslautern"
     ],
+    "clubIds": [
+      "kaiserslautern",
+      "bayern-munich",
+      "inter-milan",
+      "real-zaragoza"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أندرياس_بريمه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andreas_Brehme"
   },
@@ -12938,6 +14750,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "الأهلي القطري (معتزل)",
     "clubEn": "Al-Arabi (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -12972,6 +14785,12 @@ const players = [
       "VfL Wolfsburg",
       "Al-Arabi"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "fiorentina",
+      "bayern-munich",
+      "vfl-wolfsburg"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/شتيفان_إيفنبرغ",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Stefan_Effenberg"
   },
@@ -12983,6 +14802,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "أتليتيكو سيلايا (معتزل)",
     "clubEn": "Celaya (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -13011,6 +14831,9 @@ const players = [
       "Real Madrid",
       "Celaya"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيميليو_بوتراغينيو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Emilio_Butrague%C3%B1o"
   },
@@ -13022,6 +14845,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "سيلايا (معتزل)",
     "clubEn": "Celaya (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13050,6 +14874,9 @@ const players = [
       "Real Madrid",
       "Celaya"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ميتشيل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/M%C3%ADchel_(footballer,_born_1963)"
   },
@@ -13061,6 +14888,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بوماس UNAM (معتزل)",
     "clubEn": "Pumas UNAM (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13097,6 +14925,13 @@ const players = [
       "Bayer Leverkusen",
       "Pumas UNAM"
     ],
+    "clubIds": [
+      "koln",
+      "barcelona",
+      "real-madrid",
+      "atletico-madrid",
+      "bayer-leverkusen"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/برند_شوستر",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bernd_Schuster"
   },
@@ -13108,6 +14943,7 @@ const players = [
     "nationalityEn": "Hungarian",
     "clubAr": "إسبانيول (معتزل)",
     "clubEn": "Espanyol (retired)",
+    "clubId": "espanyol",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -13142,6 +14978,10 @@ const players = [
       "Barcelona",
       "Espanyol"
     ],
+    "clubIds": [
+      "barcelona",
+      "espanyol"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لاسلو_كوبالا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_Kubala"
   },
@@ -13153,6 +14993,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "يوفنتوس (معتزل)",
     "clubEn": "Juventus (retired)",
+    "clubId": "juventus",
     "position": {
       "ar": "مدافع (ليبرو)",
       "en": "Sweeper"
@@ -13181,6 +15022,10 @@ const players = [
       "Atalanta",
       "Juventus"
     ],
+    "clubIds": [
+      "atalanta",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غايتانو_شيريا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gaetano_Scirea"
   },
@@ -13192,6 +15037,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "سانت غالن (معتزل)",
     "clubEn": "St. Gallen (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13226,6 +15072,11 @@ const players = [
       "Inter Milan",
       "St. Gallen"
     ],
+    "clubIds": [
+      "como",
+      "juventus",
+      "inter-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركو_تارديلي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_Tardelli"
   },
@@ -13237,6 +15088,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "نيويورك ريد بولز (معتزل)",
     "clubEn": "New York Red Bulls (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط هجومي / مهاجم",
       "en": "Attacking midfielder / Forward"
@@ -13279,6 +15131,15 @@ const players = [
       "Blackburn Rovers",
       "New York Red Bulls"
     ],
+    "clubIds": [
+      "strasbourg",
+      "monaco",
+      "paris-saint-germain",
+      "inter-milan",
+      "kaiserslautern",
+      "bolton-wanderers",
+      "blackburn-rovers"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/يوري_دجوركاييف",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Youri_Djorkaeff"
   },
@@ -13290,6 +15151,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -13332,6 +15194,16 @@ const players = [
       "Inter Milan",
       "Manchester United"
     ],
+    "clubIds": [
+      "montpellier",
+      "napoli",
+      "saint-etienne",
+      "auxerre",
+      "barcelona",
+      "marseille",
+      "inter-milan",
+      "manchester-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/لوران_بلان",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Laurent_Blanc"
   },
@@ -13343,6 +15215,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "فالنسيا (معتزل)",
     "clubEn": "Valencia (retired)",
+    "clubId": "valencia",
     "position": {
       "ar": "لاعب وسط دفاعي",
       "en": "Defensive midfielder"
@@ -13379,6 +15252,14 @@ const players = [
       "Chelsea",
       "Valencia"
     ],
+    "clubIds": [
+      "nantes",
+      "bordeaux",
+      "marseille",
+      "juventus",
+      "chelsea",
+      "valencia"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديدييه_ديشامب",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Didier_Deschamps"
   },
@@ -13390,6 +15271,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "نيوإلز أولد بويز (معتزل)",
     "clubEn": "Newell's Old Boys (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -13426,6 +15308,11 @@ const players = [
       "River Plate",
       "Newell's Old Boys"
     ],
+    "clubIds": [
+      "monaco",
+      "juventus",
+      "river-plate"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/دافيد_تريزيغيه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Trezeguet"
   },
@@ -13437,6 +15324,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ساو خوسيه (معتزل)",
     "clubEn": "São José-RS (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -13471,6 +15359,10 @@ const players = [
       "Kashiwa Reysol",
       "Santos"
     ],
+    "clubIds": [
+      "napoli",
+      "santos-fc"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كاريكا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Careca"
   },
@@ -13482,6 +15374,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ساو باولو (معتزل)",
     "clubEn": "São Paulo (retired)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13512,6 +15405,9 @@ const players = [
       "Roma",
       "São Paulo"
     ],
+    "clubIds": [
+      "roma"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/باولو_روبرتو_فالكاو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paulo_Roberto_Falc%C3%A3o"
   },
@@ -13523,6 +15419,7 @@ const players = [
     "nationalityEn": "Danish",
     "clubAr": "فايله (معتزل)",
     "clubEn": "Vejle (retired)",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -13555,6 +15452,10 @@ const players = [
       "Hellas Verona",
       "Vejle"
     ],
+    "clubIds": [
+      "koln",
+      "hellas-verona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بريبن_إلكيير_لارسن",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Preben_Elkj%C3%A6r"
   },
@@ -13566,6 +15467,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "تشيلسي (معتزل)",
     "clubEn": "Chelsea (retired)",
+    "clubId": "chelsea",
     "position": {
       "ar": "لاعب وسط دفاعي",
       "en": "Defensive midfielder"
@@ -13598,6 +15500,12 @@ const players = [
       "Barcelona",
       "Chelsea"
     ],
+    "clubIds": [
+      "monaco",
+      "arsenal",
+      "barcelona",
+      "chelsea"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيمانويل_بوتي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Emmanuel_Petit"
   },
@@ -13609,6 +15517,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "نيوكاسل يونايتد (معتزل)",
     "clubEn": "Newcastle United (retired)",
+    "clubId": "newcastle-united",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -13643,6 +15552,13 @@ const players = [
       "Notts County",
       "Newcastle United"
     ],
+    "clubIds": [
+      "tottenham",
+      "arsenal",
+      "portsmouth",
+      "notts-county",
+      "newcastle-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/سول_كامبل",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sol_Campbell"
   },
@@ -13654,6 +15570,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "وست هام يونايتد (معتزل)",
     "clubEn": "West Ham United (retired)",
+    "clubId": "west-ham-united",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -13686,6 +15603,12 @@ const players = [
       "Tottenham Hotspur",
       "West Ham United"
     ],
+    "clubIds": [
+      "chelsea",
+      "ac-milan",
+      "tottenham",
+      "west-ham-united"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جيمي_غريفز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jimmy_Greaves"
   },
@@ -13697,6 +15620,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13727,6 +15651,10 @@ const players = [
       "Brighton & Hove Albion",
       "Liverpool"
     ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألكسيس_ماك_أليستير",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alexis_Mac_Allister"
   },
@@ -13738,6 +15666,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13770,6 +15699,12 @@ const players = [
       "Chelsea",
       "Manchester City"
     ],
+    "clubIds": [
+      "river-plate",
+      "benfica",
+      "chelsea",
+      "manchester-city"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إينزو_فرنانديز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Enzo_Fern%C3%A1ndez"
   },
@@ -13779,37 +15714,43 @@ const players = [
     "nameEn": "Bruno Guimarães",
     "nationalityAr": "برازيلي",
     "nationalityEn": "Brazilian",
-    "clubAr": "نيوكاسل يونايتد",
-    "clubEn": "Newcastle United",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "لاعب وسط",
       "en": "Central midfielder"
     },
     "era": "2015-الآن",
     "active": true,
-    "bioAr": "لاعب وسط برازيلي وقائد نيوكاسل يونايتد، انتقل إلى النادي من ليون الفرنسي عام 2022 وأصبح من أبرز لاعبي الوسط في الدوري الإنجليزي الممتاز.",
-    "bioEn": "Brazilian central midfielder and captain of Newcastle United, who joined the club from French side Lyon in 2022 and has become one of the standout midfielders in the Premier League.",
+    "bioAr": "لاعب وسط برازيلي انضم إلى نيوكاسل يونايتد من ليون في يناير 2022 وقاده كقائد للفريق للفوز بكأس الرابطة الإنجليزية 2025، ثم انتقل إلى أرسنال في 8 أغسطس 2026 مقابل نحو 75 مليون جنيه إسترليني بعقد لأربع سنوات.",
+    "bioEn": "Brazilian central midfielder who joined Newcastle United from Lyon in January 2022 and captained the club to the 2025 League Cup, before moving to Arsenal on 8 August 2026 for a reported £75 million on a four-year contract.",
     "achievementsAr": [
-      "الميدالية الذهبية الأولمبية 2020 مع منتخب البرازيل تحت 23 عامًا",
-      "لقب كأس رابطة المحترفين الإنجليزية 2024-2025 مع نيوكاسل يونايتد",
-      "قائد نيوكاسل يونايتد",
+      "الميدالية الذهبية الأولمبية 2020 مع منتخب البرازيل الأولمبي",
+      "كأس الرابطة الإنجليزية 2024-25 مع نيوكاسل يونايتد (كقائد للفريق)",
       "المشاركة في كأس العالم 2026 مع البرازيل"
     ],
     "achievementsEn": [
       "2020 Olympic gold medal with Brazil's U-23 team",
-      "EFL Cup title 2024-25 with Newcastle United",
-      "Captain of Newcastle United",
+      "EFL Cup 2024-25 with Newcastle United (as captain)",
       "Appeared at the 2026 FIFA World Cup with Brazil"
     ],
     "clubsHistoryAr": [
       "أتلتيكو بارانينسي",
       "ليون",
-      "نيوكاسل يونايتد"
+      "نيوكاسل يونايتد",
+      "أرسنال"
     ],
     "clubsHistoryEn": [
       "Athletico Paranaense",
       "Lyon",
-      "Newcastle United"
+      "Newcastle United",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "lyon",
+      "newcastle-united",
+      "arsenal"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/برونو_غيمارايش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bruno_Guimar%C3%A3es"
@@ -13822,6 +15763,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -13856,6 +15798,10 @@ const players = [
       "Dinamo Zagreb (loan)",
       "Arsenal"
     ],
+    "clubIds": [
+      "lille",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/غابرييل_ماغالهايس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gabriel_Magalh%C3%A3es"
   },
@@ -13867,6 +15813,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "توتنهام هوتسبير",
     "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -13899,6 +15846,12 @@ const players = [
       "RB Leipzig",
       "Tottenham Hotspur"
     ],
+    "clubIds": [
+      "paris-saint-germain",
+      "psv-eindhoven",
+      "rb-leipzig",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تشافي_سيمونز",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Xavi_Simons"
   },
@@ -13910,6 +15863,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "بايرن ميونخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "جناح / لاعب وسط هجومي",
       "en": "Winger / Attacking midfielder"
@@ -13940,6 +15894,10 @@ const players = [
       "Crystal Palace",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "crystal-palace",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/مايكل_أوليسه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Olise"
   },
@@ -13951,6 +15909,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -13979,6 +15938,10 @@ const players = [
       "Benfica",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "benfica",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جواو_نيفيز_(لاعب_كرة_قدم)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Neves"
   },
@@ -13990,6 +15953,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "لوس أنجلوس إف سي (معتزل)",
     "clubEn": "Los Angeles FC (retired)",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -14022,6 +15986,10 @@ const players = [
       "Juventus",
       "Los Angeles FC"
     ],
+    "clubIds": [
+      "fiorentina",
+      "juventus"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جورجيو_كييليني",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Giorgio_Chiellini"
   },
@@ -14033,6 +16001,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "فنربخشة (معتزل)",
     "clubEn": "Fenerbahçe (retired)",
+    "clubId": "fenerbahce",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -14075,6 +16044,13 @@ const players = [
       "Union Berlin",
       "Fenerbahçe"
     ],
+    "clubIds": [
+      "inter-milan",
+      "juventus",
+      "ac-milan",
+      "union-berlin",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ليوناردو_بونوتشي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Leonardo_Bonucci"
   },
@@ -14086,6 +16062,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "آينتراخت فرانكفورت",
     "clubEn": "Eintracht Frankfurt",
+    "clubId": "eintracht-frankfurt",
     "position": {
       "ar": "صانع ألعاب هجومي",
       "en": "Attacking midfielder"
@@ -14120,6 +16097,12 @@ const players = [
       "PSV Eindhoven",
       "Eintracht Frankfurt"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "bayern-munich",
+      "psv-eindhoven",
+      "eintracht-frankfurt"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماريو_غوتزه",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mario_G%C3%B6tze"
   },
@@ -14131,6 +16114,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "مانشستر يونايتد (معتزل)",
     "clubEn": "Manchester United (retired)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -14163,6 +16147,12 @@ const players = [
       "Manchester United",
       "Como"
     ],
+    "clubIds": [
+      "lens",
+      "real-madrid",
+      "manchester-united",
+      "como"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رافائيل_فاران",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rapha%C3%ABl_Varane"
   },
@@ -14174,6 +16164,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ليل",
     "clubEn": "Lille",
+    "clubId": "lille",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -14214,6 +16205,13 @@ const players = [
       "Los Angeles FC",
       "Lille"
     ],
+    "clubIds": [
+      "montpellier",
+      "arsenal",
+      "chelsea",
+      "ac-milan",
+      "lille"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/أوليفييه_جيرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Olivier_Giroud"
   },
@@ -14225,6 +16223,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "لوس أنجلوس إف سي",
     "clubEn": "Los Angeles FC",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -14257,6 +16256,11 @@ const players = [
       "Tottenham Hotspur",
       "Los Angeles FC"
     ],
+    "clubIds": [
+      "nice",
+      "lyon",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/هوغو_لوريس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hugo_Lloris"
   },
@@ -14268,6 +16272,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "ليفربول (متوفى)",
     "clubEn": "Liverpool (deceased)",
+    "clubId": "liverpool",
     "position": {
       "ar": "مهاجم / جناح",
       "en": "Forward / Winger"
@@ -14302,6 +16307,12 @@ const players = [
       "Wolverhampton Wanderers",
       "Liverpool"
     ],
+    "clubIds": [
+      "atletico-madrid",
+      "porto",
+      "wolverhampton-wanderers",
+      "liverpool"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ديوغو_جوتا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Diogo_Jota"
   },
@@ -14313,6 +16324,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "لوس أنجلوس غالاكسي",
     "clubEn": "LA Galaxy",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -14345,6 +16357,10 @@ const players = [
       "Borussia Dortmund",
       "LA Galaxy"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "borussia-dortmund"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ماركو_رويس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_Reus"
   },
@@ -14356,6 +16372,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "بورتو (معتزل)",
     "clubEn": "Porto (retired)",
+    "clubId": "porto",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -14390,6 +16407,11 @@ const players = [
       "Beşiktaş",
       "Porto"
     ],
+    "clubIds": [
+      "porto",
+      "real-madrid",
+      "besiktas"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/بيبي_(لاعب_كرة_قدم)",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Pepe_(footballer,_born_1983)"
   },
@@ -14401,6 +16423,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "فنربخشة",
     "clubEn": "Fenerbahçe",
+    "clubId": "fenerbahce",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -14435,6 +16458,11 @@ const players = [
       "Manchester City",
       "Fenerbahçe"
     ],
+    "clubIds": [
+      "benfica",
+      "manchester-city",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/إيدرسون_مورايس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ederson_(footballer,_born_1993)"
   },
@@ -14446,6 +16474,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "توتنهام هوتسبير (معار من مانشستر سيتي)",
     "clubEn": "Tottenham Hotspur (on loan from Manchester City)",
+    "clubId": "tottenham",
     "position": {
       "ar": "مهاجم / جناح أيسر",
       "en": "Forward / Left winger"
@@ -14484,6 +16513,14 @@ const players = [
       "Manchester City",
       "Tottenham Hotspur (loan)"
     ],
+    "clubIds": [
+      "vfl-wolfsburg",
+      "st-pauli",
+      "vfb-stuttgart",
+      "eintracht-frankfurt",
+      "manchester-city",
+      "tottenham"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/عمر_مرموش",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Omar_Marmoush"
   },
@@ -14495,6 +16532,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "إنتر ميامي",
     "clubEn": "Inter Miami",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -14531,6 +16569,12 @@ const players = [
       "Atlético Madrid",
       "Inter Miami"
     ],
+    "clubIds": [
+      "racing-club",
+      "valencia",
+      "udinese",
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/رودريغو_دي_بول",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rodrigo_De_Paul"
   },
@@ -14542,30 +16586,36 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
     },
     "era": "2016-الآن",
     "active": true,
-    "bioAr": "مدافع أرجنتيني يُعرف بأسلوبه القتالي والهجومي في الدفاع، برز مع أتالانتا الإيطالي قبل انتقاله إلى توتنهام هوتسبير الإنجليزي الذي قاده لاحقًا كقائد. شكّل ركيزة أساسية في دفاع الأرجنتين خلال فوزها بكأس العالم 2022.",
-    "bioEn": "Argentine centre-back known for his aggressive, front-foot defending, who rose to prominence with Atalanta in Italy before moving to Tottenham Hotspur in England, whom he later captained. He was a defensive cornerstone for Argentina during their 2022 World Cup triumph.",
+    "bioAr": "مدافع أرجنتيني يُعرف بأسلوبه القتالي والهجومي في الدفاع، برز مع أتالانتا قبل انتقاله إلى توتنهام هوتسبير الذي قاده كقائد في موسم 2025-2026. انضم إلى أتلتيكو مدريد في 15 أغسطس 2026 بعقد حتى يونيو 2031. شكّل ركيزة في دفاع الأرجنتين الفائزة بكأس العالم 2022 والوصيفة في 2026.",
+    "bioEn": "Argentine centre-back known for his aggressive, front-foot defending, who rose to prominence with Atalanta before moving to Tottenham Hotspur, whom he captained in 2025-26. He joined Atlético Madrid on 15 August 2026 on a contract until June 2031. He was a defensive cornerstone for Argentina, World Cup winners in 2022 and runners-up in 2026.",
     "achievementsAr": [
       "بطولة كأس العالم 2022 مع الأرجنتين",
       "لقبا كوبا أمريكا 2021 و2024 مع الأرجنتين",
       "جائزة أفضل مدافع في الدوري الإيطالي موسم 2020-2021 مع أتالانتا",
-      "لقب الدوري الأوروبي 2024-2025 مع توتنهام هوتسبير"
+      "لقب الدوري الأوروبي 2024-2025 مع توتنهام هوتسبير",
+      "وصافة كأس العالم 2026 مع الأرجنتين",
+      "أفضل لاعب في نهائي الدوري الأوروبي 2025 مع توتنهام"
     ],
     "achievementsEn": [
       "2022 FIFA World Cup title with Argentina",
       "2021 and 2024 Copa América titles with Argentina",
       "Serie A Best Defender award for the 2020-21 season with Atalanta",
-      "2024-25 UEFA Europa League title with Tottenham Hotspur"
+      "2024-25 UEFA Europa League title with Tottenham Hotspur",
+      "2026 FIFA World Cup runner-up with Argentina",
+      "Player of the match in the 2025 Europa League final with Tottenham"
     ],
     "clubsHistoryAr": [
       "بلغرانو",
       "جنوى",
       "يوفنتوس",
+      "جنوى (إعارة)",
       "أتالانتا (إعارة)",
       "توتنهام هوتسبير",
       "أتلتيكو مدريد"
@@ -14574,9 +16624,17 @@ const players = [
       "Belgrano",
       "Genoa",
       "Juventus",
+      "Genoa (loan)",
       "Atalanta (loan)",
       "Tottenham Hotspur",
       "Atlético Madrid"
+    ],
+    "clubIds": [
+      "genoa",
+      "juventus",
+      "atalanta",
+      "tottenham",
+      "atletico-madrid"
     ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كريستيان_روميرو",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cristian_Romero"
@@ -14589,6 +16647,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "إنتر ميامي (معتزل)",
     "clubEn": "Inter Miami (retired)",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -14621,6 +16680,10 @@ const players = [
       "Barcelona",
       "Inter Miami"
     ],
+    "clubIds": [
+      "valencia",
+      "barcelona"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/جوردي_ألبا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jordi_Alba"
   },
@@ -14632,6 +16695,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "إيه سي ميلان",
     "clubEn": "AC Milan",
+    "clubId": "ac-milan",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -14666,6 +16730,13 @@ const players = [
       "Atlético Madrid",
       "AC Milan"
     ],
+    "clubIds": [
+      "real-madrid",
+      "juventus",
+      "chelsea",
+      "atletico-madrid",
+      "ac-milan"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ألفارو_موراتا",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/%C3%81lvaro_Morata"
   },
@@ -14677,6 +16748,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -14719,6 +16791,15 @@ const players = [
       "Lazio",
       "Paris FC"
     ],
+    "clubIds": [
+      "juventus",
+      "genoa",
+      "torino",
+      "borussia-dortmund",
+      "sevilla",
+      "lazio",
+      "paris-fc"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/تشيرو_إيموبيلي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ciro_Immobile"
   },
@@ -14730,6 +16811,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال سوسيداد",
     "clubEn": "Real Sociedad",
+    "clubId": "real-sociedad",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -14756,6 +16838,9 @@ const players = [
     "clubsHistoryEn": [
       "Real Sociedad"
     ],
+    "clubIds": [
+      "real-sociedad"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/ميكيل_أويارزابال",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mikel_Oyarzabal"
   },
@@ -14767,6 +16852,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "مهاجم / صانع ألعاب هجومي",
       "en": "Forward / Attacking midfielder"
@@ -14797,6 +16883,11 @@ const players = [
       "Chelsea",
       "Arsenal"
     ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "chelsea",
+      "arsenal"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/كاي_هافيرتس",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kai_Havertz"
   },
@@ -14808,6 +16899,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "ريفر بليت",
     "clubEn": "River Plate",
+    "clubId": "river-plate",
     "position": {
       "ar": "مدافع",
       "en": "Centre-back"
@@ -14846,6 +16938,13 @@ const players = [
       "Benfica",
       "River Plate"
     ],
+    "clubIds": [
+      "porto",
+      "valencia",
+      "manchester-city",
+      "benfica",
+      "river-plate"
+    ],
     "wikiUrlAr": "https://ar.wikipedia.org/wiki/نيكولاس_أوتامندي",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nicol%C3%A1s_Otamendi"
   },
@@ -14857,6 +16956,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد (معتزل)",
     "clubEn": "Real Madrid (retired)",
+    "clubId": "real-madrid",
     "position": {
       "ar": "جناح أيسر",
       "en": "Outside left / Winger"
@@ -14885,6 +16985,9 @@ const players = [
       "Racing Santander",
       "Real Madrid"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Paco_Gento"
   },
@@ -14896,6 +16999,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "إنتر ميلان (معتزل)",
     "clubEn": "Inter Milan (retired)",
+    "clubId": "inter-milan",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -14922,6 +17026,9 @@ const players = [
     "clubsHistoryEn": [
       "Inter Milan"
     ],
+    "clubIds": [
+      "inter-milan"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Giacinto_Facchetti"
   },
@@ -14933,6 +17040,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "هامبورغر إس في (معتزل)",
     "clubEn": "Hamburger SV (retired)",
+    "clubId": "hamburger-sv",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -14959,6 +17067,9 @@ const players = [
     "clubsHistoryEn": [
       "Hamburger SV"
     ],
+    "clubIds": [
+      "hamburger-sv"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Uwe_Seeler"
   },
@@ -14970,6 +17081,7 @@ const players = [
     "nationalityEn": "Ghanaian",
     "clubAr": "نوردسيلاند (مدرب مساعد)",
     "clubEn": "Nordsjælland (assistant coach)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -15012,6 +17124,12 @@ const players = [
       "Persib Bandung",
       "Sabail"
     ],
+    "clubIds": [
+      "lyon",
+      "chelsea",
+      "real-madrid",
+      "ac-milan"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Essien"
   },
@@ -15023,6 +17141,7 @@ const players = [
     "nationalityEn": "Swedish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط جناح",
       "en": "Winger / Wide midfielder"
@@ -15055,6 +17174,11 @@ const players = [
       "West Ham United",
       "Celtic"
     ],
+    "clubIds": [
+      "arsenal",
+      "west-ham-united",
+      "celtic"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Freddie_Ljungberg"
   },
@@ -15066,6 +17190,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -15104,6 +17229,15 @@ const players = [
       "PSV Eindhoven",
       "Lille"
     ],
+    "clubIds": [
+      "ajax",
+      "ac-milan",
+      "barcelona",
+      "newcastle-united",
+      "valencia",
+      "psv-eindhoven",
+      "lille"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Patrick_Kluivert"
   },
@@ -15115,6 +17249,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط دفاعي",
       "en": "Defensive midfielder"
@@ -15153,6 +17288,15 @@ const players = [
       "Tottenham Hotspur",
       "Crystal Palace"
     ],
+    "clubIds": [
+      "ajax",
+      "ac-milan",
+      "juventus",
+      "barcelona",
+      "inter-milan",
+      "tottenham",
+      "crystal-palace"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Edgar_Davids"
   },
@@ -15164,6 +17308,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -15198,6 +17343,13 @@ const players = [
       "AC Milan",
       "Ajax"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "manchester-united",
+      "lazio",
+      "ac-milan",
+      "ajax"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jaap_Stam"
   },
@@ -15209,6 +17361,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مدافع",
       "en": "Defender"
@@ -15241,6 +17394,12 @@ const players = [
       "Juventus",
       "Barcelona"
     ],
+    "clubIds": [
+      "monaco",
+      "parma",
+      "juventus",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Lilian_Thuram"
   },
@@ -15252,6 +17411,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -15288,6 +17448,13 @@ const players = [
       "Derby County",
       "Plymouth Argyle"
     ],
+    "clubIds": [
+      "leicester-city",
+      "stoke-city",
+      "nottingham-forest",
+      "southampton",
+      "derby-county"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Peter_Shilton"
   },
@@ -15299,6 +17466,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "غلطة سراي",
     "clubEn": "Galatasaray",
+    "clubId": "galatasaray",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -15331,6 +17499,12 @@ const players = [
       "Bayern Munich",
       "Galatasaray"
     ],
+    "clubIds": [
+      "schalke-04",
+      "manchester-city",
+      "bayern-munich",
+      "galatasaray"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Leroy_San%C3%A9"
   },
@@ -15342,6 +17516,7 @@ const players = [
     "nationalityEn": "Swiss",
     "clubAr": "سندرلاند",
     "clubEn": "Sunderland",
+    "clubId": "sunderland",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -15376,6 +17551,12 @@ const players = [
       "Bayer Leverkusen",
       "Sunderland"
     ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "arsenal",
+      "bayer-leverkusen",
+      "sunderland"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Granit_Xhaka"
   },
@@ -15387,6 +17568,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "جناح",
       "en": "Winger / Forward"
@@ -15417,6 +17599,11 @@ const players = [
       "Paris Saint-Germain",
       "Liverpool"
     ],
+    "clubIds": [
+      "lyon",
+      "paris-saint-germain",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bradley_Barcola"
   },
@@ -15428,6 +17615,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -15456,6 +17644,10 @@ const players = [
       "Rennes",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "rennes",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/D%C3%A9sir%C3%A9_Dou%C3%A9"
   },
@@ -15467,6 +17659,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -15493,6 +17686,9 @@ const players = [
     "clubsHistoryEn": [
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Warren_Za%C3%AFre-Emery"
   },
@@ -15504,6 +17700,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "إنتر ميلان",
     "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -15534,6 +17731,11 @@ const players = [
       "Inter Milan",
       "Parma (loan)"
     ],
+    "clubIds": [
+      "atalanta",
+      "inter-milan",
+      "parma"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alessandro_Bastoni"
   },
@@ -15545,6 +17747,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "توتنهام هوتسبير",
     "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
     "position": {
       "ar": "لاعب وسط هجومي",
       "en": "Attacking midfielder"
@@ -15579,6 +17782,12 @@ const players = [
       "Leicester City",
       "Tottenham Hotspur"
     ],
+    "clubIds": [
+      "coventry-city",
+      "norwich-city",
+      "leicester-city",
+      "tottenham"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/James_Maddison"
   },
@@ -15590,6 +17799,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "توتنهام هوتسبير",
     "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -15622,6 +17832,11 @@ const players = [
       "Newcastle United",
       "Tottenham Hotspur"
     ],
+    "clubIds": [
+      "ac-milan",
+      "newcastle-united",
+      "tottenham"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sandro_Tonali"
   },
@@ -15633,6 +17848,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "بايرن ميونيخ",
     "clubEn": "Bayern Munich",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -15667,6 +17883,13 @@ const players = [
       "Hoffenheim (loan)",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "arsenal",
+      "west-bromwich-albion",
+      "werder-bremen",
+      "hoffenheim",
+      "bayern-munich"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Serge_Gnabry"
   },
@@ -15678,6 +17901,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -15710,6 +17934,10 @@ const players = [
       "RB Leipzig",
       "Barcelona"
     ],
+    "clubIds": [
+      "rb-leipzig",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dani_Olmo"
   },
@@ -15721,6 +17949,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -15742,10 +17971,21 @@ const players = [
       "Spanish Super Cup with Barcelona"
     ],
     "clubsHistoryAr": [
+      "ريال بيتيس (شباب)",
+      "برشلونة (شباب)",
+      "برشلونة أتلتيك",
+      "لينارس (إعارة)",
       "برشلونة"
     ],
     "clubsHistoryEn": [
+      "Real Betis (youth)",
+      "Barcelona (youth)",
+      "Barcelona Atlètic",
+      "Linares (loan)",
       "Barcelona"
+    ],
+    "clubIds": [
+      "barcelona"
     ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ferm%C3%ADn_L%C3%B3pez"
@@ -15758,6 +17998,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "أستون فيلا",
     "clubEn": "Aston Villa",
+    "clubId": "aston-villa",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -15788,6 +18029,10 @@ const players = [
       "Brentford",
       "Aston Villa"
     ],
+    "clubIds": [
+      "brentford",
+      "aston-villa"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ollie_Watkins"
   },
@@ -15799,6 +18044,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "مدافع أيسر / قلب دفاع",
       "en": "Left-back / Centre-back"
@@ -15833,6 +18079,12 @@ const players = [
       "Bologna",
       "Arsenal"
     ],
+    "clubIds": [
+      "roma",
+      "genoa",
+      "bologna",
+      "arsenal"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Riccardo_Calafiori"
   },
@@ -15844,6 +18096,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -15872,6 +18125,10 @@ const players = [
       "Espanyol",
       "Barcelona"
     ],
+    "clubIds": [
+      "espanyol",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Joan_Garcia"
   },
@@ -15883,6 +18140,7 @@ const players = [
     "nationalityEn": "Polish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -15919,6 +18177,13 @@ const players = [
       "Juventus",
       "Barcelona"
     ],
+    "clubIds": [
+      "arsenal",
+      "brentford",
+      "roma",
+      "juventus",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny"
   },
@@ -15930,6 +18195,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -15966,6 +18232,11 @@ const players = [
       "Dinamo Zagreb (loan)",
       "Barcelona"
     ],
+    "clubIds": [
+      "fenerbahce",
+      "girona",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dominik_Livakovi%C4%87"
   },
@@ -15977,6 +18248,7 @@ const players = [
     "nationalityEn": "Portuguese",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "ظهير / جناح",
       "en": "Full-back / Winger"
@@ -16019,6 +18291,15 @@ const players = [
       "Al Hilal",
       "Barcelona"
     ],
+    "clubIds": [
+      "benfica",
+      "valencia",
+      "inter-milan",
+      "juventus",
+      "manchester-city",
+      "bayern-munich",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Cancelo"
   },
@@ -16030,6 +18311,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "ظهير أيمن / قلب دفاع",
       "en": "Right-back / Centre-back"
@@ -16060,6 +18342,11 @@ const players = [
       "Sevilla",
       "Barcelona"
     ],
+    "clubIds": [
+      "bordeaux",
+      "sevilla",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jules_Kound%C3%A9"
   },
@@ -16071,6 +18358,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -16101,6 +18389,9 @@ const players = [
       "Barcelona B",
       "Barcelona"
     ],
+    "clubIds": [
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alejandro_Balde"
   },
@@ -16112,6 +18403,7 @@ const players = [
     "nationalityEn": "Danish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -16142,6 +18434,11 @@ const players = [
       "Borussia Mönchengladbach (loan)",
       "Barcelona"
     ],
+    "clubIds": [
+      "chelsea",
+      "borussia-monchengladbach",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andreas_Christensen"
   },
@@ -16153,6 +18450,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "مدافع / وسط دفاعي",
       "en": "Defender / Defensive midfielder"
@@ -16187,6 +18485,11 @@ const players = [
       "Girona (loan)",
       "Barcelona"
     ],
+    "clubIds": [
+      "manchester-city",
+      "barcelona",
+      "girona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eric_Garc%C3%ADa_(footballer,_born_2001)"
   },
@@ -16198,6 +18501,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -16230,6 +18534,12 @@ const players = [
       "Arsenal",
       "Barcelona"
     ],
+    "clubIds": [
+      "palmeiras",
+      "manchester-city",
+      "arsenal",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gabriel_Jesus"
   },
@@ -16241,6 +18551,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "جناح / مهاجم",
       "en": "Winger / Forward"
@@ -16273,6 +18584,10 @@ const players = [
       "Borussia Dortmund",
       "Barcelona"
     ],
+    "clubIds": [
+      "borussia-dortmund",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Karim_Adeyemi"
   },
@@ -16284,6 +18599,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "برشلونة",
     "clubEn": "Barcelona",
+    "clubId": "barcelona",
     "position": {
       "ar": "جناح أيسر",
       "en": "Left winger"
@@ -16316,6 +18632,12 @@ const players = [
       "Newcastle United",
       "Barcelona"
     ],
+    "clubIds": [
+      "everton",
+      "preston-north-end",
+      "newcastle-united",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Anthony_Gordon_(footballer)"
   },
@@ -16327,6 +18649,7 @@ const players = [
     "nationalityEn": "Ukrainian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -16363,6 +18686,11 @@ const players = [
       "Valladolid (loan)",
       "Oviedo (loan)"
     ],
+    "clubIds": [
+      "real-madrid",
+      "real-valladolid",
+      "real-oviedo"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Andriy_Lunin"
   },
@@ -16374,6 +18702,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -16406,6 +18735,9 @@ const players = [
       "Real Madrid Castilla",
       "Real Madrid"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Asencio_(footballer,_born_2003)"
   },
@@ -16417,6 +18749,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -16449,6 +18782,12 @@ const players = [
       "Liverpool",
       "Real Madrid"
     ],
+    "clubIds": [
+      "sochaux",
+      "rb-leipzig",
+      "liverpool",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ibrahima_Konat%C3%A9"
   },
@@ -16460,6 +18799,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -16498,6 +18838,12 @@ const players = [
       "Chelsea",
       "Real Madrid"
     ],
+    "clubIds": [
+      "getafe",
+      "brighton-hove-albion",
+      "chelsea",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marc_Cucurella"
   },
@@ -16509,6 +18855,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -16543,6 +18890,12 @@ const players = [
       "Benfica",
       "Real Madrid"
     ],
+    "clubIds": [
+      "manchester-united",
+      "preston-north-end",
+      "benfica",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": ""
   },
@@ -16554,6 +18907,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "ظهير أيمن",
       "en": "Right wing-back"
@@ -16590,6 +18944,11 @@ const players = [
       "Inter Milan",
       "Real Madrid"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "inter-milan",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Denzel_Dumfries"
   },
@@ -16601,6 +18960,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "وسط",
       "en": "Midfielder"
@@ -16629,6 +18989,10 @@ const players = [
       "Rennes",
       "Real Madrid"
     ],
+    "clubIds": [
+      "rennes",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eduardo_Camavinga"
   },
@@ -16640,6 +19004,7 @@ const players = [
     "nationalityEn": "Turkish",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "لاعب وسط هجومي",
       "en": "Attacking midfielder"
@@ -16670,6 +19035,10 @@ const players = [
       "Fenerbahçe",
       "Real Madrid"
     ],
+    "clubIds": [
+      "fenerbahce",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Arda_G%C3%BCler"
   },
@@ -16681,6 +19050,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -16711,6 +19081,11 @@ const players = [
       "Real Madrid",
       "Lyon (loan)"
     ],
+    "clubIds": [
+      "palmeiras",
+      "real-madrid",
+      "lyon"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Endrick_(footballer,_born_2006)"
   },
@@ -16722,6 +19097,7 @@ const players = [
     "nationalityEn": "Argentine",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "لاعب وسط هجومي / جناح أيمن",
       "en": "Attacking midfielder / Right winger"
@@ -16750,6 +19126,10 @@ const players = [
       "River Plate",
       "Real Madrid"
     ],
+    "clubIds": [
+      "river-plate",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Franco_Mastantuono"
   },
@@ -16761,6 +19141,7 @@ const players = [
     "nationalityEn": "Moroccan",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -16795,6 +19176,11 @@ const players = [
       "AC Milan (loan)",
       "Real Madrid"
     ],
+    "clubIds": [
+      "manchester-city",
+      "real-madrid",
+      "ac-milan"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Brahim_D%C3%ADaz"
   },
@@ -16806,6 +19192,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ريال مدريد",
     "clubEn": "Real Madrid",
+    "clubId": "real-madrid",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -16836,6 +19223,11 @@ const players = [
       "Lyon",
       "Real Madrid"
     ],
+    "clubIds": [
+      "le-havre",
+      "lyon",
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ferland_Mendy"
   },
@@ -16847,6 +19239,7 @@ const players = [
     "nationalityEn": "Hungarian",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -16879,6 +19272,10 @@ const players = [
       "RB Leipzig",
       "Liverpool"
     ],
+    "clubIds": [
+      "rb-leipzig",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dominik_Szoboszlai"
   },
@@ -16890,6 +19287,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -16924,6 +19322,12 @@ const players = [
       "Eintracht Frankfurt",
       "Liverpool"
     ],
+    "clubIds": [
+      "reims",
+      "paris-saint-germain",
+      "eintracht-frankfurt",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Hugo_Ekitike"
   },
@@ -16935,6 +19339,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "الهلال",
     "clubEn": "Al-Hilal",
+    "clubId": null,
     "position": {
       "ar": "جناح أيسر / مهاجم",
       "en": "Left winger / Forward"
@@ -16965,6 +19370,9 @@ const players = [
       "Arsenal",
       "Al-Hilal"
     ],
+    "clubIds": [
+      "arsenal"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gabriel_Martinelli"
   },
@@ -16976,6 +19384,7 @@ const players = [
     "nationalityEn": "Turkish",
     "clubAr": "يوفنتوس",
     "clubEn": "Juventus",
+    "clubId": "juventus",
     "position": {
       "ar": "لاعب وسط هجومي / جناح",
       "en": "Attacking midfielder / Winger"
@@ -17006,6 +19415,9 @@ const players = [
       "Juventus Next Gen",
       "Juventus"
     ],
+    "clubIds": [
+      "juventus"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kenan_Y%C4%B1ld%C4%B1z"
   },
@@ -17017,14 +19429,15 @@ const players = [
     "nationalityEn": "Nigerian",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "جناح / مهاجم ثانٍ",
       "en": "Winger / Second striker"
     },
     "era": "2015-الآن",
     "active": true,
-    "bioAr": "جناح نيجيري مولود في لندن، بدأ مع تشارلتون وإيفرتون ولايبزيغ وخاض إعارتين مع فولهام وليستر، ثم تألق مع أتالانتا وسجل ثلاثية في نهائي الدوري الأوروبي 2024، وانتقل إلى أتلتيكو مدريد في يناير 2026.",
-    "bioEn": "Nigerian winger born in London who began at Charlton, Everton and RB Leipzig with loans at Fulham and Leicester, then shone at Atalanta, scoring a hat-trick in the 2024 Europa League final, before joining Atlético Madrid in January 2026.",
+    "bioAr": "جناح نيجيري مولود في لندن، بدأ مع تشارلتون وإيفرتون ولايبزيغ وخاض إعارتين مع فولهام وليستر، ثم تألق مع أتالانتا وسجل ثلاثية في نهائي الدوري الأوروبي 2024، وانتقل إلى أتلتيكو مدريد في فبراير 2026.",
+    "bioEn": "Nigerian winger born in London who began at Charlton, Everton and RB Leipzig with loans at Fulham and Leicester, then shone at Atalanta, scoring a hat-trick in the 2024 Europa League final, before joining Atlético Madrid in February 2026.",
     "achievementsAr": [
       "الدوري الأوروبي 2023-2024 مع أتالانتا وثلاثية في النهائي أمام ليفركوزن",
       "أفضل لاعب في أفريقيا 2024 (الكرة الذهبية الأفريقية)",
@@ -17055,6 +19468,15 @@ const players = [
       "Atalanta",
       "Atlético Madrid"
     ],
+    "clubIds": [
+      "charlton-athletic",
+      "everton",
+      "rb-leipzig",
+      "fulham",
+      "leicester-city",
+      "atalanta",
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ademola_Lookman"
   },
@@ -17066,6 +19488,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -17114,6 +19537,17 @@ const players = [
       "Zamalek",
       "Barnsley"
     ],
+    "clubIds": [
+      "zamalek",
+      "ajax",
+      "celta-vigo",
+      "marseille",
+      "roma",
+      "tottenham",
+      "middlesbrough",
+      "wigan-athletic",
+      "west-ham-united"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mido_(footballer)"
   },
@@ -17125,11 +19559,12 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "باريس سان جيرمان",
     "clubEn": "Paris Saint-Germain",
+    "clubId": "paris-saint-germain",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
     },
-    "era": "",
+    "era": "2017-الآن",
     "active": true,
     "bioAr": "مهاجم إسباني سجّل هدف الفوز لإسبانيا في الوقت الإضافي من نهائي كأس العالم 2026 أمام الأرجنتين. لعب لفالنسيا ومانشستر سيتي وبرشلونة، وانضم إلى باريس سان جيرمان في أغسطس 2026 بعقد حتى 2031.",
     "bioEn": "Spanish forward who scored the winning goal in extra time of the 2026 World Cup final against Argentina. He has played for Valencia, Manchester City and Barcelona, and joined Paris Saint-Germain in August 2026 on a contract until 2031.",
@@ -17153,6 +19588,12 @@ const players = [
       "Barcelona",
       "Paris Saint-Germain"
     ],
+    "clubIds": [
+      "valencia",
+      "manchester-city",
+      "barcelona",
+      "paris-saint-germain"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ferran_Torres"
   },
@@ -17164,6 +19605,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "فورت لودرديل سترايكرز (معتزل)",
     "clubEn": "Fort Lauderdale Strikers (retired)",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -17198,6 +19640,10 @@ const players = [
       "Stoke City",
       "Fort Lauderdale Strikers"
     ],
+    "clubIds": [
+      "leicester-city",
+      "stoke-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Gordon_Banks"
   },
@@ -17209,6 +19655,7 @@ const players = [
     "nationalityEn": "Egyptian",
     "clubAr": "الأهلي (معتزل)",
     "clubEn": "Al Ahly (retired)",
+    "clubId": "al-ahly",
     "position": {
       "ar": "مدافع (قلب دفاع)",
       "en": "Centre-back"
@@ -17241,6 +19688,10 @@ const players = [
       "Al Ahly",
       "Al-Sailiya (loan)"
     ],
+    "clubIds": [
+      "ghazl-el-mahalla",
+      "al-ahly"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Wael_Gomaa"
   },
@@ -17252,6 +19703,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -17286,6 +19738,9 @@ const players = [
       "Olympiacos",
       "Fluminense"
     ],
+    "clubIds": [
+      "real-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcelo_(footballer,_born_1988)"
   },
@@ -17297,6 +19752,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -17327,6 +19783,11 @@ const players = [
       "Bayern Munich",
       "Liverpool"
     ],
+    "clubIds": [
+      "barcelona",
+      "bayern-munich",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Thiago_Alc%C3%A2ntara"
   },
@@ -17338,6 +19799,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -17376,6 +19838,11 @@ const players = [
       "Al-Shabab (Saudi Arabia)",
       "Hajduk Split"
     ],
+    "clubIds": [
+      "schalke-04",
+      "sevilla",
+      "barcelona"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ivan_Rakiti%C4%87"
   },
@@ -17387,6 +19854,7 @@ const players = [
     "nationalityEn": "Colombian",
     "clubAr": "ميلوناريوس",
     "clubEn": "Millonarios",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -17431,6 +19899,16 @@ const players = [
       "Rayo Vallecano",
       "Millonarios"
     ],
+    "clubIds": [
+      "river-plate",
+      "porto",
+      "atletico-madrid",
+      "monaco",
+      "manchester-united",
+      "chelsea",
+      "galatasaray",
+      "rayo-vallecano"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Radamel_Falcao"
   },
@@ -17442,6 +19920,7 @@ const players = [
     "nationalityEn": "German",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -17478,6 +19957,13 @@ const players = [
       "Bayern Munich",
       "Borussia Dortmund"
     ],
+    "clubIds": [
+      "koln",
+      "schalke-04",
+      "fenerbahce",
+      "bayern-munich",
+      "borussia-dortmund"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Toni_Schumacher"
   },
@@ -17489,6 +19975,7 @@ const players = [
     "nationalityEn": "Chilean",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -17529,6 +20016,11 @@ const players = [
       "América (Mexico)",
       "Colo-Colo"
     ],
+    "clubIds": [
+      "sevilla",
+      "real-madrid",
+      "inter-milan"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Iv%C3%A1n_Zamorano"
   },
@@ -17540,6 +20032,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط هجومي",
       "en": "Attacking midfielder"
@@ -17578,6 +20071,14 @@ const players = [
       "West Ham United",
       "Anderlecht"
     ],
+    "clubIds": [
+      "marseille",
+      "arsenal",
+      "manchester-city",
+      "sevilla",
+      "west-ham-united",
+      "anderlecht"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Samir_Nasri"
   },
@@ -17589,6 +20090,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -17621,6 +20123,10 @@ const players = [
       "Empoli (loan)",
       "Zenit Saint Petersburg"
     ],
+    "clubIds": [
+      "juventus",
+      "empoli"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Claudio_Marchisio"
   },
@@ -17632,6 +20138,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "دينامو زغرب (رئيس النادي)",
     "clubEn": "Dinamo Zagreb (club president)",
+    "clubId": null,
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -17664,6 +20171,10 @@ const players = [
       "AC Milan",
       "Celta Vigo (loan)"
     ],
+    "clubIds": [
+      "ac-milan",
+      "celta-vigo"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Zvonimir_Boban"
   },
@@ -17675,6 +20186,7 @@ const players = [
     "nationalityEn": "Montenegrin",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -17707,6 +20219,12 @@ const players = [
       "Fiorentina",
       "Levante"
     ],
+    "clubIds": [
+      "valencia",
+      "real-madrid",
+      "fiorentina",
+      "levante"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Predrag_Mijatovi%C4%87"
   },
@@ -17718,6 +20236,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -17770,6 +20289,18 @@ const players = [
       "West Bromwich Albion",
       "Mumbai City"
     ],
+    "clubIds": [
+      "paris-saint-germain",
+      "arsenal",
+      "real-madrid",
+      "liverpool",
+      "manchester-city",
+      "fenerbahce",
+      "bolton-wanderers",
+      "chelsea",
+      "juventus",
+      "west-bromwich-albion"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Nicolas_Anelka"
   },
@@ -17781,6 +20312,7 @@ const players = [
     "nationalityEn": "Ivorian",
     "clubAr": "مانشستر سيتي (مدرب مساعد)",
     "clubEn": "Manchester City (assistant manager)",
+    "clubId": "manchester-city",
     "position": {
       "ar": "مدافع (قلب دفاع)",
       "en": "Centre-back"
@@ -17817,6 +20349,12 @@ const players = [
       "Liverpool",
       "Celtic"
     ],
+    "clubIds": [
+      "arsenal",
+      "manchester-city",
+      "liverpool",
+      "celtic"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Kolo_Tour%C3%A9"
   },
@@ -17828,6 +20366,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر يونايتد (مدرب رئيسي)",
     "clubEn": "Manchester United (head coach)",
+    "clubId": "manchester-united",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -17864,6 +20403,12 @@ const players = [
       "Tottenham Hotspur",
       "Manchester United"
     ],
+    "clubIds": [
+      "west-ham-united",
+      "birmingham-city",
+      "tottenham",
+      "manchester-united"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Michael_Carrick"
   },
@@ -17875,6 +20420,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "معتزل",
     "clubEn": "Retired",
+    "clubId": null,
     "position": {
       "ar": "مهاجم / جناح",
       "en": "Forward / Winger"
@@ -17911,6 +20457,11 @@ const players = [
       "Fenerbahçe",
       "Feyenoord"
     ],
+    "clubIds": [
+      "feyenoord",
+      "liverpool",
+      "fenerbahce"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Dirk_Kuyt"
   },
@@ -17922,6 +20473,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "يوفنتوس",
     "clubEn": "Juventus",
+    "clubId": "juventus",
     "position": {
       "ar": "مهاجم",
       "en": "Forward"
@@ -17958,6 +20510,13 @@ const players = [
       "Tottenham Hotspur (loan)",
       "Juventus"
     ],
+    "clubIds": [
+      "nantes",
+      "eintracht-frankfurt",
+      "paris-saint-germain",
+      "juventus",
+      "tottenham"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Randal_Kolo_Muani"
   },
@@ -17969,6 +20528,7 @@ const players = [
     "nationalityEn": "Brazilian",
     "clubAr": "تشيلسي",
     "clubEn": "Chelsea",
+    "clubId": "chelsea",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -17993,6 +20553,10 @@ const players = [
       "Palmeiras",
       "Chelsea"
     ],
+    "clubIds": [
+      "palmeiras",
+      "chelsea"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Est%C3%AAv%C3%A3o_(footballer)"
   },
@@ -18004,6 +20568,7 @@ const players = [
     "nationalityEn": "Scottish",
     "clubAr": "نابولي",
     "clubEn": "Napoli",
+    "clubId": "napoli",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -18032,6 +20597,10 @@ const players = [
       "Manchester United",
       "Napoli"
     ],
+    "clubIds": [
+      "manchester-united",
+      "napoli"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Scott_McTominay"
   },
@@ -18043,6 +20612,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
@@ -18073,6 +20643,11 @@ const players = [
       "Bayern Munich",
       "Liverpool"
     ],
+    "clubIds": [
+      "ajax",
+      "bayern-munich",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Ryan_Gravenberch"
   },
@@ -18084,6 +20659,7 @@ const players = [
     "nationalityEn": "Cameroonian",
     "clubAr": "مانشستر يونايتد",
     "clubEn": "Manchester United",
+    "clubId": "manchester-united",
     "position": {
       "ar": "جناح أيمن",
       "en": "Right winger"
@@ -18112,6 +20688,10 @@ const players = [
       "Brentford",
       "Manchester United"
     ],
+    "clubIds": [
+      "brentford",
+      "manchester-united"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bryan_Mbeumo"
   },
@@ -18123,6 +20703,7 @@ const players = [
     "nationalityEn": "Norwegian",
     "clubAr": "أتلتيكو مدريد",
     "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -18132,12 +20713,10 @@ const players = [
     "bioAr": "مهاجم نرويجي طويل القامة تنقل بين عدة أندية أوروبية قبل أن يجد استقراره الحقيقي مع فياريال ثم أتلتيكو مدريد الذي انضم إليه في 2024. يُعتبر خيارًا هجوميًا بديلاً وقويًا في الكرات الهوائية.",
     "bioEn": "Tall Norwegian striker who moved between several European clubs before finding real stability at Villarreal and then Atlético Madrid, which he joined in 2024. He is regarded as a strong, physical attacking option, particularly in the air.",
     "achievementsAr": [
-      "كأس تركيا 2019-2020 مع طرابزون سبور",
-      "هداف الدوري الإسباني المشارك موسم 2023-2024 مع فياريال"
+      "كأس تركيا 2019-2020 مع طرابزون سبور"
     ],
     "achievementsEn": [
-      "2019-20 Turkish Cup with Trabzonspor",
-      "Joint La Liga top scorer 2023-24 with Villarreal"
+      "2019-20 Turkish Cup with Trabzonspor"
     ],
     "clubsHistoryAr": [
       "روزنبورغ",
@@ -18165,6 +20744,14 @@ const players = [
       "Villarreal",
       "Atlético Madrid"
     ],
+    "clubIds": [
+      "crystal-palace",
+      "trabzonspor",
+      "rb-leipzig",
+      "real-sociedad",
+      "villarreal",
+      "atletico-madrid"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Alexander_S%C3%B8rloth"
   },
@@ -18176,6 +20763,7 @@ const players = [
     "nationalityEn": "Slovenian",
     "clubAr": "مانشستر يونايتد",
     "clubEn": "Manchester United",
+    "clubId": "manchester-united",
     "position": {
       "ar": "مهاجم",
       "en": "Striker"
@@ -18208,6 +20796,10 @@ const players = [
       "RB Leipzig",
       "Manchester United"
     ],
+    "clubIds": [
+      "rb-leipzig",
+      "manchester-united"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Benjamin_%C5%A0e%C5%A1ko"
   },
@@ -18219,11 +20811,12 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "ميدلزبره (معتزل)",
     "clubEn": "Middlesbrough (retired)",
+    "clubId": "middlesbrough",
     "position": {
       "ar": "لاعب وسط",
       "en": "Midfielder"
     },
-    "era": "",
+    "era": "1974-1997",
     "active": false,
     "bioAr": "لاعب وسط إنجليزي لُقّب بـ\"الكابتن مارفل\"، بدأ مع وست بروميتش ألبيون وانتقل إلى مانشستر يونايتد عام 1981 حيث أصبح صاحب أطول فترة قيادة للفريق في تاريخه، وقاد منتخب إنجلترا في 65 مباراة.",
     "bioEn": "English midfielder nicknamed \"Captain Marvel\". He started at West Bromwich Albion and joined Manchester United in 1981, becoming the club's longest-serving captain, and captained England 65 times.",
@@ -18251,6 +20844,11 @@ const players = [
       "Manchester United",
       "Middlesbrough"
     ],
+    "clubIds": [
+      "west-bromwich-albion",
+      "manchester-united",
+      "middlesbrough"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bryan_Robson"
   },
@@ -18262,6 +20860,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "نانت (معتزل)",
     "clubEn": "Nantes (retired)",
+    "clubId": "nantes",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -18302,6 +20901,13 @@ const players = [
       "Marseille",
       "Nantes"
     ],
+    "clubIds": [
+      "toulouse",
+      "marseille",
+      "monaco",
+      "manchester-united",
+      "nantes"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Fabien_Barthez"
   },
@@ -18313,6 +20919,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "بايرن ميونخ (معتزل)",
     "clubEn": "Bayern Munich (retired)",
+    "clubId": "bayern-munich",
     "position": {
       "ar": "ظهير أيسر",
       "en": "Left-back"
@@ -18351,6 +20958,12 @@ const players = [
       "Marseille",
       "Bayern Munich"
     ],
+    "clubIds": [
+      "bordeaux",
+      "athletic-bilbao",
+      "bayern-munich",
+      "marseille"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Bixente_Lizarazu"
   },
@@ -18362,6 +20975,7 @@ const players = [
     "nationalityEn": "Italian",
     "clubAr": "إنتر ميلان (معتزل)",
     "clubEn": "Inter Milan (retired)",
+    "clubId": "inter-milan",
     "position": {
       "ar": "مهاجم / صانع ألعاب",
       "en": "Forward / Attacking Midfielder"
@@ -18392,6 +21006,9 @@ const players = [
     "clubsHistoryEn": [
       "Inter Milan"
     ],
+    "clubIds": [
+      "inter-milan"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Sandro_Mazzola"
   },
@@ -18403,6 +21020,7 @@ const players = [
     "nationalityEn": "French",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "جناح / صانع ألعاب هجومي",
       "en": "Winger / Attacking Midfielder"
@@ -18427,6 +21045,10 @@ const players = [
       "Lyon",
       "Manchester City"
     ],
+    "clubIds": [
+      "lyon",
+      "manchester-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Rayan_Cherki"
   },
@@ -18438,6 +21060,7 @@ const players = [
     "nationalityEn": "Belgian",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -18468,6 +21091,11 @@ const players = [
       "Rennes",
       "Manchester City"
     ],
+    "clubIds": [
+      "anderlecht",
+      "rennes",
+      "manchester-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
   },
@@ -18479,6 +21107,7 @@ const players = [
     "nationalityEn": "Ghanaian",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "جناح",
       "en": "Winger"
@@ -18511,6 +21140,12 @@ const players = [
       "Bournemouth",
       "Manchester City"
     ],
+    "clubIds": [
+      "bristol-city",
+      "sunderland",
+      "bournemouth",
+      "manchester-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Antoine_Semenyo"
   },
@@ -18522,6 +21157,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "قلب دفاع",
       "en": "Centre-back"
@@ -18552,6 +21188,12 @@ const players = [
       "Crystal Palace",
       "Manchester City"
     ],
+    "clubIds": [
+      "chelsea",
+      "swansea-city",
+      "crystal-palace",
+      "manchester-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Marc_Gu%C3%A9hi"
   },
@@ -18563,6 +21205,7 @@ const players = [
     "nationalityEn": "Croatian",
     "clubAr": "مانشستر سيتي",
     "clubEn": "Manchester City",
+    "clubId": "manchester-city",
     "position": {
       "ar": "قلب دفاع / ظهير أيسر",
       "en": "Centre-back / Left-back"
@@ -18597,6 +21240,10 @@ const players = [
       "RB Leipzig",
       "Manchester City"
     ],
+    "clubIds": [
+      "rb-leipzig",
+      "manchester-city"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Jo%C5%A1ko_Gvardiol"
   },
@@ -18608,6 +21255,7 @@ const players = [
     "nationalityEn": "Dutch",
     "clubAr": "ليفربول",
     "clubEn": "Liverpool",
+    "clubId": "liverpool",
     "position": {
       "ar": "جناح أيسر / مهاجم",
       "en": "Left Winger / Forward"
@@ -18638,6 +21286,10 @@ const players = [
       "PSV Eindhoven",
       "Liverpool"
     ],
+    "clubIds": [
+      "psv-eindhoven",
+      "liverpool"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Cody_Gakpo"
   },
@@ -18649,6 +21301,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "لاعب وسط دفاعي",
       "en": "Defensive Midfielder"
@@ -18677,6 +21330,10 @@ const players = [
       "Real Sociedad",
       "Arsenal"
     ],
+    "clubIds": [
+      "real-sociedad",
+      "arsenal"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Mart%C3%ADn_Zubimendi"
   },
@@ -18688,6 +21345,7 @@ const players = [
     "nationalityEn": "Spanish",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "حارس مرمى",
       "en": "Goalkeeper"
@@ -18724,6 +21382,11 @@ const players = [
       "Arsenal (loan)",
       "Arsenal"
     ],
+    "clubIds": [
+      "blackburn-rovers",
+      "brentford",
+      "arsenal"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/David_Raya"
   },
@@ -18735,6 +21398,7 @@ const players = [
     "nationalityEn": "English",
     "clubAr": "أرسنال",
     "clubEn": "Arsenal",
+    "clubId": "arsenal",
     "position": {
       "ar": "لاعب وسط مهاجم",
       "en": "Attacking Midfielder"
@@ -18767,8 +21431,6668 @@ const players = [
       "Crystal Palace",
       "Arsenal"
     ],
+    "clubIds": [
+      "queens-park-rangers",
+      "crystal-palace",
+      "arsenal"
+    ],
     "wikiUrlAr": "",
     "wikiUrlEn": "https://en.wikipedia.org/wiki/Eberechi_Eze"
+  },
+  {
+    "id": "mohamed-zidan",
+    "nameAr": "محمد زيدان",
+    "nameEn": "Mohamed Zidan",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1999-2015",
+    "active": false,
+    "bioAr": "مهاجم مصري سابق من بورسعيد، بدأ مسيرته في الدنمارك ثم لعب في الدوري الألماني لفيردر بريمن وماينز وهامبورغ وبوروسيا دورتموند، وفاز مع مصر بكأس أمم إفريقيا مرتين.",
+    "bioEn": "Former Egyptian striker from Port Said who began his career in Denmark and played in the Bundesliga for Werder Bremen, Mainz, Hamburg and Borussia Dortmund, winning the Africa Cup of Nations twice with Egypt.",
+    "achievementsAr": [
+      "كأس أمم إفريقيا 2008 مع مصر",
+      "كأس أمم إفريقيا 2010 مع مصر",
+      "لقب الدوري الألماني 2010-2011 مع بوروسيا دورتموند"
+    ],
+    "achievementsEn": [
+      "Africa Cup of Nations 2008 with Egypt",
+      "Africa Cup of Nations 2010 with Egypt",
+      "Bundesliga title 2010-11 with Borussia Dortmund"
+    ],
+    "clubsHistoryAr": [
+      "إيه بي (الدنمارك)",
+      "ميتييلاند",
+      "فيردر بريمن",
+      "ماينز 05",
+      "هامبورغ",
+      "بوروسيا دورتموند",
+      "ماينز 05",
+      "بني ياس",
+      "الانتاج الحربي"
+    ],
+    "clubsHistoryEn": [
+      "AB",
+      "Midtjylland",
+      "Werder Bremen",
+      "Mainz 05",
+      "Hamburger SV",
+      "Borussia Dortmund",
+      "Mainz 05",
+      "Baniyas",
+      "El Entag El Harby"
+    ],
+    "clubIds": [
+      "werder-bremen",
+      "mainz-05",
+      "hamburger-sv",
+      "borussia-dortmund"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Mohamed_Zidan"
+  },
+  {
+    "id": "juan-roman-riquelme",
+    "nameAr": "خوان رومان ريكيلمي",
+    "nameEn": "Juan Román Riquelme",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "أرجنتينوس جونيورز (معتزل)",
+    "clubEn": "Argentinos Juniors (retired)",
+    "clubId": null,
+    "position": {
+      "ar": "لاعب وسط مهاجم",
+      "en": "Attacking midfielder"
+    },
+    "era": "1996-2015",
+    "active": false,
+    "bioAr": "صانع ألعاب أرجنتيني أسطوري ولد عام 1978، ارتبط اسمه ببوكا جونيورز الذي قضى معه معظم مسيرته، ولعب لبرشلونة وفياريال، واعتزل عام 2015 بعد فترة قصيرة مع أرجنتينوس جونيورز.",
+    "bioEn": "Legendary Argentine playmaker born in 1978, best known for Boca Juniors, where he spent most of his career. He also played for Barcelona and Villarreal and retired in 2015 after a short spell at Argentinos Juniors.",
+    "achievementsAr": [
+      "3 ألقاب كوبا ليبرتادوريس مع بوكا جونيورز (2000 و2001 و2007)",
+      "كأس إنتركونتيننتال 2000 مع بوكا جونيورز",
+      "5 ألقاب دوري أرجنتيني مع بوكا جونيورز",
+      "كأس ريكوبا سودأمريكانا 2008 وكأس الأرجنتين 2012 مع بوكا جونيورز",
+      "كأس إنترتوتو 2004 مع فياريال",
+      "الميدالية الذهبية في أولمبياد بكين 2008 مع الأرجنتين"
+    ],
+    "achievementsEn": [
+      "3 Copa Libertadores titles with Boca Juniors (2000, 2001, 2007)",
+      "2000 Intercontinental Cup with Boca Juniors",
+      "5 Argentine Primera División titles with Boca Juniors",
+      "2008 Recopa Sudamericana and 2012 Copa Argentina with Boca Juniors",
+      "2004 UEFA Intertoto Cup with Villarreal",
+      "Gold medal at the 2008 Beijing Olympics with Argentina"
+    ],
+    "clubsHistoryAr": [
+      "بوكا جونيورز",
+      "برشلونة",
+      "فياريال (إعارة)",
+      "فياريال",
+      "بوكا جونيورز (إعارة)",
+      "بوكا جونيورز",
+      "أرجنتينوس جونيورز"
+    ],
+    "clubsHistoryEn": [
+      "Boca Juniors",
+      "Barcelona",
+      "Villarreal (loan)",
+      "Villarreal",
+      "Boca Juniors (loan)",
+      "Boca Juniors",
+      "Argentinos Juniors"
+    ],
+    "clubIds": [
+      "boca-juniors",
+      "barcelona",
+      "villarreal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "emam-ashour",
+    "nameAr": "إمام عاشور",
+    "nameEn": "Emam Ashour",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "الأهلي",
+    "clubEn": "Al Ahly",
+    "clubId": "al-ahly",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "لاعب وسط مصري مواليد 1998، لعب للزمالك ثم ميتييلاند الدنماركي قبل انضمامه للأهلي في موسم 2022-2023، وشارك مع منتخب مصر في كأس العالم 2026.",
+    "bioEn": "Egyptian midfielder born in 1998 who played for Zamalek and Danish side Midtjylland before joining Al Ahly in 2022-23, and was part of Egypt's squad at the 2026 World Cup.",
+    "achievementsAr": [
+      "دوري أبطال إفريقيا 2023-2024 مع الأهلي",
+      "الدوري المصري 2023-2024 و2024-2025 مع الأهلي",
+      "كأس السوبر المصري 2023-2024 مع الأهلي",
+      "كأس مصر 2022-2023 مع الأهلي"
+    ],
+    "achievementsEn": [
+      "CAF Champions League 2023-24 with Al Ahly",
+      "Egyptian Premier League 2023-24 and 2024-25 with Al Ahly",
+      "Egyptian Super Cup 2023-24 with Al Ahly",
+      "Egypt Cup 2022-23 with Al Ahly"
+    ],
+    "clubsHistoryAr": [
+      "الزمالك",
+      "ميتييلاند",
+      "الأهلي"
+    ],
+    "clubsHistoryEn": [
+      "Zamalek",
+      "Midtjylland",
+      "Al Ahly"
+    ],
+    "clubIds": [
+      "zamalek",
+      "al-ahly"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Emam_Ashour"
+  },
+  {
+    "id": "trezeguet",
+    "nameAr": "تريزيغيه",
+    "nameEn": "Trézéguet",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "الرياض (السعودية)",
+    "clubEn": "Al-Riyadh (Saudi Arabia)",
+    "clubId": null,
+    "position": {
+      "ar": "جناح أيسر",
+      "en": "Left winger"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "جناح مصري واسمه الحقيقي محمود حسن، خرج من أكاديمية الأهلي ولعب في بلجيكا وتركيا وإنجلترا مع أستون فيلا وقطر، وانضم إلى نادي الرياض السعودي عام 2026. لقبه مأخوذ من المهاجم الفرنسي ديفيد تريزيغيه.",
+    "bioEn": "Egyptian winger, real name Mahmoud Hassan, who came through Al Ahly's academy and played in Belgium, Turkey, England with Aston Villa, and Qatar before joining Saudi club Al-Riyadh in 2026. His nickname comes from French striker David Trezeguet.",
+    "achievementsAr": [
+      "دوري أبطال إفريقيا 2012 و2013 مع الأهلي",
+      "المشاركة مع مصر في كأس العالم 2018 و2026"
+    ],
+    "achievementsEn": [
+      "CAF Champions League 2012 and 2013 with Al Ahly",
+      "Represented Egypt at the 2018 and 2026 World Cups"
+    ],
+    "clubsHistoryAr": [
+      "الأهلي",
+      "أندرلخت",
+      "موسكرون (إعارة)",
+      "قاسم باشا",
+      "أستون فيلا",
+      "إسطنبول باشاك شهير (إعارة)",
+      "طرابزون سبور",
+      "الريان (إعارة)",
+      "الأهلي",
+      "الرياض"
+    ],
+    "clubsHistoryEn": [
+      "Al Ahly",
+      "Anderlecht",
+      "Mouscron (loan)",
+      "Kasımpaşa",
+      "Aston Villa",
+      "İstanbul Başakşehir (loan)",
+      "Trabzonspor",
+      "Al-Rayyan (loan)",
+      "Al Ahly",
+      "Al-Riyadh"
+    ],
+    "clubIds": [
+      "al-ahly",
+      "anderlecht",
+      "aston-villa",
+      "trabzonspor"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Trézéguet_(Egyptian_footballer)"
+  },
+  {
+    "id": "mohamed-elneny",
+    "nameAr": "محمد النني",
+    "nameEn": "Mohamed Elneny",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "ليفادياكوس (اليونان)",
+    "clubEn": "Levadiakos (Greece)",
+    "clubId": null,
+    "position": {
+      "ar": "لاعب وسط دفاعي",
+      "en": "Defensive midfielder"
+    },
+    "era": "2010-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط دفاعي مصري من المحلة الكبرى، بدأ مع المقاولون العرب ثم بازل السويسري وأرسنال الإنجليزي، وانتقل إلى الجزيرة الإماراتي عام 2024، وانضم إلى ليفادياكوس اليوناني في سبتمبر 2026 بانتقال حر.",
+    "bioEn": "Egyptian defensive midfielder from El Mahalla El Kubra who started at Al Mokawloon, then played for Swiss club Basel and Arsenal, moved to UAE side Al Jazira in 2024, and joined Greek club Levadiakos on a free transfer in September 2026.",
+    "achievementsAr": [
+      "4 ألقاب الدوري السويسري مع بازل",
+      "كأس الاتحاد الإنجليزي 2016-2017 مع أرسنال",
+      "الدرع الخيرية الإنجليزية 2017 و2020 مع أرسنال",
+      "وصيف كأس أمم إفريقيا 2017 و2021 مع مصر"
+    ],
+    "achievementsEn": [
+      "4 Swiss Super League titles with Basel",
+      "FA Cup 2016-17 with Arsenal",
+      "FA Community Shield 2017 and 2020 with Arsenal",
+      "Africa Cup of Nations runner-up 2017 and 2021 with Egypt"
+    ],
+    "clubsHistoryAr": [
+      "المقاولون العرب",
+      "بازل",
+      "أرسنال",
+      "بشكتاش (إعارة)",
+      "الجزيرة",
+      "ليفادياكوس"
+    ],
+    "clubsHistoryEn": [
+      "Al Mokawloon Al Arab",
+      "Basel",
+      "Arsenal",
+      "Beşiktaş (loan)",
+      "Al Jazira",
+      "Levadiakos"
+    ],
+    "clubIds": [
+      "al-mokawloon-al-arab",
+      "arsenal",
+      "besiktas"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Mohamed_Elneny"
+  },
+  {
+    "id": "javier-mascherano",
+    "nameAr": "خافيير ماسكيرانو",
+    "nameEn": "Javier Mascherano",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "لاعب وسط دفاعي / قلب دفاع",
+      "en": "Defensive midfielder / Centre-back"
+    },
+    "era": "2003-2020",
+    "active": false,
+    "bioAr": "لاعب أرجنتيني سابق في مركزي وسط الملعب المدافع وقلب الدفاع، بدأ مع ريفر بليت ولعب لكورينثيانز ووست هام وليفربول وبرشلونة الذي قضى معه ثماني سنوات، وخاض 147 مباراة دولية مع الأرجنتين، واعتزل عام 2020 ثم اتجه إلى التدريب.",
+    "bioEn": "Former Argentine defensive midfielder and centre-back who began at River Plate and played for Corinthians, West Ham, Liverpool and Barcelona, where he spent eight years. He won 147 caps for Argentina, retired in 2020 and moved into coaching.",
+    "achievementsAr": [
+      "لقبا دوري أبطال أوروبا 2010-2011 و2014-2015 مع برشلونة",
+      "5 ألقاب الدوري الإسباني مع برشلونة",
+      "الميدالية الذهبية في أولمبياد 2004 و2008 مع الأرجنتين",
+      "وصيف كأس العالم 2014 مع الأرجنتين",
+      "الدوري البرازيلي 2005 مع كورينثيانز",
+      "147 مباراة دولية مع الأرجنتين"
+    ],
+    "achievementsEn": [
+      "2 UEFA Champions League titles (2010-11, 2014-15) with Barcelona",
+      "5 La Liga titles with Barcelona",
+      "Olympic gold medals in 2004 and 2008 with Argentina",
+      "2014 World Cup runner-up with Argentina",
+      "2005 Brazilian Série A with Corinthians",
+      "147 international caps for Argentina"
+    ],
+    "clubsHistoryAr": [
+      "ريفر بليت",
+      "كورينثيانز",
+      "وست هام يونايتد",
+      "ليفربول",
+      "برشلونة",
+      "خيبي تشاينا فورتشن",
+      "إستوديانتس"
+    ],
+    "clubsHistoryEn": [
+      "River Plate",
+      "Corinthians",
+      "West Ham United",
+      "Liverpool",
+      "Barcelona",
+      "Hebei China Fortune",
+      "Estudiantes"
+    ],
+    "clubIds": [
+      "river-plate",
+      "corinthians",
+      "west-ham-united",
+      "liverpool",
+      "barcelona"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Javier_Mascherano"
+  },
+  {
+    "id": "kyle-walker",
+    "nameAr": "كايل ووكر",
+    "nameEn": "Kyle Walker",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "بيرنلي",
+    "clubEn": "Burnley",
+    "clubId": "burnley",
+    "position": {
+      "ar": "ظهير أيمن / قلب دفاع",
+      "en": "Right-back / Centre-back"
+    },
+    "era": "2008-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي من شيفيلد، بدأ مع شيفيلد يونايتد ولعب لتوتنهام ومانشستر سيتي الذي حقق معه ست بطولات دوري ودوري أبطال أوروبا 2023، ثم أُعير إلى ميلان وانضم إلى بيرنلي عام 2025.",
+    "bioEn": "English defender from Sheffield who started at Sheffield United and played for Tottenham and Manchester City, winning six Premier League titles and the 2023 Champions League, before a loan at AC Milan and a move to Burnley in 2025.",
+    "achievementsAr": [
+      "6 ألقاب الدوري الإنجليزي الممتاز مع مانشستر سيتي",
+      "دوري أبطال أوروبا 2022-2023 مع مانشستر سيتي",
+      "4 ألقاب كأس الرابطة الإنجليزية و2 كأس الاتحاد الإنجليزي مع مانشستر سيتي",
+      "وصيف بطولة أمم أوروبا 2020 و2024 مع إنجلترا",
+      "المركز الثالث في دوري الأمم الأوروبية 2019 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "6 Premier League titles with Manchester City",
+      "UEFA Champions League 2022-23 with Manchester City",
+      "4 EFL Cups and 2 FA Cups with Manchester City",
+      "Euro 2020 and Euro 2024 runner-up with England",
+      "UEFA Nations League 2019 third place with England"
+    ],
+    "clubsHistoryAr": [
+      "شيفيلد يونايتد",
+      "نورثهامبتون تاون (إعارة)",
+      "توتنهام هوتسبير",
+      "شيفيلد يونايتد (إعارة)",
+      "كوينز بارك رينجرز (إعارة)",
+      "أستون فيلا (إعارة)",
+      "مانشستر سيتي",
+      "ميلان (إعارة)",
+      "بيرنلي"
+    ],
+    "clubsHistoryEn": [
+      "Sheffield United",
+      "Northampton Town (loan)",
+      "Tottenham Hotspur",
+      "Sheffield United (loan)",
+      "Queens Park Rangers (loan)",
+      "Aston Villa (loan)",
+      "Manchester City",
+      "AC Milan (loan)",
+      "Burnley"
+    ],
+    "clubIds": [
+      "sheffield-united",
+      "tottenham",
+      "queens-park-rangers",
+      "aston-villa",
+      "manchester-city",
+      "ac-milan",
+      "burnley"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kyle_Walker"
+  },
+  {
+    "id": "jordan-pickford",
+    "nameAr": "جوردان بيكفورد",
+    "nameEn": "Jordan Pickford",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "إيفرتون",
+    "clubEn": "Everton",
+    "clubId": "everton",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2011-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى إنجليزي خرج من أكاديمية سندرلاند وأُعير لعدة أندية في الدرجات الدنيا، وانضم إلى إيفرتون عام 2017 وأصبح الحارس الأساسي لمنتخب إنجلترا.",
+    "bioEn": "English goalkeeper who came through Sunderland's academy and had several loan spells in the lower leagues before joining Everton in 2017, becoming England's first-choice goalkeeper.",
+    "achievementsAr": [
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا",
+      "وصيف بطولة أمم أوروبا 2020 و2024 مع إنجلترا",
+      "المركز الثالث في دوري الأمم الأوروبية 2019 مع إنجلترا",
+      "جائزة أفضل تصدٍّ في الدوري الإنجليزي الممتاز موسم 2021-2022"
+    ],
+    "achievementsEn": [
+      "Third place at the 2026 World Cup with England",
+      "Euro 2020 and Euro 2024 runner-up with England",
+      "UEFA Nations League 2019 third place with England",
+      "Premier League Save of the Season 2021-22"
+    ],
+    "clubsHistoryAr": [
+      "سندرلاند",
+      "دارلينغتون (إعارة)",
+      "ألفريتون تاون (إعارة)",
+      "بيرتون ألبيون (إعارة)",
+      "كارلايل يونايتد (إعارة)",
+      "برادفورد سيتي (إعارة)",
+      "بريستون نورث إند (إعارة)",
+      "إيفرتون"
+    ],
+    "clubsHistoryEn": [
+      "Sunderland",
+      "Darlington (loan)",
+      "Alfreton Town (loan)",
+      "Burton Albion (loan)",
+      "Carlisle United (loan)",
+      "Bradford City (loan)",
+      "Preston North End (loan)",
+      "Everton"
+    ],
+    "clubIds": [
+      "sunderland",
+      "preston-north-end",
+      "everton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jordan_Pickford"
+  },
+  {
+    "id": "harry-maguire",
+    "nameAr": "هاري ماغواير",
+    "nameEn": "Harry Maguire",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر يونايتد",
+    "clubEn": "Manchester United",
+    "clubId": "manchester-united",
+    "position": {
+      "ar": "قلب دفاع",
+      "en": "Centre-back"
+    },
+    "era": "2011-الآن",
+    "active": true,
+    "bioAr": "قلب دفاع إنجليزي من شيفيلد، لعب لشيفيلد يونايتد وهال سيتي وليستر سيتي، وانضم إلى مانشستر يونايتد عام 2019 في صفقة قياسية لمدافع بلغت نحو 80 مليون جنيه إسترليني، وتولى قيادة الفريق حتى 2023.",
+    "bioEn": "English centre-back from Sheffield who played for Sheffield United, Hull City and Leicester City before joining Manchester United in 2019 in a then world-record deal for a defender of around £80 million, and captained the club until 2023.",
+    "achievementsAr": [
+      "كأس الرابطة الإنجليزية 2022-2023 مع مانشستر يونايتد",
+      "وصيف بطولة أمم أوروبا 2020 مع إنجلترا",
+      "اختير ضمن تشكيلة بطولة أمم أوروبا 2020",
+      "المركز الثالث في دوري الأمم الأوروبية 2019 مع إنجلترا",
+      "لاعب الموسم في ليستر سيتي 2017-2018"
+    ],
+    "achievementsEn": [
+      "EFL Cup 2022-23 with Manchester United",
+      "Euro 2020 runner-up with England",
+      "Named in the Euro 2020 Team of the Tournament",
+      "UEFA Nations League 2019 third place with England",
+      "Leicester City Player of the Season 2017-18"
+    ],
+    "clubsHistoryAr": [
+      "شيفيلد يونايتد",
+      "هال سيتي",
+      "ويغان أتلتيك (إعارة)",
+      "ليستر سيتي",
+      "مانشستر يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Sheffield United",
+      "Hull City",
+      "Wigan Athletic (loan)",
+      "Leicester City",
+      "Manchester United"
+    ],
+    "clubIds": [
+      "sheffield-united",
+      "wigan-athletic",
+      "leicester-city",
+      "manchester-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Harry_Maguire"
+  },
+  {
+    "id": "morgan-rogers",
+    "nameAr": "مورغان روجرز",
+    "nameEn": "Morgan Rogers",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "لاعب وسط مهاجم / جناح",
+      "en": "Attacking midfielder / Winger"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط مهاجم إنجليزي من هالسوين، خرج من أكاديمية وست بروميتش ثم مانشستر سيتي، وتألق مع ميدلزبره ثم أستون فيلا منذ 2024، وانضم إلى تشيلسي في يوليو 2026.",
+    "bioEn": "English attacking midfielder from Halesowen who came through West Bromwich Albion and Manchester City's academies, broke through at Middlesbrough, then starred for Aston Villa from 2024 before joining Chelsea in July 2026.",
+    "achievementsAr": [
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "Third place at the 2026 World Cup with England"
+    ],
+    "clubsHistoryAr": [
+      "وست بروميتش ألبيون",
+      "مانشستر سيتي",
+      "لينكولن سيتي (إعارة)",
+      "بورنموث (إعارة)",
+      "بلاكبول (إعارة)",
+      "ميدلزبره",
+      "أستون فيلا",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "West Bromwich Albion",
+      "Manchester City",
+      "Lincoln City (loan)",
+      "Bournemouth (loan)",
+      "Blackpool (loan)",
+      "Middlesbrough",
+      "Aston Villa",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "west-bromwich-albion",
+      "manchester-city",
+      "bournemouth",
+      "middlesbrough",
+      "aston-villa",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Morgan_Rogers"
+  },
+  {
+    "id": "jack-grealish",
+    "nameAr": "جاك غريليش",
+    "nameEn": "Jack Grealish",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "إيفرتون (إعارة من مانشستر سيتي)",
+    "clubEn": "Everton (on loan from Manchester City)",
+    "clubId": "everton",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2013-الآن",
+    "active": true,
+    "bioAr": "جناح إنجليزي من برمنغهام، قاد أستون فيلا كقائد للفريق، وانتقل إلى مانشستر سيتي عام 2021 مقابل 100 مليون جنيه إسترليني في حينها رقم قياسي للاعب بريطاني، وهو معار إلى إيفرتون.",
+    "bioEn": "English winger from Birmingham who captained Aston Villa before joining Manchester City in 2021 for £100 million, then a British record, and is currently on loan at Everton.",
+    "achievementsAr": [
+      "الثلاثية التاريخية موسم 2022-2023 مع مانشستر سيتي (الدوري وكأس الاتحاد ودوري الأبطال)",
+      "وصيف بطولة أمم أوروبا 2020 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "2022-23 continental treble with Manchester City (Premier League, FA Cup, Champions League)",
+      "Euro 2020 runner-up with England"
+    ],
+    "clubsHistoryAr": [
+      "أستون فيلا",
+      "نوتس كاونتي (إعارة)",
+      "مانشستر سيتي",
+      "إيفرتون (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Aston Villa",
+      "Notts County (loan)",
+      "Manchester City",
+      "Everton (loan)"
+    ],
+    "clubIds": [
+      "aston-villa",
+      "notts-county",
+      "manchester-city",
+      "everton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jack_Grealish"
+  },
+  {
+    "id": "jurrien-timber",
+    "nameAr": "جوريان تيمبر",
+    "nameEn": "Jurriën Timber",
+    "nationalityAr": "هولندي",
+    "nationalityEn": "Dutch",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "مدافع",
+      "en": "Defender"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "مدافع هولندي من أوتريخت، خرج من أكاديمية أياكس وفاز معه بلقبي الدوري وكأس هولندا، وانضم إلى أرسنال في يوليو 2023 مقابل 34 مليون جنيه إسترليني مبدئيًا.",
+    "bioEn": "Dutch defender from Utrecht who came through Ajax's academy, winning two Eredivisie titles and a KNVB Cup before joining Arsenal in July 2023 for an initial £34 million.",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2025-2026 مع أرسنال",
+      "لقبا الدوري الهولندي وكأس هولندا مع أياكس",
+      "بطولة أمم أوروبا تحت 17 سنة 2018 مع هولندا",
+      "جائزة ماركو فان باستن 2022"
+    ],
+    "achievementsEn": [
+      "Premier League 2025-26 with Arsenal",
+      "2 Eredivisie titles and 1 KNVB Cup with Ajax",
+      "UEFA European Under-17 Championship 2018 with the Netherlands",
+      "Marco van Basten Award 2022"
+    ],
+    "clubsHistoryAr": [
+      "أياكس (فئات سنية)",
+      "يونغ أياكس",
+      "أياكس",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Ajax (youth)",
+      "Jong Ajax",
+      "Ajax",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "ajax",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jurriën_Timber"
+  },
+  {
+    "id": "ben-white",
+    "nameAr": "بن وايت",
+    "nameEn": "Ben White",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "ظهير أيمن / قلب دفاع",
+      "en": "Right-back / Centre-back"
+    },
+    "era": "2016-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي من بول، بدأ مع برايتون وخاض إعارات مع نيوبورت وبيتربره وليدز يونايتد، وانضم إلى أرسنال في يوليو 2021.",
+    "bioEn": "English defender from Poole who began at Brighton, had loan spells at Newport, Peterborough and Leeds United, and joined Arsenal in July 2021.",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2025-2026 مع أرسنال",
+      "لقب دوري الدرجة الأولى الإنجليزية (التشامبيونشيب) 2019-2020 مع ليدز يونايتد (إعارة)",
+      "وصيف بطولة أمم أوروبا 2020 مع إنجلترا",
+      "أفضل لاعب شاب في ليدز يونايتد 2019-2020"
+    ],
+    "achievementsEn": [
+      "Premier League 2025-26 with Arsenal",
+      "Championship title 2019-20 with Leeds United (on loan)",
+      "Euro 2020 runner-up with England",
+      "Leeds United Young Player of the Year 2019-20"
+    ],
+    "clubsHistoryAr": [
+      "برايتون آند هوف ألبيون",
+      "نيوبورت كاونتي (إعارة)",
+      "بيتربره يونايتد (إعارة)",
+      "ليدز يونايتد (إعارة)",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Brighton & Hove Albion",
+      "Newport County (loan)",
+      "Peterborough United (loan)",
+      "Leeds United (loan)",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "leeds-united",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ben_White_(footballer)"
+  },
+  {
+    "id": "reece-james",
+    "nameAr": "ريس جيمس",
+    "nameEn": "Reece James",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "ظهير أيمن / لاعب وسط",
+      "en": "Right-back / Midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "ظهير أيمن إنجليزي خرج من أكاديمية تشيلسي وأُعير إلى ويغان أتلتيك موسم 2018-2019، وهو الآن قائد تشيلسي ولاعب أساسي في منتخب إنجلترا.",
+    "bioEn": "English right-back who came through Chelsea's academy and was loaned to Wigan Athletic in 2018-19. He is now Chelsea's captain and a regular for England.",
+    "achievementsAr": [
+      "دوري أبطال أوروبا 2020-2021 مع تشيلسي",
+      "كأس العالم للأندية 2021 و2025 مع تشيلسي",
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا",
+      "وصيف بطولة أمم أوروبا 2020 مع إنجلترا",
+      "بطولة أمم أوروبا تحت 19 سنة 2017 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "UEFA Champions League 2020-21 with Chelsea",
+      "FIFA Club World Cup 2021 and 2025 with Chelsea",
+      "Third place at the 2026 World Cup with England",
+      "Euro 2020 runner-up with England",
+      "UEFA European Under-19 Championship 2017 with England"
+    ],
+    "clubsHistoryAr": [
+      "تشيلسي (فئات سنية)",
+      "ويغان أتلتيك (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Chelsea (youth)",
+      "Wigan Athletic (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "wigan-athletic",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Reece_James"
+  },
+  {
+    "id": "joao-pedro",
+    "nameAr": "جواو بيدرو",
+    "nameEn": "João Pedro",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "مهاجم برازيلي من ريبيراو بريتو، بدأ مع فلومينينسي ولعب لواتفورد وبرايتون، وانضم إلى تشيلسي في يوليو 2025 بعقد لثماني سنوات.",
+    "bioEn": "Brazilian striker from Ribeirão Preto who started at Fluminense, played for Watford and Brighton, and joined Chelsea in July 2025 on an eight-year contract.",
+    "achievementsAr": [
+      "أفضل لاعب في تشيلسي في موسم 2025-26",
+      "الظهور الأول مع منتخب البرازيل الأول عام 2023"
+    ],
+    "achievementsEn": [
+      "Chelsea Player of the Year 2025-26",
+      "Senior Brazil debut in 2023"
+    ],
+    "clubsHistoryAr": [
+      "فلومينينسي",
+      "واتفورد",
+      "برايتون آند هوف ألبيون",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Fluminense",
+      "Watford",
+      "Brighton & Hove Albion",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/João_Pedro_(footballer,_born_2001)"
+  },
+  {
+    "id": "john-stones",
+    "nameAr": "جون ستونز",
+    "nameEn": "John Stones",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "إنتر ميلان",
+    "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
+    "position": {
+      "ar": "قلب دفاع / لاعب وسط دفاعي",
+      "en": "Centre-back / Defensive midfielder"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي من بارنسلي، لعب لبارنسلي وإيفرتون ثم مانشستر سيتي منذ 2016، وانضم إلى إنتر ميلان الإيطالي عام 2026.",
+    "bioEn": "English defender from Barnsley who played for Barnsley and Everton, then Manchester City from 2016, before joining Italian club Inter Milan in 2026.",
+    "achievementsAr": [
+      "6 ألقاب الدوري الإنجليزي الممتاز مع مانشستر سيتي",
+      "دوري أبطال أوروبا 2022-2023 مع مانشستر سيتي",
+      "لقبان في كأس الاتحاد الإنجليزي مع مانشستر سيتي",
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا",
+      "وصيف بطولة أمم أوروبا 2020 و2024 مع إنجلترا",
+      "المركز الثالث في دوري الأمم الأوروبية 2019 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "6 Premier League titles with Manchester City",
+      "UEFA Champions League 2022-23 with Manchester City",
+      "2 FA Cups with Manchester City",
+      "Third place at the 2026 World Cup with England",
+      "Euro 2020 and Euro 2024 runner-up with England",
+      "UEFA Nations League 2019 third place with England"
+    ],
+    "clubsHistoryAr": [
+      "بارنسلي",
+      "إيفرتون",
+      "مانشستر سيتي",
+      "إنتر ميلان"
+    ],
+    "clubsHistoryEn": [
+      "Barnsley",
+      "Everton",
+      "Manchester City",
+      "Inter Milan"
+    ],
+    "clubIds": [
+      "everton",
+      "manchester-city",
+      "inter-milan"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/John_Stones"
+  },
+  {
+    "id": "leandro-trossard",
+    "nameAr": "ليندرو تروسار",
+    "nameEn": "Leandro Trossard",
+    "nationalityAr": "بلجيكي",
+    "nationalityEn": "Belgian",
+    "clubAr": "بشكتاش",
+    "clubEn": "Beşiktaş",
+    "clubId": "besiktas",
+    "position": {
+      "ar": "جناح أيسر / مهاجم",
+      "en": "Left winger / Forward"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "جناح بلجيكي من ماسميخيلين، خرج من أكاديمية خنك وخاض عدة إعارات، ولعب لبرايتون ثم أرسنال منذ 2023، وانضم إلى بشكتاش التركي عام 2026. شارك مع بلجيكا في كأس العالم 2022 و2026 وبطولتي أمم أوروبا 2020 و2024.",
+    "bioEn": "Belgian winger from Maasmechelen who came through Genk's academy and had several loan spells, then played for Brighton and Arsenal from 2023 before joining Turkish club Beşiktaş in 2026. He has been part of Belgium's squads at the 2022 and 2026 World Cups and Euro 2020 and 2024.",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2025-2026 مع أرسنال",
+      "الدرع الخيرية الإنجليزية 2023 مع أرسنال",
+      "الدوري البلجيكي 2018-2019 مع خنك"
+    ],
+    "achievementsEn": [
+      "Premier League 2025-26 with Arsenal",
+      "FA Community Shield 2023 with Arsenal",
+      "Belgian league title 2018-19 with Genk"
+    ],
+    "clubsHistoryAr": [
+      "خنك",
+      "لوميل يونايتد (إعارة)",
+      "فيستيرلو (إعارة)",
+      "لوميل يونايتد (إعارة)",
+      "أو إتش لوفين (إعارة)",
+      "برايتون آند هوف ألبيون",
+      "أرسنال",
+      "بشكتاش"
+    ],
+    "clubsHistoryEn": [
+      "Genk",
+      "Lommel United (loan)",
+      "Westerlo (loan)",
+      "Lommel United (loan)",
+      "OH Leuven (loan)",
+      "Brighton & Hove Albion",
+      "Arsenal",
+      "Beşiktaş"
+    ],
+    "clubIds": [
+      "brighton-hove-albion",
+      "arsenal",
+      "besiktas"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Leandro_Trossard"
+  },
+  {
+    "id": "cristhian-mosquera",
+    "nameAr": "كريستيان موسكيرا",
+    "nameEn": "Cristhian Mosquera",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مدافع إسباني وُلد في أليكانتي لأبوين كولومبيين، صعد إلى الفريق الأول لفالنسيا في أغسطس 2023 وانضم إلى أرسنال في 24 يوليو 2025 بعقد طويل الأمد، ويمثل منتخب إسبانيا.",
+    "bioEn": "Spanish centre-back born in Alicante to Colombian parents, promoted to Valencia's first team in August 2023 before joining Arsenal on 24 July 2025 on a long-term contract; he plays for the Spain national team.",
+    "achievementsAr": [
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال"
+    ],
+    "achievementsEn": [
+      "Premier League title 2025-26 with Arsenal"
+    ],
+    "clubsHistoryAr": [
+      "فالنسيا",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Valencia",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "valencia",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Cristhian_Mosquera"
+  },
+  {
+    "id": "piero-hincapie",
+    "nameAr": "بييرو هينكابييه",
+    "nameEn": "Piero Hincapié",
+    "nationalityAr": "إكوادوري",
+    "nationalityEn": "Ecuadorian",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير أيسر)",
+      "en": "Centre-back / Left-back"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "مدافع إكوادوري كان من ركائز باير ليفركوزن الذي حقق الثنائية المحلية موسم 2023-24، انضم إلى أرسنال معاراً صيف 2025 ثم انتقل إليه نهائياً اعتباراً من 1 يوليو 2026.",
+    "bioEn": "Ecuadorian defender who was a mainstay of the Bayer Leverkusen side that won the 2023-24 domestic double; he joined Arsenal on loan in summer 2025 and signed permanently from 1 July 2026.",
+    "achievementsAr": [
+      "الدوري الألماني 2023-24 مع باير ليفركوزن (الموسم بلا هزيمة)",
+      "الثنائية المحلية 2023-24 مع باير ليفركوزن",
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال",
+      "وصيف دوري أبطال أوروبا 2025-26 مع أرسنال"
+    ],
+    "achievementsEn": [
+      "Bundesliga title 2023-24 with Bayer Leverkusen (unbeaten season)",
+      "2023-24 domestic double with Bayer Leverkusen",
+      "Premier League title 2025-26 with Arsenal",
+      "UEFA Champions League runner-up 2025-26 with Arsenal"
+    ],
+    "clubsHistoryAr": [
+      "إنديبندينتي ديل فالي",
+      "تاليريس",
+      "باير ليفركوزن",
+      "أرسنال (إعارة)",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Independiente del Valle",
+      "Talleres",
+      "Bayer Leverkusen",
+      "Arsenal (loan)",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Piero_Hincapi%C3%A9"
+  },
+  {
+    "id": "mikel-merino",
+    "nameAr": "ميكيل ميرينو",
+    "nameEn": "Mikel Merino",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إسباني من بامبلونا بدأ مع أوساسونا ثم مرّ بدورتموند ونيوكاسل قبل أن يستقر في ريال سوسيداد، وانضم إلى أرسنال في أغسطس 2024. توّج مع إسبانيا بيورو 2024 وكأس العالم 2026.",
+    "bioEn": "Spanish midfielder from Pamplona who started at Osasuna, had spells at Borussia Dortmund and Newcastle United, established himself at Real Sociedad and joined Arsenal in August 2024. He won Euro 2024 and the 2026 World Cup with Spain.",
+    "achievementsAr": [
+      "كأس العالم 2026 مع إسبانيا",
+      "كأس أمم أوروبا 2024 مع إسبانيا",
+      "دوري الأمم الأوروبية 2022-23 مع إسبانيا",
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال",
+      "كأس ملك إسبانيا 2019-20 مع ريال سوسيداد",
+      "كأس ألمانيا 2016-17 مع بوروسيا دورتموند",
+      "بطولة أوروبا للشباب تحت 21 سنة 2019 مع إسبانيا",
+      "الميدالية الفضية الأولمبية 2020 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "2026 FIFA World Cup with Spain",
+      "UEFA Euro 2024 with Spain",
+      "UEFA Nations League 2022-23 with Spain",
+      "Premier League title 2025-26 with Arsenal",
+      "Copa del Rey 2019-20 with Real Sociedad",
+      "DFB-Pokal 2016-17 with Borussia Dortmund",
+      "UEFA European Under-21 Championship 2019 with Spain",
+      "Olympic silver medal 2020 with Spain U23"
+    ],
+    "clubsHistoryAr": [
+      "أوساسونا",
+      "بوروسيا دورتموند",
+      "نيوكاسل يونايتد",
+      "ريال سوسيداد",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Osasuna",
+      "Borussia Dortmund",
+      "Newcastle United",
+      "Real Sociedad",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "osasuna",
+      "borussia-dortmund",
+      "newcastle-united",
+      "real-sociedad",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Mikel_Merino"
+  },
+  {
+    "id": "noni-madueke",
+    "nameAr": "نوني مادويكي",
+    "nameEn": "Noni Madueke",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "جناح إنجليزي وُلد في بارنت بلندن، بدأ مسيرته الاحترافية مع بي إس في أيندهوفن ثم انتقل إلى تشيلسي في يناير 2023، وانضم إلى أرسنال في يوليو 2025.",
+    "bioEn": "English winger born in Barnet, London, who began his professional career at PSV Eindhoven, moved to Chelsea in January 2023 and joined Arsenal in July 2025.",
+    "achievementsAr": [
+      "كأس هولندا وكأس يوهان كرويف مع بي إس في أيندهوفن",
+      "دوري المؤتمر الأوروبي وكأس العالم للأندية 2025 مع تشيلسي",
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال",
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا",
+      "بطولة أوروبا تحت 21 سنة 2023 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "KNVB Cup and Johan Cruyff Shield with PSV Eindhoven",
+      "UEFA Conference League and 2025 FIFA Club World Cup with Chelsea",
+      "Premier League title 2025-26 with Arsenal",
+      "Third place at the 2026 World Cup with England",
+      "UEFA European Under-21 Championship 2023 with England"
+    ],
+    "clubsHistoryAr": [
+      "بي إس في أيندهوفن",
+      "تشيلسي",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "PSV Eindhoven",
+      "Chelsea",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "psv-eindhoven",
+      "chelsea",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Noni_Madueke"
+  },
+  {
+    "id": "christos-tzolis",
+    "nameAr": "كريستوس تزوليس",
+    "nameEn": "Christos Tzolis",
+    "nationalityAr": "يوناني",
+    "nationalityEn": "Greek",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "جناح أيسر",
+      "en": "Left winger"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "جناح يوناني من سالونيك، بدأ مع باوك ثم لعب لنورويتش سيتي وتفينتي (إعارة) وفورتونا دوسلدورف (إعارة) وكلوب بروج، وانضم إلى أرسنال في يوليو 2026.",
+    "bioEn": "Greek winger from Thessaloniki who started at PAOK, played for Norwich City, Twente (loan), Fortuna Düsseldorf (loan) and Club Brugge, and joined Arsenal in July 2026.",
+    "achievementsAr": [
+      "كأس اليونان 2020-21 مع باوك (وهداف البطولة)",
+      "هداف الدوري الألماني الثاني 2023-24 (مناصفة) بـ22 هدفاً مع فورتونا دوسلدورف",
+      "كأس بلجيكا 2024-25 مع كلوب بروج",
+      "الدوري البلجيكي 2025-26 مع كلوب بروج",
+      "أفضل لاعب في الدوري البلجيكي 2025-26"
+    ],
+    "achievementsEn": [
+      "Greek Cup 2020-21 with PAOK (tournament top scorer)",
+      "2. Bundesliga 2023-24 joint top scorer (22 goals) with Fortuna Düsseldorf",
+      "Belgian Cup 2024-25 with Club Brugge",
+      "Belgian Pro League title 2025-26 with Club Brugge",
+      "Belgian Pro League Player of the Season 2025-26"
+    ],
+    "clubsHistoryAr": [
+      "باوك",
+      "نورويتش سيتي",
+      "تفينتي (إعارة)",
+      "فورتونا دوسلدورف (إعارة)",
+      "كلوب بروج",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "PAOK",
+      "Norwich City",
+      "Twente (loan)",
+      "Fortuna Düsseldorf (loan)",
+      "Club Brugge",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "norwich-city",
+      "fortuna-dusseldorf",
+      "club-brugge",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Christos_Tzolis"
+  },
+  {
+    "id": "kepa-arrizabalaga",
+    "nameAr": "كيبا أريزابالاغا",
+    "nameEn": "Kepa Arrizabalaga",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2011-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى إسباني من أوندارويا، صعد من أكاديمية أتلتيك بيلباو وأصبح عام 2018 أغلى حارس في التاريخ بانتقاله إلى تشيلسي، ثم أُعير إلى ريال مدريد وبورنموث قبل أن ينضم إلى أرسنال في يوليو 2025.",
+    "bioEn": "Spanish goalkeeper from Ondarroa who came through Athletic Bilbao's academy, became the world's most expensive goalkeeper with his 2018 move to Chelsea, was loaned to Real Madrid and Bournemouth, and joined Arsenal in July 2025.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2018-19 مع تشيلسي",
+      "دوري أبطال أوروبا 2020-21 مع تشيلسي",
+      "كأس السوبر الأوروبي 2021 مع تشيلسي",
+      "دوري أبطال أوروبا 2023-24 مع ريال مدريد",
+      "دوري الأمم الأوروبية 2022-23 مع إسبانيا",
+      "بطولة أوروبا تحت 19 سنة 2012 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "UEFA Europa League 2018-19 with Chelsea",
+      "UEFA Champions League 2020-21 with Chelsea",
+      "UEFA Super Cup 2021 with Chelsea",
+      "UEFA Champions League 2023-24 with Real Madrid",
+      "UEFA Nations League 2022-23 with Spain",
+      "UEFA European Under-19 Championship 2012 with Spain"
+    ],
+    "clubsHistoryAr": [
+      "أتلتيك بيلباو",
+      "بونفيرادينا (إعارة)",
+      "بلد الوليد (إعارة)",
+      "تشيلسي",
+      "ريال مدريد (إعارة)",
+      "بورنموث (إعارة)",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Athletic Bilbao",
+      "Ponferradina (loan)",
+      "Valladolid (loan)",
+      "Chelsea",
+      "Real Madrid (loan)",
+      "Bournemouth (loan)",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "athletic-bilbao",
+      "real-valladolid",
+      "chelsea",
+      "real-madrid",
+      "bournemouth",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kepa_Arrizabalaga"
+  },
+  {
+    "id": "illan-meslier",
+    "nameAr": "إيلان ميسلييه",
+    "nameEn": "Illan Meslier",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2017-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى فرنسي من لوريان، انضم إلى ليدز يونايتد معاراً عام 2019 ثم بشكل دائم عام 2020 وخاض معه 215 مباراة، قبل أن ينتقل إلى أرسنال حراً في 9 يوليو 2026.",
+    "bioEn": "French goalkeeper from Lorient who joined Leeds United on loan in 2019 and permanently in 2020, making 215 appearances before signing for Arsenal on a free transfer on 9 July 2026.",
+    "achievementsAr": [
+      "بطولة التشامبيونشيب 2019-20 مع ليدز يونايتد",
+      "بطولة التشامبيونشيب 2024-25 مع ليدز يونايتد"
+    ],
+    "achievementsEn": [
+      "EFL Championship title 2019-20 with Leeds United",
+      "EFL Championship title 2024-25 with Leeds United"
+    ],
+    "clubsHistoryAr": [
+      "لوريان",
+      "ليدز يونايتد (إعارة ثم انتقال دائم)",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Lorient",
+      "Leeds United (loan then permanent)",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "leeds-united",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Illan_Meslier"
+  },
+  {
+    "id": "myles-lewis-skelly",
+    "nameAr": "مايلز لويس-سكيلي",
+    "nameEn": "Myles Lewis-Skelly",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "لاعب وسط / ظهير أيسر",
+      "en": "Midfielder / Left-back"
+    },
+    "era": "2024-الآن",
+    "active": true,
+    "bioAr": "لاعب إنجليزي من خريجي أكاديمية أرسنال في لندن، ظهر لأول مرة مع الفريق الأول في سبتمبر 2024، وسجّل هدفاً في أول مباراة دولية له مع إنجلترا أمام ألبانيا في مارس 2025.",
+    "bioEn": "English player from Arsenal's academy in London who made his first-team debut in September 2024 and scored on his England debut against Albania in March 2025.",
+    "achievementsAr": [
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال",
+      "أصغر لاعب يسجل في أول مباراة دولية مع إنجلترا (18 سنة و176 يوماً) أمام ألبانيا 2025"
+    ],
+    "achievementsEn": [
+      "Premier League title 2025-26 with Arsenal",
+      "Youngest player to score on his England debut (aged 18 years 176 days) against Albania in 2025"
+    ],
+    "clubsHistoryAr": [
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Arsenal"
+    ],
+    "clubIds": [
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Myles_Lewis-Skelly"
+  },
+  {
+    "id": "ethan-nwaneri",
+    "nameAr": "إيثان نوانيري",
+    "nameEn": "Ethan Nwaneri",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "بوروسيا دورتموند (إعارة من أرسنال)",
+    "clubEn": "Borussia Dortmund (on loan from Arsenal)",
+    "clubId": "borussia-dortmund",
+    "position": {
+      "ar": "صانع ألعاب / جناح",
+      "en": "Attacking midfielder / Winger"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "لاعب إنجليزي من أكاديمية أرسنال، أصبح في سبتمبر 2022 أصغر لاعب يشارك في الدوري الإنجليزي الممتاز عن عمر 15 عاماً و181 يوماً، وهو حالياً معار إلى بوروسيا دورتموند بعد فترة إعارة مع مرسيليا.",
+    "bioEn": "English player from Arsenal's academy who became the youngest player in Premier League history in September 2022, aged 15 years 181 days; he is currently on loan at Borussia Dortmund after a loan spell at Marseille.",
+    "achievementsAr": [
+      "أصغر لاعب في تاريخ الدوري الإنجليزي الممتاز (15 سنة و181 يوماً)",
+      "بطولة أوروبا تحت 21 سنة 2025 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "Youngest player in Premier League history (15 years 181 days)",
+      "UEFA European Under-21 Championship 2025 with England"
+    ],
+    "clubsHistoryAr": [
+      "أرسنال",
+      "مرسيليا (إعارة)",
+      "بوروسيا دورتموند (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Arsenal",
+      "Marseille (loan)",
+      "Borussia Dortmund (loan)"
+    ],
+    "clubIds": [
+      "arsenal",
+      "marseille",
+      "borussia-dortmund"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ethan_Nwaneri"
+  },
+  {
+    "id": "ezri-konsa",
+    "nameAr": "إيزري كونسا",
+    "nameEn": "Ezri Konsa",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "أرسنال",
+    "clubEn": "Arsenal",
+    "clubId": "arsenal",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير أيمن)",
+      "en": "Centre-back / Right-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مدافع إنجليزي مرّ بتشارلتون وبرينتفورد ثم قضى سبع سنوات في أستون فيلا وخاض معه 286 مباراة، وانتقل إلى أرسنال في 21 أغسطس 2026 مقابل نحو 51 مليون جنيه إسترليني.",
+    "bioEn": "English defender who came through Charlton and Brentford before spending seven years at Aston Villa (286 appearances), and joined Arsenal on 21 August 2026 for a reported £51 million.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2025-26 مع أستون فيلا",
+      "الوصول إلى نصف نهائي كأس العالم 2026 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "UEFA Europa League 2025-26 with Aston Villa",
+      "Reached the 2026 World Cup semi-final with England"
+    ],
+    "clubsHistoryAr": [
+      "تشارلتون أثليتك",
+      "برينتفورد",
+      "أستون فيلا",
+      "أرسنال"
+    ],
+    "clubsHistoryEn": [
+      "Charlton Athletic",
+      "Brentford",
+      "Aston Villa",
+      "Arsenal"
+    ],
+    "clubIds": [
+      "charlton-athletic",
+      "brentford",
+      "aston-villa",
+      "arsenal"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ezri_Konsa"
+  },
+  {
+    "id": "reiss-nelson",
+    "nameAr": "ريس نيلسون",
+    "nameEn": "Reiss Nelson",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "فاينورد",
+    "clubEn": "Feyenoord",
+    "clubId": "feyenoord",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2017-الآن",
+    "active": true,
+    "bioAr": "جناح إنجليزي من خريجي أكاديمية أرسنال، ظهر لأول مرة مع الفريق الأول عام 2017 وخاض عدة إعارات (هوفنهايم وفاينورد وفولهام وبرينتفورد) قبل أن ينتقل إلى فاينورد في 2026.",
+    "bioEn": "English winger and Arsenal academy graduate who made his first-team debut in 2017 and had several loan spells (Hoffenheim, Feyenoord, Fulham, Brentford) before moving to Feyenoord in 2026.",
+    "achievementsAr": [],
+    "achievementsEn": [],
+    "clubsHistoryAr": [
+      "أرسنال",
+      "هوفنهايم (إعارة)",
+      "فاينورد (إعارة)",
+      "فولهام (إعارة)",
+      "برينتفورد (إعارة)",
+      "فاينورد"
+    ],
+    "clubsHistoryEn": [
+      "Arsenal",
+      "TSG Hoffenheim (loan)",
+      "Feyenoord (loan)",
+      "Fulham (loan)",
+      "Brentford (loan)",
+      "Feyenoord"
+    ],
+    "clubIds": [
+      "arsenal",
+      "hoffenheim",
+      "feyenoord",
+      "fulham",
+      "brentford"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Reiss_Nelson"
+  },
+  {
+    "id": "fabio-vieira",
+    "nameAr": "فابيو فييرا",
+    "nameEn": "Fábio Vieira",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "هامبورغ",
+    "clubEn": "Hamburger SV",
+    "clubId": "hamburger-sv",
+    "position": {
+      "ar": "لاعب وسط مهاجم",
+      "en": "Attacking midfielder"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط برتغالي من سانتا ماريا دا فيرا، تخرج من أكاديمية بورتو وانضم إلى أرسنال في يوليو 2022، وأُعير إلى بورتو ثم هامبورغ قبل أن ينتقل إلى هامبورغ نهائياً في سبتمبر 2026.",
+    "bioEn": "Portuguese attacking midfielder from Santa Maria da Feira who came through Porto's academy, joined Arsenal in July 2022, was loaned to Porto and Hamburger SV, and moved to Hamburger SV permanently in September 2026.",
+    "achievementsAr": [
+      "الدوري البرتغالي مرتين مع بورتو",
+      "كأس البرتغال 2021-22 مع بورتو",
+      "كأس السوبر الإنجليزي 2023 مع أرسنال",
+      "وصيف بطولة أوروبا تحت 21 سنة 2021 مع البرتغال"
+    ],
+    "achievementsEn": [
+      "Two Primeira Liga titles with Porto",
+      "Taça de Portugal 2021-22 with Porto",
+      "2023 FA Community Shield with Arsenal",
+      "UEFA European Under-21 Championship runner-up 2021 with Portugal"
+    ],
+    "clubsHistoryAr": [
+      "بورتو",
+      "أرسنال",
+      "بورتو (إعارة)",
+      "هامبورغ (إعارة)",
+      "هامبورغ"
+    ],
+    "clubsHistoryEn": [
+      "Porto",
+      "Arsenal",
+      "Porto (loan)",
+      "Hamburger SV (loan)",
+      "Hamburger SV"
+    ],
+    "clubIds": [
+      "porto",
+      "arsenal",
+      "hamburger-sv"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/F%C3%A1bio_Vieira_(footballer,_born_2000)"
+  },
+  {
+    "id": "christian-norgaard",
+    "nameAr": "كريستيان نورغارد",
+    "nameEn": "Christian Nørgaard",
+    "nationalityAr": "دنماركي",
+    "nationalityEn": "Danish",
+    "clubAr": "إيفرتون",
+    "clubEn": "Everton",
+    "clubId": "everton",
+    "position": {
+      "ar": "لاعب وسط مدافع",
+      "en": "Defensive midfielder"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "لاعب وسط دنماركي من كوبنهاغن، برز مع بروندبي ثم انضم إلى برينتفورد عام 2019 وقاده إلى الصعود للدوري الإنجليزي الممتاز عام 2021 وأصبح قائده عام 2023، ثم انتقل إلى أرسنال في يوليو 2025 وإلى إيفرتون في أغسطس 2026.",
+    "bioEn": "Danish midfielder from Copenhagen who rose to prominence at Brøndby, joined Brentford in 2019, helped them win promotion to the Premier League in 2021 and became captain in 2023, then moved to Arsenal in July 2025 and to Everton in August 2026.",
+    "achievementsAr": [
+      "الصعود إلى الدوري الإنجليزي الممتاز 2021 مع برينتفورد",
+      "لقب الدوري الإنجليزي الممتاز 2025-26 مع أرسنال"
+    ],
+    "achievementsEn": [
+      "Promotion to the Premier League in 2021 with Brentford",
+      "Premier League title 2025-26 with Arsenal"
+    ],
+    "clubsHistoryAr": [
+      "ليونغبي",
+      "هامبورغ",
+      "بروندبي",
+      "فيورنتينا",
+      "برينتفورد",
+      "أرسنال",
+      "إيفرتون"
+    ],
+    "clubsHistoryEn": [
+      "Lyngby",
+      "Hamburger SV",
+      "Brøndby",
+      "Fiorentina",
+      "Brentford",
+      "Arsenal",
+      "Everton"
+    ],
+    "clubIds": [
+      "hamburger-sv",
+      "fiorentina",
+      "brentford",
+      "arsenal",
+      "everton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Christian_N%C3%B8rgaard"
+  },
+  {
+    "id": "marco-palestra",
+    "nameAr": "ماركو باليسترا",
+    "nameEn": "Marco Palestra",
+    "nationalityAr": "إيطالي",
+    "nationalityEn": "Italian",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "ظهير أيمن / جناح مدافع",
+      "en": "Right-back / Right wing-back"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "ظهير إيطالي وُلد في بوتشيناسكو عام 2005، تخرج من أكاديمية أتالانتا وقضى موسم 2025-26 معاراً إلى كالياري حيث اختير أفضل مدافع في الدوري الإيطالي، ثم انضم إلى تشيلسي في 1 يوليو 2026 بعقد حتى 2033.",
+    "bioEn": "Italian right-back born in Buccinasco in 2005 who came through Atalanta's academy, spent 2025-26 on loan at Cagliari where he was named Serie A Defender of the Year, and joined Chelsea on 1 July 2026 on a contract until 2033.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2023-24 مع أتالانتا (ضمن التشكيلة)",
+      "أفضل مدافع في الدوري الإيطالي 2025-26"
+    ],
+    "achievementsEn": [
+      "UEFA Europa League 2023-24 with Atalanta (squad member)",
+      "Serie A Defender of the Year 2025-26"
+    ],
+    "clubsHistoryAr": [
+      "أتالانتا",
+      "كالياري (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Atalanta",
+      "Cagliari (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "atalanta",
+      "cagliari",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Marco_Palestra"
+  },
+  {
+    "id": "wesley-fofana",
+    "nameAr": "ويسلي فوفانا",
+    "nameEn": "Wesley Fofana",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "مدافع فرنسي وُلد في مرسيليا عام 2000، بدأ مع سانت إتيان وانضم إلى ليستر سيتي في أكتوبر 2020، ثم انتقل إلى تشيلسي في أغسطس 2022 مقابل نحو 70 مليون جنيه إسترليني.",
+    "bioEn": "French centre-back born in Marseille in 2000 who started at Saint-Étienne, joined Leicester City in October 2020 and moved to Chelsea in August 2022 for around £70 million.",
+    "achievementsAr": [
+      "كأس الاتحاد الإنجليزي 2020-21 مع ليستر سيتي",
+      "أفضل لاعب شاب في ليستر سيتي 2020-21"
+    ],
+    "achievementsEn": [
+      "FA Cup 2020-21 with Leicester City",
+      "Leicester City Young Player of the Season 2020-21"
+    ],
+    "clubsHistoryAr": [
+      "سانت إتيان",
+      "ليستر سيتي",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Saint-Étienne",
+      "Leicester City",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "saint-etienne",
+      "leicester-city",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Wesley_Fofana_(footballer)"
+  },
+  {
+    "id": "maxence-lacroix",
+    "nameAr": "ماكسانس لاكروا",
+    "nameEn": "Maxence Lacroix",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "مدافع فرنسي وُلد في فيلنوف-سان-جورج عام 2000، بدأ مع سوشو ثم لعب لفولفسبورغ وكريستال بالاس، وانضم إلى تشيلسي في 30 يوليو 2026 مقابل نحو 52 مليون جنيه إسترليني.",
+    "bioEn": "French centre-back born in Villeneuve-Saint-Georges in 2000 who started at Sochaux, played for VfL Wolfsburg and Crystal Palace, and joined Chelsea on 30 July 2026 for a reported £52 million.",
+    "achievementsAr": [
+      "كأس الاتحاد الإنجليزي 2024-25 مع كريستال بالاس",
+      "كأس الدرع الخيرية 2025 مع كريستال بالاس",
+      "دوري المؤتمر الأوروبي 2025-26 مع كريستال بالاس"
+    ],
+    "achievementsEn": [
+      "FA Cup 2024-25 with Crystal Palace",
+      "FA Community Shield 2025 with Crystal Palace",
+      "UEFA Conference League 2025-26 with Crystal Palace"
+    ],
+    "clubsHistoryAr": [
+      "سوشو",
+      "فولفسبورغ",
+      "كريستال بالاس",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Sochaux",
+      "VfL Wolfsburg",
+      "Crystal Palace",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "sochaux",
+      "vfl-wolfsburg",
+      "crystal-palace",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Maxence_Lacroix"
+  },
+  {
+    "id": "valentin-barco",
+    "nameAr": "فالنتين باركو",
+    "nameEn": "Valentín Barco",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "لاعب وسط / ظهير أيسر",
+      "en": "Midfielder / Left-back"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "لاعب أرجنتيني تخرج من أكاديمية بوكا جونيورز وظهر مع الفريق الأول عام 2021 وهو في السادسة عشرة، ثم انتقل إلى برايتون في يناير 2024 ولعب لسيفيا (إعارة) وستراسبورغ، وانضم إلى تشيلسي في أغسطس 2026 بعقد حتى 2033.",
+    "bioEn": "Argentine player who came through Boca Juniors' academy and made his first-team debut at 16 in 2021, joined Brighton in January 2024, played for Sevilla (loan) and Strasbourg, and signed for Chelsea in August 2026 on a contract until 2033.",
+    "achievementsAr": [
+      "وصيف كأس العالم 2026 مع الأرجنتين"
+    ],
+    "achievementsEn": [
+      "2026 FIFA World Cup runner-up with Argentina"
+    ],
+    "clubsHistoryAr": [
+      "بوكا جونيورز",
+      "برايتون",
+      "إشبيلية (إعارة)",
+      "ستراسبورغ (إعارة)",
+      "ستراسبورغ",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Boca Juniors",
+      "Brighton & Hove Albion",
+      "Sevilla (loan)",
+      "Strasbourg (loan)",
+      "Strasbourg",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "boca-juniors",
+      "brighton-hove-albion",
+      "sevilla",
+      "strasbourg",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Valent%C3%ADn_Barco"
+  },
+  {
+    "id": "levi-colwill",
+    "nameAr": "ليفي كولويل",
+    "nameEn": "Levi Colwill",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي وُلد في ساوثهامبتون، تخرج من أكاديمية تشيلسي وأُعير إلى هادرسفيلد تاون (2021-22) ثم برايتون (2022-23) قبل أن يستقر في الفريق الأول لتشيلسي، وله مشاركات دولية مع منتخب إنجلترا.",
+    "bioEn": "English centre-back born in Southampton who came through Chelsea's academy, was loaned to Huddersfield Town (2021-22) and Brighton (2022-23) before establishing himself in Chelsea's first team; he plays for England.",
+    "achievementsAr": [
+      "بطولة أوروبا تحت 21 سنة 2023 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "UEFA European Under-21 Championship 2023 with England"
+    ],
+    "clubsHistoryAr": [
+      "تشيلسي (شباب)",
+      "هادرسفيلد تاون (إعارة)",
+      "برايتون (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Chelsea (youth)",
+      "Huddersfield Town (loan)",
+      "Brighton & Hove Albion (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "huddersfield-town",
+      "brighton-hove-albion",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Levi_Colwill"
+  },
+  {
+    "id": "pedro-neto",
+    "nameAr": "بيدرو نيتو",
+    "nameEn": "Pedro Neto",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2017-الآن",
+    "active": true,
+    "bioAr": "جناح برتغالي من فيانا دو كاستيلو بدأ مع براغا وأُعير إلى لاتسيو، ثم انضم إلى وولفرهامبتون عام 2019 وإلى تشيلسي في أغسطس 2024.",
+    "bioEn": "Portuguese winger from Viana do Castelo who started at Braga and was loaned to Lazio, joined Wolverhampton Wanderers in 2019 and Chelsea in August 2024.",
+    "achievementsAr": [
+      "دوري المؤتمر الأوروبي 2024-25 مع تشيلسي",
+      "دوري الأمم الأوروبية 2024-25 مع البرتغال"
+    ],
+    "achievementsEn": [
+      "UEFA Conference League 2024-25 with Chelsea",
+      "UEFA Nations League 2024-25 with Portugal"
+    ],
+    "clubsHistoryAr": [
+      "براغا",
+      "لاتسيو (إعارة)",
+      "وولفرهامبتون",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Braga",
+      "Lazio (loan)",
+      "Wolverhampton Wanderers",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "braga",
+      "lazio",
+      "wolverhampton-wanderers",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Pedro_Neto"
+  },
+  {
+    "id": "jamie-gittens",
+    "nameAr": "جيمي غيتنز",
+    "nameEn": "Jamie Gittens",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "جناح إنجليزي وُلد في ريدينغ، مرّ بأكاديميتي ريدينغ ومانشستر سيتي ثم انتقل إلى بوروسيا دورتموند عام 2020، وانضم إلى تشيلسي في يوليو 2025.",
+    "bioEn": "English winger born in Reading who went through the academies of Reading and Manchester City before moving to Borussia Dortmund in 2020, and joined Chelsea in July 2025.",
+    "achievementsAr": [
+      "بطولة أوروبا تحت 19 سنة 2022 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "UEFA European Under-19 Championship 2022 with England"
+    ],
+    "clubsHistoryAr": [
+      "بوروسيا دورتموند",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Borussia Dortmund",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "borussia-dortmund",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jamie_Gittens"
+  },
+  {
+    "id": "danny-welbeck",
+    "nameAr": "داني ويلبيك",
+    "nameEn": "Danny Welbeck",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "2008-الآن",
+    "active": true,
+    "bioAr": "مهاجم إنجليزي وُلد في مانشستر، لعب لمانشستر يونايتد وأرسنال وواتفورد وبرايتون، وشارك مع إنجلترا في كأسي عالم، وانضم إلى تشيلسي في 1 أغسطس 2026 بعقد لعامين.",
+    "bioEn": "English striker born in Manchester who played for Manchester United, Arsenal, Watford and Brighton, appeared at two World Cups with England, and joined Chelsea on 1 August 2026 on a two-year deal.",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2012-13 مع مانشستر يونايتد",
+      "كأس الدرع الخيرية 2011 و2013 مع مانشستر يونايتد",
+      "كأس الاتحاد الإنجليزي 2014-15 و2016-17 مع أرسنال",
+      "كأس الدرع الخيرية 2017 مع أرسنال"
+    ],
+    "achievementsEn": [
+      "Premier League 2012-13 with Manchester United",
+      "FA Community Shield 2011 and 2013 with Manchester United",
+      "FA Cup 2014-15 and 2016-17 with Arsenal",
+      "FA Community Shield 2017 with Arsenal"
+    ],
+    "clubsHistoryAr": [
+      "مانشستر يونايتد",
+      "بريستون نورث إند (إعارة)",
+      "سندرلاند (إعارة)",
+      "أرسنال",
+      "واتفورد",
+      "برايتون",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Manchester United",
+      "Preston North End (loan)",
+      "Sunderland (loan)",
+      "Arsenal",
+      "Watford",
+      "Brighton & Hove Albion",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "manchester-united",
+      "preston-north-end",
+      "sunderland",
+      "arsenal",
+      "brighton-hove-albion",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "jorrel-hato",
+    "nameAr": "جورل هاتو",
+    "nameEn": "Jorrel Hato",
+    "nationalityAr": "هولندي",
+    "nationalityEn": "Dutch",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير أيسر)",
+      "en": "Centre-back / Left-back"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "مدافع هولندي وُلد في روتردام عام 2006، انضم إلى أكاديمية أياكس عام 2018 وأصبح أصغر لاعب يقود الفريق كقائد عام 2023 وهو في السابعة عشرة، ثم انتقل إلى تشيلسي في أغسطس 2025 بعقد حتى 2032.",
+    "bioEn": "Dutch defender born in Rotterdam in 2006 who joined Ajax's academy in 2018, became the club's youngest ever captain in 2023 aged 17, and moved to Chelsea in August 2025 on a contract until 2032.",
+    "achievementsAr": [
+      "أصغر لاعب يرتدي شارة قيادة أياكس (17 سنة) عام 2023"
+    ],
+    "achievementsEn": [
+      "Youngest player to captain Ajax (aged 17) in 2023"
+    ],
+    "clubsHistoryAr": [
+      "أياكس",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Ajax",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "ajax",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jorrel_Hato"
+  },
+  {
+    "id": "emmanuel-emegha",
+    "nameAr": "إيمانويل إميغا",
+    "nameEn": "Emmanuel Emegha",
+    "nationalityAr": "هولندي",
+    "nationalityEn": "Dutch",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مهاجم هولندي وُلد في لاهاي عام 2003، لعب لسبارتا روتردام ورويال أنتويرب وشتورم غراتس، ثم قاد ستراسبورغ كقائد منذ 2023 قبل أن ينضم إلى تشيلسي في صيف 2026.",
+    "bioEn": "Dutch striker born in The Hague in 2003 who played for Sparta Rotterdam, Royal Antwerp and Sturm Graz, captained Strasbourg from 2023, and joined Chelsea in summer 2026.",
+    "achievementsAr": [
+      "كأس النمسا 2022-23 مع شتورم غراتس"
+    ],
+    "achievementsEn": [
+      "Austrian Cup 2022-23 with Sturm Graz"
+    ],
+    "clubsHistoryAr": [
+      "سبارتا روتردام",
+      "رويال أنتويرب",
+      "شتورم غراتس",
+      "ستراسبورغ",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Sparta Rotterdam",
+      "Royal Antwerp",
+      "Sturm Graz",
+      "Strasbourg",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "strasbourg",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Emmanuel_Emegha"
+  },
+  {
+    "id": "geovany-quenda",
+    "nameAr": "جيوفاني كوينديا",
+    "nameEn": "Geovany Quenda",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "جناح أيمن / ظهير جناح أيمن",
+      "en": "Right winger / Right wing-back"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "جناح برتغالي وُلد في بيساو بغينيا بيساو عام 2007، تخرج من أكاديمية سبورتينغ لشبونة وانضم إلى تشيلسي في يوليو 2026 بعقد حتى 2034.",
+    "bioEn": "Portuguese winger born in Bissau, Guinea-Bissau, in 2007 who came through Sporting CP's academy and joined Chelsea in July 2026 on a contract until 2034.",
+    "achievementsAr": [
+      "الدوري البرتغالي 2023-24 و2024-25 مع سبورتينغ لشبونة",
+      "كأس البرتغال 2024-25 مع سبورتينغ لشبونة",
+      "دوري الأمم الأوروبية 2024-25 مع البرتغال"
+    ],
+    "achievementsEn": [
+      "Liga Portugal 2023-24 and 2024-25 with Sporting CP",
+      "Taça de Portugal 2024-25 with Sporting CP",
+      "UEFA Nations League 2024-25 with Portugal"
+    ],
+    "clubsHistoryAr": [
+      "سبورتينغ لشبونة",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Sporting CP",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "sporting-cp",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Geovany_Quenda"
+  },
+  {
+    "id": "malo-gusto",
+    "nameAr": "مالو غوستو",
+    "nameEn": "Malo Gusto",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "ظهير أيمن",
+      "en": "Right-back"
+    },
+    "era": "2020-الآن",
+    "active": true,
+    "bioAr": "ظهير أيمن فرنسي تخرج من أكاديمية ليون، وانضم إلى تشيلسي في يناير 2023 وبقي معاراً في ليون حتى نهاية الموسم، ثم التحق بتشيلسي في صيف 2023.",
+    "bioEn": "French right-back who came through Lyon's academy, signed for Chelsea in January 2023 and stayed on loan at Lyon until the end of that season before joining Chelsea in summer 2023.",
+    "achievementsAr": [
+      "دوري المؤتمر الأوروبي 2024-25 مع تشيلسي",
+      "كأس العالم للأندية 2025 مع تشيلسي",
+      "كأس غامبيردلا 2021-22 مع ليون (تحت 19)"
+    ],
+    "achievementsEn": [
+      "UEFA Conference League 2024-25 with Chelsea",
+      "2025 FIFA Club World Cup with Chelsea",
+      "Coupe Gambardella 2021-22 with Lyon U19"
+    ],
+    "clubsHistoryAr": [
+      "ليون",
+      "تشيلسي",
+      "ليون (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Lyon",
+      "Chelsea",
+      "Lyon (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "lyon",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Malo_Gusto"
+  },
+  {
+    "id": "pep-chavarria",
+    "nameAr": "بيب تشافاريا",
+    "nameEn": "Pep Chavarría",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "ظهير أيسر",
+      "en": "Left-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "ظهير أيسر إسباني وُلد في فيغيراس بكتالونيا عام 1998، لعب لأولوت وريال سرقسطة وبالكانو، وانضم إلى تشيلسي في أغسطس 2026 بعقد حتى 2031.",
+    "bioEn": "Spanish left-back born in Figueres, Catalonia, in 1998 who played for UE Olot, Real Zaragoza and Rayo Vallecano, and joined Chelsea in August 2026 on a contract until 2031.",
+    "achievementsAr": [],
+    "achievementsEn": [],
+    "clubsHistoryAr": [
+      "فيغيراس",
+      "أولوت",
+      "ريال سرقسطة",
+      "رايو فايكانو",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "UE Figueres",
+      "UE Olot",
+      "Real Zaragoza",
+      "Rayo Vallecano",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "real-zaragoza",
+      "rayo-vallecano",
+      "chelsea"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Pep_Chavarr%C3%ADa"
+  },
+  {
+    "id": "aaron-anselmino",
+    "nameAr": "آرون أنسيلمينو",
+    "nameEn": "Aarón Anselmino",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "مدافع أرجنتيني وُلد عام 2005، تخرج من أكاديمية بوكا جونيورز وانضم إلى تشيلسي في أغسطس 2024، وأُعير إلى بوكا ثم بوروسيا دورتموند (2025-26) وستراسبورغ (2026).",
+    "bioEn": "Argentine centre-back born in 2005 who came through Boca Juniors' academy, signed for Chelsea in August 2024 and was loaned to Boca, Borussia Dortmund (2025-26) and Strasbourg (2026).",
+    "achievementsAr": [
+      "كأس العالم للأندية 2025 مع تشيلسي (ضمن التشكيلة)"
+    ],
+    "achievementsEn": [
+      "2025 FIFA Club World Cup with Chelsea (squad member)"
+    ],
+    "clubsHistoryAr": [
+      "بوكا جونيورز",
+      "تشيلسي",
+      "بوكا جونيورز (إعارة)",
+      "بوروسيا دورتموند (إعارة)",
+      "ستراسبورغ (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Boca Juniors",
+      "Chelsea",
+      "Boca Juniors (loan)",
+      "Borussia Dortmund (loan)",
+      "Strasbourg (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "boca-juniors",
+      "chelsea",
+      "borussia-dortmund",
+      "strasbourg"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Aar%C3%B3n_Anselmino"
+  },
+  {
+    "id": "mike-penders",
+    "nameAr": "مايك بيندرز",
+    "nameEn": "Mike Penders",
+    "nationalityAr": "بلجيكي",
+    "nationalityEn": "Belgian",
+    "clubAr": "تشيلسي",
+    "clubEn": "Chelsea",
+    "clubId": "chelsea",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2024-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى بلجيكي وُلد في ماسمخيلن عام 2005، ظهر لأول مرة مع جنك في يوليو 2024، وانضم إلى تشيلسي في أغسطس 2024، وقضى موسم 2025-26 معاراً إلى ستراسبورغ قبل عودته إلى تشيلسي.",
+    "bioEn": "Belgian goalkeeper born in Maasmechelen in 2005 who made his Genk debut in July 2024, signed for Chelsea in August 2024, and spent 2025-26 on loan at Strasbourg before returning to Chelsea.",
+    "achievementsAr": [
+      "كأس العالم للأندية 2025 مع تشيلسي"
+    ],
+    "achievementsEn": [
+      "2025 FIFA Club World Cup with Chelsea"
+    ],
+    "clubsHistoryAr": [
+      "جنك",
+      "تشيلسي",
+      "جنك (إعارة)",
+      "ستراسبورغ (إعارة)",
+      "تشيلسي"
+    ],
+    "clubsHistoryEn": [
+      "Genk",
+      "Chelsea",
+      "Genk (loan)",
+      "Strasbourg (loan)",
+      "Chelsea"
+    ],
+    "clubIds": [
+      "chelsea",
+      "strasbourg"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "marcus-bettinelli",
+    "nameAr": "ماركوس بيتينيلي",
+    "nameEn": "Marcus Bettinelli",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2010-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى إنجليزي وُلد في كامبرويل بلندن لأب إيطالي، تخرج من أكاديمية فولهام وأعير إلى دارتفورد وأكرينغتون ستانلي ومِدلزبره، ثم انضم إلى تشيلسي عام 2021 وإلى مانشستر سيتي في يونيو 2025.",
+    "bioEn": "English goalkeeper born in Camberwell, London, to an Italian father who came through Fulham's academy, had loan spells at Dartford, Accrington Stanley and Middlesbrough, joined Chelsea in 2021 and Manchester City in June 2025.",
+    "achievementsAr": [
+      "الصعود إلى الدوري الإنجليزي الممتاز 2018 مع فولهام (التشامبيونشيب بلاي أوف)",
+      "دوري المؤتمر الأوروبي 2024-25 مع تشيلسي (ضمن التشكيلة)",
+      "كأس الاتحاد الإنجليزي 2025-26 مع مانشستر سيتي (ضمن التشكيلة)",
+      "كأس الرابطة الإنجليزية 2025-26 مع مانشستر سيتي (ضمن التشكيلة)"
+    ],
+    "achievementsEn": [
+      "Promotion to the Premier League in 2018 with Fulham (Championship play-off)",
+      "UEFA Conference League 2024-25 with Chelsea (squad member)",
+      "FA Cup 2025-26 with Manchester City (squad member)",
+      "EFL Cup 2025-26 with Manchester City (squad member)"
+    ],
+    "clubsHistoryAr": [
+      "فولهام",
+      "دارتفورد (إعارة)",
+      "أكرينغتون ستانلي (إعارة)",
+      "مِدلزبره (إعارة)",
+      "تشيلسي",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Fulham",
+      "Dartford (loan)",
+      "Accrington Stanley (loan)",
+      "Middlesbrough (loan)",
+      "Chelsea",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "fulham",
+      "middlesbrough",
+      "chelsea",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcus_Bettinelli"
+  },
+  {
+    "id": "geronimo-rulli",
+    "nameAr": "خيرونيمو رولي",
+    "nameEn": "Gerónimo Rulli",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2011-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى أرجنتيني وُلد في لا بلاتا، بدأ مع إستوديانتيس ثم لعب لريال سوسيداد ومونبلييه وفياريال وأياكس ومرسيليا، وعاد إلى مانشستر سيتي في 12 أغسطس 2026 بعقد لعامين بعد فترة أولى لم يشارك فيها (2016-17).",
+    "bioEn": "Argentine goalkeeper born in La Plata who started at Estudiantes, played for Real Sociedad, Montpellier, Villarreal, Ajax and Marseille, and returned to Manchester City on 12 August 2026 on a two-year deal after a first spell in 2016-17 without a first-team appearance.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2020-21 مع فياريال",
+      "كأس العالم 2022 مع الأرجنتين (ضمن التشكيلة)",
+      "كوبا أمريكا 2024 مع الأرجنتين (ضمن التشكيلة)"
+    ],
+    "achievementsEn": [
+      "UEFA Europa League 2020-21 with Villarreal",
+      "2022 FIFA World Cup with Argentina (squad member)",
+      "2024 Copa América with Argentina (squad member)"
+    ],
+    "clubsHistoryAr": [
+      "إستوديانتيس",
+      "ريال سوسيداد (إعارة)",
+      "مانشستر سيتي",
+      "ريال سوسيداد",
+      "مونبلييه (إعارة)",
+      "فياريال",
+      "أياكس",
+      "مرسيليا",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Estudiantes",
+      "Real Sociedad (loan)",
+      "Manchester City",
+      "Real Sociedad",
+      "Montpellier (loan)",
+      "Villarreal",
+      "Ajax",
+      "Marseille",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "real-sociedad",
+      "manchester-city",
+      "montpellier",
+      "villarreal",
+      "ajax",
+      "marseille"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ger%C3%B3nimo_Rulli"
+  },
+  {
+    "id": "rayan-ait-nouri",
+    "nameAr": "ريان آيت نوري",
+    "nameEn": "Rayan Aït-Nouri",
+    "nationalityAr": "جزائري",
+    "nationalityEn": "Algerian",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "ظهير أيسر",
+      "en": "Left-back"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "ظهير أيسر وُلد في مونتروي بفرنسا وتخرج من أكاديمية أنجيه، ثم انضم إلى وولفرهامبتون معاراً في أكتوبر 2020 وبشكل دائم عام 2021، وانتقل إلى مانشستر سيتي في يونيو 2025 مقابل نحو 31 مليون جنيه، ويمثل منتخب الجزائر منذ 2023.",
+    "bioEn": "Left-back born in Montreuil, France, who came through Angers' academy, joined Wolverhampton Wanderers on loan in October 2020 and permanently in 2021, moved to Manchester City in June 2025 for around £31 million, and has represented Algeria since 2023.",
+    "achievementsAr": [
+      "كأس الاتحاد الإنجليزي 2025-26 مع مانشستر سيتي",
+      "كأس الرابطة الإنجليزية 2025-26 مع مانشستر سيتي"
+    ],
+    "achievementsEn": [
+      "FA Cup 2025-26 with Manchester City",
+      "EFL Cup 2025-26 with Manchester City"
+    ],
+    "clubsHistoryAr": [
+      "أنجيه",
+      "وولفرهامبتون (إعارة)",
+      "وولفرهامبتون",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Angers",
+      "Wolverhampton Wanderers (loan)",
+      "Wolverhampton Wanderers",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "angers",
+      "wolverhampton-wanderers",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Rayan_A%C3%AFt-Nouri"
+  },
+  {
+    "id": "vitor-reis",
+    "nameAr": "فيتور ريس",
+    "nameEn": "Vitor Reis",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2024-الآن",
+    "active": true,
+    "bioAr": "مدافع برازيلي وُلد في ساو جوزيه دوس كامبوس عام 2006، تخرج من أكاديمية بالميراس وانضم إلى مانشستر سيتي في يناير 2025، وقضى موسم 2025-26 معاراً إلى جيرونا قبل عودته إلى سيتي.",
+    "bioEn": "Brazilian centre-back born in São José dos Campos in 2006 who came through Palmeiras' academy, joined Manchester City in January 2025 and spent 2025-26 on loan at Girona before returning to City.",
+    "achievementsAr": [
+      "أول مباراة مع منتخب البرازيل الأول عام 2026"
+    ],
+    "achievementsEn": [
+      "Senior Brazil debut in 2026"
+    ],
+    "clubsHistoryAr": [
+      "بالميراس",
+      "مانشستر سيتي",
+      "جيرونا (إعارة)",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Palmeiras",
+      "Manchester City",
+      "Girona (loan)",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "palmeiras",
+      "manchester-city",
+      "girona"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Vitor_Reis"
+  },
+  {
+    "id": "abdukodir-khusanov",
+    "nameAr": "عبد القادر خوسانوف",
+    "nameEn": "Abdukodir Khusanov",
+    "nationalityAr": "أوزبكي",
+    "nationalityEn": "Uzbek",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير أيمن)",
+      "en": "Centre-back / Right-back"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "مدافع أوزبكي وُلد في طشقند عام 2004، بدأ مع بونيودكور ثم إنرجيتيك بي جي يو في بيلاروسيا ولانس الفرنسي، وانضم إلى مانشستر سيتي في يناير 2025 ليصبح أول لاعب أوزبكي في الدوري الإنجليزي الممتاز.",
+    "bioEn": "Uzbek defender born in Tashkent in 2004 who came through Bunyodkor, played for Energetik-BGU in Belarus and Lens in France, and joined Manchester City in January 2025, becoming the first Uzbek player in the Premier League.",
+    "achievementsAr": [
+      "كأس آسيا تحت 20 سنة 2023 مع أوزبكستان",
+      "سلسلة فيفا 2026 مع أوزبكستان",
+      "كأس الاتحاد الإنجليزي 2025-26 مع مانشستر سيتي",
+      "كأس الرابطة الإنجليزية 2025-26 مع مانشستر سيتي"
+    ],
+    "achievementsEn": [
+      "AFC U-20 Asian Cup 2023 with Uzbekistan",
+      "FIFA Series 2026 with Uzbekistan",
+      "FA Cup 2025-26 with Manchester City",
+      "EFL Cup 2025-26 with Manchester City"
+    ],
+    "clubsHistoryAr": [
+      "بونيودكور",
+      "إنرجيتيك بي جي يو",
+      "لانس",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Bunyodkor",
+      "Energetik-BGU",
+      "Lens",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "lens",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Abdukodir_Khusanov"
+  },
+  {
+    "id": "rico-lewis",
+    "nameAr": "ريكو لويس",
+    "nameEn": "Rico Lewis",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "ظهير أيمن / لاعب وسط دفاعي",
+      "en": "Right-back / Defensive midfielder"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "لاعب إنجليزي وُلد في بيري، تخرج من أكاديمية مانشستر سيتي وظهر مع الفريق الأول في أغسطس 2022، وأصبح أصغر لاعب يسجل في أول مباراة له أساسياً في دوري أبطال أوروبا مع سيتي (17 سنة و346 يوماً).",
+    "bioEn": "English player born in Bury who came through Manchester City's academy, made his first-team debut in August 2022 and became the youngest player to score on a first Champions League start (aged 17 years 346 days).",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2022-23 و2023-24",
+      "كأس الاتحاد الإنجليزي 2022-23",
+      "دوري أبطال أوروبا 2022-23",
+      "كأس السوبر الأوروبي 2023",
+      "كأس العالم للأندية 2023",
+      "كأس الرابطة الإنجليزية 2025-26"
+    ],
+    "achievementsEn": [
+      "Premier League 2022-23 and 2023-24",
+      "FA Cup 2022-23",
+      "UEFA Champions League 2022-23",
+      "UEFA Super Cup 2023",
+      "FIFA Club World Cup 2023",
+      "EFL Cup 2025-26"
+    ],
+    "clubsHistoryAr": [
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Manchester City"
+    ],
+    "clubIds": [
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Rico_Lewis"
+  },
+  {
+    "id": "nico-oreilly",
+    "nameAr": "نيكو أورايلي",
+    "nameEn": "Nico O'Reilly",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "ظهير أيسر / لاعب وسط",
+      "en": "Left-back / Midfielder"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "لاعب إنجليزي وُلد في مانشستر وتخرج من أكاديمية مانشستر سيتي، ظهر لأول مرة مع الفريق الأول عام 2024 وسجل هدفين في نهائي كأس الرابطة الإنجليزية 2026، ومثّل إنجلترا في كأس العالم 2026.",
+    "bioEn": "English player born in Manchester who came through Manchester City's academy, made his first-team debut in 2024, scored twice in the 2026 EFL Cup final and represented England at the 2026 World Cup.",
+    "achievementsAr": [
+      "كأس الرابطة الإنجليزية 2025-26 (سجل هدفين في النهائي)",
+      "كأس الاتحاد الإنجليزي 2025-26",
+      "المركز الثالث في كأس العالم 2026 مع إنجلترا",
+      "جائزة خريج الأكاديمية لموسم 2025-26 في الدوري الإنجليزي"
+    ],
+    "achievementsEn": [
+      "EFL Cup 2025-26 (scored twice in the final)",
+      "FA Cup 2025-26",
+      "Third place at the 2026 World Cup with England",
+      "Premier League Academy Graduate of the Year 2025-26"
+    ],
+    "clubsHistoryAr": [
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Manchester City"
+    ],
+    "clubIds": [
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Nico_O%27Reilly"
+  },
+  {
+    "id": "mateo-kovacic",
+    "nameAr": "ماتيو كوفاتشيتش",
+    "nameEn": "Mateo Kovačić",
+    "nationalityAr": "كرواتي",
+    "nationalityEn": "Croatian",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Central midfielder"
+    },
+    "era": "2010-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط كرواتي وُلد في لينز بالنمسا، بدأ مع دينامو زغرب ثم لعب لإنتر ميلان وريال مدريد وتشيلسي، وانضم إلى مانشستر سيتي في يونيو 2023، ويمثل منتخب كرواتيا منذ 2013.",
+    "bioEn": "Croatian midfielder born in Linz, Austria, who started at Dinamo Zagreb, played for Inter Milan, Real Madrid and Chelsea, and joined Manchester City in June 2023; he has represented Croatia since 2013.",
+    "achievementsAr": [
+      "الدوري الكرواتي مرتين مع دينامو زغرب",
+      "دوري أبطال أوروبا 2015-16 و2016-17 و2017-18 مع ريال مدريد",
+      "الدوري الأوروبي 2018-19 مع تشيلسي",
+      "دوري أبطال أوروبا 2020-21 مع تشيلسي",
+      "كأس السوبر الأوروبي وكأس العالم للأندية 2021 مع تشيلسي",
+      "أفضل لاعب في تشيلسي 2019-20",
+      "الدوري الإنجليزي الممتاز 2023-24 مع مانشستر سيتي",
+      "كأس العالم للأندية 2023 مع مانشستر سيتي",
+      "كأس الاتحاد الإنجليزي 2025-26 مع مانشستر سيتي",
+      "كأس الرابطة الإنجليزية 2025-26 مع مانشستر سيتي",
+      "وصيف كأس العالم 2018 مع كرواتيا",
+      "المركز الثالث في كأس العالم 2022 مع كرواتيا"
+    ],
+    "achievementsEn": [
+      "Two Croatian league titles with Dinamo Zagreb",
+      "UEFA Champions League 2015-16, 2016-17 and 2017-18 with Real Madrid",
+      "UEFA Europa League 2018-19 with Chelsea",
+      "UEFA Champions League 2020-21 with Chelsea",
+      "UEFA Super Cup and FIFA Club World Cup 2021 with Chelsea",
+      "Chelsea Player of the Year 2019-20",
+      "Premier League 2023-24 with Manchester City",
+      "FIFA Club World Cup 2023 with Manchester City",
+      "FA Cup 2025-26 with Manchester City",
+      "EFL Cup 2025-26 with Manchester City",
+      "2018 World Cup runner-up with Croatia",
+      "Third place at the 2022 World Cup with Croatia"
+    ],
+    "clubsHistoryAr": [
+      "دينامو زغرب",
+      "إنتر ميلان",
+      "ريال مدريد",
+      "تشيلسي (إعارة)",
+      "تشيلسي",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Dinamo Zagreb",
+      "Inter Milan",
+      "Real Madrid",
+      "Chelsea (loan)",
+      "Chelsea",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "inter-milan",
+      "real-madrid",
+      "chelsea",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Mateo_Kova%C4%8Di%C4%87"
+  },
+  {
+    "id": "matheus-nunes",
+    "nameAr": "ماثيوس نونيس",
+    "nameEn": "Matheus Nunes",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "لاعب وسط / ظهير أيمن",
+      "en": "Midfielder / Right-back"
+    },
+    "era": "2016-الآن",
+    "active": true,
+    "bioAr": "لاعب برتغالي وُلد في ريو دي جانيرو وانتقل إلى البرتغال في الثانية عشرة، بدأ مع إريسيرينسي ثم إستوريل وسبورتينغ لشبونة ووولفرهامبتون، وانضم إلى مانشستر سيتي في سبتمبر 2023 مقابل نحو 53 مليون جنيه.",
+    "bioEn": "Portuguese player born in Rio de Janeiro who moved to Portugal aged 12, played for Ericeirense, Estoril, Sporting CP and Wolverhampton Wanderers, and joined Manchester City in September 2023 for around £53 million.",
+    "achievementsAr": [
+      "الدوري البرتغالي 2020-21 مع سبورتينغ لشبونة",
+      "كأس الرابطة البرتغالية 2020-21 و2021-22 مع سبورتينغ لشبونة",
+      "الدوري الإنجليزي الممتاز 2023-24 مع مانشستر سيتي",
+      "كأس العالم للأندية 2023 مع مانشستر سيتي",
+      "كأس الاتحاد الإنجليزي 2025-26 مع مانشستر سيتي",
+      "كأس الرابطة الإنجليزية 2025-26 مع مانشستر سيتي"
+    ],
+    "achievementsEn": [
+      "Primeira Liga 2020-21 with Sporting CP",
+      "Taça da Liga 2020-21 and 2021-22 with Sporting CP",
+      "Premier League 2023-24 with Manchester City",
+      "FIFA Club World Cup 2023 with Manchester City",
+      "FA Cup 2025-26 with Manchester City",
+      "EFL Cup 2025-26 with Manchester City"
+    ],
+    "clubsHistoryAr": [
+      "إريسيرينسي",
+      "إستوريل",
+      "سبورتينغ لشبونة",
+      "وولفرهامبتون",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Ericeirense",
+      "Estoril",
+      "Sporting CP",
+      "Wolverhampton Wanderers",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "sporting-cp",
+      "wolverhampton-wanderers",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Matheus_Nunes"
+  },
+  {
+    "id": "elliot-anderson",
+    "nameAr": "إليوت أندرسون",
+    "nameEn": "Elliot Anderson",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إنجليزي من ويتلي باي، تخرج من أكاديمية نيوكاسل يونايتد وأُعير إلى بريستول روفرز، ثم انضم إلى نوتنغهام فورست عام 2024، وانتقل إلى مانشستر سيتي في صيف 2026 مقابل 116 مليون جنيه إسترليني رقماً قياسياً للاعب بريطاني.",
+    "bioEn": "English midfielder from Whitley Bay who came through Newcastle United's academy, was loaned to Bristol Rovers, joined Nottingham Forest in 2024 and moved to Manchester City in summer 2026 for £116 million, a British transfer record.",
+    "achievementsAr": [
+      "بطولة أوروبا تحت 21 سنة 2025 مع إنجلترا",
+      "الصعود من الدرجة الثانية 2021-22 مع بريستول روفرز (إعارة)",
+      "شارك مع إنجلترا في كأس العالم 2026"
+    ],
+    "achievementsEn": [
+      "UEFA European Under-21 Championship 2025 with England",
+      "League Two promotion 2021-22 with Bristol Rovers (loan)",
+      "Appeared at the 2026 World Cup with England"
+    ],
+    "clubsHistoryAr": [
+      "نيوكاسل يونايتد",
+      "بريستول روفرز (إعارة)",
+      "نوتنغهام فورست",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Newcastle United",
+      "Bristol Rovers (loan)",
+      "Nottingham Forest",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "newcastle-united",
+      "bristol-rovers",
+      "nottingham-forest",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Elliot_Anderson_(footballer)"
+  },
+  {
+    "id": "iliman-ndiaye",
+    "nameAr": "إيليمان ندياي",
+    "nameEn": "Iliman Ndiaye",
+    "nationalityAr": "سنغالي",
+    "nationalityEn": "Senegalese",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "جناح وُلد في روان بفرنسا، بدأ مسيرته في إنجلترا مع بورهام وود ثم شيفيلد يونايتد، ولعب لمرسيليا وإيفرتون، وانضم إلى مانشستر سيتي في 1 سبتمبر 2026 بعقد حتى 2031 مقابل نحو 60 مليون جنيه، ويمثل منتخب السنغال.",
+    "bioEn": "Winger born in Rouen, France, who began his senior career in England with Boreham Wood and Sheffield United, played for Marseille and Everton, and joined Manchester City on 1 September 2026 on a contract to 2031 for around £60 million; he plays for Senegal.",
+    "achievementsAr": [
+      "الصعود إلى الدوري الإنجليزي الممتاز 2022-23 مع شيفيلد يونايتد",
+      "اختير ضمن تشكيلة الموسم في التشامبيونشيب ورابطة اللاعبين (PFA)",
+      "أفضل لاعب في شيفيلد يونايتد"
+    ],
+    "achievementsEn": [
+      "Promotion to the Premier League in 2022-23 with Sheffield United",
+      "Named in the Championship and PFA Team of the Year",
+      "Sheffield United Player of the Year"
+    ],
+    "clubsHistoryAr": [
+      "بورهام وود",
+      "شيفيلد يونايتد",
+      "مرسيليا",
+      "إيفرتون",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Boreham Wood",
+      "Sheffield United",
+      "Marseille",
+      "Everton",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "sheffield-united",
+      "marseille",
+      "everton",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Iliman_Ndiaye"
+  },
+  {
+    "id": "allan-elias",
+    "nameAr": "آلان إلياس",
+    "nameEn": "Allan Elias",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "جناح",
+      "en": "Winger"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "جناح برازيلي وُلد في فلوريانوبوليس عام 2004، تخرج من أكاديمية بالميراس وخاض معه 96 مباراة، وانضم إلى مانشستر سيتي في 31 أغسطس 2026 بعقد لخمس سنوات مقابل نحو 34 مليون جنيه.",
+    "bioEn": "Brazilian winger born in Florianópolis in 2004 who came through Palmeiras' academy and made 96 first-team appearances before joining Manchester City on 31 August 2026 on a five-year deal for a reported £34 million.",
+    "achievementsAr": [],
+    "achievementsEn": [],
+    "clubsHistoryAr": [
+      "بالميراس",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Palmeiras",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "palmeiras",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "ayyoub-bouaddi",
+    "nameAr": "أيوب بوعدي",
+    "nameEn": "Ayyoub Bouaddi",
+    "nationalityAr": "مغربي",
+    "nationalityEn": "Moroccan",
+    "clubAr": "مانشستر سيتي",
+    "clubEn": "Manchester City",
+    "clubId": "manchester-city",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط وُلد في سانليس بفرنسا لأسرة مغربية، ظهر لأول مرة مع ليل وهو في السادسة عشرة، ومثّل فرنسا في الفئات السنية قبل أن يختار المغرب عام 2026، وانضم إلى مانشستر سيتي في أغسطس 2026 بعقد لخمس سنوات.",
+    "bioEn": "Midfielder born in Senlis, France, to a Moroccan family who made his Lille debut aged 16, represented France at youth level before switching to Morocco in 2026, and joined Manchester City in August 2026 on a five-year contract.",
+    "achievementsAr": [
+      "الوصول إلى ربع نهائي كأس العالم 2026 مع المغرب"
+    ],
+    "achievementsEn": [
+      "Reached the 2026 World Cup quarter-finals with Morocco"
+    ],
+    "clubsHistoryAr": [
+      "ليل",
+      "مانشستر سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Lille",
+      "Manchester City"
+    ],
+    "clubIds": [
+      "lille",
+      "manchester-city"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ayyoub_Bouaddi"
+  },
+  {
+    "id": "claudio-echeverri",
+    "nameAr": "كلاوديو إتشيفيري",
+    "nameEn": "Claudio Echeverri",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "بنفيكا (إعارة من مانشستر سيتي)",
+    "clubEn": "Benfica (on loan from Manchester City)",
+    "clubId": "benfica",
+    "position": {
+      "ar": "صانع ألعاب / جناح",
+      "en": "Attacking midfielder / Winger"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "لاعب أرجنتيني وُلد في ريسيستنسيا، تخرج من أكاديمية ريفر بلات وانضم إلى مانشستر سيتي في يناير 2024، وأُعير إلى ريفر بلات وباير ليفركوزن وجيرونا، وهو حالياً معار إلى بنفيكا منذ سبتمبر 2026.",
+    "bioEn": "Argentine player born in Resistencia who came through River Plate's academy, joined Manchester City in January 2024, was loaned to River Plate, Bayer Leverkusen and Girona, and is currently on loan at Benfica since September 2026.",
+    "achievementsAr": [
+      "وصيف بطولة أمريكا الجنوبية تحت 20 سنة 2025 مع الأرجنتين"
+    ],
+    "achievementsEn": [
+      "South American Under-20 Championship runner-up 2025 with Argentina"
+    ],
+    "clubsHistoryAr": [
+      "ريفر بلات",
+      "مانشستر سيتي",
+      "ريفر بلات (إعارة)",
+      "باير ليفركوزن (إعارة)",
+      "جيرونا (إعارة)",
+      "بنفيكا (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "River Plate",
+      "Manchester City",
+      "River Plate (loan)",
+      "Bayer Leverkusen (loan)",
+      "Girona (loan)",
+      "Benfica (loan)"
+    ],
+    "clubIds": [
+      "river-plate",
+      "manchester-city",
+      "bayer-leverkusen",
+      "girona",
+      "benfica"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Claudio_Echeverri"
+  },
+  {
+    "id": "giorgi-mamardashvili",
+    "nameAr": "جيورجي مامارداشفيلي",
+    "nameEn": "Giorgi Mamardashvili",
+    "nationalityAr": "جورجي",
+    "nationalityEn": "Georgian",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى جورجي وُلد في تبليسي عام 2000، بدأ مع دينامو تبليسي ثم انتقل إلى فالنسيا عام 2021 وأصبح أول حارس جورجي في الدوري الإسباني، وانضم إلى ليفربول في 1 يوليو 2025 مقابل نحو 29.45 مليون جنيه إسترليني.",
+    "bioEn": "Georgian goalkeeper born in Tbilisi in 2000 who started at Dinamo Tbilisi, joined Valencia in 2021 as the first Georgian goalkeeper in La Liga, and signed for Liverpool on 1 July 2025 for a reported £29.45 million.",
+    "achievementsAr": [
+      "أفضل حارس مرمى في جورجيا 2020",
+      "أفضل لاعب في جورجيا 2024 (اتحاد الكرة الجورجي)",
+      "تأهل مع جورجيا إلى كأس أمم أوروبا 2024 (أول بطولة كبرى في تاريخها)"
+    ],
+    "achievementsEn": [
+      "Georgian Goalkeeper of the Year 2020",
+      "Georgian Football Federation Player of the Year 2024",
+      "Qualified with Georgia for UEFA Euro 2024 (the nation's first major tournament)"
+    ],
+    "clubsHistoryAr": [
+      "دينامو تبليسي",
+      "روستافي (إعارة)",
+      "لوكوموتيف تبليسي (إعارة)",
+      "فالنسيا",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Dinamo Tbilisi",
+      "Rustavi (loan)",
+      "Locomotive Tbilisi (loan)",
+      "Valencia",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "valencia",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Giorgi_Mamardashvili"
+  },
+  {
+    "id": "milos-kerkez",
+    "nameAr": "ميلوش كيركيز",
+    "nameEn": "Milos Kerkez",
+    "nationalityAr": "مجري",
+    "nationalityEn": "Hungarian",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "ظهير أيسر",
+      "en": "Left-back"
+    },
+    "era": "2020-الآن",
+    "active": true,
+    "bioAr": "ظهير أيسر وُلد في فربّاس بصربيا ويمثل منتخب المجر، تدرّج في أكاديمية رابيد فيينا ثم لعب لغيور وإيه زد ألكمار وبورنموث، وانضم إلى ليفربول في 26 يونيو 2025 مقابل نحو 40 مليون جنيه إسترليني.",
+    "bioEn": "Left-back born in Vrbas, Serbia, who plays for Hungary; he came through Rapid Wien's academy, played for Győr, AZ Alkmaar and Bournemouth, and joined Liverpool on 26 June 2025 for around £40 million.",
+    "achievementsAr": [],
+    "achievementsEn": [],
+    "clubsHistoryAr": [
+      "غيور",
+      "ميلان",
+      "إيه زد ألكمار",
+      "بورنموث",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Győr",
+      "AC Milan",
+      "AZ Alkmaar",
+      "Bournemouth",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "ac-milan",
+      "bournemouth",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Milos_Kerkez"
+  },
+  {
+    "id": "jeremie-frimpong",
+    "nameAr": "جيريمي فريمبونغ",
+    "nameEn": "Jeremie Frimpong",
+    "nationalityAr": "هولندي",
+    "nationalityEn": "Dutch",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "ظهير أيمن / جناح أيمن",
+      "en": "Right-back / Right wing-back"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "ظهير هولندي وُلد في أمستردام وتربى في مانشستر، تخرج من أكاديمية مانشستر سيتي ثم انضم إلى سيلتك عام 2019 وإلى باير ليفركوزن في يناير 2021، وانتقل إلى ليفربول في صيف 2025 مقابل نحو 29.5 مليون جنيه إسترليني.",
+    "bioEn": "Dutch right-sided defender born in Amsterdam and raised in Manchester, who came through Manchester City's academy, joined Celtic in 2019 and Bayer Leverkusen in January 2021, and moved to Liverpool in summer 2025 for around £29.5 million.",
+    "achievementsAr": [
+      "الدوري الاسكتلندي الممتاز 2019-20 مع سيلتك",
+      "كأس اسكتلندا وكأس الرابطة الاسكتلندية 2019-20 مع سيلتك",
+      "الدوري الألماني 2023-24 مع باير ليفركوزن (الموسم بلا هزيمة)",
+      "كأس ألمانيا 2023-24 مع باير ليفركوزن",
+      "كأس السوبر الألماني 2024 مع باير ليفركوزن"
+    ],
+    "achievementsEn": [
+      "Scottish Premiership 2019-20 with Celtic",
+      "Scottish Cup and Scottish League Cup 2019-20 with Celtic",
+      "Bundesliga 2023-24 with Bayer Leverkusen (unbeaten season)",
+      "DFB-Pokal 2023-24 with Bayer Leverkusen",
+      "DFL-Supercup 2024 with Bayer Leverkusen"
+    ],
+    "clubsHistoryAr": [
+      "مانشستر سيتي (شباب)",
+      "سيلتك",
+      "باير ليفركوزن",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Manchester City (youth)",
+      "Celtic",
+      "Bayer Leverkusen",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "celtic",
+      "bayer-leverkusen",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jeremie_Frimpong"
+  },
+  {
+    "id": "joe-gomez",
+    "nameAr": "جو غوميز",
+    "nameEn": "Joe Gomez",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير)",
+      "en": "Centre-back / Full-back"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي وُلد في كاتفورد بلندن، بدأ مع تشارلتون أثليتك وانضم إلى ليفربول في يونيو 2015 مقابل نحو 3.5 مليون جنيه إسترليني، وتعافى من إصابات خطيرة في الركبة ليصبح أحد أبطال حقبة يورغن كلوب.",
+    "bioEn": "English defender born in Catford, London, who started at Charlton Athletic and joined Liverpool in June 2015 for around £3.5 million; after serious knee injuries he became a trophy winner throughout the Jürgen Klopp era.",
+    "achievementsAr": [
+      "دوري أبطال أوروبا 2018-19",
+      "كأس السوبر الأوروبي 2019",
+      "كأس العالم للأندية 2019",
+      "الدوري الإنجليزي الممتاز 2019-20 و2024-25",
+      "كأس الاتحاد الإنجليزي 2021-22",
+      "كأس الرابطة الإنجليزية 2021-22 و2023-24",
+      "كأس الدرع الخيرية 2022",
+      "بطولة أوروبا تحت 17 سنة 2014 مع إنجلترا"
+    ],
+    "achievementsEn": [
+      "UEFA Champions League 2018-19",
+      "UEFA Super Cup 2019",
+      "FIFA Club World Cup 2019",
+      "Premier League 2019-20 and 2024-25",
+      "FA Cup 2021-22",
+      "EFL Cup 2021-22 and 2023-24",
+      "FA Community Shield 2022",
+      "UEFA European Under-17 Championship 2014 with England"
+    ],
+    "clubsHistoryAr": [
+      "تشارلتون أثليتك",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Charlton Athletic",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "charlton-athletic",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Joe_Gomez"
+  },
+  {
+    "id": "kostas-tsimikas",
+    "nameAr": "كوستاس تسيميكاس",
+    "nameEn": "Kostas Tsimikas",
+    "nationalityAr": "يوناني",
+    "nationalityEn": "Greek",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "ظهير أيسر",
+      "en": "Left-back"
+    },
+    "era": "2015-الآن",
+    "active": true,
+    "bioAr": "ظهير أيسر يوناني من سالونيك، بدأ مع أولمبياكوس وأُعير إلى إسبييرغ وفيليم الثاني، وانضم إلى ليفربول في أغسطس 2020 مقابل نحو 11.75 مليون جنيه إسترليني، وسجّل ركلة الترجيح الحاسمة في نهائي كأس الاتحاد 2022، وأصبح أول يوناني يفوز بالدوري الإنجليزي الممتاز.",
+    "bioEn": "Greek left-back from Thessaloniki who started at Olympiacos, was loaned to Esbjerg and Willem II, joined Liverpool in August 2020 for around £11.75 million, scored the winning penalty in the 2022 FA Cup final shoot-out, and became the first Greek to win the Premier League.",
+    "achievementsAr": [
+      "الدوري اليوناني الممتاز 2019-20 مع أولمبياكوس",
+      "كأس الاتحاد الإنجليزي 2021-22 (سجّل ركلة الترجيح الحاسمة في النهائي)",
+      "كأس الرابطة الإنجليزية 2021-22 و2023-24",
+      "الدوري الإنجليزي الممتاز 2024-25 (أول يوناني يفوز به)"
+    ],
+    "achievementsEn": [
+      "Super League Greece 2019-20 with Olympiacos",
+      "FA Cup 2021-22 (scored the winning penalty in the final shoot-out)",
+      "EFL Cup 2021-22 and 2023-24",
+      "Premier League 2024-25 (first Greek to win it)"
+    ],
+    "clubsHistoryAr": [
+      "أولمبياكوس",
+      "إسبييرغ (إعارة)",
+      "فيليم الثاني (إعارة)",
+      "أولمبياكوس",
+      "ليفربول",
+      "روما (إعارة)",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Olympiacos",
+      "Esbjerg (loan)",
+      "Willem II (loan)",
+      "Olympiacos",
+      "Liverpool",
+      "Roma (loan)",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "liverpool",
+      "roma"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kostas_Tsimikas"
+  },
+  {
+    "id": "wataru-endo",
+    "nameAr": "واتارو إندو",
+    "nameEn": "Wataru Endo",
+    "nationalityAr": "ياباني",
+    "nationalityEn": "Japanese",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "لاعب وسط دفاعي / مدافع",
+      "en": "Defensive midfielder / Centre-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "لاعب وسط ياباني وُلد في يوكوهاما، بدأ مع شونان بيلمار ثم لعب لأوراوا ريد دايموندز وسينت ترويدن وشتوتغارت، وانضم إلى ليفربول في أغسطس 2023 مقابل نحو 16 مليون جنيه إسترليني، ويقود منتخب اليابان كقائد منذ 2023.",
+    "bioEn": "Japanese midfielder born in Yokohama who played for Shonan Bellmare, Urawa Red Diamonds, Sint-Truiden and VfB Stuttgart, joined Liverpool in August 2023 for around £16 million, and has captained Japan since 2023.",
+    "achievementsAr": [
+      "دوري الدرجة الثانية الياباني 2014 مع شونان بيلمار",
+      "كأس الرابطة اليابانية 2016 مع أوراوا",
+      "دوري أبطال آسيا 2017 مع أوراوا ريد دايموندز",
+      "بطولة آسيا تحت 23 سنة 2016 مع اليابان",
+      "وصيف كأس آسيا 2019 مع اليابان",
+      "كأس الرابطة الإنجليزية 2023-24",
+      "الدوري الإنجليزي الممتاز 2024-25"
+    ],
+    "achievementsEn": [
+      "J2 League 2014 with Shonan Bellmare",
+      "J.League Cup 2016 with Urawa Red Diamonds",
+      "AFC Champions League 2017 with Urawa Red Diamonds",
+      "AFC U-23 Championship 2016 with Japan",
+      "AFC Asian Cup runner-up 2019 with Japan",
+      "EFL Cup 2023-24",
+      "Premier League 2024-25"
+    ],
+    "clubsHistoryAr": [
+      "شونان بيلمار",
+      "أوراوا ريد دايموندز",
+      "سينت ترويدن",
+      "شتوتغارت (إعارة)",
+      "شتوتغارت",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Shonan Bellmare",
+      "Urawa Red Diamonds",
+      "Sint-Truiden",
+      "VfB Stuttgart (loan)",
+      "VfB Stuttgart",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "vfb-stuttgart",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Wataru_Endo"
+  },
+  {
+    "id": "ronald-araujo",
+    "nameAr": "رونالد أراوخو",
+    "nameEn": "Ronald Araújo",
+    "nationalityAr": "أوروغوياني",
+    "nationalityEn": "Uruguayan",
+    "clubAr": "ليفربول (إعارة من برشلونة)",
+    "clubEn": "Liverpool (on loan from Barcelona)",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "مدافع (قلب دفاع / ظهير أيمن)",
+      "en": "Centre-back / Right-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مدافع أوروغوياني وُلد في ريفيرا، بدأ مع بوستون ريفر وانضم إلى برشلونة في أغسطس 2018، وأصبح قائد الفريق في يناير 2026، وانتقل إلى ليفربول معاراً لموسم 2026-27 في 10 أغسطس 2026 مع خيار الشراء.",
+    "bioEn": "Uruguayan defender born in Rivera who started at Boston River, joined Barcelona in August 2018, became a club captain in January 2026, and moved to Liverpool on 10 August 2026 on a season-long loan for 2026-27 with an option to buy.",
+    "achievementsAr": [
+      "الدوري الإسباني 2022-23 و2024-25 و2025-26 مع برشلونة",
+      "كأس ملك إسبانيا 2020-21 و2024-25 مع برشلونة",
+      "كأس السوبر الإسباني 2023 و2025 و2026 مع برشلونة",
+      "المركز الثالث في كوبا أمريكا 2024 مع أوروغواي"
+    ],
+    "achievementsEn": [
+      "La Liga 2022-23, 2024-25 and 2025-26 with Barcelona",
+      "Copa del Rey 2020-21 and 2024-25 with Barcelona",
+      "Supercopa de España 2023, 2025 and 2026 with Barcelona",
+      "Third place at the 2024 Copa América with Uruguay"
+    ],
+    "clubsHistoryAr": [
+      "بوستون ريفر",
+      "برشلونة",
+      "ليفربول (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Boston River",
+      "Barcelona",
+      "Liverpool (loan)"
+    ],
+    "clubIds": [
+      "barcelona",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Ronald_Ara%C3%BAjo"
+  },
+  {
+    "id": "victor-munoz",
+    "nameAr": "فيكتور مونيوز",
+    "nameEn": "Víctor Muñoz",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "ليفربول",
+    "clubEn": "Liverpool",
+    "clubId": "liverpool",
+    "position": {
+      "ar": "جناح أيسر / مهاجم",
+      "en": "Left winger / Forward"
+    },
+    "era": "2023-الآن",
+    "active": true,
+    "bioAr": "جناح إسباني وُلد في برشلونة عام 2003، تخرج من أكاديمية ريال مدريد ولعب لفريق كاستيا ثم لأوساسونا موسم 2025-26، وسجل في أول مباراة دولية له مع إسبانيا في مارس 2026، وانضم إلى ليفربول في 1 يوليو 2026 مقابل نحو 34.5 مليون جنيه إسترليني.",
+    "bioEn": "Spanish winger born in Barcelona in 2003 who came through Real Madrid's academy, played for Castilla and then Osasuna in 2025-26, scored on his Spain debut in March 2026, and joined Liverpool on 1 July 2026 for around £34.5 million.",
+    "achievementsAr": [
+      "كأس العالم 2026 مع إسبانيا (ضمن التشكيلة)",
+      "كأس ملك الشباب 2021-22 مع ريال مدريد"
+    ],
+    "achievementsEn": [
+      "2026 FIFA World Cup with Spain (squad member)",
+      "Copa del Rey Juvenil 2021-22 with Real Madrid U19"
+    ],
+    "clubsHistoryAr": [
+      "ريال مدريد (شباب وكاستيا)",
+      "أوساسونا",
+      "ليفربول"
+    ],
+    "clubsHistoryEn": [
+      "Real Madrid (youth and Castilla)",
+      "Osasuna",
+      "Liverpool"
+    ],
+    "clubIds": [
+      "real-madrid",
+      "osasuna",
+      "liverpool"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/V%C3%ADctor_Mu%C3%B1oz_(footballer,_born_2003)"
+  },
+  {
+    "id": "andy-robertson",
+    "nameAr": "آندي روبرتسون",
+    "nameEn": "Andy Robertson",
+    "nationalityAr": "اسكتلندي",
+    "nationalityEn": "Scottish",
+    "clubAr": "توتنهام هوتسبير",
+    "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
+    "position": {
+      "ar": "ظهير أيسر",
+      "en": "Left-back"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "ظهير أيسر اسكتلندي من غلاسكو، بدأ مع كوينز بارك ثم دندي يونايتد وهال سيتي، وانضم إلى ليفربول في يوليو 2017 وبقي تسع سنوات، ثم انتقل حراً إلى توتنهام في 1 يوليو 2026، ويقود منتخب اسكتلندا.",
+    "bioEn": "Scottish left-back from Glasgow who played for Queen's Park, Dundee United and Hull City, joined Liverpool in July 2017 and stayed nine years before moving to Tottenham Hotspur on a free transfer on 1 July 2026; he captains Scotland.",
+    "achievementsAr": [
+      "دوري أبطال أوروبا 2018-19",
+      "كأس السوبر الأوروبي وكأس العالم للأندية 2019",
+      "الدوري الإنجليزي الممتاز 2019-20 و2024-25",
+      "كأس الاتحاد الإنجليزي وكأس الرابطة الإنجليزية 2021-22",
+      "كأس الرابطة الإنجليزية 2023-24",
+      "كأس الدرع الخيرية 2022",
+      "وسام الإمبراطورية البريطانية (MBE) عام 2023"
+    ],
+    "achievementsEn": [
+      "UEFA Champions League 2018-19",
+      "UEFA Super Cup and FIFA Club World Cup 2019",
+      "Premier League 2019-20 and 2024-25",
+      "FA Cup and EFL Cup 2021-22",
+      "EFL Cup 2023-24",
+      "FA Community Shield 2022",
+      "MBE in 2023"
+    ],
+    "clubsHistoryAr": [
+      "كوينز بارك",
+      "دندي يونايتد",
+      "هال سيتي",
+      "ليفربول",
+      "توتنهام هوتسبير"
+    ],
+    "clubsHistoryEn": [
+      "Queen's Park",
+      "Dundee United",
+      "Hull City",
+      "Liverpool",
+      "Tottenham Hotspur"
+    ],
+    "clubIds": [
+      "liverpool",
+      "tottenham"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Andy_Robertson"
+  },
+  {
+    "id": "curtis-jones",
+    "nameAr": "كورتيس جونز",
+    "nameEn": "Curtis Jones",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "إنتر ميلان",
+    "clubEn": "Inter Milan",
+    "clubId": "inter-milan",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إنجليزي وُلد في ليفربول وانضم إلى أكاديمية النادي في التاسعة من عمره، ظهر لأول مرة مع الفريق الأول في يناير 2019، وانتقل إلى إنتر ميلان في 21 أغسطس 2026 بعقد حتى 2031.",
+    "bioEn": "English midfielder born in Liverpool who joined the club's academy aged nine, made his first-team debut in January 2019 and moved to Inter Milan on 21 August 2026 on a contract until 2031.",
+    "achievementsAr": [
+      "الدوري الإنجليزي الممتاز 2019-20 و2024-25",
+      "كأس العالم للأندية 2019",
+      "كأس الاتحاد الإنجليزي 2021-22",
+      "كأس الرابطة الإنجليزية 2021-22 و2023-24",
+      "كأس الدرع الخيرية 2022",
+      "بطولة أوروبا تحت 21 سنة 2023 مع إنجلترا (وضمن تشكيلة البطولة)"
+    ],
+    "achievementsEn": [
+      "Premier League 2019-20 and 2024-25",
+      "FIFA Club World Cup 2019",
+      "FA Cup 2021-22",
+      "EFL Cup 2021-22 and 2023-24",
+      "FA Community Shield 2022",
+      "UEFA European Under-21 Championship 2023 with England (Team of the Tournament)"
+    ],
+    "clubsHistoryAr": [
+      "ليفربول",
+      "إنتر ميلان"
+    ],
+    "clubsHistoryEn": [
+      "Liverpool",
+      "Inter Milan"
+    ],
+    "clubIds": [
+      "liverpool",
+      "inter-milan"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Curtis_Jones_(footballer,_born_2001)"
+  },
+  {
+    "id": "matheus-cunha",
+    "nameAr": "ماتيوس كونيا",
+    "nameEn": "Matheus Cunha",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "مانشستر يونايتد",
+    "clubEn": "Manchester United",
+    "clubId": "manchester-united",
+    "position": {
+      "ar": "مهاجم / صانع ألعاب / جناح",
+      "en": "Forward / Attacking midfielder / Winger"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مهاجم برازيلي وُلد في جواو بيسوا، بدأ مع كوريتيبا ثم انتقل إلى سيون السويسري في سن 18، ولعب لآر بي لايبزيغ وهيرتا برلين وأتلتيكو مدريد ووولفرهامبتون، وانضم إلى مانشستر يونايتد في 1 يونيو 2025 بتفعيل بند الشراء البالغ 62.5 مليون جنيه إسترليني.",
+    "bioEn": "Brazilian forward born in João Pessoa who started at Coritiba, moved to Sion in Switzerland aged 18, played for RB Leipzig, Hertha BSC, Atlético Madrid and Wolverhampton Wanderers, and joined Manchester United on 1 June 2025 by triggering his £62.5 million release clause.",
+    "achievementsAr": [
+      "الميدالية الذهبية الأولمبية 2020 مع منتخب البرازيل الأولمبي",
+      "أفضل لاعب في وولفرهامبتون موسم 2024-25"
+    ],
+    "achievementsEn": [
+      "2020 Olympic gold medal with Brazil's U-23 team",
+      "Wolverhampton Wanderers Player of the Year 2024-25"
+    ],
+    "clubsHistoryAr": [
+      "كوريتيبا",
+      "سيون",
+      "آر بي لايبزيغ",
+      "هيرتا برلين",
+      "أتلتيكو مدريد",
+      "وولفرهامبتون (إعارة)",
+      "وولفرهامبتون",
+      "مانشستر يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Coritiba",
+      "Sion",
+      "RB Leipzig",
+      "Hertha BSC",
+      "Atlético Madrid",
+      "Wolverhampton Wanderers (loan)",
+      "Wolverhampton Wanderers",
+      "Manchester United"
+    ],
+    "clubIds": [
+      "rb-leipzig",
+      "hertha-berlin",
+      "atletico-madrid",
+      "wolverhampton-wanderers",
+      "manchester-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Matheus_Cunha"
+  },
+  {
+    "id": "lisandro-martinez",
+    "nameAr": "ليساندرو مارتينيز",
+    "nameEn": "Lisandro Martínez",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "مانشستر يونايتد",
+    "clubEn": "Manchester United",
+    "clubId": "manchester-united",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مدافع أرجنتيني وُلد في غواليغواي ولقبه \"الجزار\"، بدأ مع نيويلز أولد بويز ثم ديفينسا إي خوستيسيا وأياكس، وانضم إلى مانشستر يونايتد في يوليو 2022، وشارك مع الأرجنتين في فوزها بكأس العالم 2022 ووصولها إلى نهائي 2026.",
+    "bioEn": "Argentine defender born in Gualeguay nicknamed \"the Butcher\", who played for Newell's Old Boys, Defensa y Justicia and Ajax before joining Manchester United in July 2022; he was in Argentina's 2022 World Cup-winning squad and their 2026 World Cup finalists.",
+    "achievementsAr": [
+      "الدوري الهولندي 2020-21 و2021-22 مع أياكس",
+      "كأس هولندا 2020-21 مع أياكس",
+      "أفضل لاعب في أياكس 2021-22",
+      "كأس الرابطة الإنجليزية 2022-23 مع مانشستر يونايتد",
+      "كأس الاتحاد الإنجليزي 2023-24 مع مانشستر يونايتد",
+      "كوبا أمريكا 2021 و2024 مع الأرجنتين",
+      "كأس فيناليسيما 2022 مع الأرجنتين",
+      "كأس العالم 2022 مع الأرجنتين",
+      "وصيف كأس العالم 2026 مع الأرجنتين"
+    ],
+    "achievementsEn": [
+      "Eredivisie 2020-21 and 2021-22 with Ajax",
+      "KNVB Cup 2020-21 with Ajax",
+      "Ajax Player of the Year 2021-22",
+      "EFL Cup 2022-23 with Manchester United",
+      "FA Cup 2023-24 with Manchester United",
+      "Copa América 2021 and 2024 with Argentina",
+      "2022 Finalissima with Argentina",
+      "2022 FIFA World Cup with Argentina",
+      "2026 FIFA World Cup runner-up with Argentina"
+    ],
+    "clubsHistoryAr": [
+      "نيويلز أولد بويز",
+      "ديفينسا إي خوستيسيا",
+      "أياكس",
+      "مانشستر يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Newell's Old Boys",
+      "Defensa y Justicia",
+      "Ajax",
+      "Manchester United"
+    ],
+    "clubIds": [
+      "ajax",
+      "manchester-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Lisandro_Mart%C3%ADnez"
+  },
+  {
+    "id": "kobbie-mainoo",
+    "nameAr": "كوبي ماينو",
+    "nameEn": "Kobbie Mainoo",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "مانشستر يونايتد",
+    "clubEn": "Manchester United",
+    "clubId": "manchester-united",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إنجليزي وُلد في ستوكبورت لأبوين من غانا، تخرج من أكاديمية مانشستر يونايتد وظهر لأول مرة مع الفريق الأول في يناير 2023، وسجّل هدف الفوز في نهائي كأس الاتحاد الإنجليزي 2024 على مانشستر سيتي.",
+    "bioEn": "English midfielder born in Stockport to Ghanaian parents who came through Manchester United's academy, made his first-team debut in January 2023 and scored the winning goal in the 2024 FA Cup final against Manchester City.",
+    "achievementsAr": [
+      "كأس الشباب الإنجليزي 2021-22 مع مانشستر يونايتد",
+      "جائزة جيمي مورفي لأفضل لاعب شاب في النادي 2023",
+      "كأس الاتحاد الإنجليزي 2023-24 (سجّل هدف الفوز في النهائي)",
+      "وصيف بطولة أوروبا 2024 مع إنجلترا",
+      "ضمن تشكيلة إنجلترا في كأس العالم 2026"
+    ],
+    "achievementsEn": [
+      "FA Youth Cup 2021-22 with Manchester United",
+      "Jimmy Murphy Young Player of the Year 2023",
+      "FA Cup 2023-24 (scored the winner in the final)",
+      "UEFA Euro 2024 runner-up with England",
+      "In England's 2026 World Cup squad"
+    ],
+    "clubsHistoryAr": [
+      "مانشستر يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Manchester United"
+    ],
+    "clubIds": [
+      "manchester-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kobbie_Mainoo"
+  },
+  {
+    "id": "diogo-dalot",
+    "nameAr": "ديوغو دالوت",
+    "nameEn": "Diogo Dalot",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "مانشستر يونايتد",
+    "clubEn": "Manchester United",
+    "clubId": "manchester-united",
+    "position": {
+      "ar": "ظهير أيمن / ظهير جناح",
+      "en": "Right-back / Wing-back"
+    },
+    "era": "2017-الآن",
+    "active": true,
+    "bioAr": "ظهير برتغالي من براغا، تخرج من أكاديمية بورتو وانضم إلى مانشستر يونايتد في 6 يونيو 2018 مقابل نحو 19 مليون جنيه إسترليني، وأُعير إلى ميلان قبل أن يعود ليصبح أساسياً.",
+    "bioEn": "Portuguese full-back from Braga who came through Porto's academy, joined Manchester United on 6 June 2018 for around £19 million, and was loaned to Milan before returning to become a regular.",
+    "achievementsAr": [
+      "الدوري البرتغالي 2017-18 مع بورتو",
+      "كأس الرابطة الإنجليزية 2022-23 مع مانشستر يونايتد",
+      "كأس الاتحاد الإنجليزي 2023-24 مع مانشستر يونايتد",
+      "دوري الأمم الأوروبية 2024-25 مع البرتغال",
+      "بطولة أوروبا تحت 17 سنة 2016 مع البرتغال"
+    ],
+    "achievementsEn": [
+      "Primeira Liga 2017-18 with Porto",
+      "EFL Cup 2022-23 with Manchester United",
+      "FA Cup 2023-24 with Manchester United",
+      "UEFA Nations League 2024-25 with Portugal",
+      "UEFA European Under-17 Championship 2016 with Portugal"
+    ],
+    "clubsHistoryAr": [
+      "بورتو",
+      "مانشستر يونايتد",
+      "ميلان (إعارة)",
+      "مانشستر يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Porto",
+      "Manchester United",
+      "Milan (loan)",
+      "Manchester United"
+    ],
+    "clubIds": [
+      "porto",
+      "manchester-united",
+      "ac-milan"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Diogo_Dalot"
+  },
+  {
+    "id": "joelinton",
+    "nameAr": "جويلينتون",
+    "nameEn": "Joelinton",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "نيوكاسل يونايتد",
+    "clubEn": "Newcastle United",
+    "clubId": "newcastle-united",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2013-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط برازيلي وُلد في أليانسا، بدأ مع سبورت ريسيفي ثم هوفنهايم وأُعير إلى رابيد فيينا، وانضم إلى نيوكاسل يونايتد في 2019 في صفقة قياسية للنادي بلغت نحو 40 مليون جنيه إسترليني، وحوّله إيدي هاو من مهاجم إلى لاعب وسط.",
+    "bioEn": "Brazilian midfielder born in Aliança who started at Sport Recife, joined Hoffenheim and was loaned to Rapid Wien, then signed for Newcastle United in 2019 for a then club-record fee of around £40 million; Eddie Howe converted him from a striker into a midfielder.",
+    "achievementsAr": [
+      "كأس شمال شرق البرازيل 2014 مع سبورت ريسيفي",
+      "بطولة ولاية بيرنامبوكو 2014 مع سبورت ريسيفي",
+      "كأس الرابطة الإنجليزية 2024-25 مع نيوكاسل يونايتد"
+    ],
+    "achievementsEn": [
+      "Copa do Nordeste 2014 with Sport Recife",
+      "Campeonato Pernambucano 2014 with Sport Recife",
+      "EFL Cup 2024-25 with Newcastle United"
+    ],
+    "clubsHistoryAr": [
+      "سبورت ريسيفي",
+      "هوفنهايم",
+      "رابيد فيينا (إعارة)",
+      "نيوكاسل يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Sport Recife",
+      "Hoffenheim",
+      "Rapid Wien (loan)",
+      "Newcastle United"
+    ],
+    "clubIds": [
+      "hoffenheim",
+      "newcastle-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Joelinton"
+  },
+  {
+    "id": "nick-woltemade",
+    "nameAr": "نيك فولتيمادي",
+    "nameEn": "Nick Woltemade",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "يوفنتوس (إعارة من نيوكاسل يونايتد)",
+    "clubEn": "Juventus (on loan from Newcastle United)",
+    "clubId": "juventus",
+    "position": {
+      "ar": "مهاجم / صانع ألعاب",
+      "en": "Forward / Attacking midfielder"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "مهاجم ألماني وُلد في بريمن، تخرج من أكاديمية فيردر بريمن وأصبح أصغر لاعب يشارك في الدوري الألماني مع النادي (17 سنة و11 شهراً)، ثم لعب لشتوتغارت وانضم إلى نيوكاسل يونايتد في أغسطس 2025 في صفقة قياسية للنادي، وهو حالياً معار إلى يوفنتوس.",
+    "bioEn": "German forward born in Bremen who came through Werder Bremen's academy and became the club's youngest Bundesliga player (aged 17 years 11 months), played for VfB Stuttgart and joined Newcastle United in August 2025 in a club-record deal; he is currently on loan at Juventus.",
+    "achievementsAr": [
+      "الصعود إلى الدوري الألماني الثاني 2022-23 مع إلفرسبيرغ (إعارة)",
+      "كأس ألمانيا 2024-25 مع شتوتغارت",
+      "هداف بطولة أوروبا تحت 21 سنة 2025 مع ألمانيا"
+    ],
+    "achievementsEn": [
+      "Promotion to 2. Bundesliga 2022-23 with Elversberg (loan)",
+      "DFB-Pokal 2024-25 with VfB Stuttgart",
+      "Top scorer at the 2025 UEFA European Under-21 Championship with Germany"
+    ],
+    "clubsHistoryAr": [
+      "فيردر بريمن",
+      "إلفرسبيرغ (إعارة)",
+      "فيردر بريمن",
+      "شتوتغارت",
+      "نيوكاسل يونايتد",
+      "يوفنتوس (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Werder Bremen",
+      "Elversberg (loan)",
+      "Werder Bremen",
+      "VfB Stuttgart",
+      "Newcastle United",
+      "Juventus (loan)"
+    ],
+    "clubIds": [
+      "werder-bremen",
+      "vfb-stuttgart",
+      "newcastle-united",
+      "juventus"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Nick_Woltemade"
+  },
+  {
+    "id": "james-tarkowski",
+    "nameAr": "جيمس تاركوفسكي",
+    "nameEn": "James Tarkowski",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "إيفرتون",
+    "clubEn": "Everton",
+    "clubId": "everton",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2009-الآن",
+    "active": true,
+    "bioAr": "مدافع إنجليزي وُلد في مانشستر من أصول بولندية، بدأ مسيرته مع أولدهام أثليتك ثم لعب لبرينتفورد وبيرنلي، وانضم إلى إيفرتون حراً في يوليو 2022 وأصبح قائد الفريق، وخاض مباراتين دوليتين مع إنجلترا في 2018. يتصدر مدافعي لعبة الفانتازي في بداية موسم 2026-27.",
+    "bioEn": "English defender born in Manchester of Polish descent who began at Oldham Athletic, played for Brentford and Burnley, joined Everton on a free transfer in July 2022 and is now the club captain; he won two caps for England in 2018. He tops the Fantasy Premier League defender standings early in 2026-27.",
+    "achievementsAr": [
+      "الصعود إلى التشامبيونشيب 2013-14 مع برينتفورد",
+      "بطولة التشامبيونشيب 2015-16 مع بيرنلي",
+      "قائد إيفرتون"
+    ],
+    "achievementsEn": [
+      "Promotion to the Championship in 2013-14 with Brentford",
+      "EFL Championship title 2015-16 with Burnley",
+      "Everton club captain"
+    ],
+    "clubsHistoryAr": [
+      "أولدهام أثليتك",
+      "برينتفورد",
+      "بيرنلي",
+      "إيفرتون"
+    ],
+    "clubsHistoryEn": [
+      "Oldham Athletic",
+      "Brentford",
+      "Burnley",
+      "Everton"
+    ],
+    "clubIds": [
+      "brentford",
+      "burnley",
+      "everton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/James_Tarkowski"
+  },
+  {
+    "id": "pascal-gross",
+    "nameAr": "باسكال غروس",
+    "nameEn": "Pascal Groß",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "برايتون",
+    "clubEn": "Brighton & Hove Albion",
+    "clubId": "brighton-hove-albion",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "لاعب وسط ألماني وُلد في مانهايم، بدأ مع هوفنهايم وكارلسروه ثم إنغولشتات الذي قاده للصعود إلى الدوري الألماني 2014-15، وانضم إلى برايتون عام 2017، ثم انتقل إلى بوروسيا دورتموند في 2024 قبل أن يعود إلى برايتون في 2 يناير 2026. ظهر لأول مرة مع منتخب ألمانيا في سبتمبر 2023 وشارك في يورو 2024.",
+    "bioEn": "German midfielder born in Mannheim who started at Hoffenheim and Karlsruher SC, then helped Ingolstadt win promotion to the Bundesliga in 2014-15, joined Brighton in 2017, moved to Borussia Dortmund in 2024 and returned to Brighton on 2 January 2026. He made his Germany debut in September 2023 and played at Euro 2024.",
+    "achievementsAr": [
+      "الصعود إلى الدوري الألماني 2014-15 مع إنغولشتات",
+      "أفضل لاعب في برايتون موسم 2017-18",
+      "المشاركة مع ألمانيا في كأس أمم أوروبا 2024"
+    ],
+    "achievementsEn": [
+      "Promotion to the Bundesliga in 2014-15 with Ingolstadt",
+      "Brighton Player of the Season 2017-18",
+      "Played for Germany at UEFA Euro 2024"
+    ],
+    "clubsHistoryAr": [
+      "هوفنهايم",
+      "كارلسروه",
+      "إنغولشتات",
+      "برايتون",
+      "بوروسيا دورتموند",
+      "برايتون"
+    ],
+    "clubsHistoryEn": [
+      "Hoffenheim",
+      "Karlsruher SC",
+      "FC Ingolstadt",
+      "Brighton & Hove Albion",
+      "Borussia Dortmund",
+      "Brighton & Hove Albion"
+    ],
+    "clubIds": [
+      "hoffenheim",
+      "karlsruher-sc",
+      "brighton-hove-albion",
+      "borussia-dortmund"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Pascal_Gro%C3%9F"
+  },
+  {
+    "id": "maxim-de-cuyper",
+    "nameAr": "ماكسيم دي كيبر",
+    "nameEn": "Maxim De Cuyper",
+    "nationalityAr": "بلجيكي",
+    "nationalityEn": "Belgian",
+    "clubAr": "برايتون",
+    "clubEn": "Brighton & Hove Albion",
+    "clubId": "brighton-hove-albion",
+    "position": {
+      "ar": "ظهير أيسر / جناح أيسر",
+      "en": "Left-back / Left midfielder"
+    },
+    "era": "2020-الآن",
+    "active": true,
+    "bioAr": "ظهير بلجيكي وُلد في 22 ديسمبر 2000، تخرج من أكاديمية كلوب بروج وظهر لأول مرة مع الفريق الأول في فبراير 2020، وأُعير إلى فيسترلو لموسمين وصعد معه إلى الدوري البلجيكي الممتاز، ثم انضم إلى برايتون في 5 يوليو 2025 بعقد لخمس سنوات.",
+    "bioEn": "Belgian full-back born on 22 December 2000 who came through Club Brugge's academy, made his first-team debut in February 2020, spent two seasons on loan at Westerlo (winning promotion to the Belgian top flight), and joined Brighton on 5 July 2025 on a five-year contract.",
+    "achievementsAr": [
+      "الصعود إلى الدوري البلجيكي الممتاز 2021-22 مع فيسترلو (إعارة)",
+      "الدوري البلجيكي 2023-24 مع كلوب بروج",
+      "كأس بلجيكا 2024-25 مع كلوب بروج"
+    ],
+    "achievementsEn": [
+      "Promotion to the Belgian top flight in 2021-22 with Westerlo (loan)",
+      "Belgian Pro League 2023-24 with Club Brugge",
+      "Belgian Cup 2024-25 with Club Brugge"
+    ],
+    "clubsHistoryAr": [
+      "كلوب بروج",
+      "فيسترلو (إعارة)",
+      "كلوب بروج",
+      "برايتون"
+    ],
+    "clubsHistoryEn": [
+      "Club Brugge",
+      "Westerlo (loan)",
+      "Club Brugge",
+      "Brighton & Hove Albion"
+    ],
+    "clubIds": [
+      "club-brugge",
+      "brighton-hove-albion"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Maxim_De_Cuyper"
+  },
+  {
+    "id": "kevin-schade",
+    "nameAr": "كيفن شادي",
+    "nameEn": "Kevin Schade",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "برينتفورد",
+    "clubEn": "Brentford",
+    "clubId": "brentford",
+    "position": {
+      "ar": "جناح / مهاجم",
+      "en": "Winger / Forward"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "جناح ألماني وُلد في بوتسدام في 27 نوفمبر 2001، تدرج في أكاديمية فرايبورغ وانضم إلى برينتفورد معاراً في يناير 2023 ثم بشكل دائم في صفقة قياسية للنادي، وكان أول لاعب من برينتفورد يمثل منتخب ألمانيا الأول. سجّل 11 هدفاً في الدوري الإنجليزي موسم 2024-25.",
+    "bioEn": "German winger born in Potsdam on 27 November 2001 who came through Freiburg's academy, joined Brentford on loan in January 2023 and permanently in a club-record deal, becoming the first Brentford player capped by Germany. He scored 11 Premier League goals in 2024-25.",
+    "achievementsAr": [
+      "أول لاعب من برينتفورد يشارك مع منتخب ألمانيا الأول"
+    ],
+    "achievementsEn": [
+      "First Brentford player to be capped by Germany"
+    ],
+    "clubsHistoryAr": [
+      "فرايبورغ",
+      "برينتفورد (إعارة)",
+      "برينتفورد"
+    ],
+    "clubsHistoryEn": [
+      "SC Freiburg",
+      "Brentford (loan)",
+      "Brentford"
+    ],
+    "clubIds": [
+      "freiburg",
+      "brentford"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kevin_Schade"
+  },
+  {
+    "id": "jayden-bogle",
+    "nameAr": "جايدن بوغل",
+    "nameEn": "Jayden Bogle",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "ليدز يونايتد",
+    "clubEn": "Leeds United",
+    "clubId": "leeds-united",
+    "position": {
+      "ar": "ظهير أيمن / ظهير جناح",
+      "en": "Right-back / Right wing-back"
+    },
+    "era": "2016-الآن",
+    "active": true,
+    "bioAr": "ظهير إنجليزي وُلد في 27 يوليو 2000، تخرج من أكاديمية ديربي كاونتي وانضم إلى شيفيلد يونايتد في سبتمبر 2020 ثم إلى ليدز يونايتد في 20 يوليو 2024 بعقد لأربع سنوات، وسجّل 6 أهداف وصنع 4 في موسم صعود ليدز 2024-25.",
+    "bioEn": "English right-back born on 27 July 2000 who came through Derby County's academy, joined Sheffield United in September 2020 and Leeds United on 20 July 2024 on a four-year contract, scoring 6 goals and providing 4 assists in Leeds' 2024-25 promotion season.",
+    "achievementsAr": [
+      "أفضل لاعب شاب في ديربي كاونتي 2018-19",
+      "الصعود إلى الدوري الممتاز 2022-23 مع شيفيلد يونايتد",
+      "بطولة التشامبيونشيب 2024-25 مع ليدز يونايتد (100 نقطة)"
+    ],
+    "achievementsEn": [
+      "Derby County Young Player of the Season 2018-19",
+      "Promotion to the Premier League in 2022-23 with Sheffield United",
+      "EFL Championship title 2024-25 with Leeds United (100 points)"
+    ],
+    "clubsHistoryAr": [
+      "ديربي كاونتي",
+      "شيفيلد يونايتد",
+      "ليدز يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Derby County",
+      "Sheffield United",
+      "Leeds United"
+    ],
+    "clubIds": [
+      "derby-county",
+      "sheffield-united",
+      "leeds-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jayden_Bogle"
+  },
+  {
+    "id": "konstantinos-tzolakis",
+    "nameAr": "كونستانتينوس تزولاكيس",
+    "nameEn": "Konstantinos Tzolakis",
+    "nationalityAr": "يوناني",
+    "nationalityEn": "Greek",
+    "clubAr": "هال سيتي",
+    "clubEn": "Hull City",
+    "clubId": null,
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2020-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى يوناني وُلد في خانيا في 8 نوفمبر 2002، تخرج من أكاديمية أولمبياكوس وظهر لأول مرة مع الفريق الأول في مارس 2020، وانضم إلى هال سيتي في 5 أغسطس 2026 بعقد حتى 2031 مقابل نحو 20 مليون جنيه إسترليني، في أغلى صفقة في تاريخ النادي.",
+    "bioEn": "Greek goalkeeper born in Chania on 8 November 2002 who came through Olympiacos' academy, made his first-team debut in March 2020 and joined Hull City on 5 August 2026 on a contract to 2031 for around £20 million, the biggest signing in the club's history.",
+    "achievementsAr": [
+      "الدوري اليوناني الممتاز أربع مرات مع أولمبياكوس",
+      "كأس اليونان وكأس السوبر اليوناني مع أولمبياكوس",
+      "دوري المؤتمر الأوروبي 2023-24 مع أولمبياكوس (صدّ ثلاث ركلات ترجيح أمام فنربخشة)",
+      "أفضل لاعب وأفضل حارس في الدوري اليوناني 2024-25"
+    ],
+    "achievementsEn": [
+      "Four Super League Greece titles with Olympiacos",
+      "Greek Cup and Greek Super Cup with Olympiacos",
+      "UEFA Conference League 2023-24 with Olympiacos (saved three penalties against Fenerbahçe)",
+      "Super League Greece Player and Goalkeeper of the Season 2024-25"
+    ],
+    "clubsHistoryAr": [
+      "أولمبياكوس",
+      "هال سيتي"
+    ],
+    "clubsHistoryEn": [
+      "Olympiacos",
+      "Hull City"
+    ],
+    "clubIds": [],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Konstantinos_Tzolakis"
+  },
+  {
+    "id": "lewis-hall",
+    "nameAr": "لويس هول",
+    "nameEn": "Lewis Hall",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "نيوكاسل يونايتد",
+    "clubEn": "Newcastle United",
+    "clubId": "newcastle-united",
+    "position": {
+      "ar": "ظهير أيسر / لاعب وسط",
+      "en": "Left-back / Midfielder"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "ظهير إنجليزي وُلد في سلاو في 8 سبتمبر 2004، تخرج من أكاديمية تشيلسي وأصبح عام 2022 أصغر لاعب يشارك أساسياً في كأس الاتحاد مع النادي، ثم انضم إلى نيوكاسل معاراً في 2023 وبشكل دائم في 2024، وظهر لأول مرة مع منتخب إنجلترا في 14 نوفمبر 2024.",
+    "bioEn": "English left-back born in Slough on 8 September 2004 who came through Chelsea's academy, became the club's youngest FA Cup starter in 2022, joined Newcastle on loan in 2023 and permanently in 2024, and made his England debut on 14 November 2024.",
+    "achievementsAr": [
+      "كأس الرابطة الإنجليزية 2024-25 مع نيوكاسل يونايتد"
+    ],
+    "achievementsEn": [
+      "EFL Cup 2024-25 with Newcastle United"
+    ],
+    "clubsHistoryAr": [
+      "تشيلسي",
+      "نيوكاسل يونايتد (إعارة)",
+      "نيوكاسل يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Chelsea",
+      "Newcastle United (loan)",
+      "Newcastle United"
+    ],
+    "clubIds": [
+      "chelsea",
+      "newcastle-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Lewis_Hall_(footballer)"
+  },
+  {
+    "id": "pedro-porro",
+    "nameAr": "بيدرو بورو",
+    "nameEn": "Pedro Porro",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "توتنهام هوتسبير",
+    "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
+    "position": {
+      "ar": "ظهير أيمن / ظهير جناح",
+      "en": "Right-back / Right wing-back"
+    },
+    "era": "2017-الآن",
+    "active": true,
+    "bioAr": "ظهير إسباني وُلد في دون بينيتو في 13 سبتمبر 1999، بدأ مع بيرالادا ثم جيرونا، وانضم إلى مانشستر سيتي عام 2019 وأُعير إلى بلد الوليد وسبورتينغ لشبونة الذي ضمّه نهائياً، ثم انتقل إلى توتنهام في يناير 2023 معاراً قبل أن يصبح انتقاله دائماً صيف 2023.",
+    "bioEn": "Spanish full-back born in Don Benito on 13 September 1999 who started at Peralada and Girona, signed for Manchester City in 2019 and was loaned to Real Valladolid and Sporting CP (who signed him permanently), then joined Tottenham Hotspur on loan in January 2023 with the move made permanent in summer 2023.",
+    "achievementsAr": [
+      "الدوري البرتغالي وكأس الرابطة البرتغالية 2020-21 مع سبورتينغ لشبونة",
+      "ضمن التشكيلة المثالية للدوري البرتغالي",
+      "الدوري الأوروبي 2024-25 مع توتنهام",
+      "وصيف دوري الأمم الأوروبية 2020-21 مع إسبانيا",
+      "دوري الأمم الأوروبية 2024-25 مع إسبانيا",
+      "كأس العالم 2026 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "Primeira Liga and Taça da Liga 2020-21 with Sporting CP",
+      "Primeira Liga Team of the Year",
+      "UEFA Europa League 2024-25 with Tottenham Hotspur",
+      "UEFA Nations League 2020-21 runner-up with Spain",
+      "UEFA Nations League 2024-25 with Spain",
+      "2026 FIFA World Cup with Spain"
+    ],
+    "clubsHistoryAr": [
+      "بيرالادا",
+      "جيرونا",
+      "مانشستر سيتي",
+      "بلد الوليد (إعارة)",
+      "سبورتينغ لشبونة (إعارة)",
+      "سبورتينغ لشبونة",
+      "توتنهام هوتسبير (إعارة)",
+      "توتنهام هوتسبير"
+    ],
+    "clubsHistoryEn": [
+      "Peralada",
+      "Girona",
+      "Manchester City",
+      "Real Valladolid (loan)",
+      "Sporting CP (loan)",
+      "Sporting CP",
+      "Tottenham Hotspur (loan)",
+      "Tottenham Hotspur"
+    ],
+    "clubIds": [
+      "girona",
+      "manchester-city",
+      "real-valladolid",
+      "sporting-cp",
+      "tottenham"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Pedro_Porro"
+  },
+  {
+    "id": "thierno-barry",
+    "nameAr": "ثييرنو باري",
+    "nameEn": "Thierno Barry",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "إيفرتون",
+    "clubEn": "Everton",
+    "clubId": "everton",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "مهاجم فرنسي وُلد في ليون في 21 أكتوبر 2002 ويحق له تمثيل غينيا أيضاً، لعب لتولون وسوشو وبيفيرن البلجيكي وبازل السويسري وفياريال، وانضم إلى إيفرتون في 9 يوليو 2025 بعقد لأربع سنوات مقابل نحو 27.5 مليون جنيه إسترليني.",
+    "bioEn": "French striker born in Lyon on 21 October 2002 who is also eligible for Guinea, played for Toulon, Sochaux, Beveren, Basel and Villarreal, and joined Everton on 9 July 2025 on a four-year deal for around £27.5 million.",
+    "achievementsAr": [
+      "هداف الدرجة الثانية البلجيكية 2022-23 مع بيفيرن",
+      "الدوري السويسري 2024-25 مع بازل (ضمن التشكيلة)",
+      "شارك مع فرنسا في بطولة أوروبا تحت 21 سنة 2025"
+    ],
+    "achievementsEn": [
+      "Belgian second-tier top scorer 2022-23 with Beveren",
+      "Swiss Super League 2024-25 with Basel (squad member)",
+      "Played for France at the 2025 UEFA European Under-21 Championship"
+    ],
+    "clubsHistoryAr": [
+      "تولون",
+      "سوشو",
+      "بيفيرن",
+      "بازل",
+      "فياريال",
+      "إيفرتون"
+    ],
+    "clubsHistoryEn": [
+      "Toulon",
+      "Sochaux",
+      "Beveren",
+      "Basel",
+      "Villarreal",
+      "Everton"
+    ],
+    "clubIds": [
+      "sochaux",
+      "villarreal",
+      "everton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Thierno_Barry_(footballer,_born_2002)"
+  },
+  {
+    "id": "calvin-bassey",
+    "nameAr": "كالفن باسي",
+    "nameEn": "Calvin Bassey",
+    "nationalityAr": "نيجيري",
+    "nationalityEn": "Nigerian",
+    "clubAr": "فولهام",
+    "clubEn": "Fulham",
+    "clubId": "fulham",
+    "position": {
+      "ar": "ظهير أيسر / مدافع (قلب دفاع)",
+      "en": "Left-back / Centre-back"
+    },
+    "era": "2020-الآن",
+    "active": true,
+    "bioAr": "مدافع وُلد في أوستا بإيطاليا في 31 ديسمبر 1999 وانتقل إلى لندن صغيراً، تدرج في أكاديمية ليستر سيتي ثم لعب لرينجرز وأياكس، وانضم إلى فولهام في 28 يوليو 2023، ويمثل منتخب نيجيريا.",
+    "bioEn": "Defender born in Aosta, Italy, on 31 December 1999 who moved to London as a child, came through Leicester City's academy and played for Rangers and Ajax before joining Fulham on 28 July 2023; he plays for Nigeria.",
+    "achievementsAr": [
+      "الدوري الاسكتلندي الممتاز 2020-21 مع رينجرز",
+      "كأس اسكتلندا 2021-22 مع رينجرز",
+      "أفضل لاعب في فولهام موسم 2024-25",
+      "وصيف كأس أمم أفريقيا 2023 مع نيجيريا"
+    ],
+    "achievementsEn": [
+      "Scottish Premiership 2020-21 with Rangers",
+      "Scottish Cup 2021-22 with Rangers",
+      "Fulham Player of the Season 2024-25",
+      "Africa Cup of Nations 2023 runner-up with Nigeria"
+    ],
+    "clubsHistoryAr": [
+      "ليستر سيتي (شباب)",
+      "رينجرز",
+      "أياكس",
+      "فولهام"
+    ],
+    "clubsHistoryEn": [
+      "Leicester City (youth)",
+      "Rangers",
+      "Ajax",
+      "Fulham"
+    ],
+    "clubIds": [
+      "rangers",
+      "ajax",
+      "fulham"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Calvin_Bassey"
+  },
+  {
+    "id": "emiliano-buendia",
+    "nameAr": "إميليانو بوينديا",
+    "nameEn": "Emiliano Buendía",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "أستون فيلا",
+    "clubEn": "Aston Villa",
+    "clubId": "aston-villa",
+    "position": {
+      "ar": "صانع ألعاب / جناح أيسر",
+      "en": "Attacking midfielder / Left winger"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "لاعب أرجنتيني وُلد في مار ديل بلاتا في 25 ديسمبر 1996 وانتقل إلى إسبانيا في الحادية عشرة للانضمام لأكاديمية ريال مدريد، ثم لعب لخيتافي ونورويتش سيتي وانضم إلى أستون فيلا في 2021، وأُعير إلى باير ليفركوزن في 2025.",
+    "bioEn": "Argentine player born in Mar del Plata on 25 December 1996 who moved to Spain aged 11 to join Real Madrid's academy, then played for Getafe and Norwich City before joining Aston Villa in 2021; he was loaned to Bayer Leverkusen in 2025.",
+    "achievementsAr": [
+      "التشامبيونشيب 2018-19 و2020-21 مع نورويتش سيتي",
+      "الدوري الأوروبي 2025-26 مع أستون فيلا (ضمن التشكيلة)"
+    ],
+    "achievementsEn": [
+      "EFL Championship 2018-19 and 2020-21 with Norwich City",
+      "UEFA Europa League 2025-26 with Aston Villa (squad member)"
+    ],
+    "clubsHistoryAr": [
+      "خيتافي",
+      "كولتورال ليونيسا (إعارة)",
+      "نورويتش سيتي",
+      "أستون فيلا",
+      "باير ليفركوزن (إعارة)",
+      "أستون فيلا"
+    ],
+    "clubsHistoryEn": [
+      "Getafe",
+      "Cultural Leonesa (loan)",
+      "Norwich City",
+      "Aston Villa",
+      "Bayer Leverkusen (loan)",
+      "Aston Villa"
+    ],
+    "clubIds": [
+      "getafe",
+      "norwich-city",
+      "aston-villa",
+      "bayer-leverkusen"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Emiliano_Buend%C3%ADa"
+  },
+  {
+    "id": "enzo-le-fee",
+    "nameAr": "إنزو لو فيه",
+    "nameEn": "Enzo Le Fée",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "سندرلاند",
+    "clubEn": "Sunderland",
+    "clubId": "sunderland",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط فرنسي وُلد في لوريان في 3 فبراير 2000، تخرج من أكاديمية لوريان ولعب لرين وروما، وانضم إلى سندرلاند معاراً في يناير 2025 ثم بشكل دائم في صيف 2025، وشارك مع فرنسا في أولمبياد طوكيو 2020.",
+    "bioEn": "French midfielder born in Lorient on 3 February 2000 who came through Lorient's academy, played for Rennes and Roma, and joined Sunderland on loan in January 2025 and permanently in summer 2025; he played for France at the Tokyo 2020 Olympics.",
+    "achievementsAr": [
+      "الدوري الفرنسي الثاني 2019-20 مع لوريان",
+      "المشاركة في أولمبياد طوكيو 2020 مع فرنسا"
+    ],
+    "achievementsEn": [
+      "Ligue 2 2019-20 with Lorient",
+      "Played for France at the Tokyo 2020 Olympics"
+    ],
+    "clubsHistoryAr": [
+      "لوريان",
+      "رين",
+      "روما",
+      "سندرلاند (إعارة)",
+      "سندرلاند"
+    ],
+    "clubsHistoryEn": [
+      "Lorient",
+      "Rennes",
+      "Roma",
+      "Sunderland (loan)",
+      "Sunderland"
+    ],
+    "clubIds": [
+      "rennes",
+      "roma",
+      "sunderland"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Enzo_Le_F%C3%A9e"
+  },
+  {
+    "id": "neco-williams",
+    "nameAr": "نيكو ويليامز",
+    "nameEn": "Neco Williams",
+    "nationalityAr": "ويلزي",
+    "nationalityEn": "Welsh",
+    "clubAr": "نوتنغهام فورست",
+    "clubEn": "Nottingham Forest",
+    "clubId": "nottingham-forest",
+    "position": {
+      "ar": "ظهير",
+      "en": "Full-back"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "ظهير ويلزي وُلد في سيفن ماور بريكسهام في 13 أبريل 2001، تخرج من أكاديمية ليفربول وأُعير إلى فولهام في يناير 2022، وانضم إلى نوتنغهام فورست في يوليو 2022 مقابل نحو 17 مليون جنيه إسترليني.",
+    "bioEn": "Welsh full-back born in Cefn Mawr, Wrexham, on 13 April 2001 who came through Liverpool's academy, was loaned to Fulham in January 2022 and joined Nottingham Forest in July 2022 for around £17 million.",
+    "achievementsAr": [
+      "كأس الشباب الإنجليزي 2018-19 مع ليفربول",
+      "الدوري الإنجليزي الممتاز 2019-20 مع ليفربول",
+      "كأس العالم للأندية 2019 مع ليفربول",
+      "التشامبيونشيب 2021-22 مع فولهام (إعارة)",
+      "المشاركة مع ويلز في يورو 2020 وكأس العالم 2022"
+    ],
+    "achievementsEn": [
+      "FA Youth Cup 2018-19 with Liverpool",
+      "Premier League 2019-20 with Liverpool",
+      "FIFA Club World Cup 2019 with Liverpool",
+      "EFL Championship 2021-22 with Fulham (loan)",
+      "Played for Wales at Euro 2020 and the 2022 World Cup"
+    ],
+    "clubsHistoryAr": [
+      "ليفربول",
+      "فولهام (إعارة)",
+      "نوتنغهام فورست"
+    ],
+    "clubsHistoryEn": [
+      "Liverpool",
+      "Fulham (loan)",
+      "Nottingham Forest"
+    ],
+    "clubIds": [
+      "liverpool",
+      "fulham",
+      "nottingham-forest"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Neco_Williams"
+  },
+  {
+    "id": "tarik-muharemovic",
+    "nameAr": "طارق مهاريموفيتش",
+    "nameEn": "Tarik Muharemović",
+    "nationalityAr": "بوسني",
+    "nationalityEn": "Bosnian",
+    "clubAr": "ليدز يونايتد",
+    "clubEn": "Leeds United",
+    "clubId": "leeds-united",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مدافع بوسني وُلد في 28 فبراير 2003 ونشأ في النمسا، بدأ مع فولفسبيرغر وانضم إلى ساسوولو معاراً في أغسطس 2024 ثم بشكل دائم، وقاد منتخب البوسنة للتأهل إلى كأس العالم 2026 عبر الملحق، وانضم إلى ليدز في 17 يوليو 2026 بعقد لخمس سنوات كأول بوسني في تاريخ النادي.",
+    "bioEn": "Bosnian defender born on 28 February 2003 who grew up in Austria, started at Wolfsberger AC, joined Sassuolo on loan in August 2024 and then permanently, helped Bosnia reach the 2026 World Cup via the play-offs, and signed for Leeds on 17 July 2026 on a five-year deal as the club's first Bosnian player.",
+    "achievementsAr": [
+      "دوري الدرجة الثانية الإيطالي (سيري بي) 2024-25 مع ساسوولو",
+      "التأهل إلى كأس العالم 2026 مع البوسنة (بفوزين بركلات الترجيح على ويلز وإيطاليا في الملحق)",
+      "الوصول إلى دور الـ32 في كأس العالم 2026 (أفضل إنجاز في تاريخ البوسنة)"
+    ],
+    "achievementsEn": [
+      "Serie B 2024-25 with Sassuolo",
+      "Helped Bosnia qualify for the 2026 World Cup (play-off penalty wins over Wales and Italy)",
+      "Reached the 2026 World Cup round of 32 (Bosnia's best-ever finish)"
+    ],
+    "clubsHistoryAr": [
+      "فولفسبيرغر",
+      "ساسوولو (إعارة)",
+      "ساسوولو",
+      "ليدز يونايتد"
+    ],
+    "clubsHistoryEn": [
+      "Wolfsberger AC",
+      "Sassuolo (loan)",
+      "Sassuolo",
+      "Leeds United"
+    ],
+    "clubIds": [
+      "sassuolo",
+      "leeds-united"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Tarik_Muharemovi%C4%87"
+  },
+  {
+    "id": "micky-van-de-ven",
+    "nameAr": "ميكي فان دي فين",
+    "nameEn": "Micky van de Ven",
+    "nationalityAr": "هولندي",
+    "nationalityEn": "Dutch",
+    "clubAr": "توتنهام هوتسبير",
+    "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
+    "position": {
+      "ar": "مدافع (قلب دفاع)",
+      "en": "Centre-back"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "مدافع هولندي وُلد في فورمر في 19 أبريل 2001، بدأ مع فولندام وانضم إلى فولفسبورغ عام 2021، ثم إلى توتنهام في 8 أغسطس 2023، ووقّع عقداً جديداً مع النادي في 10 أغسطس 2026.",
+    "bioEn": "Dutch centre-back born in Wormer on 19 April 2001 who started at Volendam, joined VfL Wolfsburg in 2021 and Tottenham Hotspur on 8 August 2023, and signed a new contract with Spurs on 10 August 2026.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2024-25 مع توتنهام",
+      "أفضل لاعب في توتنهام موسم 2024-25 (اختيار رابطة المشجعين)",
+      "المشاركة مع هولندا في يورو 2024"
+    ],
+    "achievementsEn": [
+      "UEFA Europa League 2024-25 with Tottenham Hotspur",
+      "Tottenham Hotspur Player of the Season 2024-25 (Official Supporters' Club vote)",
+      "Played for the Netherlands at UEFA Euro 2024"
+    ],
+    "clubsHistoryAr": [
+      "فولندام",
+      "فولفسبورغ",
+      "توتنهام هوتسبير"
+    ],
+    "clubsHistoryEn": [
+      "Volendam",
+      "VfL Wolfsburg",
+      "Tottenham Hotspur"
+    ],
+    "clubIds": [
+      "vfl-wolfsburg",
+      "tottenham"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Micky_van_de_Ven"
+  },
+  {
+    "id": "guglielmo-vicario",
+    "nameAr": "غوليلمو فيكاريو",
+    "nameEn": "Guglielmo Vicario",
+    "nationalityAr": "إيطالي",
+    "nationalityEn": "Italian",
+    "clubAr": "يوفنتوس (إعارة من توتنهام هوتسبير)",
+    "clubEn": "Juventus (on loan from Tottenham Hotspur)",
+    "clubId": "juventus",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى إيطالي وُلد في أودينه في 7 أكتوبر 1996، تدرج في أكاديمية أودينيزي ولعب لفينيسيا وكالياري وبيروجيا وإمبولي، وانضم إلى توتنهام في صيف 2023، وهو حالياً معار إلى يوفنتوس.",
+    "bioEn": "Italian goalkeeper born in Udine on 7 October 1996 who came through Udinese's youth system, played for Venezia, Cagliari, Perugia and Empoli, joined Tottenham Hotspur in summer 2023, and is currently on loan at Juventus.",
+    "achievementsAr": [
+      "الصعود إلى دوري الدرجة الثانية الإيطالي وكأس إيطاليا للدرجة الثالثة 2016-17 مع فينيسيا",
+      "الدوري الأوروبي 2024-25 مع توتنهام",
+      "أفضل حارس مرمى في جوائز كرة القدم اللندنية (لندن فوتبول أووردز) 2024",
+      "المشاركة مع إيطاليا في كأس أمم أوروبا 2024"
+    ],
+    "achievementsEn": [
+      "Promotion to Serie B and Coppa Italia Lega Pro 2016-17 with Venezia",
+      "UEFA Europa League 2024-25 with Tottenham Hotspur",
+      "London Football Awards Goalkeeper of the Year 2024",
+      "Played for Italy at UEFA Euro 2024"
+    ],
+    "clubsHistoryAr": [
+      "أودينيزي (شباب)",
+      "فونتانافريدا (إعارة)",
+      "فينيسيا",
+      "كالياري",
+      "بيروجيا (إعارة)",
+      "كالياري",
+      "إمبولي (إعارة)",
+      "إمبولي",
+      "توتنهام هوتسبير",
+      "يوفنتوس (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Udinese (youth)",
+      "Fontanafredda (loan)",
+      "Venezia",
+      "Cagliari",
+      "Perugia (loan)",
+      "Cagliari",
+      "Empoli (loan)",
+      "Empoli",
+      "Tottenham Hotspur",
+      "Juventus (loan)"
+    ],
+    "clubIds": [
+      "cagliari",
+      "empoli",
+      "tottenham",
+      "juventus"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Guglielmo_Vicario"
+  },
+  {
+    "id": "mohammed-kudus",
+    "nameAr": "محمد قدوس",
+    "nameEn": "Mohammed Kudus",
+    "nationalityAr": "غاني",
+    "nationalityEn": "Ghanaian",
+    "clubAr": "توتنهام هوتسبير",
+    "clubEn": "Tottenham Hotspur",
+    "clubId": "tottenham",
+    "position": {
+      "ar": "جناح / صانع ألعاب",
+      "en": "Winger / Attacking midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب غاني وُلد في أكرا في 2 أغسطس 2000، تخرج من أكاديمية رايت تو دريم ولعب لنوردشيلاند وأياكس ووست هام، وانضم إلى توتنهام في 10 يوليو 2025 بعقد لست سنوات مقابل نحو 55 مليون جنيه إسترليني.",
+    "bioEn": "Ghanaian player born in Accra on 2 August 2000 who came through the Right to Dream Academy, played for Nordsjælland, Ajax and West Ham United, and joined Tottenham Hotspur on 10 July 2025 on a six-year contract for around £55 million.",
+    "achievementsAr": [
+      "الدوري الهولندي 2020-21 و2021-22 مع أياكس",
+      "كأس هولندا 2020-21 مع أياكس",
+      "هدف الموسم في وست هام 2023-24",
+      "سجّل هدفين لغانا في كأس العالم 2022"
+    ],
+    "achievementsEn": [
+      "Eredivisie 2020-21 and 2021-22 with Ajax",
+      "KNVB Cup 2020-21 with Ajax",
+      "West Ham Goal of the Season 2023-24",
+      "Scored twice for Ghana at the 2022 World Cup"
+    ],
+    "clubsHistoryAr": [
+      "نوردشيلاند",
+      "أياكس",
+      "وست هام يونايتد",
+      "توتنهام هوتسبير"
+    ],
+    "clubsHistoryEn": [
+      "Nordsjælland",
+      "Ajax",
+      "West Ham United",
+      "Tottenham Hotspur"
+    ],
+    "clubIds": [
+      "ajax",
+      "west-ham-united",
+      "tottenham"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Mohammed_Kudus"
+  },
+  {
+    "id": "jean-philippe-mateta",
+    "nameAr": "جان-فيليب ماتيتا",
+    "nameEn": "Jean-Philippe Mateta",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "كريستال بالاس",
+    "clubEn": "Crystal Palace",
+    "clubId": "crystal-palace",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "مهاجم فرنسي وُلد في سيفران في 28 يونيو 1997، بدأ مع شاتورو ثم ليون ومايندز، وانضم إلى كريستال بالاس معاراً في يناير 2021 ثم بشكل دائم في 2022، وسجّل هدف الفوز في نهائي دوري المؤتمر الأوروبي 2026.",
+    "bioEn": "French striker born in Sevran on 28 June 1997 who started at Châteauroux, played for Lyon and Mainz, joined Crystal Palace on loan in January 2021 and permanently in 2022, and scored the winning goal in the 2026 UEFA Conference League final.",
+    "achievementsAr": [
+      "كأس الاتحاد الإنجليزي 2024-25 مع كريستال بالاس",
+      "كأس الدرع الخيرية 2025 مع كريستال بالاس",
+      "دوري المؤتمر الأوروبي 2025-26 مع كريستال بالاس (سجّل هدف الفوز في النهائي)",
+      "أفضل لاعب في كريستال بالاس 2023-24 (أول فرنسي يفوز بالجائزة)",
+      "سجّل 7 أهداف في 8 مباريات مع منتخب فرنسا الأولمبي في 2024",
+      "ضمن تشكيلة فرنسا في كأس العالم 2026"
+    ],
+    "achievementsEn": [
+      "FA Cup 2024-25 with Crystal Palace",
+      "FA Community Shield 2025 with Crystal Palace",
+      "UEFA Conference League 2025-26 with Crystal Palace (scored the winner in the final)",
+      "Crystal Palace Player of the Year 2023-24 (first Frenchman to win it)",
+      "Scored 7 goals in 8 matches for France at the 2024 Olympics",
+      "In France's 2026 World Cup squad"
+    ],
+    "clubsHistoryAr": [
+      "شاتورو",
+      "ليون",
+      "مايندز",
+      "كريستال بالاس (إعارة)",
+      "كريستال بالاس"
+    ],
+    "clubsHistoryEn": [
+      "Châteauroux",
+      "Lyon",
+      "Mainz 05",
+      "Crystal Palace (loan)",
+      "Crystal Palace"
+    ],
+    "clubIds": [
+      "lyon",
+      "mainz-05",
+      "crystal-palace"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jean-Philippe_Mateta"
+  },
+  {
+    "id": "ismaila-sarr",
+    "nameAr": "إسماعيلا سار",
+    "nameEn": "Ismaïla Sarr",
+    "nationalityAr": "سنغالي",
+    "nationalityEn": "Senegalese",
+    "clubAr": "كريستال بالاس",
+    "clubEn": "Crystal Palace",
+    "clubId": "crystal-palace",
+    "position": {
+      "ar": "جناح / مهاجم",
+      "en": "Winger / Forward"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "جناح سنغالي وُلد في سان لويس في 25 فبراير 1998، تخرج من أكاديمية جينيراسيون فوت ولعب لميتز ورين وواتفورد ومرسيليا، وانضم إلى كريستال بالاس في أغسطس 2024 بعقد لخمس سنوات، وسجّل 21 هدفاً في موسم 2025-26.",
+    "bioEn": "Senegalese winger born in Saint-Louis on 25 February 1998 who came through Génération Foot's academy, played for Metz, Rennes, Watford and Marseille, joined Crystal Palace in August 2024 on a five-year contract, and scored 21 goals in 2025-26.",
+    "achievementsAr": [
+      "كأس فرنسا 2018-19 مع رين",
+      "كأس الاتحاد الإنجليزي 2024-25 مع كريستال بالاس",
+      "كأس الدرع الخيرية 2025 مع كريستال بالاس",
+      "دوري المؤتمر الأوروبي 2025-26 مع كريستال بالاس (أول لقب أوروبي في تاريخ النادي)",
+      "كأس أمم أفريقيا 2021 مع السنغال",
+      "ضمن تشكيلة السنغال في كأس العالم 2026"
+    ],
+    "achievementsEn": [
+      "Coupe de France 2018-19 with Rennes",
+      "FA Cup 2024-25 with Crystal Palace",
+      "FA Community Shield 2025 with Crystal Palace",
+      "UEFA Conference League 2025-26 with Crystal Palace (the club's first European trophy)",
+      "Africa Cup of Nations 2021 with Senegal",
+      "In Senegal's 2026 World Cup squad"
+    ],
+    "clubsHistoryAr": [
+      "جينيراسيون فوت",
+      "ميتز",
+      "رين",
+      "واتفورد",
+      "مرسيليا",
+      "كريستال بالاس"
+    ],
+    "clubsHistoryEn": [
+      "Génération Foot",
+      "Metz",
+      "Rennes",
+      "Watford",
+      "Marseille",
+      "Crystal Palace"
+    ],
+    "clubIds": [
+      "metz",
+      "rennes",
+      "marseille",
+      "crystal-palace"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Isma%C3%AFla_Sarr"
+  },
+  {
+    "id": "kaoru-mitoma",
+    "nameAr": "كاورو ميتوما",
+    "nameEn": "Kaoru Mitoma",
+    "nationalityAr": "ياباني",
+    "nationalityEn": "Japanese",
+    "clubAr": "برايتون",
+    "clubEn": "Brighton & Hove Albion",
+    "clubId": "brighton-hove-albion",
+    "position": {
+      "ar": "جناح أيسر",
+      "en": "Left winger"
+    },
+    "era": "",
+    "active": true,
+    "bioAr": "جناح ياباني وُلد في هيتا بمحافظة أويتا في 20 مايو 1997 ونشأ في كاواساكي، لعب لجامعة تسوكوبا وكاواساكي فرونتالي، وانضم إلى برايتون في 10 أغسطس 2021 وأُعير لأنيون سان جيلواز لموسم، ثم أصبح لاعباً أساسياً في الدوري الإنجليزي من 2022.",
+    "bioEn": "Japanese winger born in Hita, Ōita, on 20 May 1997 and raised in Kawasaki, who played for the University of Tsukuba and Kawasaki Frontale, joined Brighton on 10 August 2021, spent a season on loan at Union SG, and became a Premier League regular from 2022.",
+    "achievementsAr": [
+      "أول لاعب يفوز بجائزة أفضل لاعب في اليابان من رابطة اللاعبين (Japan PFA) عام 2022",
+      "المشاركة مع اليابان في كأس العالم 2022 (فوزها على ألمانيا وإسبانيا)"
+    ],
+    "achievementsEn": [
+      "First-ever Japan PFA Player of the Year (2022)",
+      "Played for Japan at the 2022 World Cup (wins over Germany and Spain)"
+    ],
+    "clubsHistoryAr": [
+      "جامعة تسوكوبا",
+      "كاواساكي فرونتالي",
+      "برايتون",
+      "أنيون سان جيلواز (إعارة)",
+      "برايتون"
+    ],
+    "clubsHistoryEn": [
+      "University of Tsukuba",
+      "Kawasaki Frontale",
+      "Brighton & Hove Albion",
+      "Union SG (loan)",
+      "Brighton & Hove Albion"
+    ],
+    "clubIds": [
+      "brighton-hove-albion"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Kaoru_Mitoma"
+  },
+  {
+    "id": "john-mcginn",
+    "nameAr": "جون ماكغين",
+    "nameEn": "John McGinn",
+    "nationalityAr": "اسكتلندي",
+    "nationalityEn": "Scottish",
+    "clubAr": "أستون فيلا",
+    "clubEn": "Aston Villa",
+    "clubId": "aston-villa",
+    "position": {
+      "ar": "لاعب وسط",
+      "en": "Midfielder"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط اسكتلندي وُلد في غلاسكو في 18 أكتوبر 1994، بدأ مع سانت ميرين ثم هايبرنيان، وانضم إلى أستون فيلا في 8 أغسطس 2018، وأصبح قائد الفريق في يوليو 2022، ويمثل منتخب اسكتلندا وهو نائب قائده في كأس العالم 2026.",
+    "bioEn": "Scottish midfielder born in Glasgow on 18 October 1994 who started at St Mirren and then Hibernian, joined Aston Villa on 8 August 2018, has been club captain since July 2022, and was Scotland's vice-captain at the 2026 World Cup.",
+    "achievementsAr": [
+      "كأس الرابطة الاسكتلندية 2013 مع سانت ميرين",
+      "كأس اسكتلندا 2015-16 مع هايبرنيان",
+      "الصعود من التشامبيونشيب الاسكتلندي 2016-17 مع هايبرنيان",
+      "الصعود إلى الدوري الممتاز 2019 مع أستون فيلا (فوز 2-1 على ديربي في ملحق ويمبلي)",
+      "الدوري الأوروبي 2025-26 مع أستون فيلا (كقائد للفريق)"
+    ],
+    "achievementsEn": [
+      "Scottish League Cup 2013 with St Mirren",
+      "Scottish Cup 2015-16 with Hibernian",
+      "Scottish Championship promotion 2016-17 with Hibernian",
+      "Promotion to the Premier League in 2019 with Aston Villa (2-1 play-off final win over Derby)",
+      "UEFA Europa League 2025-26 with Aston Villa (as captain)"
+    ],
+    "clubsHistoryAr": [
+      "سانت ميرين",
+      "هايبرنيان",
+      "أستون فيلا"
+    ],
+    "clubsHistoryEn": [
+      "St Mirren",
+      "Hibernian",
+      "Aston Villa"
+    ],
+    "clubIds": [
+      "aston-villa"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/John_McGinn"
+  },
+  {
+    "id": "matty-cash",
+    "nameAr": "ماتي كاش",
+    "nameEn": "Matty Cash",
+    "nationalityAr": "بولندي",
+    "nationalityEn": "Polish",
+    "clubAr": "أستون فيلا",
+    "clubEn": "Aston Villa",
+    "clubId": "aston-villa",
+    "position": {
+      "ar": "ظهير أيمن",
+      "en": "Right-back"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "ظهير أيمن وُلد في سلاو بإنجلترا في 7 أغسطس 1997 لأم من أصول بولندية، تدرج في أكاديمية نوتنغهام فورست وانضم إلى أستون فيلا في سبتمبر 2020، وحصل على الجنسية البولندية في أكتوبر 2021 ويمثل منتخب بولندا.",
+    "bioEn": "Right-back born in Slough, England, on 7 August 1997 to a mother of Polish descent, who came through Nottingham Forest's system, joined Aston Villa in September 2020, obtained Polish citizenship in October 2021 and plays for Poland.",
+    "achievementsAr": [
+      "أفضل لاعب في نوتنغهام فورست 2019-20",
+      "أفضل لاعب في أستون فيلا 2021-22",
+      "الدوري الأوروبي 2025-26 مع أستون فيلا",
+      "الوصول إلى دور الـ16 في كأس العالم 2022 مع بولندا"
+    ],
+    "achievementsEn": [
+      "Nottingham Forest Player of the Season 2019-20",
+      "Aston Villa Player of the Season 2021-22",
+      "UEFA Europa League 2025-26 with Aston Villa",
+      "Reached the 2022 World Cup round of 16 with Poland"
+    ],
+    "clubsHistoryAr": [
+      "وايكومب (شباب)",
+      "نوتنغهام فورست",
+      "داغنهام آند ريدبريدج (إعارة)",
+      "أستون فيلا"
+    ],
+    "clubsHistoryEn": [
+      "Wycombe Wanderers (youth)",
+      "Nottingham Forest",
+      "Dagenham & Redbridge (loan)",
+      "Aston Villa"
+    ],
+    "clubIds": [
+      "nottingham-forest",
+      "aston-villa"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "marcos-llorente",
+    "nameAr": "ماركوس يورينتي",
+    "nameEn": "Marcos Llorente",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط / ظهير أيمن",
+      "en": "Midfielder / Right-back"
+    },
+    "era": "2014-الآن",
+    "active": true,
+    "bioAr": "لاعب إسباني وُلد في مدريد وتكوّن في أكاديمية ريال مدريد، ثم انضم إلى أتلتيكو مدريد في يونيو 2019 وتُوّج معه بالدوري الإسباني 2020-2021. شارك مع إسبانيا في يورو 2020 وكأس العالم 2022 وكأس العالم 2026 الذي فاز به المنتخب الإسباني.",
+    "bioEn": "Spanish player born in Madrid and developed at Real Madrid, who joined Atlético Madrid in June 2019 and won the 2020-21 La Liga title with them. He was part of Spain's squads at Euro 2020, the 2022 World Cup and the 2026 World Cup, which Spain won.",
+    "achievementsAr": [
+      "لقب الدوري الإسباني 2020-2021 مع أتلتيكو مدريد",
+      "كأس العالم للأندية 2018 مع ريال مدريد (سجّل في النهائي)",
+      "دوري أبطال أوروبا 2017-2018 مع ريال مدريد",
+      "كأس العالم 2026 مع إسبانيا",
+      "المركز الثالث في يورو 2020 مع إسبانيا",
+      "وصافة بطولة أوروبا تحت 21 سنة 2017",
+      "تشكيلة الموسم في الدوري الإسباني ودوري الأبطال 2025-2026"
+    ],
+    "achievementsEn": [
+      "2020-21 La Liga title with Atlético Madrid",
+      "2018 FIFA Club World Cup with Real Madrid (scored in the final)",
+      "2017-18 UEFA Champions League with Real Madrid",
+      "2026 FIFA World Cup with Spain",
+      "Third place at UEFA Euro 2020 with Spain",
+      "2017 UEFA European Under-21 Championship runner-up",
+      "La Liga and UEFA Champions League Team of the Season 2025-26"
+    ],
+    "clubsHistoryAr": [
+      "ريال مدريد (شباب)",
+      "ريال مدريد كاستيا",
+      "ريال مدريد",
+      "ألافيس (إعارة)",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Real Madrid (youth)",
+      "Real Madrid Castilla",
+      "Real Madrid",
+      "Alavés (loan)",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "real-madrid",
+      "alaves",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Marcos_Llorente"
+  },
+  {
+    "id": "alex-grimaldo",
+    "nameAr": "أليكس غريمالدو",
+    "nameEn": "Álex Grimaldo",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "ظهير أيسر / جناح أيسر مدافع",
+      "en": "Left-back / Left wing-back"
+    },
+    "era": "2011-الآن",
+    "active": true,
+    "bioAr": "ظهير أيسر إسباني وُلد في فالنسيا في 20 سبتمبر 1995، مرّ بفريقي أتلتيكو فالبونسي وفالنسيا ثم أكاديمية برشلونة (2008) ولعب لبرشلونة ب دون أن يشارك مع الفريق الأول. انتقل إلى بنفيكا في 29 ديسمبر 2015 ثم باير ليفركوزن مجانًا في 2023، وأعلن أتلتيكو مدريد التعاقد معه في 30 يونيو 2026 بعقد حتى 2030.",
+    "bioEn": "Spanish left-back born in Valencia on 20 September 1995 who came through Atlético Vallbonense, Valencia and then Barcelona's academy (2008), playing for Barcelona B without appearing for the first team. He joined Benfica on 29 December 2015 and Bayer Leverkusen on a free transfer in 2023, and Atlético Madrid announced his signing on 30 June 2026 on a contract until 2030.",
+    "achievementsAr": [
+      "4 ألقاب دوري برتغالي مع بنفيكا (2015-16 و2016-17 و2018-19 و2022-23)",
+      "كأس البرتغال 2016-17 وكأس الرابطة 2015-16 مع بنفيكا",
+      "كأس السوبر البرتغالي 2016 و2017 و2019 مع بنفيكا",
+      "الدوري الألماني وكأس ألمانيا 2023-2024 مع باير ليفركوزن",
+      "بطولة أمم أوروبا 2024 مع إسبانيا",
+      "بطولة أوروبا تحت 19 سنة 2012 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "4 Primeira Liga titles with Benfica (2015-16, 2016-17, 2018-19, 2022-23)",
+      "2016-17 Taça de Portugal and 2015-16 Taça da Liga with Benfica",
+      "Supertaça Cândido de Oliveira 2016, 2017 and 2019 with Benfica",
+      "2023-24 Bundesliga and DFB-Pokal with Bayer Leverkusen",
+      "UEFA Euro 2024 with Spain",
+      "2012 UEFA European Under-19 Championship with Spain"
+    ],
+    "clubsHistoryAr": [
+      "أتلتيكو فالبونسي (شباب)",
+      "فالنسيا (شباب)",
+      "برشلونة (شباب)",
+      "برشلونة ب",
+      "بنفيكا",
+      "باير ليفركوزن",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Atlético Vallbonense (youth)",
+      "Valencia (youth)",
+      "Barcelona (youth)",
+      "Barcelona B",
+      "Benfica",
+      "Bayer Leverkusen",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "benfica",
+      "bayer-leverkusen",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Álex_Grimaldo"
+  },
+  {
+    "id": "jose-maria-gimenez",
+    "nameAr": "خوسيه ماريا خيمينيز",
+    "nameEn": "José María Giménez",
+    "nationalityAr": "أوروغواياني",
+    "nationalityEn": "Uruguayan",
+    "clubAr": "ديبورتيفو لاكورونيا (إعارة من أتلتيكو مدريد)",
+    "clubEn": "Deportivo La Coruña (on loan from Atlético Madrid)",
+    "clubId": "deportivo-la-coruna",
+    "position": {
+      "ar": "مدافع",
+      "en": "Centre-back"
+    },
+    "era": "2012-الآن",
+    "active": true,
+    "bioAr": "مدافع أوروغواياني وُلد في 20 يناير 1995 وتخرّج من أكاديمية دانوبيو. انضم إلى أتلتيكو مدريد عام 2013 وقضى معه 13 موسمًا، ثم انتقل في 1 سبتمبر 2026 إلى ديبورتيفو لاكورونيا معارًا حتى يونيو 2027 مع خيار شراء.",
+    "bioEn": "Uruguayan centre-back born on 20 January 1995 and a Danubio academy graduate. He joined Atlético Madrid in 2013, spent 13 seasons there, and moved on loan to Deportivo La Coruña on 1 September 2026 until June 2027 with a buy option.",
+    "achievementsAr": [
+      "لقبا الدوري الإسباني 2013-14 و2020-21 مع أتلتيكو مدريد",
+      "كأس السوبر الإسباني 2014 مع أتلتيكو مدريد",
+      "لقب الدوري الأوروبي 2017-2018 مع أتلتيكو مدريد",
+      "كأس السوبر الأوروبي 2018 مع أتلتيكو مدريد"
+    ],
+    "achievementsEn": [
+      "2013-14 and 2020-21 La Liga titles with Atlético Madrid",
+      "2014 Supercopa de España with Atlético Madrid",
+      "2017-18 UEFA Europa League with Atlético Madrid",
+      "2018 UEFA Super Cup with Atlético Madrid"
+    ],
+    "clubsHistoryAr": [
+      "دانوبيو",
+      "أتلتيكو مدريد",
+      "ديبورتيفو لاكورونيا (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Danubio",
+      "Atlético Madrid",
+      "Deportivo La Coruña (loan)"
+    ],
+    "clubIds": [
+      "atletico-madrid",
+      "deportivo-la-coruna"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/José_María_Giménez"
+  },
+  {
+    "id": "morten-hjulmand",
+    "nameAr": "مورتن يولمان",
+    "nameEn": "Morten Hjulmand",
+    "nationalityAr": "دنماركي",
+    "nationalityEn": "Danish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط دفاعي",
+      "en": "Defensive midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط دفاعي دنماركي وُلد في كاستروب في 25 يونيو 1999 وتخرّج من أكاديمية كوبنهاغن. بدأ مسيرته الاحترافية مع أدميرا فاكر النمساوي عام 2018 ثم انتقل إلى ليتشي في يناير 2021، وأصبح وهو في الثالثة والعشرين ثاني أصغر لاعب يقود فريقًا في الدوري الإيطالي بعد توتي. انضم إلى سبورتينغ لشبونة في أغسطس 2023 ثم إلى أتلتيكو مدريد في 11 يوليو 2026 بعقد حتى 2031.",
+    "bioEn": "Danish defensive midfielder born in Kastrup on 25 June 1999 and a FC Copenhagen academy product. He began his professional career with Austria's Admira Wacker in 2018 and joined Lecce in January 2021, where aged 23 he became the second-youngest player to captain a Serie A side after Totti. He joined Sporting CP in August 2023 and Atlético Madrid on 11 July 2026 on a contract until 2031.",
+    "achievementsAr": [
+      "لقب دوري الدرجة الثانية الإيطالي 2021-2022 والصعود للدوري الإيطالي مع ليتشي",
+      "لقبا الدوري البرتغالي 2023-24 و2024-25 مع سبورتينغ لشبونة",
+      "كأس البرتغال 2024-25 مع سبورتينغ لشبونة"
+    ],
+    "achievementsEn": [
+      "2021-22 Serie B title and promotion to Serie A with Lecce",
+      "2023-24 and 2024-25 Primeira Liga titles with Sporting CP",
+      "2024-25 Taça de Portugal with Sporting CP"
+    ],
+    "clubsHistoryAr": [
+      "كوبنهاغن (شباب)",
+      "أدميرا فاكر",
+      "ليتشي",
+      "سبورتينغ لشبونة",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Copenhagen (youth)",
+      "Admira Wacker",
+      "Lecce",
+      "Sporting CP",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "lecce",
+      "sporting-cp",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Morten_Hjulmand"
+  },
+  {
+    "id": "kang-in-lee",
+    "nameAr": "لي كانغ-إن",
+    "nameEn": "Kang-in Lee",
+    "nationalityAr": "كوري جنوبي",
+    "nationalityEn": "South Korean",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "جناح / صانع ألعاب",
+      "en": "Winger / Attacking midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب كوري جنوبي من إنتشون وُلد في 19 فبراير 2001، انضم لأكاديمية فالنسيا في 2011 وظهر مع الفريق الأول في 30 أكتوبر 2018، ثم لعب لمايوركا (2021-2023) وباريس سان جيرمان (2023-2026). انتقل إلى أتلتيكو مدريد في 25 يوليو 2026 بعقد حتى 2031، وشارك مع كوريا الجنوبية في كأسي العالم 2022 و2026.",
+    "bioEn": "South Korean attacking midfielder/winger from Incheon who joined Valencia's academy aged 10 and made his first-team debut on 30 October 2018, later playing for Mallorca and, from 2023, Paris Saint-Germain. He joined Atlético Madrid on 25 July 2026 on a contract until 2031 and played for South Korea at the 2022 and 2026 World Cups.",
+    "achievementsAr": [
+      "لقبا دوري أبطال أوروبا وثلاثة ألقاب دوري فرنسي مع باريس سان جيرمان (12 بطولة إجمالًا)",
+      "كأس إسبانيا 2019 مع فالنسيا",
+      "وصافة كأس العالم تحت 20 سنة 2019 مع كوريا الجنوبية وجائزة أفضل لاعب (الكرة الذهبية) في البطولة"
+    ],
+    "achievementsEn": [
+      "2 UEFA Champions League titles and 3 Ligue 1 titles with Paris Saint-Germain (12 trophies in total)",
+      "2019 Copa del Rey with Valencia",
+      "2019 FIFA U-20 World Cup runner-up with South Korea and the tournament's Golden Ball"
+    ],
+    "clubsHistoryAr": [
+      "إنتشون يونايتد (شباب)",
+      "فلاينغز (شباب)",
+      "فالنسيا (شباب)",
+      "فالنسيا ب",
+      "فالنسيا",
+      "مايوركا",
+      "باريس سان جيرمان",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Incheon United (youth)",
+      "Flyings FC (youth)",
+      "Valencia (youth)",
+      "Valencia Mestalla",
+      "Valencia",
+      "Mallorca",
+      "Paris Saint-Germain",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "valencia",
+      "mallorca",
+      "paris-saint-germain",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Lee_Kang-in"
+  },
+  {
+    "id": "jonathan-david",
+    "nameAr": "جوناثان ديفيد",
+    "nameEn": "Jonathan David",
+    "nationalityAr": "كندي",
+    "nationalityEn": "Canadian",
+    "clubAr": "أتلتيكو مدريد (إعارة من يوفنتوس)",
+    "clubEn": "Atlético Madrid (on loan from Juventus)",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "مهاجم كندي وُلد في بروكلين عام 2000 لأبوين من هايتي ونشأ في أوتاوا، وهو الهداف التاريخي لمنتخب كندا للرجال بـ 42 هدفًا. انتقل إلى غنت البلجيكي في 2018 ثم ليل الفرنسي في 2020 حيث سجل 109 أهداف في 232 مباراة، ثم يوفنتوس في 2025 دون أن يسجل سوى 8 أهداف. انضم إلى أتلتيكو مدريد في 1 سبتمبر 2026 معارًا من يوفنتوس مع خيار شراء بقيمة 25 مليون يورو.",
+    "bioEn": "Canadian striker born in Brooklyn in 2000 to Haitian parents and raised in Ottawa, and his country's all-time top men's scorer with 42 goals. He joined Belgium's Gent in 2018 and France's Lille in 2020, scoring 109 goals in 232 games, then Juventus in 2025 where he scored just 8. He joined Atlético Madrid on 1 September 2026 on loan from Juventus with a €25 million buy option.",
+    "achievementsAr": [
+      "لقب الدوري الفرنسي 2020-2021 وكأس السوبر الفرنسي مع ليل",
+      "أفضل لاعب في كونكاكاف 2025",
+      "الهداف التاريخي لمنتخب كندا للرجال"
+    ],
+    "achievementsEn": [
+      "2020-21 Ligue 1 title and French Super Cup with Lille",
+      "2025 CONCACAF Men's Player of the Year",
+      "Canada men's all-time top scorer"
+    ],
+    "clubsHistoryAr": [
+      "غلوسيستر هورنتس (شباب)",
+      "أوتاوا إنترناشيونالز (شباب)",
+      "غنت",
+      "ليل",
+      "يوفنتوس",
+      "أتلتيكو مدريد (إعارة)"
+    ],
+    "clubsHistoryEn": [
+      "Ottawa Gloucester Hornets (youth)",
+      "Ottawa Internationals (youth)",
+      "Gent",
+      "Lille",
+      "Juventus",
+      "Atlético Madrid (loan)"
+    ],
+    "clubIds": [
+      "lille",
+      "juventus",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jonathan_David"
+  },
+  {
+    "id": "david-hancko",
+    "nameAr": "ديفيد هانكو",
+    "nameEn": "Dávid Hancko",
+    "nationalityAr": "سلوفاكي",
+    "nationalityEn": "Slovak",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "مدافع",
+      "en": "Centre-back"
+    },
+    "era": "2016-الآن",
+    "active": true,
+    "bioAr": "مدافع سلوفاكي وُلد في بريفيدزا في 13 ديسمبر 1997 وتخرّج من أكاديمية جيلينا. انتقل إلى فيورنتينا عام 2018 ثم لعب لسبارتا براغ (إعارة ثم انتقال دائم) وفينورد منذ 2022. انضم إلى أتلتيكو مدريد في 24 يوليو 2025 بعقد حتى يونيو 2030، ويقود منتخب سلوفاكيا.",
+    "bioEn": "Slovak defender born in Prievidza on 13 December 1997 and a Žilina academy graduate. He joined Fiorentina in 2018, then played for Sparta Prague (loan then permanent) and Feyenoord from 2022. He joined Atlético Madrid on 24 July 2025 on a contract until June 2030 and captains Slovakia.",
+    "achievementsAr": [
+      "الدوري السلوفاكي 2016-17 مع جيلينا",
+      "كأس التشيك 2019-20 مع سبارتا براغ",
+      "الدوري الهولندي 2022-23 وكأس هولندا 2023-24 والسوبر الهولندي 2024 مع فينورد"
+    ],
+    "achievementsEn": [
+      "2016-17 Slovak league with Žilina",
+      "2019-20 Czech Cup with Sparta Prague",
+      "2022-23 Eredivisie, 2023-24 KNVB Cup and 2024 Johan Cruyff Shield with Feyenoord"
+    ],
+    "clubsHistoryAr": [
+      "جيلينا",
+      "فيورنتينا",
+      "سبارتا براغ (إعارة)",
+      "سبارتا براغ",
+      "فينورد",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Žilina",
+      "Fiorentina",
+      "Sparta Prague (loan)",
+      "Sparta Prague",
+      "Feyenoord",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "fiorentina",
+      "feyenoord",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Dávid_Hancko"
+  },
+  {
+    "id": "marc-pubill",
+    "nameAr": "مارك بوبيل",
+    "nameEn": "Marc Pubill",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "ظهير أيمن",
+      "en": "Right-back"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "ظهير أيمن إسباني وُلد في تيراسا في 20 يونيو 2003، مرّ بفرق مانريسا وإسبانيول وليفانتي في الفئات السنية، ثم انتقل إلى ألميريا عام 2023 (63 مباراة رسمية) قبل انضمامه إلى أتلتيكو مدريد في يوليو 2025 بعقد حتى 2030.",
+    "bioEn": "Spanish right-back born in Terrassa on 20 June 2003 who came through the youth ranks of Gimnàstic Manresa, Espanyol and Levante, then joined Almería in 2023 (63 official appearances) before moving to Atlético Madrid in July 2025 on a contract until 2030.",
+    "achievementsAr": [
+      "ذهبية أولمبياد باريس 2024 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "Gold medal at Paris 2024 Olympics with Spain"
+    ],
+    "clubsHistoryAr": [
+      "جيمناستيك مانريسا (شباب)",
+      "إسبانيول (شباب)",
+      "ليفانتي",
+      "ألميريا",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Gimnàstic Manresa (youth)",
+      "Espanyol (youth)",
+      "Levante",
+      "Almería",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "levante",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Marc_Pubill"
+  },
+  {
+    "id": "johnny-cardoso",
+    "nameAr": "جوني كاردوسو",
+    "nameEn": "Johnny Cardoso",
+    "nationalityAr": "أمريكي",
+    "nationalityEn": "American",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط",
+      "en": "Midfielder"
+    },
+    "era": "2019-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط أمريكي وُلد في دنفيل بولاية نيوجيرسي في 20 سبتمبر 2001 لأبوين برازيليين، ونشأ كرويًا في البرازيل (أفاي وكريسيوما ثم إنترناسيونال). انتقل إلى ريال بيتيس في ديسمبر 2023 ثم إلى أتلتيكو مدريد في يوليو 2025 بعقد حتى 2030، ويمثل منتخب الولايات المتحدة.",
+    "bioEn": "American midfielder born in Denville, New Jersey on 20 September 2001 to Brazilian parents and raised as a footballer in Brazil (Avaí and Criciúma, then Internacional). He joined Real Betis in December 2023 and Atlético Madrid in July 2025 on a contract until 2030, and plays for the United States.",
+    "achievementsAr": [
+      "لقبا دوري أمم كونكاكاف 2022-23 و2023-24 مع الولايات المتحدة"
+    ],
+    "achievementsEn": [
+      "2022-23 and 2023-24 CONCACAF Nations League titles with the United States"
+    ],
+    "clubsHistoryAr": [
+      "أفاي (شباب)",
+      "كريسيوما (شباب)",
+      "إنترناسيونال",
+      "ريال بيتيس",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Avaí (youth)",
+      "Criciúma (youth)",
+      "Internacional",
+      "Real Betis",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "real-betis",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Johnny_Cardoso"
+  },
+  {
+    "id": "alex-baena",
+    "nameAr": "أليكس باينا",
+    "nameEn": "Álex Baena",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "جناح / صانع ألعاب",
+      "en": "Winger / Attacking midfielder"
+    },
+    "era": "2018-الآن",
+    "active": true,
+    "bioAr": "لاعب إسباني وُلد في روكيتاس دي مار في 20 يوليو 2001 وتخرّج من أكاديمية فياريال. أُعير إلى جيرونا موسم 2021-2022 ثم عاد إلى فياريال، وانتقل إلى أتلتيكو مدريد في 2 يوليو 2025 بعقد حتى 2030 ويرتدي القميص رقم 10.",
+    "bioEn": "Spanish attacking midfielder born in Roquetas de Mar on 20 July 2001 and a Villarreal academy graduate. He was loaned to Girona in 2021-22 before returning to Villarreal, and moved to Atlético Madrid on 2 July 2025 on a contract until 2030, wearing the number 10 shirt.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2020-2021 مع فياريال",
+      "بطولة أمم أوروبا 2024 مع إسبانيا",
+      "ذهبية أولمبياد باريس 2024 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "2020-21 UEFA Europa League with Villarreal",
+      "UEFA Euro 2024 with Spain",
+      "Gold medal at Paris 2024 Olympics with Spain"
+    ],
+    "clubsHistoryAr": [
+      "روكيتاس (شباب)",
+      "فياريال (شباب)",
+      "فياريال ج",
+      "فياريال ب",
+      "فياريال",
+      "جيرونا (إعارة)",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Roquetas (youth)",
+      "Villarreal (youth)",
+      "Villarreal C",
+      "Villarreal B",
+      "Villarreal",
+      "Girona (loan)",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "villarreal",
+      "girona",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Álex_Baena"
+  },
+  {
+    "id": "obed-vargas",
+    "nameAr": "أوبيد فارغاس",
+    "nameEn": "Obed Vargas",
+    "nationalityAr": "مكسيكي",
+    "nationalityEn": "Mexican",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط",
+      "en": "Midfielder"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط مكسيكي وُلد في أنكوراج بولاية ألاسكا في 5 أغسطس 2005 لأبوين مكسيكيين. بدأ مع نادي كوك إنليت ثم أكاديمية سياتل ساوندرز وظهر مع الفريق الأول في 2021 وهو في الخامسة عشرة، وانتقل إلى أتلتيكو مدريد في 2 فبراير 2026 بعقد حتى 2030.",
+    "bioEn": "Mexican midfielder born in Anchorage, Alaska on 5 August 2005 to Mexican parents. He started at Cook Inlet SC, then the Seattle Sounders academy, debuting for the first team in 2021 aged 15, and moved to Atlético Madrid on 2 February 2026 on a contract until 2030.",
+    "achievementsAr": [
+      "دوري أبطال كونكاكاف 2022 مع سياتل ساوندرز"
+    ],
+    "achievementsEn": [
+      "2022 CONCACAF Champions League with Seattle Sounders"
+    ],
+    "clubsHistoryAr": [
+      "كوك إنليت (شباب)",
+      "سياتل ساوندرز (شباب)",
+      "تاكوما ديفايانس",
+      "سياتل ساوندرز",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Cook Inlet SC (youth)",
+      "Seattle Sounders (youth)",
+      "Tacoma Defiance",
+      "Seattle Sounders",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Obed_Vargas"
+  },
+  {
+    "id": "rodrigo-mendoza",
+    "nameAr": "رودريغو مندوزا",
+    "nameEn": "Rodrigo Mendoza",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط",
+      "en": "Midfielder"
+    },
+    "era": "2021-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إسباني وُلد في مولينا دي سيغورا في 15 مارس 2005، وتخرّج من أكاديمية إلتشي بعد مروره بفرق ألتورّيال وسان ميغيل ورانيرو. انتقل إلى أتلتيكو مدريد في 2 فبراير 2026 بعقد حتى 2031.",
+    "bioEn": "Spanish midfielder born in Molina de Segura on 15 March 2005 and an Elche academy graduate after youth spells at Altorreal, San Miguel and Ranero. He joined Atlético Madrid on 2 February 2026 on a contract until 2031.",
+    "achievementsAr": [],
+    "achievementsEn": [],
+    "clubsHistoryAr": [
+      "ألتورّيال (شباب)",
+      "سان ميغيل (شباب)",
+      "رانيرو (شباب)",
+      "إلتشي",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "EF Altorreal (youth)",
+      "EF San Miguel (youth)",
+      "Ranero CF (youth)",
+      "Elche",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "elche",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Rodri_Mendoza"
+  },
+  {
+    "id": "juan-musso",
+    "nameAr": "خوان موسو",
+    "nameEn": "Juan Musso",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "2016-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى أرجنتيني وُلد في سان نيكولاس دي لوس أرويوس في 6 مايو 1994، تخرّج من أكاديمية راسينغ كلوب ثم لعب لأودينيزي (2018-2021) وأتالانتا (2021-2025). انضم إلى أتلتيكو مدريد معارًا في 27 أغسطس 2024 ثم بشكل دائم في 10 يونيو 2025 بعقد حتى 2028.",
+    "bioEn": "Argentine goalkeeper born in San Nicolás de los Arroyos on 6 May 1994 and a Racing Club academy graduate who played for Udinese (2018-2021) and Atalanta (2021-2025). He joined Atlético Madrid on loan on 27 August 2024 and permanently on 10 June 2025 on a contract until 2028.",
+    "achievementsAr": [
+      "الدوري الأوروبي 2023-2024 مع أتالانتا",
+      "كوبا أمريكا 2021 مع الأرجنتين",
+      "الدوري الأرجنتيني 2014 مع راسينغ كلوب (حارس ثالث)"
+    ],
+    "achievementsEn": [
+      "2023-24 UEFA Europa League with Atalanta",
+      "2021 Copa América with Argentina",
+      "2014 Argentine Primera División with Racing Club (third-choice goalkeeper)"
+    ],
+    "clubsHistoryAr": [
+      "راسينغ كلوب",
+      "أودينيزي",
+      "أتالانتا",
+      "أتلتيكو مدريد (إعارة)",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Racing Club",
+      "Udinese",
+      "Atalanta",
+      "Atlético Madrid (loan)",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "racing-club",
+      "udinese",
+      "atalanta",
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Juan_Musso"
+  },
+  {
+    "id": "pablo-barrios",
+    "nameAr": "بابلو باريوس",
+    "nameEn": "Pablo Barrios",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "أتلتيكو مدريد",
+    "clubEn": "Atlético Madrid",
+    "clubId": "atletico-madrid",
+    "position": {
+      "ar": "وسط",
+      "en": "Midfielder"
+    },
+    "era": "2022-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط إسباني وُلد في مدريد في 15 يونيو 2003، بدأ في مدرسة موراتالاس ثم أكاديمية ريال مدريد حتى 2017 قبل أن ينضم لأكاديمية أتلتيكو مدريد. لعب لأتلتيكو ب ثم ظهر مع الفريق الأول في 29 أكتوبر 2022، وعقده مع النادي حتى 2030.",
+    "bioEn": "Spanish midfielder born in Madrid on 15 June 2003 who started at Escuela Deportiva Moratalaz, then Real Madrid's academy until 2017 before joining Atlético Madrid's academy. He played for Atlético Madrid B and debuted for the first team on 29 October 2022, with a contract until 2030.",
+    "achievementsAr": [
+      "ذهبية أولمبياد باريس 2024 مع إسبانيا"
+    ],
+    "achievementsEn": [
+      "Gold medal at Paris 2024 Olympics with Spain"
+    ],
+    "clubsHistoryAr": [
+      "موراتالاس (شباب)",
+      "ريال مدريد (شباب)",
+      "أتلتيكو مدريد (شباب)",
+      "أتلتيكو مدريد ب",
+      "أتلتيكو مدريد"
+    ],
+    "clubsHistoryEn": [
+      "Moratalaz (youth)",
+      "Real Madrid (youth)",
+      "Atlético Madrid (youth)",
+      "Atlético Madrid B",
+      "Atlético Madrid"
+    ],
+    "clubIds": [
+      "atletico-madrid"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Pablo_Barrios_(footballer)"
+  },
+  {
+    "id": "andrew-cole",
+    "nameAr": "أندرو كول",
+    "nameEn": "Andrew Cole",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "نوتنجهام فورست (معتزل)",
+    "clubEn": "Nottingham Forest (retired)",
+    "clubId": "nottingham-forest",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1989-2008",
+    "active": false,
+    "bioAr": "مهاجم إنجليزي سجل 187 هدف في الدوري الإنجليزي الممتاز، وكسب 5 ألقاب دوري وثلاثية 1999 مع مانشستر يونايتد، وكان قبلها أحد أبرز هدافي نيوكاسل.",
+    "bioEn": "An English striker who scored 187 Premier League goals and won five league titles and the 1999 Treble with Manchester United, after starring for Newcastle United.",
+    "achievementsAr": [
+      "5 ألقاب الدوري الإنجليزي الممتاز (1996 و1997 و1999 و2000 و2001) مع مانشستر يونايتد",
+      "لقب دوري أبطال أوروبا 1999 مع مانشستر يونايتد",
+      "187 هدف في الدوري الإنجليزي الممتاز",
+      "جائزة أفضل لاعب شاب من رابطة اللاعبين المحترفين 1994"
+    ],
+    "achievementsEn": [
+      "Premier League titles 1996, 1997, 1999, 2000 and 2001 with Manchester United",
+      "UEFA Champions League title 1999 with Manchester United",
+      "187 Premier League goals",
+      "PFA Young Player of the Year 1994"
+    ],
+    "clubsHistoryAr": [
+      "آرسنال",
+      "فولهام",
+      "بريستول سيتي",
+      "نيوكاسل يونايتد",
+      "مانشستر يونايتد",
+      "بلاكبيرن روفرز",
+      "مانشستر سيتي",
+      "بورتسموث",
+      "برمنجهام سيتي",
+      "سندرلاند",
+      "بيرنلي",
+      "نوتنجهام فورست"
+    ],
+    "clubsHistoryEn": [
+      "Arsenal",
+      "Fulham",
+      "Bristol City",
+      "Newcastle United",
+      "Manchester United",
+      "Blackburn Rovers",
+      "Manchester City",
+      "Portsmouth",
+      "Birmingham City",
+      "Sunderland",
+      "Burnley",
+      "Nottingham Forest"
+    ],
+    "clubIds": [
+      "arsenal",
+      "fulham",
+      "bristol-city",
+      "newcastle-united",
+      "manchester-united",
+      "blackburn-rovers",
+      "manchester-city",
+      "portsmouth",
+      "birmingham-city",
+      "sunderland",
+      "burnley",
+      "nottingham-forest"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Andy_Cole"
+  },
+  {
+    "id": "jermain-defoe",
+    "nameAr": "جيرمين ديفو",
+    "nameEn": "Jermain Defoe",
+    "nationalityAr": "إنجليزي",
+    "nationalityEn": "English",
+    "clubAr": "سندرلاند (معتزل)",
+    "clubEn": "Sunderland (retired)",
+    "clubId": "sunderland",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1999-2022",
+    "active": false,
+    "bioAr": "مهاجم إنجليزي سجل 162 هدف في الدوري الإنجليزي الممتاز ولعب في كأس العالم 2010 ويورو 2012، واعتزل في مارس 2022 بعد مسيرة 22 سنة.",
+    "bioEn": "An English striker who scored 162 Premier League goals, played at the 2010 World Cup and Euro 2012, and retired in March 2022 after a 22-year career.",
+    "achievementsAr": [
+      "كأس الرابطة الإنجليزية 2008 مع توتنهام هوتسبير",
+      "لقب الدوري الاسكتلندي الممتاز 2021 مع رينجرز",
+      "162 هدف في الدوري الإنجليزي الممتاز",
+      "20 هدف في 57 مباراة مع منتخب إنجلترا"
+    ],
+    "achievementsEn": [
+      "League Cup 2008 with Tottenham Hotspur",
+      "Scottish Premiership title 2021 with Rangers",
+      "162 Premier League goals",
+      "20 goals in 57 appearances for England"
+    ],
+    "clubsHistoryAr": [
+      "وست هام يونايتد",
+      "بورنموث",
+      "توتنهام هوتسبير",
+      "بورتسموث",
+      "تورونتو",
+      "سندرلاند",
+      "رينجرز"
+    ],
+    "clubsHistoryEn": [
+      "West Ham United",
+      "Bournemouth",
+      "Tottenham Hotspur",
+      "Portsmouth",
+      "Toronto FC",
+      "Sunderland",
+      "Rangers"
+    ],
+    "clubIds": [
+      "west-ham-united",
+      "bournemouth",
+      "tottenham",
+      "portsmouth",
+      "sunderland",
+      "rangers"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "telmo-zarra",
+    "nameAr": "تيلمو زارا",
+    "nameEn": "Telmo Zarra",
+    "nationalityAr": "إسباني",
+    "nationalityEn": "Spanish",
+    "clubAr": "باراكالدو (متوفى)",
+    "clubEn": "Barakaldo (deceased)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1939-1957",
+    "active": false,
+    "bioAr": "مهاجم إسباني أسطوري لأتلتيك بيلباو (1940-1955)، سجل 251 هدف في الدوري وظل رقمه القياسي قرابة 6 عقود قبل ما يكسره ميسي.",
+    "bioEn": "A legendary Spanish forward for Athletic Bilbao (1940-1955) who scored 251 league goals, a record that stood for nearly six decades until Lionel Messi broke it.",
+    "achievementsAr": [
+      "لقب الدوري الإسباني 1943 مع أتلتيك بيلباو",
+      "جائزة بيتشيتشي (هداف الدوري) 6 مرات",
+      "الهداف التاريخي لكأس الملك (81 هدف)",
+      "251 هدف في الدوري الإسباني",
+      "20 هدف في 20 مباراة مع منتخب إسبانيا"
+    ],
+    "achievementsEn": [
+      "La Liga title 1943 with Athletic Bilbao",
+      "Pichichi Trophy (La Liga top scorer) 6 times",
+      "All-time top scorer in the Copa del Rey (81 goals)",
+      "251 La Liga goals",
+      "20 goals in 20 appearances for Spain"
+    ],
+    "clubsHistoryAr": [
+      "إرانديو",
+      "أتلتيك بيلباو",
+      "إندوتشو",
+      "باراكالدو"
+    ],
+    "clubsHistoryEn": [
+      "Erandio",
+      "Athletic Bilbao",
+      "Indautxu",
+      "Barakaldo"
+    ],
+    "clubIds": [
+      "athletic-bilbao"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Telmo_Zarra"
+  },
+  {
+    "id": "silvio-piola",
+    "nameAr": "سيلفيو بيولا",
+    "nameEn": "Silvio Piola",
+    "nationalityAr": "إيطالي",
+    "nationalityEn": "Italian",
+    "clubAr": "نوفارا (متوفى)",
+    "clubEn": "Novara (deceased)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1929-1954",
+    "active": false,
+    "bioAr": "مهاجم إيطالي هو الهداف التاريخي للدوري الإيطالي بـ274 هدف، وساهم في فوز إيطاليا بكأس العالم 1938.",
+    "bioEn": "An Italian forward and the all-time Serie A top scorer with 274 goals, who helped Italy win the 1938 World Cup.",
+    "achievementsAr": [
+      "كأس العالم 1938 مع منتخب إيطاليا",
+      "هداف الدوري الإيطالي 1937 و1943 مع لاتسيو",
+      "الهداف التاريخي للدوري الإيطالي (274 هدف)",
+      "30 هدف في 34 مباراة مع منتخب إيطاليا"
+    ],
+    "achievementsEn": [
+      "FIFA World Cup 1938 with Italy",
+      "Serie A top scorer 1937 and 1943 with Lazio",
+      "All-time Serie A top scorer (274 goals)",
+      "30 goals in 34 appearances for Italy"
+    ],
+    "clubsHistoryAr": [
+      "برو فيرشيللي",
+      "لاتسيو",
+      "تورينو",
+      "يوفنتوس",
+      "نوفارا"
+    ],
+    "clubsHistoryEn": [
+      "Pro Vercelli",
+      "Lazio",
+      "Torino",
+      "Juventus",
+      "Novara"
+    ],
+    "clubIds": [
+      "lazio",
+      "torino",
+      "juventus"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Silvio_Piola"
+  },
+  {
+    "id": "gunnar-nordahl",
+    "nameAr": "جونار نوردال",
+    "nameEn": "Gunnar Nordahl",
+    "nationalityAr": "سويدي",
+    "nationalityEn": "Swedish",
+    "clubAr": "روما (متوفى)",
+    "clubEn": "Roma (deceased)",
+    "clubId": "roma",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1937-1958",
+    "active": false,
+    "bioAr": "مهاجم سويدي ضمن ثلاثي ميلان الشهير (جري-نو-لي)، هداف الدوري الإيطالي 5 مرات، وسجل 225 هدف في الدوري (210 مع ميلان و15 مع روما).",
+    "bioEn": "A Swedish forward in AC Milan's celebrated Gre-No-Li trio, five-time Serie A top scorer, with 225 league goals (210 for Milan and 15 for Roma).",
+    "achievementsAr": [
+      "لقب الدوري الإيطالي 1951 و1955 مع ميلان",
+      "هداف الدوري الإيطالي 5 مرات (1950 و1951 و1953 و1954 و1955)",
+      "ذهبية أولمبياد 1948 مع السويد (هداف البطولة مناصفة)",
+      "225 هدف في الدوري الإيطالي"
+    ],
+    "achievementsEn": [
+      "Serie A titles 1951 and 1955 with AC Milan",
+      "Serie A top scorer 5 times (1950, 1951, 1953, 1954 and 1955)",
+      "Olympic gold medal 1948 with Sweden (joint top scorer)",
+      "225 Serie A goals"
+    ],
+    "clubsHistoryAr": [
+      "هورنفورس",
+      "ديجيرفورس",
+      "نورشوبينج",
+      "ميلان",
+      "روما"
+    ],
+    "clubsHistoryEn": [
+      "Hörnefors",
+      "Degerfors",
+      "IFK Norrköping",
+      "AC Milan",
+      "Roma"
+    ],
+    "clubIds": [
+      "ac-milan",
+      "roma"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Gunnar_Nordahl"
+  },
+  {
+    "id": "jose-altafini",
+    "nameAr": "جوزيه ألطافيني",
+    "nameEn": "José Altafini",
+    "nationalityAr": "إيطالي-برازيلي",
+    "nationalityEn": "Italian-Brazilian",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1955-1980",
+    "active": false,
+    "bioAr": "مهاجم برازيلي المولد (لقبه ماتسولا في البرازيل) لعب لمنتخب البرازيل ثم إيطاليا، وسجل 216 هدف في الدوري الإيطالي مع ميلان ونابولي ويوفنتوس.",
+    "bioEn": "A Brazilian-born forward (nicknamed Mazzola in Brazil) who represented both Brazil and Italy and scored 216 Serie A goals for Milan, Napoli and Juventus.",
+    "achievementsAr": [
+      "كأس العالم 1958 مع منتخب البرازيل",
+      "كأس أوروبا للأندية 1963 مع ميلان",
+      "لقب الدوري الإيطالي 1959 و1962 مع ميلان",
+      "لقب الدوري الإيطالي 1973 و1975 مع يوفنتوس",
+      "216 هدف في الدوري الإيطالي"
+    ],
+    "achievementsEn": [
+      "FIFA World Cup 1958 with Brazil",
+      "European Cup 1963 with AC Milan",
+      "Serie A titles 1959 and 1962 with AC Milan",
+      "Serie A titles 1973 and 1975 with Juventus",
+      "216 Serie A goals"
+    ],
+    "clubsHistoryAr": [
+      "بالميراس",
+      "ميلان",
+      "نابولي",
+      "يوفنتوس",
+      "كياسو",
+      "مندريزيوستار"
+    ],
+    "clubsHistoryEn": [
+      "Palmeiras",
+      "AC Milan",
+      "Napoli",
+      "Juventus",
+      "Chiasso",
+      "Mendrisiostar"
+    ],
+    "clubIds": [
+      "palmeiras",
+      "ac-milan",
+      "napoli",
+      "juventus"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "giuseppe-signori",
+    "nameAr": "جوزيبي سيجناتوري",
+    "nameEn": "Giuseppe Signori",
+    "nationalityAr": "إيطالي",
+    "nationalityEn": "Italian",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1984-2000s",
+    "active": false,
+    "bioAr": "مهاجم إيطالي اشتهر مع لاتسيو في التسعينات، كسب لقب هداف الدوري 3 مرات وسجل 188 هدف في الدوري الإيطالي.",
+    "bioEn": "An Italian striker best known for Lazio in the 1990s, three-time Serie A top scorer with 188 Serie A goals.",
+    "achievementsAr": [
+      "هداف الدوري الإيطالي 3 مرات (1993 و1994 و1996 والأخير مناصفة)",
+      "188 هدف في الدوري الإيطالي"
+    ],
+    "achievementsEn": [
+      "Serie A top scorer 3 times (1993, 1994 and 1996, the last shared)",
+      "188 Serie A goals"
+    ],
+    "clubsHistoryAr": [
+      "ليفي",
+      "بياتشينزا",
+      "ترينتو",
+      "فوجيا",
+      "لاتسيو",
+      "سامبدوريا",
+      "بولونيا"
+    ],
+    "clubsHistoryEn": [
+      "Leffe",
+      "Piacenza",
+      "Trento",
+      "Foggia",
+      "Lazio",
+      "Sampdoria",
+      "Bologna"
+    ],
+    "clubIds": [
+      "lazio",
+      "sampdoria",
+      "bologna"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Giuseppe_Signori"
+  },
+  {
+    "id": "klaus-fischer",
+    "nameAr": "كلاوس فيشر",
+    "nameEn": "Klaus Fischer",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "بوخوم (معتزل)",
+    "clubEn": "VfL Bochum (retired)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1968-1988",
+    "active": false,
+    "bioAr": "مهاجم ألماني اشتهر بالتسديدات الخلفية المقصية مع شالكه، وسجل 268 هدف في الدوري الألماني، ولعب لـ1860 ميونخ وشالكه وكولن وبوخوم.",
+    "bioEn": "A German striker famed for acrobatic overhead kicks at Schalke, with 268 Bundesliga goals for 1860 Munich, Schalke, Köln and Bochum.",
+    "achievementsAr": [
+      "كأس ألمانيا 1972 مع شالكه 04",
+      "هداف الدوري الألماني 1976 (29 هدف)",
+      "268 هدف في الدوري الألماني",
+      "32 هدف في 45 مباراة مع منتخب ألمانيا الغربية"
+    ],
+    "achievementsEn": [
+      "German Cup 1972 with Schalke 04",
+      "Bundesliga top scorer 1976 (29 goals)",
+      "268 Bundesliga goals",
+      "32 goals in 45 appearances for West Germany"
+    ],
+    "clubsHistoryAr": [
+      "1860 ميونخ",
+      "شالكه 04",
+      "كولن",
+      "بوخوم"
+    ],
+    "clubsHistoryEn": [
+      "1860 Munich",
+      "Schalke 04",
+      "1. FC Köln",
+      "VfL Bochum"
+    ],
+    "clubIds": [
+      "1860-munich",
+      "schalke-04",
+      "koln"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Klaus_Fischer"
+  },
+  {
+    "id": "jupp-heynckes",
+    "nameAr": "يوب هاينكس",
+    "nameEn": "Jupp Heynckes",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "بوروسيا مونشنجلادباخ (معتزل)",
+    "clubEn": "Borussia Mönchengladbach (retired)",
+    "clubId": "borussia-monchengladbach",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1962-1978",
+    "active": false,
+    "bioAr": "مهاجم ألماني من جيل بوروسيا مونشنجلادباخ الذهبي، سجل 220 هدف في الدوري الألماني، وكسب يورو 1972 وكأس العالم 1974 مع ألمانيا الغربية، وبعدين بقى مدرب كبير.",
+    "bioEn": "A German forward of Borussia Mönchengladbach's golden era with 220 Bundesliga goals, who won Euro 1972 and the 1974 World Cup with West Germany before becoming a top coach.",
+    "achievementsAr": [
+      "4 ألقاب الدوري الألماني (1971 و1975 و1976 و1977) مع بوروسيا مونشنجلادباخ",
+      "كأس الاتحاد الأوروبي 1975 مع بوروسيا مونشنجلادباخ",
+      "كأس ألمانيا 1973 مع بوروسيا مونشنجلادباخ",
+      "يورو 1972 وكأس العالم 1974 مع ألمانيا الغربية",
+      "هداف الدوري الألماني 1974 (مناصفة) و1975",
+      "220 هدف في الدوري الألماني"
+    ],
+    "achievementsEn": [
+      "Bundesliga titles 1971, 1975, 1976 and 1977 with Borussia Mönchengladbach",
+      "UEFA Cup 1975 with Borussia Mönchengladbach",
+      "DFB-Pokal 1973 with Borussia Mönchengladbach",
+      "UEFA European Championship 1972 and FIFA World Cup 1974 with West Germany",
+      "Bundesliga top scorer 1974 (shared) and 1975",
+      "220 Bundesliga goals"
+    ],
+    "clubsHistoryAr": [
+      "بوروسيا مونشنجلادباخ",
+      "هانوفر 96"
+    ],
+    "clubsHistoryEn": [
+      "Borussia Mönchengladbach",
+      "Hannover 96"
+    ],
+    "clubIds": [
+      "borussia-monchengladbach",
+      "hannover-96"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Jupp_Heynckes"
+  },
+  {
+    "id": "manfred-burgsmuller",
+    "nameAr": "مانفريد بورجميلر",
+    "nameEn": "Manfred Burgsmüller",
+    "nationalityAr": "ألماني",
+    "nationalityEn": "German",
+    "clubAr": "فيردر بريمن (متوفى)",
+    "clubEn": "Werder Bremen (deceased)",
+    "clubId": "werder-bremen",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1969-1990",
+    "active": false,
+    "bioAr": "مهاجم ألماني (1949-2019) سجل 213 هدف في الدوري الألماني، وهو الهداف التاريخي لبوروسيا دورتموند في الدوري بـ135 هدف، وكسب الدوري مع فيردر بريمن 1988.",
+    "bioEn": "A German forward (1949-2019) with 213 Bundesliga goals, Borussia Dortmund's all-time Bundesliga top scorer (135), who won the 1988 league title with Werder Bremen.",
+    "achievementsAr": [
+      "لقب الدوري الألماني 1988 مع فيردر بريمن",
+      "213 هدف في الدوري الألماني",
+      "الهداف التاريخي لدورتموند في الدوري الألماني (135 هدف)",
+      "هداف الدوري الألماني الثاني 1985 (29 هدف)"
+    ],
+    "achievementsEn": [
+      "Bundesliga title 1988 with Werder Bremen",
+      "213 Bundesliga goals",
+      "Borussia Dortmund's all-time Bundesliga top scorer (135 goals)",
+      "2. Bundesliga top scorer 1985 (29 goals)"
+    ],
+    "clubsHistoryAr": [
+      "روت فايس إيسن",
+      "باير أوردينجن",
+      "بوروسيا دورتموند",
+      "نورنبيرج",
+      "روت فايس أوبرهاوزن",
+      "فيردر بريمن"
+    ],
+    "clubsHistoryEn": [
+      "Rot-Weiss Essen",
+      "Bayer Uerdingen",
+      "Borussia Dortmund",
+      "1. FC Nürnberg",
+      "Rot-Weiß Oberhausen",
+      "Werder Bremen"
+    ],
+    "clubIds": [
+      "borussia-dortmund",
+      "nurnberg",
+      "werder-bremen"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Manfred_Burgsmüller"
+  },
+  {
+    "id": "delio-onnis",
+    "nameAr": "ديليو أونيس",
+    "nameEn": "Delio Onnis",
+    "nationalityAr": "أرجنتيني",
+    "nationalityEn": "Argentine",
+    "clubAr": "تولون (معتزل)",
+    "clubEn": "Toulon (retired)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1971-1986",
+    "active": false,
+    "bioAr": "مهاجم أرجنتيني مولود في إيطاليا، هو الهداف التاريخي للدوري الفرنسي بـ299 هدف، ولعب لريمس وموناكو وتور وتولون.",
+    "bioEn": "An Argentine striker born in Italy, the all-time Ligue 1 top scorer with 299 goals, who played for Reims, Monaco, Tours and Toulon.",
+    "achievementsAr": [
+      "لقب الدوري الفرنسي 1978 مع موناكو",
+      "الهداف التاريخي للدوري الفرنسي (299 هدف)",
+      "هداف الدوري الفرنسي 5 مرات (1975 و1980 و1981 و1982 و1984)"
+    ],
+    "achievementsEn": [
+      "Ligue 1 title 1978 with AS Monaco",
+      "All-time Ligue 1 top scorer (299 goals)",
+      "Ligue 1 top scorer 5 times (1975, 1980, 1981, 1982 and 1984)"
+    ],
+    "clubsHistoryAr": [
+      "ريمس",
+      "موناكو",
+      "تور",
+      "تولون"
+    ],
+    "clubsHistoryEn": [
+      "Reims",
+      "Monaco",
+      "Tours",
+      "Toulon"
+    ],
+    "clubIds": [
+      "reims",
+      "monaco"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Delio_Onnis"
+  },
+  {
+    "id": "bernard-lacombe",
+    "nameAr": "برنار لاكومب",
+    "nameEn": "Bernard Lacombe",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "بوردو (متوفى)",
+    "clubEn": "Bordeaux (deceased)",
+    "clubId": "bordeaux",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1969-1987",
+    "active": false,
+    "bioAr": "مهاجم فرنسي (1952-2025) سجل 255 هدف في الدوري الفرنسي مع ليون وسانت إتيان وبوردو، وكسب يورو 1984 مع فرنسا.",
+    "bioEn": "A French striker (1952-2025) with 255 Ligue 1 goals for Lyon, Saint-Étienne and Bordeaux, who won Euro 1984 with France.",
+    "achievementsAr": [
+      "يورو 1984 مع منتخب فرنسا",
+      "3 ألقاب الدوري الفرنسي (1984 و1985 و1987) مع بوردو",
+      "كأس فرنسا 1973 مع ليون",
+      "كأس فرنسا 1986 و1987 مع بوردو",
+      "255 هدف في الدوري الفرنسي"
+    ],
+    "achievementsEn": [
+      "UEFA European Championship 1984 with France",
+      "Ligue 1 titles 1984, 1985 and 1987 with Bordeaux",
+      "Coupe de France 1973 with Lyon",
+      "Coupe de France 1986 and 1987 with Bordeaux",
+      "255 Ligue 1 goals"
+    ],
+    "clubsHistoryAr": [
+      "ليون",
+      "سانت إتيان",
+      "بوردو"
+    ],
+    "clubsHistoryEn": [
+      "Lyon",
+      "Saint-Étienne",
+      "Bordeaux"
+    ],
+    "clubIds": [
+      "lyon",
+      "saint-etienne",
+      "bordeaux"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Bernard_Lacombe"
+  },
+  {
+    "id": "herve-revelli",
+    "nameAr": "هيرفي ريفيلي",
+    "nameEn": "Hervé Revelli",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "نيس (معتزل)",
+    "clubEn": "Nice (retired)",
+    "clubId": "nice",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1964-1978",
+    "active": false,
+    "bioAr": "مهاجم فرنسي سجل 216 هدف في الدوري الفرنسي، وكسب 7 ألقاب دوري مع سانت إتيان، ولعب 30 مباراة مع منتخب فرنسا.",
+    "bioEn": "A French striker with 216 Ligue 1 goals and seven league titles with Saint-Étienne, capped 30 times by France.",
+    "achievementsAr": [
+      "7 ألقاب الدوري الفرنسي (1967 و1968 و1969 و1970 و1974 و1975 و1976) مع سانت إتيان",
+      "كأس فرنسا 1968 و1970 و1974 و1975 و1977 مع سانت إتيان",
+      "هداف الدوري الفرنسي 1967 و1970",
+      "216 هدف في الدوري الفرنسي"
+    ],
+    "achievementsEn": [
+      "Ligue 1 titles 1967, 1968, 1969, 1970, 1974, 1975 and 1976 with Saint-Étienne",
+      "Coupe de France 1968, 1970, 1974, 1975 and 1977 with Saint-Étienne",
+      "Ligue 1 top scorer 1967 and 1970",
+      "216 Ligue 1 goals"
+    ],
+    "clubsHistoryAr": [
+      "سانت إتيان",
+      "نيس"
+    ],
+    "clubsHistoryEn": [
+      "Saint-Étienne",
+      "Nice"
+    ],
+    "clubIds": [
+      "saint-etienne",
+      "nice"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Hervé_Revelli"
+  },
+  {
+    "id": "roger-courtois",
+    "nameAr": "روجيه كورتوا",
+    "nameEn": "Roger Courtois",
+    "nationalityAr": "فرنسي",
+    "nationalityEn": "French",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1933-1956",
+    "active": false,
+    "bioAr": "مهاجم فرنسي مولود في جنيف لأبوين فرنسيين، سجل 210 هدف في الدوري الفرنسي (209 مع سوشو)، ولعب كأس العالم 1934 و1938.",
+    "bioEn": "A French forward born in Geneva to French parents, with 210 Ligue 1 goals (209 for Sochaux), who played at the 1934 and 1938 World Cups.",
+    "achievementsAr": [
+      "لقب الدوري الفرنسي 1935 و1938 مع سوشو",
+      "كأس فرنسا 1937 مع سوشو",
+      "هداف الدوري الفرنسي 1936 و1939",
+      "210 هدف في الدوري الفرنسي",
+      "المشاركة في كأس العالم 1934 و1938 مع فرنسا"
+    ],
+    "achievementsEn": [
+      "Ligue 1 titles 1935 and 1938 with Sochaux",
+      "Coupe de France 1937 with Sochaux",
+      "Ligue 1 top scorer 1936 and 1939",
+      "210 Ligue 1 goals",
+      "Played at the 1934 and 1938 World Cups with France"
+    ],
+    "clubsHistoryAr": [
+      "سوشو",
+      "تروا"
+    ],
+    "clubsHistoryEn": [
+      "Sochaux",
+      "Troyes"
+    ],
+    "clubIds": [
+      "sochaux"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Roger_Courtois"
+  },
+  {
+    "id": "fernando-peyroteo",
+    "nameAr": "فرناندو بيروتيو",
+    "nameEn": "Fernando Peyroteo",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "سبورتينج لشبونة (متوفى)",
+    "clubEn": "Sporting CP (deceased)",
+    "clubId": "sporting-cp",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1937-1949",
+    "active": false,
+    "bioAr": "مهاجم برتغالي مولود في أنجولا (1918-1978)، الهداف التاريخي للدوري البرتغالي بـ332 هدف في 197 مباراة مع سبورتينج لشبونة، ضمن الخمسة كمنجات.",
+    "bioEn": "A Portuguese striker born in Angola (1918-1978), the Primeira Liga's all-time top scorer with 332 goals in 197 matches for Sporting CP, one of the 'Five Violins'.",
+    "achievementsAr": [
+      "5 ألقاب الدوري البرتغالي مع سبورتينج لشبونة",
+      "هداف الدوري البرتغالي 6 مرات",
+      "332 هدف في الدوري البرتغالي",
+      "9 أهداف في مباراة دوري واحدة ضد ليسا (1942)",
+      "14 هدف في 20 مباراة مع منتخب البرتغال"
+    ],
+    "achievementsEn": [
+      "5 Primeira Liga titles with Sporting CP",
+      "Primeira Liga top scorer 6 times",
+      "332 Primeira Liga goals",
+      "9 goals in a single league match against Leça (1942)",
+      "14 goals in 20 appearances for Portugal"
+    ],
+    "clubsHistoryAr": [
+      "سبورتينج لواندا",
+      "سبورتينج لشبونة"
+    ],
+    "clubsHistoryEn": [
+      "Sporting Clube de Luanda",
+      "Sporting CP"
+    ],
+    "clubIds": [
+      "sporting-cp"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Fernando_Peyroteo"
+  },
+  {
+    "id": "fernando-gomes",
+    "nameAr": "فرناندو جوميز",
+    "nameEn": "Fernando Gomes",
+    "nationalityAr": "برتغالي",
+    "nationalityEn": "Portuguese",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1974-1990s",
+    "active": false,
+    "bioAr": "مهاجم برتغالي (مواليد بورتو 1956) سجل 319 هدف في الدوري البرتغالي، وكسب الحذاء الذهبي الأوروبي مرتين (1983 و1985) ولعب يورو 1984 وكأس العالم 1986.",
+    "bioEn": "A Portuguese striker (born in Porto, 1956) with 319 Primeira Liga goals and two European Golden Shoes (1983 and 1985), who played at Euro 1984 and the 1986 World Cup.",
+    "achievementsAr": [
+      "الحذاء الذهبي الأوروبي 1983 و1985",
+      "هداف الدوري البرتغالي 6 مرات",
+      "319 هدف في الدوري البرتغالي",
+      "كأس أوروبا للأندية 1987 مع بورتو",
+      "المشاركة في يورو 1984 وكأس العالم 1986 مع البرتغال"
+    ],
+    "achievementsEn": [
+      "European Golden Shoe 1983 and 1985",
+      "Primeira Liga top scorer 6 times",
+      "319 Primeira Liga goals",
+      "European Cup 1987 with Porto",
+      "Played at Euro 1984 and the 1986 World Cup with Portugal"
+    ],
+    "clubsHistoryAr": [
+      "بورتو",
+      "سبورتينج خيخون",
+      "سبورتينج لشبونة"
+    ],
+    "clubsHistoryEn": [
+      "Porto",
+      "Sporting Gijón",
+      "Sporting CP"
+    ],
+    "clubIds": [
+      "porto",
+      "sporting-gijon",
+      "sporting-cp"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Fernando_Gomes_(Portuguese_footballer)"
+  },
+  {
+    "id": "hassan-el-shazly",
+    "nameAr": "حسن الشاذلي",
+    "nameEn": "Hassan El-Shazly",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "ترسانة (متوفى)",
+    "clubEn": "Tersana (deceased)",
+    "clubId": "tersana",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1959-1978",
+    "active": false,
+    "bioAr": "مهاجم مصري (1943-2015) قضى مسيرته كلها مع ترسانة، وهو هداف الدوري المصري التاريخي، وأكتر مصري تسجيلاً في أمم أفريقيا (12 هدف).",
+    "bioEn": "An Egyptian striker (1943-2015) who spent his whole career at Tersana, the Egyptian league's all-time top scorer and Egypt's top scorer at the Africa Cup of Nations (12 goals).",
+    "achievementsAr": [
+      "لقب الدوري المصري 1963 مع ترسانة",
+      "كأس مصر 1965 و1967 مع ترسانة",
+      "هداف الدوري المصري 4 مرات (1963 و1965 و1966 و1975)",
+      "هداف كأس أمم أفريقيا 1963 (6 أهداف)",
+      "12 هدف في كأس أمم أفريقيا، أكتر هداف مصري في البطولة"
+    ],
+    "achievementsEn": [
+      "Egyptian Premier League title 1963 with Tersana",
+      "Egypt Cup 1965 and 1967 with Tersana",
+      "Egyptian league top scorer 4 times (1963, 1965, 1966 and 1975)",
+      "Top scorer at the 1963 Africa Cup of Nations (6 goals)",
+      "12 goals in the Africa Cup of Nations, Egypt's all-time top scorer in the tournament"
+    ],
+    "clubsHistoryAr": [
+      "ترسانة"
+    ],
+    "clubsHistoryEn": [
+      "Tersana"
+    ],
+    "clubIds": [
+      "tersana"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Hassan_El-Shazly"
+  },
+  {
+    "id": "abdallah-el-said",
+    "nameAr": "عبد الله السعيد",
+    "nameEn": "Abdallah El-Said",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "الزمالك",
+    "clubEn": "Zamalek",
+    "clubId": "zamalek",
+    "position": {
+      "ar": "لاعب وسط مهاجم",
+      "en": "Attacking Midfielder"
+    },
+    "era": "2004-الآن",
+    "active": true,
+    "bioAr": "لاعب وسط مهاجم مصري (مواليد 1985) لعب للإسماعيلي والأهلي وبيراميدز والزمالك، وهو صاحب أكتر عدد مباريات في تاريخ الدوري المصري وتالت هداف تاريخي له.",
+    "bioEn": "An Egyptian attacking midfielder (born 1985) who has played for Ismaily, Al Ahly, Pyramids and Zamalek, the Egyptian league's record appearance holder and its third all-time top scorer.",
+    "achievementsAr": [
+      "دوري أبطال أفريقيا 2012 و2013 مع الأهلي",
+      "ألقاب الدوري المصري 2014 و2016 و2017 مع الأهلي",
+      "لقب الدوري المصري 2026 مع الزمالك",
+      "كأس الكونفدرالية الأفريقية 2024 مع الزمالك",
+      "هداف الدوري المصري 2020 (17 هدف) مع بيراميدز"
+    ],
+    "achievementsEn": [
+      "CAF Champions League titles 2012 and 2013 with Al Ahly",
+      "Egyptian Premier League titles 2014, 2016 and 2017 with Al Ahly",
+      "Egyptian Premier League title 2026 with Zamalek",
+      "CAF Confederation Cup 2024 with Zamalek",
+      "Egyptian league top scorer 2020 (17 goals) with Pyramids"
+    ],
+    "clubsHistoryAr": [
+      "الإسماعيلي",
+      "الأهلي",
+      "كوبس",
+      "الأهلي السعودي",
+      "بيراميدز",
+      "الزمالك"
+    ],
+    "clubsHistoryEn": [
+      "Ismaily",
+      "Al Ahly",
+      "KuPS",
+      "Al-Ahli Saudi",
+      "Pyramids",
+      "Zamalek"
+    ],
+    "clubIds": [
+      "ismaily",
+      "al-ahly",
+      "pyramids",
+      "zamalek"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Abdallah_El_Said"
+  },
+  {
+    "id": "el-sayed-el-dhizui",
+    "nameAr": "السيد الضظوي",
+    "nameEn": "El-Sayed El-Dhizui",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "المصري (متوفى)",
+    "clubEn": "Al Masry (deceased)",
+    "clubId": "al-masry",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1943-1964",
+    "active": false,
+    "bioAr": "مهاجم مصري (1926-1991) من بورسعيد، لعب للمصري والأهلي، وسجل 112 هدف في الدوري المصري، وشارك في أولمبياد 1948 و1952.",
+    "bioEn": "An Egyptian forward (1926-1991) from Port Said who played for Al Masry and Al Ahly, scored 112 Egyptian league goals and competed at the 1948 and 1952 Olympics.",
+    "achievementsAr": [
+      "ألقاب الدوري المصري 1957 و1958 و1959 و1961 مع الأهلي",
+      "هداف الدوري المصري 4 مرات (1949 و1950 و1951 و1959)",
+      "ذهبية دورة ألعاب البحر المتوسط 1955 مع مصر",
+      "112 هدف في الدوري المصري"
+    ],
+    "achievementsEn": [
+      "Egyptian Premier League titles 1957, 1958, 1959 and 1961 with Al Ahly",
+      "Egyptian league top scorer 4 times (1949, 1950, 1951 and 1959)",
+      "Mediterranean Games gold medal 1955 with Egypt",
+      "112 Egyptian league goals"
+    ],
+    "clubsHistoryAr": [
+      "المصري",
+      "الأهلي"
+    ],
+    "clubsHistoryEn": [
+      "Al Masry",
+      "Al Ahly"
+    ],
+    "clubIds": [
+      "al-masry",
+      "al-ahly"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/El-Sayed_El-Dhizui"
+  },
+  {
+    "id": "laurent-pokou",
+    "nameAr": "لوران بوكو",
+    "nameEn": "Laurent Pokou",
+    "nationalityAr": "إيفواري",
+    "nationalityEn": "Ivorian",
+    "clubAr": "أسيك ميموزا (متوفى)",
+    "clubEn": "ASEC Mimosas (deceased)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Forward"
+    },
+    "era": "1960s-1980",
+    "active": false,
+    "bioAr": "مهاجم إيفواري (1947-2016)، هداف كأس أمم أفريقيا 1968 و1970، وسجل 14 هدف في البطولة ودخل التاريخ بخمسة أهداف في مباراة واحدة.",
+    "bioEn": "An Ivorian forward (1947-2016), top scorer at the 1968 and 1970 Africa Cup of Nations, with 14 goals in the tournament and a record five in a single match.",
+    "achievementsAr": [
+      "هداف كأس أمم أفريقيا 1968 (6 أهداف) و1970 (8 أهداف)",
+      "14 هدف في كأس أمم أفريقيا (رقم قياسي حتى 2008)",
+      "5 أهداف في مباراة واحدة بكأس أمم أفريقيا ضد إثيوبيا 1970"
+    ],
+    "achievementsEn": [
+      "Africa Cup of Nations top scorer 1968 (6 goals) and 1970 (8 goals)",
+      "14 goals in the Africa Cup of Nations (a record until 2008)",
+      "5 goals in a single Africa Cup of Nations match, against Ethiopia in 1970"
+    ],
+    "clubsHistoryAr": [
+      "أسيك ميموزا",
+      "رين",
+      "نانسي"
+    ],
+    "clubsHistoryEn": [
+      "ASEC Mimosas",
+      "Rennes",
+      "Nancy"
+    ],
+    "clubIds": [
+      "rennes",
+      "nancy"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": ""
+  },
+  {
+    "id": "moustafa-reyadh",
+    "nameAr": "مصطفى رياض",
+    "nameEn": "Moustafa Reyadh",
+    "nationalityAr": "مصري",
+    "nationalityEn": "Egyptian",
+    "clubAr": "ترسانة (متوفى)",
+    "clubEn": "Tersana (deceased)",
+    "clubId": "tersana",
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1958-1976",
+    "active": false,
+    "bioAr": "مهاجم مصري (1941-2026) لعب معظم مسيرته مع ترسانة، وسجل 123 هدف في الدوري المصري، وكان تاني هداف في أولمبياد طوكيو 1964 بـ8 أهداف.",
+    "bioEn": "An Egyptian striker (1941-2026) who spent most of his career at Tersana, scored 123 Egyptian league goals and was the second-highest scorer at the 1964 Tokyo Olympics with eight goals.",
+    "achievementsAr": [
+      "لقب الدوري المصري 1963 مع ترسانة",
+      "كأس مصر 1965 و1967 مع ترسانة",
+      "هداف الدوري المصري 1962 و1964",
+      "تاني هداف في أولمبياد 1964 (8 أهداف)",
+      "123 هدف في الدوري المصري"
+    ],
+    "achievementsEn": [
+      "Egyptian Premier League title 1963 with Tersana",
+      "Egypt Cup 1965 and 1967 with Tersana",
+      "Egyptian league top scorer 1962 and 1964",
+      "Second-highest scorer at the 1964 Olympics (8 goals)",
+      "123 Egyptian league goals"
+    ],
+    "clubsHistoryAr": [
+      "ترسانة",
+      "السالمية"
+    ],
+    "clubsHistoryEn": [
+      "Tersana",
+      "Al-Salmiya"
+    ],
+    "clubIds": [
+      "tersana"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Moustafa_Reyadh"
+  },
+  {
+    "id": "dimitar-berbatov",
+    "nameAr": "ديميتار بيرباتوف",
+    "nameEn": "Dimitar Berbatov",
+    "nationalityAr": "بلغاري",
+    "nationalityEn": "Bulgarian",
+    "clubAr": "معتزل",
+    "clubEn": "Retired",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "1990s-2018",
+    "active": false,
+    "bioAr": "مهاجم بلغاري (مواليد 1981) لعب لباير ليفركوزن وتوتنهام ومانشستر يونايتد، وكسب لقبين في الدوري الإنجليزي، وهو من أصحاب رقم 5 أهداف في مباراة دوري واحدة.",
+    "bioEn": "A Bulgarian striker (born 1981) who played for Bayer Leverkusen, Tottenham and Manchester United, won two Premier League titles, and is one of the joint holders of the five-goals-in-a-match record.",
+    "achievementsAr": [
+      "لقب الدوري الإنجليزي الممتاز 2009 و2011 مع مانشستر يونايتد",
+      "الحذاء الذهبي للدوري الإنجليزي الممتاز 2011 (مناصفة مع كارلوس تيفيز)",
+      "5 أهداف في مباراة واحدة بالدوري الإنجليزي (ضد بلاكبيرن، نوفمبر 2010)",
+      "الهداف التاريخي المشترك لمنتخب بلغاريا (48 هدف)"
+    ],
+    "achievementsEn": [
+      "Premier League titles 2009 and 2011 with Manchester United",
+      "Premier League Golden Boot 2011 (shared with Carlos Tevez)",
+      "Five goals in a single Premier League match (v Blackburn, November 2010)",
+      "Joint all-time top scorer for Bulgaria (48 goals)"
+    ],
+    "clubsHistoryAr": [
+      "سسكا صوفيا",
+      "باير ليفركوزن",
+      "توتنهام هوتسبير",
+      "مانشستر يونايتد",
+      "فولهام",
+      "موناكو",
+      "باوك",
+      "كيرالا بلاسترز"
+    ],
+    "clubsHistoryEn": [
+      "CSKA Sofia",
+      "Bayer Leverkusen",
+      "Tottenham Hotspur",
+      "Manchester United",
+      "Fulham",
+      "Monaco",
+      "PAOK",
+      "Kerala Blasters"
+    ],
+    "clubIds": [
+      "bayer-leverkusen",
+      "tottenham",
+      "manchester-united",
+      "fulham",
+      "monaco"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Dimitar_Berbatov"
+  },
+  {
+    "id": "shane-long",
+    "nameAr": "شين لونج",
+    "nameEn": "Shane Long",
+    "nationalityAr": "أيرلندي",
+    "nationalityEn": "Irish",
+    "clubAr": "ريدينج (معتزل)",
+    "clubEn": "Reading (retired)",
+    "clubId": null,
+    "position": {
+      "ar": "مهاجم",
+      "en": "Striker"
+    },
+    "era": "2005-2023",
+    "active": false,
+    "bioAr": "مهاجم أيرلندي (مواليد 1987) صاحب أسرع هدف في تاريخ الدوري الإنجليزي الممتاز (7.69 ثانية ضد واتفورد في أبريل 2019)، ولعب 88 مباراة مع منتخب أيرلندا.",
+    "bioEn": "An Irish striker (born 1987) who scored the fastest goal in Premier League history (7.69 seconds against Watford in April 2019) and won 88 caps for the Republic of Ireland.",
+    "achievementsAr": [
+      "أسرع هدف في تاريخ الدوري الإنجليزي الممتاز (7.69 ثانية ضد واتفورد، أبريل 2019)",
+      "88 مباراة و17 هدف مع منتخب جمهورية أيرلندا"
+    ],
+    "achievementsEn": [
+      "Fastest goal in Premier League history (7.69 seconds v Watford, April 2019)",
+      "88 caps and 17 goals for the Republic of Ireland"
+    ],
+    "clubsHistoryAr": [
+      "كورك سيتي",
+      "ريدينج",
+      "وست بروميتش ألبيون",
+      "هال سيتي",
+      "ساوثهامبتون"
+    ],
+    "clubsHistoryEn": [
+      "Cork City",
+      "Reading",
+      "West Bromwich Albion",
+      "Hull City",
+      "Southampton"
+    ],
+    "clubIds": [
+      "west-bromwich-albion",
+      "southampton"
+    ],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Shane_Long"
+  },
+  {
+    "id": "fabio-maciel",
+    "nameAr": "فابيو",
+    "nameEn": "Fábio",
+    "nationalityAr": "برازيلي",
+    "nationalityEn": "Brazilian",
+    "clubAr": "فلومينينسي",
+    "clubEn": "Fluminense",
+    "clubId": null,
+    "position": {
+      "ar": "حارس مرمى",
+      "en": "Goalkeeper"
+    },
+    "era": "1997-الآن",
+    "active": true,
+    "bioAr": "حارس مرمى برازيلي (مواليد 1980) صاحب أكبر عدد مباريات رسمية في تاريخ كرة القدم للرجال (1,391 مباراة لحد أغسطس 2025 حسب فلومينينسي وIFFHS، وده لسه مش معلن رسمياً من FIFA).",
+    "bioEn": "A Brazilian goalkeeper (born 1980) who holds the record for most official appearances in men's football (1,391 by August 2025 per Fluminense and the IFFHS; not officially confirmed by FIFA).",
+    "achievementsAr": [
+      "أكبر عدد مباريات رسمية في تاريخ كرة القدم للرجال (1,391 لحد أغسطس 2025، حسب فلومينينسي وIFFHS)",
+      "أكتر حارس حافظ على نظافة شباكه في التاريخ (507)",
+      "كوبا ليبرتادوريس 2023 مع فلومينينسي"
+    ],
+    "achievementsEn": [
+      "Most official appearances in men's football (1,391 by August 2025, per Fluminense and the IFFHS)",
+      "Most clean sheets in football history (507)",
+      "Copa Libertadores 2023 with Fluminense"
+    ],
+    "clubsHistoryAr": [
+      "أونياو بانديرانتي",
+      "أتلتيكو باراناينسي",
+      "فاسكو دا جاما",
+      "كروزيرو",
+      "فلومينينسي"
+    ],
+    "clubsHistoryEn": [
+      "União Bandeirante",
+      "Atlético Paranaense",
+      "Vasco da Gama",
+      "Cruzeiro",
+      "Fluminense"
+    ],
+    "clubIds": [],
+    "wikiUrlAr": "",
+    "wikiUrlEn": "https://en.wikipedia.org/wiki/Fábio_(footballer,_born_1980)"
   }
 ];
 

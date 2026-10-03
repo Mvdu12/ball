@@ -1,0 +1,13 @@
+/* تظبيطات الموبايل / التطبيق */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body { -webkit-touch-callout: none; overscroll-behavior-y: none; }
+/* منع تحديد النص والزوم بالضغطتين على الأزرار والكروت */
+button, .pill-btn, .choice-btn, .chip, .langbtn, .backbtn, summary, .hint-head, [onclick] {
+  -webkit-user-select: none; user-select: none; touch-action: manipulation;
+}
+/* السماح بالكتابة والتحديد في خانات الإدخال */
+input, textarea { -webkit-user-select: text; user-select: text; touch-action: manipulation; }
+/* iOS بيعمل زوم تلقائي لو حجم خط الإدخال أقل من 16px */
+input, textarea, select { font-size: max(16px, 1rem); }
+/* حواف الشاشة (notch) على الجنب في الوضع الأفقي */
+body { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
